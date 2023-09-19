@@ -9,6 +9,13 @@
 	let isAvailable = false;
 	let deboundeTimer: NodeJS.Timeout;
 
+	const re = /^(?=[a-zA-Z0-9._]{3,24}$)(?!.*[_.]{2})[^_.].*[^_.]$/;
+
+	$: isValid =
+		username?.length > 2 && username.length < 24 && re.test(username);
+	$: isTouched = username.length > 0;
+	$: isTaken = isValid && !isAvailable && !loading;
+
 	async function checkAvailability() {
 		isAvailable = false;
 		clearTimeout(deboundeTimer);
@@ -23,7 +30,28 @@
 		}, 350);
 	}
 
-	async function confirmUsername() {}
+	async function confirmUsername() {
+		console.log("confirming username", username);
+		const batch = writeBatch(db);
+		batch.set(doc(db, "usernames", username), { uid: $user?.uid });
+		batch.set(doc(db, "users", $user), {
+			username,
+			photoURL: $user?.photoURL ?? null,
+			published: true,
+			bio: "I am the Walrus",
+			links: [
+				{
+					title: "Test",
+					url: "google.com",
+					icon: "custom",
+				},
+			],
+		});
+		await batch.commit();
+		``;
+		username = "";
+		isAvailable = false;
+	}
 </script>
 
 <AuthCheck>
@@ -35,8 +63,32 @@
 			class="input w-full"
 			bind:value={username}
 			on:input={checkAvailability}
+			class:input-error={!isValid && isTouched}
+			class:input-warning={isTaken}
+			class:input-success={isAvailable && isValid && !loading}
 		/>
-		<p>is Available? {isAvailable}</p>
-		<button class="btn btn-success">Confirm username @{username}</button>
+		<div class="my-4 min-h-16 px-8 w-full">
+			{#if loading}
+				<p class="text-secondart">
+					Checking availability of @{username}...
+				</p>
+			{/if}
+
+			{#if !isValid && isTouched}
+				<p class="text-error text-sm">
+					must be 3-24 characters long, alphanumeric only.
+				</p>
+			{/if}
+
+			{#if isValid && !isAvailable && !loading}
+				<p class="text-warning text-sm">
+					@{username} is taken.
+				</p>
+			{/if}
+
+			{#if isAvailable}
+				<button class="btn btn-success">Confirm Username</button>
+			{/if}
+		</div>
 	</form>
 </AuthCheck>
