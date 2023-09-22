@@ -1,81 +1,17 @@
 <!-- @format -->
 <script lang="ts">
-	import LandingSection from "$lib/components/home/LandingSection.svelte";
 	import rocket from "$lib/assets/rocket.jpeg";
-
-	const pageData = [
-		{ name: "Benefits", image: rocket },
-		{ name: "Projects", image: "" },
-		{ name: "Deliverables", image: "" },
-		{ name: "Pricing", image: "" },
-		{ name: "FAQs", image: "" },
-	];
+	import Benefits from "$lib/components/home/Benefits.svelte";
+	import Statement from "$lib/components/home/Statement.svelte";
+	import Navbar from "$lib/components/navbar/Navbar.svelte";
 </script>
 
-<!-- 
-{#each pageData as item (item.name)}
-	<LandingSection props={{ name: item.name, image: item.image }} />
-{/each} -->
+<Navbar props={null} />
 
-<div class="content-center items-center">
-	<div
-		class="navbar flex justify-between bg-base-100 w-4/5 fixed top-5 mx-auto inset-x-0 drop-shadow-md rounded-md"
-	>
-		<div class="">
-			<a href="#" class="btn btn-ghost normal-case text-xl contents"
-				><i class="fa-solid fa-fire text-orange-400" />
-				{" "}IgniteHub</a
-			>
-		</div>
-		<div class="">
-			<ul class="menu menu-horizontal px-1 d-c">
-				{#each pageData as item (item.name)}
-					<li><a href="#{item.name}">{item.name}</a></li>
-				{/each}
-			</ul>
-		</div>
-		<div class="navbar-end">
-			<a href="#" class="btn btn-ghost">Login</a>
+<Benefits />
 
-			<a href="#" class="btn btn-neutral ms-1">Sign Up</a>
-		</div>
-	</div>
-</div>
+<Statement />
 
-<div
-	id="Benefits"
-	style="background-image: url('{rocket}')"
-	class="hero min-h-screen bg-cover"
->
-	<div class="hero-content text-center">
-		<div class="max-w-md">
-			<div class="prose">
-				<h1 class="text-white">
-					Ignite Your Buiness With Custom Software!
-				</h1>
-				<h4 class="text-white mb-3">
-					Software subscriptions to scale your business.
-				</h4>
-				<a
-					href="#Pricing"
-					class="btn btn-neutral text-white drop-shadow-md"
-					>See plans</a
-				>
-				<div class="text-center text-white">
-					<ul class="list-none text-left inline-block">
-						<li>Easy to Integrate</li>
-						<li>Personalized Stratagy</li>
-						<li>Data Security & Compliance</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<!-- <div id="Projects" class="hero min-h-screen">Projects</div> -->
-<!-- <div id="Deliverables" class="hero min-h-screen">Deliverables</div> -->
-<!-- <div id="Pricing" class="hero min-h-screen">Pricing</div> -->
 <div id="Pricing" class="bg-white">
 	<div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-24 lg:px-6">
 		<div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
@@ -213,11 +149,3 @@
 		</div>
 	</div>
 </div>
-
-<!-- <div id="FAQs" class="hero min-h-screen">FAQs</div> -->
-
-<style>
-	.list-none li:before {
-		content: "✓ ";
-	}
-</style>
