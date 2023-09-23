@@ -2,15 +2,15 @@
 
 # Summary
 
-IgniteHub, founded by Paul, is a startup IT Services/Consulting company based in the greater Baltimore area. Driven by a passion for design and technology, IgniteHub aims to simplify IT and web services for local businesses, allowing them to focus on serving their own clients. The company offers a range of services including web design, management & hosting, marketing, social media, and branding. These services are offered across three subscription-based tiers: Tier one includes initial web design, continued management, and change requests; Tier two adds graphic design and advertising; Tier three offers comprehensive brand management, e-commerce store setup, company email, and more. The immediate goal for IgniteHub is to grow its local client base to a point where Paul can dedicate his full-time efforts to the company.
+IgniteHub, is a startup SaaS company based building software for freelancers and entrapaneurs. Driven by a passion for design and technology, IgniteHub aims to simplify business software, to allow users focus on serving their own users. We are building a suite of applications to service all your busness needs including web design, management & hosting, marketing, social media, and branding. The immediate goal for IgniteHub is to obtain some clients so the Business is self sustaining. Our longer tearm goal: grow the IgniteHub community, document our process, enjoy life.
 
 # Values
 
--   **Client Empowerment:** We strive to empower our clients by providing them with user-friendly IT and web services, enabling them to focus on their core business.
--   **Quality:** We are committed to delivering high-quality services that meet our clients' needs and exceed their expectations.
--   **Innovation:** We continuously seek to innovate and improve our services, ensuring we stay ahead of industry trends and provide our clients with the best solutions.
--   **Integrity:** We operate with honesty and transparency, building trust with our clients through our actions.
--   **Efficiency:** We value our clients' time and aim to provide efficient and streamlined services.
+-   **Client Empowerment:** We strive to empower our users by providing them with user-friendly software, enabling them to focus on their core business.
+-   **Quality:** We are committed to delivering high-quality software that meet our users' needs and exceed their expectations.
+-   **Innovation:** We continuously seek to innovate and improve our software, ensuring we stay ahead of industry trends and provide our users with the best solutions.
+-   **Integrity:** We operate with honesty and transparency, building trust with our users through our actions.
+-   **Efficiency:** We value our users' time and aim to provide efficient and streamlined software.
 
 # Market Analysis
 
@@ -71,7 +71,7 @@ Once a customer has chosen IgniteHub, the post-customer conversion phase involve
 3. **Communication:**
    a. Slack: Slack is a powerful tool for internal communication. We can use it to coordinate our work, share updates, and discuss issues.
    b. Zoom: For communication with customers, Zoom can be a reliable tool. It allows us to hold video calls, share our screen, and record meetings for future reference.
-   c. Calendly: Calendly is an efficient tool for scheduling meetings with clients. It integrates with our calendar and allows clients to book meetings based on our availability.
+   c. Calendly: Calendly is an efficient tool for scheduling meetings with users. It integrates with our calendar and allows users to book meetings based on our availability.
 
 # Sales
 
@@ -108,14 +108,14 @@ The customer retention phase focuses on maintaining and keeping existing custome
 
 ## I. Service Offerings
 
-IgniteHub offers a range of comprehensive web services and marketing solutions to meet the needs of our clients. Our service offerings include:
+IgniteHub offers a range of comprehensive web services and marketing solutions to meet the needs of our users. Our service offerings include:
 
--   **Web Design, Management & Hosting:** IgniteHub provides complete web services, including designing, managing, and hosting websites. This allows clients to have a professional online presence without the need to manage it themselves.
--   **Marketing, Social Media, and Branding:** IgniteHub offers marketing services to help clients effectively reach their target audience. This includes managing social media accounts and developing a strong brand identity.
+-   **Web Design, Management & Hosting:** IgniteHub provides complete web services, including designing, managing, and hosting websites. This allows users to have a professional online presence without the need to manage it themselves.
+-   **Marketing, Social Media, and Branding:** IgniteHub offers marketing services to help users effectively reach their target audience. This includes managing social media accounts and developing a strong brand identity.
 
 ## II. Service Tiers
 
-IgniteHub's services are structured into three different tiers, allowing clients to choose the level of service that best meets their needs. The specifics of each tier are still being finalized, but the initial idea is as follows:
+IgniteHub's services are structured into three different tiers, allowing users to choose the level of service that best meets their needs. The specifics of each tier are still being finalized, but the initial idea is as follows:
 
 -   **Tier One:** This tier includes initial web design, continued management, and change requests.
 -   **Tier Two:** In addition to the services offered in Tier One, Tier Two adds graphic design and advertising.
@@ -143,7 +143,7 @@ IgniteHub is currently self-funded, with no external funding or revenue. As of n
 
 ### Revenue Projections:
 
-The short-term goal for IgniteHub is to acquire enough clients to generate around $3,000 in monthly revenue. This would allow the founder to quit his full-time job and focus on growing IgniteHub.
+The short-term goal for IgniteHub is to acquire enough users to generate around $3,000 in monthly revenue. This would allow the founder to quit his full-time job and focus on growing IgniteHub.
 
 ### Expense Projections:
 
@@ -151,7 +151,7 @@ Expenses for IgniteHub will primarily consist of operational costs, including th
 
 ### Profitability Projections:
 
-Profitability projections for IgniteHub will depend on the balance between revenue and expenses. The goal is to reach profitability as soon as possible by acquiring a steady stream of clients and managing expenses effectively.
+Profitability projections for IgniteHub will depend on the balance between revenue and expenses. The goal is to reach profitability as soon as possible by acquiring a steady stream of users and managing expenses effectively.
 
 ## Funding
 
