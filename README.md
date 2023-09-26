@@ -4,7 +4,7 @@
 
 IgniteHub, is a startup SaaS company based building software for freelancers and entrapaneurs. Driven by a passion for design and technology, IgniteHub aims to simplify business software, to allow users focus on serving their own users. We are building a suite of applications to service all your busness needs including web design, management & hosting, marketing, social media, and branding. The immediate goal for IgniteHub is to obtain some clients so the Business is self sustaining. Our longer tearm goal: grow the IgniteHub community, document our process, enjoy life.
 
-# Values
+## Values
 
 -   **Client Empowerment:** We strive to empower our users by providing them with user-friendly software, enabling them to focus on their core business.
 -   **Quality:** We are committed to delivering high-quality software that meet our users' needs and exceed their expectations.
@@ -12,7 +12,9 @@ IgniteHub, is a startup SaaS company based building software for freelancers and
 -   **Integrity:** We operate with honesty and transparency, building trust with our users through our actions.
 -   **Efficiency:** We value our users' time and aim to provide efficient and streamlined software.
 
-# Market Analysis
+# Market
+
+## Market Analysis
 
 ## Market Size and Structure
 
@@ -98,11 +100,7 @@ The customer retention phase focuses on maintaining and keeping existing custome
 -   HubSpot CRM: Use HubSpot CRM to manage customer relationships and track interactions with customers. This tool can help identify opportunities for upselling or cross-selling, and can also help manage customer retention efforts.
 -   Quality Service Delivery: Ensure high-quality service delivery to retain customers. Use Trello to manage tasks and track progress, and use Slack and Zoom for efficient communication.
 
-# Marketing
-
 ## Customer Service
-
-## Finance
 
 # Services
 

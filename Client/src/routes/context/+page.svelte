@@ -135,7 +135,7 @@
 </section>
 
 <!-- Section 7 -->
-<section id="finance" class="hero min-h-screen bg-sky-100">
+<section id="finance" class="hero min-h-screen bg-sky-200">
 	<div class="hero-content text-center">
 		<div class="container text-start">
 			<div class="grid grid-cols-1 gap-1">
