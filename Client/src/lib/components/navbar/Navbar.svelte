@@ -40,14 +40,19 @@
 				{/each}
 			</ul>
 
-			<!-- <button
+			<button
+				type="button"
+				class="py-4 px-8 mr-4 opacity-90 bg-secondary text-gray-800 transition ease-in duration-200 text-center text-base font-semibold shadow rounded-full transform transition hover:scale-105 duration-300 ease-in-out disabled:">
+				Book A Call
+			</button>
+			<button
 				type="button"
 				class="py-4 px-8 mr-4 opacity-90 bg-orange-400 text-gray-800 transition ease-in duration-200 text-center text-base font-semibold shadow rounded-full transform transition hover:scale-105 duration-300 ease-in-out disabled:"
 				on:click={() => {
 					loginModal = true;
 				}}>
 				Login
-			</button> -->
+			</button>
 		</div>
 	</div>
 </nav>
