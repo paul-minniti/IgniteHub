@@ -18,3 +18,5 @@ jobs:
                   repoToken: "${{ secrets.GITHUB_TOKEN }}"
                   firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_IGNITEHUB_D0696 }}"
                   projectId: ignitehub-d0696
+              env:
+                  FIREBASE_CLI_EXPERIMENTS: webframeworks

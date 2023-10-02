@@ -21,3 +21,5 @@ jobs:
                   firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_IGNITEHUB_D0696 }}"
                   channelId: live
                   projectId: ignitehub-d0696
+              env:
+                  FIREBASE_CLI_EXPERIMENTS: webframeworks
