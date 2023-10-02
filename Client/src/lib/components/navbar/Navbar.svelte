@@ -8,7 +8,6 @@
 	let pageData = [
 		{ name: "Benefits", image: "" },
 		{ name: "Projects", image: "" },
-		{ name: "Deliverables", image: "" },
 		{ name: "Pricing", image: "" },
 		{ name: "FAQs", image: "" },
 	];

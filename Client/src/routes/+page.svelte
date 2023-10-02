@@ -83,10 +83,95 @@
 		</svg>
 	</div>
 
-	<!-- Benefits x -->
-	<section class="bg-white py-8">
+	<!-- Benefits  -->
+	<section id="Benefits" class="bg-white py-8">
+		<div class="container mx-auto flex flex-col pt-4 pb-4">
+			<div
+				class="flex flex-col flex-grow flex-shrink pt-4 pb-12 items-center">
+				<h2
+					class="w-full my-2 mt-10 text-5xl font-bold leading-tight text-center text-gray-800">
+					Sit back, We've got it from here
+				</h2>
+				<div class="w-full mb-4">
+					<div
+						class="h-1 mx-auto bg-primary w-64 opacity-25 my-0 py-0 rounded-t" />
+				</div>
+				<p
+					class="w-3/5 leading-normal text-xl mb-8 text-center text-gray-800">
+					We bridge the gap between your business needs and top-notch
+					software development, making custom software accessible to
+					businesses of all scales.
+				</p>
+			</div>
+
+			<div class="flex flex-row flex-grow flex-shrink pt-4 pb-12">
+				<div
+					class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink text-center">
+					<div class="flex-1 bg-white overflow-hidden">
+						<a
+							href=""
+							class="flex flex-wrap no-underline hover:no-underline">
+							<p
+								class="w-full text-gray-600 text-xs md:text-sm px-6">
+								<img src={checkBoxesSVG} />
+							</p>
+							<p class="text-gray-800 text-xl px-6 mb-5 mt-12">
+								Subscribe to plan that matches your needs.
+								Cancel at any time, no questions asked.
+							</p>
+						</a>
+					</div>
+				</div>
+
+				<div
+					class="flex flex-col flex-grow border-r-4 border-orange-400 border-opacity-25" />
+
+				<div
+					class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink text-center">
+					<div class="flex-1 bg-white overflow-hidden">
+						<a
+							href=""
+							class="flex flex-wrap no-underline hover:no-underline">
+							<p
+								class="w-full text-gray-600 text-xs md:text-sm px-6">
+								<img src={workingSVG} class="w-fit" />
+							</p>
+							<p class="text-gray-800 text-xl px-6 mb-5 mt-12">
+								Select a task from our task board, most requests
+								can be completed by our engineers within three
+								working days.
+							</p>
+						</a>
+					</div>
+				</div>
+				<div
+					class="flex flex-col flex-grow border-r-4 border-orange-400 border-opacity-25" />
+				<div
+					class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink text-center">
+					<div class="flex-1 bg-white overflow-hidden">
+						<a
+							href=""
+							class="flex flex-wrap no-underline hover:no-underline">
+							<p
+								class="w-full text-gray-600 text-xs md:text-sm px-6">
+								<img src={iterationSVG} />
+							</p>
+							<p class="text-gray-800 text-xl px-6 mb-5 mt-12">
+								We tirelessly refine our approach based on your
+								feedback, striving for nothing short of your
+								complete satisfaction.
+							</p>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Benefits old
+	<section id="Benefits" class="bg-white py-8">
 		<div class="container max-w-5xl mx-auto m-8">
-			<div class="flex flex-col my-2 items-center">
+			<div class="flex flex-col my-2 mt-16 items-center">
 				<h2
 					class="w-full my-2 text-6xl font-bold leading-tight text-center text-gray-800">
 					Here Is What To Expect
@@ -173,7 +258,7 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> -->
 
 	<div class="relative p-4 bg-white dark:bg-gray-800">
 		<div
@@ -267,96 +352,11 @@
 		</div>
 	</div>
 
-	<!-- offers x -->
-	<section class="bg-white py-8">
-		<div class="container mx-auto flex flex-col pt-4 pb-4">
-			<div
-				class="flex flex-col flex-grow flex-shrink pt-4 pb-12 items-center">
-				<h2
-					class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
-					Sit back, We've got it from here
-				</h2>
-				<div class="w-full mb-4">
-					<div
-						class="h-1 mx-auto bg-primary w-64 opacity-25 my-0 py-0 rounded-t" />
-				</div>
-				<p
-					class="w-3/5 leading-normal text-xl mb-8 text-center text-gray-800">
-					We bridge the gap between your business needs and top-notch
-					software development, making custom software accessible to
-					businesses of all scales.
-				</p>
-			</div>
-
-			<div class="flex flex-row flex-grow flex-shrink pt-4 pb-12">
-				<div
-					class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink text-center">
-					<div class="flex-1 bg-white overflow-hidden">
-						<a
-							href=""
-							class="flex flex-wrap no-underline hover:no-underline">
-							<p
-								class="w-full text-gray-600 text-xs md:text-sm px-6">
-								<img src={checkBoxesSVG} />
-							</p>
-							<p class="text-gray-800 text-xl px-6 mb-5 mt-12">
-								Subscribe to plan that matches your needs.
-								Cancel at any time, no questions asked.
-							</p>
-						</a>
-					</div>
-				</div>
-
-				<div
-					class="flex flex-col flex-grow border-r-4 border-orange-400 border-opacity-25" />
-
-				<div
-					class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink text-center">
-					<div class="flex-1 bg-white overflow-hidden">
-						<a
-							href=""
-							class="flex flex-wrap no-underline hover:no-underline">
-							<p
-								class="w-full text-gray-600 text-xs md:text-sm px-6">
-								<img src={workingSVG} class="w-fit" />
-							</p>
-							<p class="text-gray-800 text-xl px-6 mb-5 mt-12">
-								Select a task from our task board, most requests
-								can be completed by our engineers within three
-								working days.
-							</p>
-						</a>
-					</div>
-				</div>
-				<div
-					class="flex flex-col flex-grow border-r-4 border-orange-400 border-opacity-25" />
-				<div
-					class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink text-center">
-					<div class="flex-1 bg-white overflow-hidden">
-						<a
-							href=""
-							class="flex flex-wrap no-underline hover:no-underline">
-							<p
-								class="w-full text-gray-600 text-xs md:text-sm px-6">
-								<img src={iterationSVG} />
-							</p>
-							<p class="text-gray-800 text-xl px-6 mb-5 mt-12">
-								We tirelessly refine our approach based on your
-								feedback, striving for nothing short of your
-								complete satisfaction.
-							</p>
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
 	<!-- Processes -->
-	<section class="bg-white border-b py-8">
+	<section id="Projects" class="bg-white border-b py-8">
 		<div class="container mx-auto flex flex-wrap">
 			<h2
-				class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
+				class="w-full my-2 mt-20 text-5xl font-bold leading-tight text-center text-gray-800">
 				What We Do
 			</h2>
 			<div class="w-full mb-4">
@@ -448,9 +448,7 @@
 								<i class="fa-solid fa-fire" />
 							</div>
 
-							<h3 class="self-center ml-4">
-								Continuous Integration / Continuous Deployment
-							</h3>
+							<h3 class="self-center ml-4">CI/CD Automation</h3>
 						</div>
 						<p class="text-gray-800 text-base px-6 mb-5">
 							Propel your software delivery pipelines to new
@@ -522,7 +520,7 @@
 				<div
 					class="flex flex-col flex-grow flex-shrink pt-4 pb-12 items-center">
 					<h2
-						class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
+						class="w-full my-2 mt-8 text-5xl font-bold leading-tight text-center text-gray-800">
 						Software Excellence, Transparent Pricing
 					</h2>
 					<div class="w-full mb-4">
@@ -572,18 +570,19 @@
 								class="py-4 m-2 px-8 opacity-90 bg-secondary text-gray-800 transition ease-in duration-200 text-center text-base font-semibold shadow rounded-full transform transition hover:scale-105 duration-300 ease-in-out disabled:">
 								Book A Call
 							</a>
-							<a
+
+							<button
 								type="button"
-								href="https://buy.stripe.com/8wM6pYczN5uM17G3cc"
-								class="py-4 m-2 px-8 opacity-90 bg-orange-400 text-gray-800 transition ease-in duration-200 text-center text-base font-semibold shadow rounded-full transform transition hover:scale-105 duration-300 ease-in-out disabled:">
+								disabled={true}
+								class="py-4 m-2 px-8 opacity-90 bg-orange-400 text-gray-800 transition ease-in duration-200 text-center text-base font-semibold shadow rounded-full transform transition hover:scale-105 duration-300 ease-in-out opacity-70 cursor-not-allowed">
 								Get Started!
-							</a>
+							</button>
 						</div>
 					</div>
 					<!-- Pricing Card -->
 					<div
 						class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow xl:p-8">
-						<h3 class="mb-4 text-2xl font-semibold">
+						<h3 class="mb-4 text-4xl font-semibold">
 							Senior Architect
 						</h3>
 						<p class="font-light text-gray-500 sm:text-lg">
@@ -625,12 +624,12 @@
 								class="py-4 mr-2 px-8 opacity-90 bg-secondary text-gray-800 transition ease-in duration-200 text-center text-base font-semibold shadow rounded-full transform transition hover:scale-105 duration-300 ease-in-out disabled:">
 								Book A Call
 							</a>
-							<a
+							<button
 								type="button"
-								href="https://buy.stripe.com/8wM6pYczN5uM17G3cc"
-								class="py-4 px-8 opacity-90 bg-orange-400 text-gray-800 transition ease-in duration-200 text-center text-base font-semibold shadow rounded-full transform transition hover:scale-105 duration-300 ease-in-out disabled:">
+								disabled={true}
+								class="py-4 m-2 px-8 opacity-90 bg-orange-400 text-gray-800 transition ease-in duration-200 text-center text-base font-semibold shadow rounded-full transform transition hover:scale-105 duration-300 ease-in-out opacity-70 cursor-not-allowed">
 								Get Started!
-							</a>
+							</button>
 						</div>
 					</div>
 					<!-- Pricing Card -->
@@ -671,12 +670,12 @@
 								class="py-4 m-2 px-8 opacity-90 bg-secondary text-gray-800 transition ease-in duration-200 text-center text-base font-semibold shadow rounded-full transform transition hover:scale-105 duration-300 ease-in-out disabled:">
 								Book A Call
 							</a>
-							<a
+							<button
 								type="button"
-								href="https://buy.stripe.com/8wM6pYczN5uM17G3cc"
-								class="py-4 m-2 px-8 opacity-90 bg-orange-400 text-gray-800 transition ease-in duration-200 text-center text-base font-semibold shadow rounded-full transform transition hover:scale-105 duration-300 ease-in-out disabled:">
+								disabled={true}
+								class="py-4 m-2 px-8 opacity-90 bg-orange-400 text-gray-800 transition ease-in duration-200 text-center text-base font-semibold shadow rounded-full transform transition hover:scale-105 duration-300 ease-in-out opacity-70 cursor-not-allowed">
 								Get Started!
-							</a>
+							</button>
 						</div>
 					</div>
 				</div>
@@ -685,7 +684,204 @@
 	</section>
 
 	<!-- FAQ -->
-	<section class="bg-white border-b py-8">POPTt</section>
+	<section id="FAQs" class="bg-white py-8">
+		<div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-8 lg:px-6">
+			<h2
+				class="w-full my-2 mt-12 text-6xl font-bold leading-tight text-center text-gray-800">
+				FAQ
+			</h2>
+			<div class="w-full mb-4">
+				<div
+					class="h-1 mx-auto bg-primary w-64 opacity-25 my-0 py-0 rounded-t" />
+			</div>
+			<div
+				class="flex flex-col flex-grow flex-shrink pt-4 pb-4 items-center">
+				<h2
+					class="w-3/6 my-2 text-2xl font-bold leading-tight text-left text-gray-800">
+					Why wouldn't I just hire a full-time engineer?
+				</h2>
+				<div class="w-full mb-4">
+					<div
+						class="h-1 mx-auto bg-primary w-64 opacity-25 my-0 py-0 rounded-t" />
+				</div>
+				<p
+					class="w-3/6 leading-normal text-l mb-8 text-left text-gray-800">
+					Good question! For starters, the annual cost of a full-time
+					senior-level engineer now exceeds $100,000, plus benefits
+					(and good luck finding one available). Aside from that, you
+					may not always have enough work to keep them busy at all
+					times, so you're stuck paying for time you aren't able to
+					utilize. With the monthly plan, you can pause and resume
+					your subscription as often as you need to ensure you're only
+					paying your engineer when you have work available for them.
+				</p>
+			</div>
+			<div
+				class="flex flex-col flex-grow flex-shrink pt-4 pb-4 items-center">
+				<h2
+					class="w-3/6 my-2 text-2xl font-bold leading-tight text-left text-gray-800">
+					Is there a limit to how many requests I can have?
+				</h2>
+				<div class="w-full mb-4">
+					<div
+						class="h-1 mx-auto bg-primary w-64 opacity-25 my-0 py-0 rounded-t" />
+				</div>
+				<p
+					class="w-3/6 leading-normal text-l mb-8 text-left text-gray-800">
+					Once subscribed, you're able to add as many requests to your
+					queue as you'd like, and they will be delivered one by one.
+				</p>
+			</div>
+			<div
+				class="flex flex-col flex-grow flex-shrink pt-4 pb-4 items-center">
+				<h2
+					class="w-3/6 my-2 text-2xl font-bold leading-tight text-left text-gray-800">
+					How fast will I receive my designs?
+				</h2>
+				<div class="w-full mb-4">
+					<div
+						class="h-1 mx-auto bg-primary w-64 opacity-25 my-0 py-0 rounded-t" />
+				</div>
+				<p
+					class="w-3/6 leading-normal text-l mb-8 text-left text-gray-800">
+					On average, most requests are completed in just three days
+					or less. However, more complex requests can take longer.
+					Each request on out board is tagged with an expected
+					compltion date.
+				</p>
+			</div>
+			<div
+				class="flex flex-col flex-grow flex-shrink pt-4 pb-4 items-center">
+				<h2
+					class="w-3/6 my-2 text-2xl font-bold leading-tight text-left text-gray-800">
+					Who are the engineers?
+				</h2>
+				<div class="w-full mb-4">
+					<div
+						class="h-1 mx-auto bg-primary w-64 opacity-25 my-0 py-0 rounded-t" />
+				</div>
+				<p
+					class="w-3/6 leading-normal text-l mb-8 text-left text-gray-800">
+					You might be surprised to hear this, but IgniteHub is
+					actually an agency of one, you will work directly with me.
+					However, we will work to integrate with other service
+					providers as your business grows. You might also exprect to
+					hear from an intern or two.
+				</p>
+			</div>
+			<div
+				class="flex flex-col flex-grow flex-shrink pt-4 pb-4 items-center">
+				<h2
+					class="w-3/6 my-2 text-2xl font-bold leading-tight text-left text-gray-800">
+					What technologies do you use to develope your applications?
+				</h2>
+				<div class="w-full mb-4">
+					<div
+						class="h-1 mx-auto bg-primary w-64 opacity-25 my-0 py-0 rounded-t" />
+				</div>
+				<p
+					class="w-3/6 leading-normal text-l mb-8 text-left text-gray-800">
+					This is a hard question to answer because not every problem
+					has a once sized fits all solution. Adapting old
+					technologies to newer onces is also a challenge we face in
+					our industry. Here is a list of technologies we will work
+					with: Git/Github, GitLab, Python, Typescript, Node,
+					TailwindCss, Bootstrap, MaterialUI Svelte, React, Angular,
+					Vue, Docker, AWS, GCP, Nginx, Kubernetes, MongDB,
+					PostgreSQL, JWT Auth, Restful APIs, Redis, Testing... and so
+					much more.
+				</p>
+			</div>
+			<div
+				class="flex flex-col flex-grow flex-shrink pt-4 pb-4 items-center">
+				<h2
+					class="w-3/6 my-2 text-2xl font-bold leading-tight text-left text-gray-800">
+					How do I request work?
+				</h2>
+				<div class="w-full mb-4">
+					<div
+						class="h-1 mx-auto bg-primary w-64 opacity-25 my-0 py-0 rounded-t" />
+				</div>
+				<p
+					class="w-3/6 leading-normal text-l mb-8 text-left text-gray-800">
+					IgniteHub offers a ton of flexibility in how you request
+					designs using our custom built request boards. It has pre
+					built requests with forms for information about your
+					specific request. Upload any relevant inforamtion to the
+					ticket and put into your queue. Basically, if it can be
+					linked to or shared over the internet, it's fair game.
+				</p>
+			</div>
+			<div
+				class="flex flex-col flex-grow flex-shrink pt-4 pb-4 items-center">
+				<h2
+					class="w-3/6 my-2 text-2xl font-bold leading-tight text-left text-gray-800">
+					What if I don't like the end result?
+				</h2>
+				<div class="w-full mb-4">
+					<div
+						class="h-1 mx-auto bg-primary w-64 opacity-25 my-0 py-0 rounded-t" />
+				</div>
+				<p
+					class="w-3/6 leading-normal text-l mb-8 text-left text-gray-800">
+					No worries! We'll continue to revise until you're 100%
+					satisfied.
+				</p>
+			</div>
+			<div
+				class="flex flex-col flex-grow flex-shrink pt-4 pb-4 items-center">
+				<h2
+					class="w-3/6 my-2 text-2xl font-bold leading-tight text-left text-gray-800">
+					Is there any design work you don't cover?
+				</h2>
+				<div class="w-full mb-4">
+					<div
+						class="h-1 mx-auto bg-primary w-64 opacity-25 my-0 py-0 rounded-t" />
+				</div>
+				<p
+					class="w-3/6 leading-normal text-l mb-8 text-left text-gray-800">
+					Absolutely. If there isnt already a ticket for it on our
+					board, Create a custom ticket, we will review and see if its
+					something we think we can do. If it is we will add it as a
+					new request type!
+				</p>
+			</div>
+			<div
+				class="flex flex-col flex-grow flex-shrink pt-4 pb-4 items-center">
+				<h2
+					class="w-3/6 my-2 text-2xl font-bold leading-tight text-left text-gray-800">
+					What if I only have a single request?
+				</h2>
+				<div class="w-full mb-4">
+					<div
+						class="h-1 mx-auto bg-primary w-64 opacity-25 my-0 py-0 rounded-t" />
+				</div>
+				<p
+					class="w-3/6 leading-normal text-l mb-8 text-left text-gray-800">
+					That's fine. You can pause your subscription when finished
+					and return when you have additional design needs. There's no
+					need to let the remainder of your subscription go to waste.
+				</p>
+			</div>
+			<div
+				class="flex flex-col flex-grow flex-shrink pt-4 pb-4 items-center">
+				<h2
+					class="w-3/6 my-2 text-2xl font-bold leading-tight text-left text-gray-800">
+					Are there any refunds if I don't like the service?
+				</h2>
+				<div class="w-full mb-4">
+					<div
+						class="h-1 mx-auto bg-primary w-64 opacity-25 my-0 py-0 rounded-t" />
+				</div>
+				<p
+					class="w-3/6 leading-normal text-l mb-8 text-left text-gray-800">
+					There are no refunds. We strive to make sure you feel your
+					getting value out of your subscription. IF you dont feel
+					like you are, cancel at any time, no questions asked.
+				</p>
+			</div>
+		</div>
+	</section>
 
 	<!-- SVG -->
 	<svg
@@ -696,7 +892,7 @@
 		xmlns:xlink="http://www.w3.org/1999/xlink">
 		<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 			<g transform="translate(-1.000000, -14.000000)" fill-rule="nonzero">
-				<g class="wave" fill="#f8fafc">
+				<g class="wave" fill="#FFF">
 					<path
 						d="M1440,84 C1383.555,64.3 1342.555,51.3 1317,45 C1259.5,30.824 1206.707,25.526 1169,22 C1129.711,18.326 1044.426,18.475 980,22 C954.25,23.409 922.25,26.742 884,32 C845.122,37.787 818.455,42.121 804,45 C776.833,50.41 728.136,61.77 713,65 C660.023,76.309 621.544,87.729 584,94 C517.525,105.104 484.525,106.438 429,108 C379.49,106.484 342.823,104.484 319,102 C278.571,97.783 231.737,88.736 205,84 C154.629,75.076 86.296,57.743 0,32 L0,0 L1440,0 L1440,84 Z" />
 				</g>
@@ -731,7 +927,7 @@
 					class="h-1 mx-auto bg-white w-64 opacity-25 my-0 py-0 rounded-t" />
 			</div>
 			<p class="w-3/6 leading-normal text-xl mb-8 text-center text-white">
-				Get a guided tour through Designjoy. Find out how we can
+				Get a guided tour through IgniteHub. Find out how we can
 				Transform your business operations. Make the smart move with our
 				tailored software solutions. Let's build something extraordinary
 				together.
