@@ -14,6 +14,7 @@ jobs:
             - run: cd Client && npm ci && npm run build
             - uses: FirebaseExtended/action-hosting-deploy@v0
               with:
+                  entryPoint: /Client
                   repoToken: "${{ secrets.GITHUB_TOKEN }}"
                   firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_IGNITEHUB_D0696 }}"
                   projectId: ignitehub-d0696
