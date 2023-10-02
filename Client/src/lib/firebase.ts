@@ -1,22 +1,29 @@
+/** @format */
+
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 import { writable } from "svelte/store";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
+// Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-	apiKey: "AIzaSyCqPKzKFJvy9ptHd7aSATBC6f8ShE6yea4",
-	authDomain: "getinked-c6243.firebaseapp.com",
-	projectId: "getinked-c6243",
-	storageBucket: "getinked-c6243.appspot.com",
-	messagingSenderId: "112707874647",
-	appId: "1:112707874647:web:2d4af08332332c8a6e9812",
-	measurementId: "G-QHL08L8KSK",
+	apiKey: "AIzaSyAHPng-HYy5uqslnxk1QnnPXwzdDcQ12ls",
+	authDomain: "ignitehub-d0696.firebaseapp.com",
+	projectId: "ignitehub-d0696",
+	storageBucket: "ignitehub-d0696.appspot.com",
+	messagingSenderId: "735417507395",
+	appId: "1:735417507395:web:fad6444e2e76ed4b09bef6",
+	measurementId: "G-M22ZWDPS97",
 };
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
+export const analytics = getAnalytics(app);
 export const db = getFirestore();
 export const auth = getAuth();
 export const storage = getStorage();

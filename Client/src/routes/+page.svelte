@@ -1,6 +1,5 @@
 <!-- @format -->
 <script>
-	import hero from "$lib/assets/hero.svg";
 	import workingSVG from "$lib/assets/working.svg";
 	import checkBoxesSVG from "$lib/assets/check_boxes.svg";
 	import iterationSVG from "$lib/assets/iteration.svg";
