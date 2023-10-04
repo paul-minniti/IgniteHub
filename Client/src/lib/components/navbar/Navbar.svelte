@@ -1,10 +1,10 @@
 <!-- @format -->
 <script lang="ts">
 	import { onMount } from "svelte";
-	import { Collapse, Ripple, initTE } from "tw-elements";
 	import LoginModal from "../utils/LoginModal.svelte";
 
-	onMount(() => {
+	onMount(async () => {
+		const { Collapse, Ripple, initTE } = await import("tw-elements");
 		initTE({ Collapse, Ripple });
 	});
 

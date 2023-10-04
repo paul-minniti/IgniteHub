@@ -479,13 +479,13 @@
 								class="py-4 m-2 px-8 opacity-90 bg-secondary text-gray-800 transition ease-in duration-200 text-center text-base font-semibold shadow rounded-full transform transition hover:scale-105 duration-300 ease-in-out disabled:">
 								Book A Call
 							</a>
-
+							<!-- 
 							<button
 								type="button"
 								disabled={true}
 								class="py-4 m-2 px-8 opacity-90 bg-orange-400 text-gray-800 transition ease-in duration-200 text-center text-base font-semibold shadow rounded-full transform transition hover:scale-105 duration-300 ease-in-out opacity-70 cursor-not-allowed">
 								Get Started!
-							</button>
+							</button> -->
 						</div>
 					</div>
 					<!-- Pricing Card -->
@@ -533,12 +533,12 @@
 								class="py-4 mr-2 px-8 opacity-90 bg-secondary text-gray-800 transition ease-in duration-200 text-center text-base font-semibold shadow rounded-full transform transition hover:scale-105 duration-300 ease-in-out disabled:">
 								Book A Call
 							</a>
-							<button
+							<!-- <button
 								type="button"
 								disabled={true}
 								class="py-4 m-2 px-8 opacity-90 bg-orange-400 text-gray-800 transition ease-in duration-200 text-center text-base font-semibold shadow rounded-full transform transition hover:scale-105 duration-300 ease-in-out opacity-70 cursor-not-allowed">
 								Get Started!
-							</button>
+							</button> -->
 						</div>
 					</div>
 					<!-- Pricing Card -->
@@ -579,12 +579,12 @@
 								class="py-4 m-2 px-8 opacity-90 bg-secondary text-gray-800 transition ease-in duration-200 text-center text-base font-semibold shadow rounded-full transform transition hover:scale-105 duration-300 ease-in-out disabled:">
 								Book A Call
 							</a>
-							<button
+							<!-- <button
 								type="button"
 								disabled={true}
 								class="py-4 m-2 px-8 opacity-90 bg-orange-400 text-gray-800 transition ease-in duration-200 text-center text-base font-semibold shadow rounded-full transform transition hover:scale-105 duration-300 ease-in-out opacity-70 cursor-not-allowed">
 								Get Started!
-							</button>
+							</button> -->
 						</div>
 					</div>
 				</div>
