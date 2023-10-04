@@ -9,6 +9,7 @@
 	import progressSVG from "$lib/assets/progress.svg";
 	import coderSVG from "$lib/assets/coder.svg";
 	import Navbar from "$lib/components/navbar/Navbar.svelte";
+	import { auth } from "$lib/firebase";
 </script>
 
 <div class="leading-normal tracking-normal text-white bg-primary">

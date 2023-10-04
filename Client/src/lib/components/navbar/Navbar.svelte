@@ -4,8 +4,8 @@
 	import LoginModal from "../utils/LoginModal.svelte";
 
 	onMount(async () => {
-		const { Collapse, Ripple, initTE } = await import("tw-elements");
-		initTE({ Collapse, Ripple });
+		const { Collapse, Modal, initTE } = await import("tw-elements");
+		initTE({ Collapse, Modal });
 	});
 
 	let loginModal = false;
@@ -56,9 +56,7 @@
 						<a
 							class="block transition duration-150 ease-in-out font-bold hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:hover:text-white dark:focus:text-white lg:p-2 [&.active]:text-black/90"
 							href="#{item.name}"
-							data-te-nav-link-ref
-							data-te-ripple-init
-							data-te-ripple-color="light">{item.name}</a>
+							data-te-nav-link-ref>{item.name}</a>
 					</li>
 				{/each}
 			</ul>
@@ -68,16 +66,15 @@
 				class="py-4 px-8 mr-4 opacity-90 bg-secondary text-gray-800 transition ease-in duration-200 text-center text-base font-semibold shadow rounded-full transform transition hover:scale-105 duration-300 ease-in-out disabled:">
 				Book A Call
 			</a>
-			<!-- <button
+			<button
 				type="button"
-				class="py-4 px-8 mr-4 opacity-90 bg-orange-400 text-gray-800 transition ease-in duration-200 text-center text-base font-semibold shadow rounded-full transform transition hover:scale-105 duration-300 ease-in-out disabled:"
-				on:click={() => {
-					loginModal = true;
-				}}>
+				class="py-4 px-8 mr-4 opacity-90 bg-orange-400 text-gray-800 transition ease-in duration-200 text-center text-base font-semibold shadow rounded-full transform transition hover:scale-105 duration-300 ease-in-out"
+				data-te-toggle="modal"
+				data-te-target="#rightTopModal">
 				Login
-			</button> -->
+			</button>
 		</div>
 	</div>
 </nav>
 
-<!-- <LoginModal bind:showModal={loginModal} /> -->
+<LoginModal />
