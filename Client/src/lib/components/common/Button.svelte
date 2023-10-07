@@ -6,9 +6,9 @@
 	// 	const { Ripple, Class, initTE } = await import("tw-elements");
 	// 	initTE({ Ripple, Class });
 	// });
-	export let href: string;
-	export let textColor: string;
-	export let bgColor: string;
+	export let href: string = "#";
+	export let textColor: string = "text-white";
+	export let bgColor: string = "bg-primary";
 </script>
 
 <a

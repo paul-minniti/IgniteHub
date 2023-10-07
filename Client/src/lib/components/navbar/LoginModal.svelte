@@ -8,6 +8,7 @@
 		signInWithPopup,
 		signOut,
 	} from "firebase/auth";
+	import { routeToPage } from "$lib/navigation";
 
 	let email: string = "";
 	let password: string = "";
@@ -36,6 +37,11 @@
 				console.log(error);
 				errorMsg = error.message;
 			});
+	}
+
+	function navigate() {
+		console.log("testing123");
+		routeToPage("/createAccount");
 	}
 </script>
 
@@ -142,8 +148,9 @@
 					<a
 						class="mb-3 flex w-full items-center justify-center rounded bg-primary px-7 pb-2.5 pt-3 text-center text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
 						style="background-color: #3b5998"
-						href="/createAccount"
-						role="button">
+						role="button"
+						on:click={navigate}
+						data-te-modal-dismiss>
 						<i class="mr-2 fa-solid fa-envelope" />
 						Continue with Email
 					</a>
@@ -152,7 +159,8 @@
 						style="background-color: #55acee"
 						href="#!"
 						role="button"
-						on:click={signInWithGoogle}>
+						data-te-modal-dismiss
+						on:click={() => {signInWithGoogle if(user){}}}>
 						<i class="mr-2 fa-brands fa-google" />
 						Continue with Google
 					</a>
@@ -160,12 +168,13 @@
 			</div>
 			<div
 				class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
-				<button
+				<a
 					type="button"
+					href="/createAccount"
 					class="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
 					data-te-modal-dismiss>
 					Close
-				</button>
+				</a>
 			</div>
 		</div>
 	</div>

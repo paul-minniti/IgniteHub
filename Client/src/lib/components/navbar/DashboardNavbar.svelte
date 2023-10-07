@@ -200,7 +200,8 @@
 						<a
 							class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
 							href="#"
-							data-te-dropdown-item-ref>Something else here</a>
+							on:click={() => signOut(auth)}
+							data-te-dropdown-item-ref>Sign Out</a>
 					</li>
 				</ul>
 			</div>
