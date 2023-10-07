@@ -8,12 +8,12 @@
 	import piggyBankSVG from "$lib/assets/piggyBank.svg";
 	import progressSVG from "$lib/assets/progress.svg";
 	import coderSVG from "$lib/assets/coder.svg";
-	import Navbar from "$lib/components/navbar/Navbar.svelte";
-	import { auth } from "$lib/firebase";
+	import LandingNavbar from "$lib/components/navbar/LandingNavbar.svelte";
+	import Button from "$lib/components/common/Button.svelte";
 </script>
 
 <div class="leading-normal tracking-normal text-white bg-primary">
-	<Navbar props={null} />
+	<LandingNavbar props={null} />
 
 	<!--Hero x -->
 	<div class="pt-24">
@@ -474,12 +474,13 @@
 							</li>
 						</ul>
 						<div class="items-center">
-							<a
-								type="button"
+							<Button
 								href="https://calendly.com/pminniti94/ignitehub"
-								class="py-4 m-2 px-8 opacity-90 bg-secondary text-gray-800 transition ease-in duration-200 text-center text-base font-semibold shadow rounded-full transform transition hover:scale-105 duration-300 ease-in-out disabled:">
+								textColor="text-black"
+								bgColor="bg-secondary">
 								Book A Call
-							</a>
+							</Button>
+
 							<!-- 
 							<button
 								type="button"
@@ -528,12 +529,12 @@
 							</li>
 						</ul>
 						<div class="items-center">
-							<a
-								type="button"
+							<Button
 								href="https://calendly.com/pminniti94/ignitehub"
-								class="py-4 mr-2 px-8 opacity-90 bg-secondary text-gray-800 transition ease-in duration-200 text-center text-base font-semibold shadow rounded-full transform transition hover:scale-105 duration-300 ease-in-out disabled:">
+								textColor="text-black"
+								bgColor="bg-secondary">
 								Book A Call
-							</a>
+							</Button>
 							<!-- <button
 								type="button"
 								disabled={true}
@@ -574,12 +575,12 @@
 							</li>
 						</ul>
 						<div class="items-center">
-							<a
-								type="button"
+							<Button
 								href="https://calendly.com/pminniti94/ignitehub"
-								class="py-4 m-2 px-8 opacity-90 bg-secondary text-gray-800 transition ease-in duration-200 text-center text-base font-semibold shadow rounded-full transform transition hover:scale-105 duration-300 ease-in-out disabled:">
+								textColor="text-black"
+								bgColor="bg-secondary">
 								Book A Call
-							</a>
+							</Button>
 							<!-- <button
 								type="button"
 								disabled={true}
@@ -843,12 +844,12 @@
 				tailored software solutions. Let's build something extraordinary
 				together.
 			</p>
-			<a
-				type="button"
+			<Button
 				href="https://calendly.com/pminniti94/ignitehub"
-				class="py-4 px-8 opacity-90 bg-secondary text-gray-800 transition ease-in duration-200 text-center text-base font-semibold shadow rounded-full transform transition hover:scale-105 duration-300 ease-in-out disabled:">
+				textColor="text-black"
+				bgColor="bg-secondary">
 				Book A Call
-			</a>
+			</Button>
 		</div>
 	</section>
 

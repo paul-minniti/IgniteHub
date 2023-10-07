@@ -1,7 +1,8 @@
 <!-- @format -->
 <script lang="ts">
 	import { onMount } from "svelte";
-	import LoginModal from "../utils/LoginModal.svelte";
+	import LoginModal from "./LoginModal.svelte";
+	import Button from "../common/Button.svelte";
 
 	onMount(async () => {
 		const { Collapse, Modal, initTE } = await import("tw-elements");
@@ -60,15 +61,15 @@
 					</li>
 				{/each}
 			</ul>
-			<a
-				type="button"
+			<Button
 				href="https://calendly.com/pminniti94/ignitehub"
-				class="py-4 px-8 mr-4 opacity-90 bg-secondary text-gray-800 transition ease-in duration-200 text-center text-base font-semibold shadow rounded-full transform transition hover:scale-105 duration-300 ease-in-out disabled:">
+				textColor="text-black"
+				bgColor="bg-secondary">
 				Book A Call
-			</a>
+			</Button>
 			<button
 				type="button"
-				class="py-4 px-8 mr-4 opacity-90 bg-orange-400 text-gray-800 transition ease-in duration-200 text-center text-base font-semibold shadow rounded-full transform transition hover:scale-105 duration-300 ease-in-out"
+				class="m-2 inline-block rounded text-black bg-primary px-7 pb-2.5 pt-3 text-sm font-bold uppercase leading-normal shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-opacity-80 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-opacity-80 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
 				data-te-toggle="modal"
 				data-te-target="#rightTopModal">
 				Login
