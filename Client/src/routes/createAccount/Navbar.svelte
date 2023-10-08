@@ -5,8 +5,8 @@
 	import { signOut } from "firebase/auth";
 
 	onMount(async () => {
-		const { Collapse, Dropdown, initTE } = await import("tw-elements");
-		initTE({ Collapse, Dropdown });
+		// const { Collapse, Dropdown, initTE } = await import("tw-elements");
+		// initTE({ Collapse, Dropdown });
 	});
 </script>
 

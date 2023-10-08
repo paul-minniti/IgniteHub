@@ -1,7 +1,18 @@
 <!-- @format -->
 <script lang="ts">
-	import "../app.css";
+	import '../app.postcss';
+	import { AppShell } from '@skeletonlabs/skeleton';
+
+
+	import { Modal, initializeStores } from '@skeletonlabs/skeleton';
+
+	initializeStores();
 </script>
-<div class="min-h-screen flex flex-col">
+
+<Modal />
+<!-- <div class="min-h-screen flex flex-col">
 	<slot />
-</div>
+</div> -->
+<AppShell>
+	<slot />
+</AppShell>

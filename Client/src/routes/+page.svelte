@@ -3,22 +3,18 @@
 	import workingSVG from "$lib/assets/working.svg";
 	import checkBoxesSVG from "$lib/assets/check_boxes.svg";
 	import iterationSVG from "$lib/assets/iteration.svg";
-	import blocksSVG from "$lib/assets/blocks.svg";
-	import groupCallSVG from "$lib/assets/groupCall.svg";
-	import piggyBankSVG from "$lib/assets/piggyBank.svg";
-	import progressSVG from "$lib/assets/progress.svg";
 	import coderSVG from "$lib/assets/coder.svg";
-	import LandingNavbar from "$lib/components/navbar/LandingNavbar.svelte";
+	import Navbar from "./Navbar.svelte";
 	import Button from "$lib/components/common/Button.svelte";
 </script>
 
 <div class="leading-normal tracking-normal text-white bg-primary">
-	<LandingNavbar props={null} />
+	<Navbar props={null} />
 
 	<!--Hero x -->
 	<div class="pt-24">
 		<div
-			class="container px-3 pb-12 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+			class="container px-3 pb-2 mx-auto flex flex-wrap flex-col md:flex-row items-center">
 			<!--Left Col-->
 			<div
 				class="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
@@ -29,9 +25,7 @@
 					Take your business to the next level with a top-quality
 					software development agency.
 				</p>
-				<a
-					href="#Pricing"
-					class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+				<a href="#Pricing" class="m-2 bg-white btn btn-lg variant-filled-tertiary z-0">
 					Explore Our Plans
 				</a>
 			</div>
@@ -51,7 +45,7 @@
 	</div>
 
 	<!-- svg -->
-	<div class="relative -mt-12 lg:-mt-24">
+	<div class="relative">
 		<svg
 			viewBox="0 0 1428 174"
 			version="1.1"
@@ -474,12 +468,8 @@
 							</li>
 						</ul>
 						<div class="items-center">
-							<Button
-								href="https://calendly.com/pminniti94/ignitehub"
-								textColor="text-black"
-								bgColor="bg-secondary">
-								Book A Call
-							</Button>
+							<a href="https://calendly.com/pminniti94/ignitehub" class="m-2 btn variant-filled-tertiary">
+								Book A Call</a>
 
 							<!-- 
 							<button
@@ -529,12 +519,8 @@
 							</li>
 						</ul>
 						<div class="items-center">
-							<Button
-								href="https://calendly.com/pminniti94/ignitehub"
-								textColor="text-black"
-								bgColor="bg-secondary">
-								Book A Call
-							</Button>
+							<a href="https://calendly.com/pminniti94/ignitehub" class="m-2 btn variant-filled-tertiary">
+								Book A Call</a>
 							<!-- <button
 								type="button"
 								disabled={true}
@@ -575,12 +561,8 @@
 							</li>
 						</ul>
 						<div class="items-center">
-							<Button
-								href="https://calendly.com/pminniti94/ignitehub"
-								textColor="text-black"
-								bgColor="bg-secondary">
-								Book A Call
-							</Button>
+							<a href="https://calendly.com/pminniti94/ignitehub" class="m-2 btn variant-filled-tertiary">
+								Book A Call</a>
 							<!-- <button
 								type="button"
 								disabled={true}
@@ -844,12 +826,8 @@
 				tailored software solutions. Let's build something extraordinary
 				together.
 			</p>
-			<Button
-				href="https://calendly.com/pminniti94/ignitehub"
-				textColor="text-black"
-				bgColor="bg-secondary">
-				Book A Call
-			</Button>
+			<a href="https://calendly.com/pminniti94/ignitehub" class="m-2 btn variant-filled-tertiary">
+				Book A Call</a>
 		</div>
 	</section>
 

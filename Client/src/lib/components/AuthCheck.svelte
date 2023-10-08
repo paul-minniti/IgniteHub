@@ -2,6 +2,7 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
 	import { user } from "$lib/firebase";
+	import { onMount } from "svelte";
 	import Button from "./common/Button.svelte";
 </script>
 

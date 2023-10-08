@@ -1,9 +1,9 @@
 <!-- @format -->
 <script lang="ts">
 	import type { PageData } from "./$types";
-	import DashboardNavbar from "$lib/components/navbar/DashboardNavbar.svelte";
+	import Navbar from "./Navbar.svelte";
 
 	export let data: PageData;
 </script>
 
-<DashboardNavbar />
+<Navbar />

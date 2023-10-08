@@ -6,6 +6,9 @@
 	export let data: LayoutData;
 </script>
 
+
 <AuthCheck>
-	<slot />
+	<AppShell>
+		<slot />
+	</AppShell>
 </AuthCheck>

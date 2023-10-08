@@ -1,31 +1,39 @@
 <!-- @format -->
 <script lang="ts">
+	export let parent: any;
+	import { getModalStore } from "@skeletonlabs/skeleton";
+	const modalStore = getModalStore();
+
 	import { onMount } from "svelte";
-	import { auth } from "$lib/firebase";
 	import {
 		GoogleAuthProvider,
 		signInWithEmailAndPassword,
 		signInWithPopup,
-		signOut,
 	} from "firebase/auth";
+	import { auth } from "$lib/firebase";
 	import { routeToPage } from "$lib/navigation";
 
+	const formData = {
+		password: "214-555-1234",
+		email: "jdoe@email.com",
+	};
 	let email: string = "";
 	let password: string = "";
 	let errorMsg: string = "";
 	let user: object;
 
 	onMount(async () => {
-		const { Collapse, Ripple, Modal, Input, initTE } = await import(
-			"tw-elements"
-		);
-		initTE({ Collapse, Ripple, Modal, Input });
+		// const { Collapse, Ripple, Modal, Input, initTE } = await import(
+		// 	"tw-elements"
+		// );
+		// initTE({ Collapse, Ripple, Modal, Input });
 	});
 
 	async function signInWithGoogle() {
 		const provider = new GoogleAuthProvider();
 		const user = await signInWithPopup(auth, provider);
 		console.log(user);
+		modalStore.close();
 	}
 
 	async function signInWithEmail() {
@@ -37,13 +45,44 @@
 				console.log(error);
 				errorMsg = error.message;
 			});
+		modalStore.close();
 	}
 
 	function navigate() {
-		console.log("testing123");
 		routeToPage("/createAccount");
 	}
+
+	// Base Classes
+	const cBase = "card p-4 w-modal shadow-xl space-y-4";
+	const cHeader = "text-2xl font-bold";
+	const cForm =
+		"border border-surface-500 p-4 space-y-4 rounded-container-token";
 </script>
+
+{#if $modalStore[0]}
+	<div class="modal-example-form {cBase}">
+		<header class={cHeader}>
+			{$modalStore[0].title ?? "(title missing)"}
+		</header>
+		<article>{$modalStore[0].body ?? "(body missing)"}</article>
+		<!-- Enable for debugging: -->
+		<form class="modal-form {cForm}">
+			<label class="label">
+				<span>Email</span>
+				<input
+					class="input"
+					type="email"
+					bind:value={formData.email}
+					placeholder="Enter email address..." />
+			</label>
+		</form>
+		<!-- prettier-ignore -->
+		<footer class="modal-footer {parent.regionFooter}">
+        <button class="btn {parent.buttonNeutral}" on:click={parent.onClose}>{parent.buttonTextCancel}</button>
+        <button class="btn {parent.buttonPositive}" on:click={signInWithEmail}>Submit Form</button>
+    </footer>
+	</div>
+{/if}
 
 <div
 	data-te-modal-init
@@ -160,7 +199,7 @@
 						href="#!"
 						role="button"
 						data-te-modal-dismiss
-						on:click={() => {signInWithGoogle if(user){}}}>
+						on:click={signInWithGoogle}>
 						<i class="mr-2 fa-brands fa-google" />
 						Continue with Google
 					</a>
