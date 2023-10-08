@@ -1,12 +1,22 @@
 <!-- @format -->
 <script lang="ts">
-	import '../app.postcss';
-	import { AppShell } from '@skeletonlabs/skeleton';
-
-
-	import { Modal, initializeStores } from '@skeletonlabs/skeleton';
-
+	import "../app.postcss";
+	import {
+		AppShell,
+		storePopup,
+		Modal,
+		initializeStores
+	} from "@skeletonlabs/skeleton";
+	import {
+		computePosition,
+		autoUpdate,
+		offset,
+		shift,
+		flip,
+		arrow
+	} from "@floating-ui/dom";
 	initializeStores();
+	storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
 </script>
 
 <Modal />

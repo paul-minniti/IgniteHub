@@ -5,11 +5,10 @@
 	import iterationSVG from "$lib/assets/iteration.svg";
 	import coderSVG from "$lib/assets/coder.svg";
 	import Navbar from "./Navbar.svelte";
-	import Button from "$lib/components/common/Button.svelte";
 </script>
 
 <div class="leading-normal tracking-normal text-white bg-primary">
-	<Navbar props={null} />
+	<Navbar />
 
 	<!--Hero x -->
 	<div class="pt-24">
@@ -22,16 +21,17 @@
 					Ignite your Businesses Potential on Fire!
 				</h1>
 				<p class="leading-normal text-2xl mb-8">
-					Take your business to the next level with a top-quality
-					software development agency.
+					Take your business to the next level with a top-quality software
+					development agency.
 				</p>
-				<a href="#Pricing" class="m-2 bg-white btn btn-lg variant-filled-tertiary z-0">
+				<a
+					href="#Pricing"
+					class="m-2 bg-white btn btn-lg variant-filled-tertiary z-0">
 					Explore Our Plans
 				</a>
 			</div>
 			<!--Right Col-->
-			<div
-				class="w-full flex flex-shrink flex-grow md:w-3/5 py-6 text-center">
+			<div class="w-full flex flex-shrink flex-grow md:w-3/5 py-6 text-center">
 				<iframe
 					width="560"
 					height="315"
@@ -81,8 +81,7 @@
 	<!-- Benefits  -->
 	<section id="Benefits" class="bg-white py-4">
 		<div class="container mx-auto flex flex-col pt-4 pb-4">
-			<div
-				class="flex flex-col flex-grow flex-shrink pt-4 pb-12 items-center">
+			<div class="flex flex-col flex-grow flex-shrink pt-4 pb-12 items-center">
 				<h2
 					class="w-full my-2 mt-10 text-5xl font-bold leading-tight text-center text-gray-800">
 					Sit back, We've got it from here
@@ -93,27 +92,22 @@
 				</div>
 				<p
 					class="w-5/6 md:w-3/6 leading-normal text-xl mb-8 text-center text-gray-800">
-					We bridge the gap between your business needs and top-notch
-					software development, making custom software accessible to
-					businesses of all scales.
+					We bridge the gap between your business needs and top-notch software
+					development, making custom software accessible to businesses of all
+					scales.
 				</p>
 			</div>
 
-			<div
-				class="flex flex-col md:flex-row flex-grow flex-shrink pt-4 pb-12">
-				<div
-					class="w-full p-6 flex flex-col flex-grow flex-shrink text-center">
+			<div class="flex flex-col md:flex-row flex-grow flex-shrink pt-4 pb-12">
+				<div class="w-full p-6 flex flex-col flex-grow flex-shrink text-center">
 					<div class="flex-1 bg-white overflow-hidden">
-						<a
-							href=""
-							class="flex flex-wrap no-underline hover:no-underline">
-							<p
-								class="w-full text-gray-600 text-xs md:text-sm px-6">
+						<a href="" class="flex flex-wrap no-underline hover:no-underline">
+							<p class="w-full text-gray-600 text-xs md:text-sm px-6">
 								<img src={checkBoxesSVG} />
 							</p>
 							<p class="text-gray-800 text-xl px-6 mb-5 mt-12">
-								Subscribe to plan that matches your needs.
-								Cancel at any time, no questions asked.
+								Subscribe to plan that matches your needs. Cancel at any time,
+								no questions asked.
 							</p>
 						</a>
 					</div>
@@ -122,40 +116,30 @@
 				<div
 					class="flex flex-col flex-grow border-b-4 md:border-r-4 border-orange-400 border-opacity-25" />
 
-				<div
-					class="w-full p-6 flex flex-col flex-grow flex-shrink text-center">
+				<div class="w-full p-6 flex flex-col flex-grow flex-shrink text-center">
 					<div class="flex-1 bg-white overflow-hidden">
-						<a
-							href=""
-							class="flex flex-wrap no-underline hover:no-underline">
-							<p
-								class="w-full text-gray-600 text-xs md:text-sm px-6">
+						<a href="" class="flex flex-wrap no-underline hover:no-underline">
+							<p class="w-full text-gray-600 text-xs md:text-sm px-6">
 								<img src={workingSVG} class="w-fit" />
 							</p>
 							<p class="text-gray-800 text-xl px-6 mb-5 mt-12">
-								Select a task from our task board, most requests
-								can be completed by our engineers within three
-								working days.
+								Select a task from our task board, most requests can be
+								completed by our engineers within three working days.
 							</p>
 						</a>
 					</div>
 				</div>
 				<div
 					class="flex flex-col flex-grow border-b-4 md:border-r-4 border-orange-400 border-opacity-25" />
-				<div
-					class="w-full p-6 flex flex-col flex-grow flex-shrink text-center">
+				<div class="w-full p-6 flex flex-col flex-grow flex-shrink text-center">
 					<div class="flex-1 bg-white overflow-hidden">
-						<a
-							href=""
-							class="flex flex-wrap no-underline hover:no-underline">
-							<p
-								class="w-full text-gray-600 text-xs md:text-sm px-6">
+						<a href="" class="flex flex-wrap no-underline hover:no-underline">
+							<p class="w-full text-gray-600 text-xs md:text-sm px-6">
 								<img src={iterationSVG} />
 							</p>
 							<p class="text-gray-800 text-xl px-6 mb-5 mt-12">
-								We tirelessly refine our approach based on your
-								feedback, striving for nothing short of your
-								complete satisfaction.
+								We tirelessly refine our approach based on your feedback,
+								striving for nothing short of your complete satisfaction.
 							</p>
 						</a>
 					</div>
@@ -192,10 +176,9 @@
 								</h5>
 								<p
 									class="mt-2 text-base leading-6 text-gray-500 dark:text-gray-300">
-									We make sure you are kept in the loop 100%
-									of the time. You will see changes daily and
-									blockers are communicated as soon they are
-									identified
+									We make sure you are kept in the loop 100% of the time. You
+									will see changes daily and blockers are communicated as soon
+									they are identified
 								</p>
 							</div>
 						</div>
@@ -215,9 +198,8 @@
 								</h5>
 								<p
 									class="mt-2 text-base leading-6 text-gray-500 dark:text-gray-300">
-									Got a big team? No problem, invite as many
-									users to your worksapce as needed. Zero
-									hidden fees.
+									Got a big team? No problem, invite as many users to your
+									worksapce as needed. Zero hidden fees.
 								</p>
 							</div>
 						</div>
@@ -237,9 +219,8 @@
 								</h5>
 								<p
 									class="mt-2 text-base leading-6 text-gray-500 dark:text-gray-300">
-									Use our software to submit and prioritize
-									your requests, manage your different
-									projects, communicate directly with your
+									Use our software to submit and prioritize your requests,
+									manage your different projects, communicate directly with your
 									Ignite engineers.
 								</p>
 							</div>
@@ -267,8 +248,7 @@
 				<div
 					class="h-1 mx-auto bg-primary w-64 opacity-25 my-0 py-0 rounded-t" />
 			</div>
-			<div
-				class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
+			<div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
 				<div
 					class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
 					<div class="flex flex-wrap no-underline hover:no-underline">
@@ -282,16 +262,14 @@
 							<h3 class="self-center ml-4">Software Design</h3>
 						</div>
 						<p class="text-gray-800 text-base px-6 mb-5">
-							Our Software Architecture Design process is your
-							gateway to a reliable, scalable, and efficient
-							software ecosystem, uniquely crafted to meet your
-							business demands.
+							Our Software Architecture Design process is your gateway to a
+							reliable, scalable, and efficient software ecosystem, uniquely
+							crafted to meet your business demands.
 						</p>
 					</div>
 				</div>
 			</div>
-			<div
-				class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
+			<div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
 				<div
 					class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
 					<div class="flex flex-wrap no-underline hover:no-underline">
@@ -305,18 +283,16 @@
 							<h3 class="self-center ml-4">UI/UX</h3>
 						</div>
 						<p class="text-gray-800 text-base px-6 mb-5">
-							Elevate your digital presence with UI/UX design that
-							meets your brand’s narrative. At IgniteHub, we craft
-							user interfaces that are not only visually
-							delightful but are engineered to convert. Our
-							streamlined processes ensure a seamless journey from
-							idea to execution.
+							Elevate your digital presence with UI/UX design that meets your
+							brand’s narrative. At IgniteHub, we craft user interfaces that are
+							not only visually delightful but are engineered to convert. Our
+							streamlined processes ensure a seamless journey from idea to
+							execution.
 						</p>
 					</div>
 				</div>
 			</div>
-			<div
-				class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
+			<div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
 				<div
 					class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
 					<div class="flex flex-wrap no-underline hover:no-underline">
@@ -330,18 +306,16 @@
 							<h3 class="self-center ml-4">API Development</h3>
 						</div>
 						<p class="text-gray-800 text-base px-6 mb-5">
-							Step into a world of endless integration
-							possibilities with IgniteHub's custom API
-							development. Our tried-and-true processes ensure a
-							reliable foundation for your digital ecosystem.
+							Step into a world of endless integration possibilities with
+							IgniteHub's custom API development. Our tried-and-true processes
+							ensure a reliable foundation for your digital ecosystem.
 						</p>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="container mx-auto flex flex-wrap spb-12">
-			<div
-				class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
+			<div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
 				<div
 					class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
 					<div class="flex flex-wrap no-underline hover:no-underline">
@@ -355,17 +329,15 @@
 							<h3 class="self-center ml-4">CI/CD Automation</h3>
 						</div>
 						<p class="text-gray-800 text-base px-6 mb-5">
-							Propel your software delivery pipelines to new
-							speeds with our (CI/CD) process. Revel in a realm
-							where code merges are sleek, and deployments are
-							prompt, Keeping pace with your ever evolveing
+							Propel your software delivery pipelines to new speeds with our
+							(CI/CD) process. Revel in a realm where code merges are sleek, and
+							deployments are prompt, Keeping pace with your ever evolveing
 							busines.
 						</p>
 					</div>
 				</div>
 			</div>
-			<div
-				class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
+			<div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
 				<div
 					class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
 					<div class="flex flex-wrap no-underline hover:no-underline">
@@ -379,19 +351,17 @@
 							<h3 class="self-center ml-4">Database Managment</h3>
 						</div>
 						<p class="text-gray-800 text-base px-6 mb-5">
-							We prioritize your data's safety. Achieve peace of
-							mind with our database management and security
-							processes, ensuring, organized, and instant access
-							to your critical business data whenever required.
-							Our seasoned security protocols are crafted to
-							provide a fortification, ensuring your business's
-							sensitive data remains untouched.
+							We prioritize your data's safety. Achieve peace of mind with our
+							database management and security processes, ensuring, organized,
+							and instant access to your critical business data whenever
+							required. Our seasoned security protocols are crafted to provide a
+							fortification, ensuring your business's sensitive data remains
+							untouched.
 						</p>
 					</div>
 				</div>
 			</div>
-			<div
-				class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
+			<div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
 				<div
 					class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
 					<div class="flex flex-wrap">
@@ -405,10 +375,9 @@
 							<h3 class="self-center ml-4">Audit Consulting</h3>
 						</div>
 						<p class="text-gray-800 text-base px-6 mb-5">
-							Already have something built? Our software audit
-							process is meticulously designed to ensure your
-							software system’s efficiency, reliability, and
-							security. Uncover hidden potentials while
+							Already have something built? Our software audit process is
+							meticulously designed to ensure your software system’s efficiency,
+							reliability, and security. Uncover hidden potentials while
 							safeguarding your digital assets.
 						</p>
 					</div>
@@ -433,10 +402,9 @@
 					</div>
 					<p
 						class="w-5/6 md:w-3/6 leading-normal text-xl mb-8 text-center text-gray-800">
-						Achieving your software goals shouldn't be a budgetary
-						battle. Our clear pricing and bundled subscriptions are
-						built to ensure you receive outstanding custom software
-						without a financial strain.
+						Achieving your software goals shouldn't be a budgetary battle. Our
+						clear pricing and bundled subscriptions are built to ensure you
+						receive outstanding custom software without a financial strain.
 					</p>
 				</div>
 				<div
@@ -445,12 +413,10 @@
 						class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow xl:p-8">
 						<h3 class="mb-4 text-2xl font-semibold">Entry Level</h3>
 						<p class="font-light text-gray-500 sm:text-lg">
-							Best option for small businesses looking for a
-							online presence.
+							Best option for small businesses looking for a online presence.
 						</p>
 						<div class="flex justify-center items-baseline my-8">
-							<span class="mr-2 text-5xl font-extrabold"
-								>$299</span>
+							<span class="mr-2 text-5xl font-extrabold">$299</span>
 							<span class="text-gray-500">/month</span>
 						</div>
 						<ul role="list" class="mb-8 space-y-4 text-left">
@@ -468,7 +434,9 @@
 							</li>
 						</ul>
 						<div class="items-center">
-							<a href="https://calendly.com/pminniti94/ignitehub" class="m-2 btn variant-filled-tertiary">
+							<a
+								href="https://calendly.com/pminniti94/ignitehub"
+								class="m-2 btn variant-filled-tertiary">
 								Book A Call</a>
 
 							<!-- 
@@ -483,16 +451,12 @@
 					<!-- Pricing Card -->
 					<div
 						class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow xl:p-8">
-						<h3 class="mb-4 text-4xl font-semibold">
-							Senior Architect
-						</h3>
+						<h3 class="mb-4 text-4xl font-semibold">Senior Architect</h3>
 						<p class="font-light text-gray-500 sm:text-lg">
-							Best for large scale uses and extended
-							redistribution rights.
+							Best for large scale uses and extended redistribution rights.
 						</p>
 						<div class="flex justify-center items-baseline my-8">
-							<span class="mr-2 text-5xl font-extrabold"
-								>$2499</span>
+							<span class="mr-2 text-5xl font-extrabold">$2499</span>
 							<span class="text-gray-500">/month</span>
 						</div>
 						<!-- List -->
@@ -519,7 +483,9 @@
 							</li>
 						</ul>
 						<div class="items-center">
-							<a href="https://calendly.com/pminniti94/ignitehub" class="m-2 btn variant-filled-tertiary">
+							<a
+								href="https://calendly.com/pminniti94/ignitehub"
+								class="m-2 btn variant-filled-tertiary">
 								Book A Call</a>
 							<!-- <button
 								type="button"
@@ -532,16 +498,12 @@
 					<!-- Pricing Card -->
 					<div
 						class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow xl:p-8">
-						<h3 class="mb-4 text-2xl font-semibold">
-							Mid-Level Dev
-						</h3>
+						<h3 class="mb-4 text-2xl font-semibold">Mid-Level Dev</h3>
 						<p class="font-light text-gray-500 sm:text-lg">
-							Relevant for multiple users, extended & premium
-							support.
+							Relevant for multiple users, extended & premium support.
 						</p>
 						<div class="flex justify-center items-baseline my-8">
-							<span class="mr-2 text-5xl font-extrabold"
-								>$999</span>
+							<span class="mr-2 text-5xl font-extrabold">$999</span>
 
 							<span class="text-gray-500">/month</span>
 						</div>
@@ -561,7 +523,9 @@
 							</li>
 						</ul>
 						<div class="items-center">
-							<a href="https://calendly.com/pminniti94/ignitehub" class="m-2 btn variant-filled-tertiary">
+							<a
+								href="https://calendly.com/pminniti94/ignitehub"
+								class="m-2 btn variant-filled-tertiary">
 								Book A Call</a>
 							<!-- <button
 								type="button"
@@ -587,8 +551,7 @@
 				<div
 					class="h-1 mx-auto bg-primary w-64 opacity-25 my-0 py-0 rounded-t" />
 			</div>
-			<div
-				class="flex flex-col flex-grow flex-shrink pt-4 pb-4 items-center">
+			<div class="flex flex-col flex-grow flex-shrink pt-4 pb-4 items-center">
 				<h2
 					class="w-5/6 md:w-3/6 my-2 text-2xl font-bold leading-tight text-left text-gray-800">
 					Why wouldn't I just hire a full-time engineer?
@@ -600,17 +563,15 @@
 				<p
 					class="w-5/6 md:w-3/6 leading-normal text-l mb-8 text-left text-gray-800">
 					Good question! For starters, the annual cost of a full-time
-					senior-level engineer now exceeds $100,000, plus benefits
-					(and good luck finding one available). Aside from that, you
-					may not always have enough work to keep them busy at all
-					times, so you're stuck paying for time you aren't able to
-					utilize. With the monthly plan, you can pause and resume
-					your subscription as often as you need to ensure you're only
-					paying your engineer when you have work available for them.
+					senior-level engineer now exceeds $100,000, plus benefits (and good
+					luck finding one available). Aside from that, you may not always have
+					enough work to keep them busy at all times, so you're stuck paying for
+					time you aren't able to utilize. With the monthly plan, you can pause
+					and resume your subscription as often as you need to ensure you're
+					only paying your engineer when you have work available for them.
 				</p>
 			</div>
-			<div
-				class="flex flex-col flex-grow flex-shrink pt-4 pb-4 items-center">
+			<div class="flex flex-col flex-grow flex-shrink pt-4 pb-4 items-center">
 				<h2
 					class="w-5/6 md:w-3/6 my-2 text-2xl font-bold leading-tight text-left text-gray-800">
 					Is there a limit to how many requests I can have?
@@ -621,12 +582,11 @@
 				</div>
 				<p
 					class="w-5/6 md:w-3/6 leading-normal text-l mb-8 text-left text-gray-800">
-					Once subscribed, you're able to add as many requests to your
-					queue as you'd like, and they will be delivered one by one.
+					Once subscribed, you're able to add as many requests to your queue as
+					you'd like, and they will be delivered one by one.
 				</p>
 			</div>
-			<div
-				class="flex flex-col flex-grow flex-shrink pt-4 pb-4 items-center">
+			<div class="flex flex-col flex-grow flex-shrink pt-4 pb-4 items-center">
 				<h2
 					class="w-5/6 md:w-3/6 my-2 text-2xl font-bold leading-tight text-left text-gray-800">
 					How fast will I receive my designs?
@@ -637,14 +597,12 @@
 				</div>
 				<p
 					class="w-5/6 md:w-3/6 leading-normal text-l mb-8 text-left text-gray-800">
-					On average, most requests are completed in just three days
-					or less. However, more complex requests can take longer.
-					Each request on out board is tagged with an expected
-					compltion date.
+					On average, most requests are completed in just three days or less.
+					However, more complex requests can take longer. Each request on out
+					board is tagged with an expected compltion date.
 				</p>
 			</div>
-			<div
-				class="flex flex-col flex-grow flex-shrink pt-4 pb-4 items-center">
+			<div class="flex flex-col flex-grow flex-shrink pt-4 pb-4 items-center">
 				<h2
 					class="w-5/6 md:w-3/6 my-2 text-2xl font-bold leading-tight text-left text-gray-800">
 					Who are the engineers?
@@ -655,15 +613,13 @@
 				</div>
 				<p
 					class="w-5/6 md:w-3/6 leading-normal text-l mb-8 text-left text-gray-800">
-					You might be surprised to hear this, but IgniteHub is
-					actually an agency of one, you will work directly with me.
-					However, we will work to integrate with other service
-					providers as your business grows. You might also exprect to
-					hear from an intern or two.
+					You might be surprised to hear this, but IgniteHub is actually an
+					agency of one, you will work directly with me. However, we will work
+					to integrate with other service providers as your business grows. You
+					might also exprect to hear from an intern or two.
 				</p>
 			</div>
-			<div
-				class="flex flex-col flex-grow flex-shrink pt-4 pb-4 items-center">
+			<div class="flex flex-col flex-grow flex-shrink pt-4 pb-4 items-center">
 				<h2
 					class="w-5/6 md:w-3/6 my-2 text-2xl font-bold leading-tight text-left text-gray-800">
 					What technologies do you use to develope your applications?
@@ -674,19 +630,16 @@
 				</div>
 				<p
 					class="w-5/6 md:w-3/6 leading-normal text-l mb-8 text-left text-gray-800">
-					This is a hard question to answer because not every problem
-					has a once sized fits all solution. Adapting old
-					technologies to newer onces is also a challenge we face in
-					our industry. Here is a list of technologies we will work
-					with: Git/Github, GitLab, Python, Typescript, Node,
-					TailwindCss, Bootstrap, MaterialUI Svelte, React, Angular,
-					Vue, Docker, AWS, GCP, Nginx, Kubernetes, MongDB,
-					PostgreSQL, JWT Auth, Restful APIs, Redis, Testing... and so
-					much more.
+					This is a hard question to answer because not every problem has a once
+					sized fits all solution. Adapting old technologies to newer onces is
+					also a challenge we face in our industry. Here is a list of
+					technologies we will work with: Git/Github, GitLab, Python,
+					Typescript, Node, TailwindCss, Bootstrap, MaterialUI Svelte, React,
+					Angular, Vue, Docker, AWS, GCP, Nginx, Kubernetes, MongDB, PostgreSQL,
+					JWT Auth, Restful APIs, Redis, Testing... and so much more.
 				</p>
 			</div>
-			<div
-				class="flex flex-col flex-grow flex-shrink pt-4 pb-4 items-center">
+			<div class="flex flex-col flex-grow flex-shrink pt-4 pb-4 items-center">
 				<h2
 					class="w-5/6 md:w-3/6 my-2 text-2xl font-bold leading-tight text-left text-gray-800">
 					How do I request work?
@@ -697,16 +650,14 @@
 				</div>
 				<p
 					class="w-5/6 md:w-3/6 leading-normal text-l mb-8 text-left text-gray-800">
-					IgniteHub offers a ton of flexibility in how you request
-					designs using our custom built request boards. It has pre
-					built requests with forms for information about your
-					specific request. Upload any relevant inforamtion to the
-					ticket and put into your queue. Basically, if it can be
-					linked to or shared over the internet, it's fair game.
+					IgniteHub offers a ton of flexibility in how you request designs using
+					our custom built request boards. It has pre built requests with forms
+					for information about your specific request. Upload any relevant
+					inforamtion to the ticket and put into your queue. Basically, if it
+					can be linked to or shared over the internet, it's fair game.
 				</p>
 			</div>
-			<div
-				class="flex flex-col flex-grow flex-shrink pt-4 pb-4 items-center">
+			<div class="flex flex-col flex-grow flex-shrink pt-4 pb-4 items-center">
 				<h2
 					class="w-5/6 md:w-3/6 my-2 text-2xl font-bold leading-tight text-left text-gray-800">
 					What if I don't like the end result?
@@ -717,12 +668,10 @@
 				</div>
 				<p
 					class="w-5/6 md:w-3/6 leading-normal text-l mb-8 text-left text-gray-800">
-					No worries! We'll continue to revise until you're 100%
-					satisfied.
+					No worries! We'll continue to revise until you're 100% satisfied.
 				</p>
 			</div>
-			<div
-				class="flex flex-col flex-grow flex-shrink pt-4 pb-4 items-center">
+			<div class="flex flex-col flex-grow flex-shrink pt-4 pb-4 items-center">
 				<h2
 					class="w-5/6 md:w-3/6 my-2 text-2xl font-bold leading-tight text-left text-gray-800">
 					Is there any design work you don't cover?
@@ -733,14 +682,12 @@
 				</div>
 				<p
 					class="w-5/6 md:w-3/6 leading-normal text-l mb-8 text-left text-gray-800">
-					Absolutely. If there isnt already a ticket for it on our
-					board, Create a custom ticket, we will review and see if its
-					something we think we can do. If it is we will add it as a
-					new request type!
+					Absolutely. If there isnt already a ticket for it on our board, Create
+					a custom ticket, we will review and see if its something we think we
+					can do. If it is we will add it as a new request type!
 				</p>
 			</div>
-			<div
-				class="flex flex-col flex-grow flex-shrink pt-4 pb-4 items-center">
+			<div class="flex flex-col flex-grow flex-shrink pt-4 pb-4 items-center">
 				<h2
 					class="w-5/6 md:w-3/6 my-2 text-2xl font-bold leading-tight text-left text-gray-800">
 					What if I only have a single request?
@@ -751,13 +698,12 @@
 				</div>
 				<p
 					class="w-5/6 md:w-3/6 leading-normal text-l mb-8 text-left text-gray-800">
-					That's fine. You can pause your subscription when finished
-					and return when you have additional design needs. There's no
-					need to let the remainder of your subscription go to waste.
+					That's fine. You can pause your subscription when finished and return
+					when you have additional design needs. There's no need to let the
+					remainder of your subscription go to waste.
 				</p>
 			</div>
-			<div
-				class="flex flex-col flex-grow flex-shrink pt-4 pb-4 items-center">
+			<div class="flex flex-col flex-grow flex-shrink pt-4 pb-4 items-center">
 				<h2
 					class="w-5/6 md:w-3/6 my-2 text-2xl font-bold leading-tight text-left text-gray-800">
 					Are there any refunds if I don't like the service?
@@ -768,9 +714,9 @@
 				</div>
 				<p
 					class="w-5/6 md:w-3/6 leading-normal text-l mb-8 text-left text-gray-800">
-					There are no refunds. We strive to make sure you feel your
-					getting value out of your subscription. IF you dont feel
-					like you are, cancel at any time, no questions asked.
+					There are no refunds. We strive to make sure you feel your getting
+					value out of your subscription. IF you dont feel like you are, cancel
+					at any time, no questions asked.
 				</p>
 			</div>
 		</div>
@@ -809,24 +755,23 @@
 
 	<!-- CTA -->
 	<section class="container mx-auto text-center py-6 mb-4">
-		<div
-			class="flex flex-col flex-grow flex-shrink pt-4 pb-12 items-center">
+		<div class="flex flex-col flex-grow flex-shrink pt-4 pb-12 items-center">
 			<h2
 				class="w-full my-2 text-5xl font-bold leading-tight text-center text-white">
 				See if IgniteHub is right for
 			</h2>
 			<div class="w-full mb-4">
-				<div
-					class="h-1 mx-auto bg-white w-64 opacity-25 my-0 py-0 rounded-t" />
+				<div class="h-1 mx-auto bg-white w-64 opacity-25 my-0 py-0 rounded-t" />
 			</div>
 			<p
 				class="w-5/6 md:w-3/6 leading-normal text-xl mb-8 text-center text-white">
-				Get a guided tour through IgniteHub. Find out how we can
-				Transform your business operations. Make the smart move with our
-				tailored software solutions. Let's build something extraordinary
-				together.
+				Get a guided tour through IgniteHub. Find out how we can Transform your
+				business operations. Make the smart move with our tailored software
+				solutions. Let's build something extraordinary together.
 			</p>
-			<a href="https://calendly.com/pminniti94/ignitehub" class="m-2 btn variant-filled-tertiary">
+			<a
+				href="https://calendly.com/pminniti94/ignitehub"
+				class="m-2 btn variant-filled-tertiary">
 				Book A Call</a>
 		</div>
 	</section>

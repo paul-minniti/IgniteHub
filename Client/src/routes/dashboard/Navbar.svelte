@@ -1,13 +1,7 @@
 <!-- @format -->
 <script lang="ts">
-	import { onMount } from "svelte";
 	import { auth } from "$lib/firebase";
 	import { signOut } from "firebase/auth";
-
-	onMount(async () => {
-		// const { Collapse, Dropdown, initTE } = await import("tw-elements");
-		// initTE({ Collapse, Dropdown });
-	});
 </script>
 
 <!-- Main navigation container -->

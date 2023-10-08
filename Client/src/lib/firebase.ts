@@ -13,7 +13,8 @@ const firebaseConfig = {
 	storageBucket: "ignitehub-d0696.appspot.com",
 	messagingSenderId: "735417507395",
 	appId: "1:735417507395:web:fad6444e2e76ed4b09bef6",
-	measurementId: "G-M22ZWDPS97",
+
+	measurementId: "G-M22ZWDPS97"
 };
 
 // Initialize Firebase
@@ -32,7 +33,7 @@ function userStore() {
 		console.warn("Auth is not initialized or not in browser");
 		const { subscribe } = writable<User | null>(null);
 		return {
-			subscribe,
+			subscribe
 		};
 	}
 
@@ -45,7 +46,7 @@ function userStore() {
 	});
 
 	return {
-		subscribe,
+		subscribe
 	};
 }
 
@@ -72,7 +73,7 @@ export function docStore<T>(path: string) {
 	return {
 		subscribe,
 		ref: docRef,
-		id: docRef.id,
+		id: docRef.id
 	};
 }
 

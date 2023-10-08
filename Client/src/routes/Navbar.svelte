@@ -1,11 +1,11 @@
 <!-- @format -->
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import type { ModalSettings, ModalComponent } from '@skeletonlabs/skeleton';
-	import { getModalStore } from '@skeletonlabs/skeleton';
+	import { onMount } from "svelte";
+	import type { ModalSettings, ModalComponent } from "@skeletonlabs/skeleton";
+	import { getModalStore } from "@skeletonlabs/skeleton";
 
-	import LoginModal from './LoginModal.svelte';
-	import Button from '$lib/components/common/Button.svelte';
+	import LoginModal from "./LoginModal.svelte";
+	import Button from "$lib/components/common/Button.svelte";
 
 	const modalStore = getModalStore();
 
@@ -16,20 +16,19 @@
 
 	let loginModal = false;
 	let pageData = [
-		{ name: 'Benefits', image: '' },
-		{ name: 'Projects', image: '' },
-		{ name: 'Pricing', image: '' },
-		{ name: 'FAQs', image: '' }
+		{ name: "Benefits", image: "" },
+		{ name: "Projects", image: "" },
+		{ name: "Pricing", image: "" },
+		{ name: "FAQs", image: "" }
 	];
 
 	function modalComponentForm(): void {
 		const c: ModalComponent = { ref: LoginModal };
 		const modal: ModalSettings = {
-			type: 'component',
+			type: "component",
 			component: c,
-			title: 'Custom Form Component',
-			body: 'Complete the form below and then press submit.',
-			response: (r) => console.log('response:', r)
+			title: "Login",
+			response: (r) => console.log("response:", r)
 		};
 		modalStore.trigger(modal);
 	}
@@ -68,7 +67,10 @@
 			id="navbarSupportedContentY"
 			data-te-collapse-item
 		>
-			<ul class="mr-auto flex flex-col lg:flex-row justify-center flex-1" data-te-navbar-nav-ref>
+			<ul
+				class="mr-auto flex flex-col lg:flex-row justify-center flex-1"
+				data-te-navbar-nav-ref
+			>
 				{#each pageData as item (item.name)}
 					<li class="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
 						<a
@@ -79,9 +81,17 @@
 					</li>
 				{/each}
 			</ul>
-			<a href="https://calendly.com/pminniti94/ignitehub" class="m-2 btn variant-filled-tertiary">
-				Book A Call</a>
-			<button type="button" class="m-2 btn variant-filled-secondary" on:click={modalComponentForm}>
+			<a
+				href="https://calendly.com/pminniti94/ignitehub"
+				class="m-2 btn variant-filled-tertiary"
+			>
+				Book A Call</a
+			>
+			<button
+				type="button"
+				class="m-2 btn variant-filled-secondary"
+				on:click={modalComponentForm}
+			>
 				Login
 			</button>
 		</div>
