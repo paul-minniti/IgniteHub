@@ -1,7 +1,7 @@
 <!-- @format -->
 
 <!DOCTYPE html>
-<html lang="en" data-theme="emerald">
+<html lang="en">
 	<head>
 		<title>IgniteHub. The Software Agency.</title>
 		<meta charset="utf-8" />
@@ -10,17 +10,11 @@
 		<script
 			src="https://kit.fontawesome.com/8d41f18eac.js"
 			crossorigin="anonymous"></script>
-		<link
-			href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700"
-			rel="stylesheet" />
-		<link
-			href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
-			rel="stylesheet" />
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
 		%sveltekit.head%
 	</head>
-	<body data-sveltekit-preload-data="hover">
-		<div style="display: contents">%sveltekit.body%</div>
+	<body data-sveltekit-preload-data="hover" data-theme="IH_theme">
+		<div style="display: contents" class="h-full overflow-hidden">
+			%sveltekit.body%
+		</div>
 	</body>
 </html>

@@ -1,12 +1,14 @@
+<!-- @format -->
 <script lang="ts">
-  import { user } from "$lib/firebase";
+	import { goto } from "$app/navigation";
+	import { user } from "$lib/firebase";
+	import { onMount } from "svelte";
+	import Button from "./common/Button.svelte";
 </script>
 
 {#if $user}
-  <slot />
+	<slot />
 {:else}
-  <p class="text-error my-10">
-    You must be signed in to view this page.
-    <a class="btn btn-primary" href="/login">Sign In</a>
-  </p>
+	<p class="text-error my-10">You dont have permission to be here.</p>
+	<Button href="/">Go back</Button>
 {/if}
