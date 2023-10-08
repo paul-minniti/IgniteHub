@@ -12,10 +12,6 @@
 	import { auth } from "$lib/firebase";
 	import { routeToPage } from "$lib/navigation";
 
-	const formData = {
-		password: "214-555-1234",
-		email: "jdoe@email.com"
-	};
 	let email: string = "";
 	let password: string = "";
 	let errorMsg: string = "";
@@ -29,7 +25,7 @@
 		routeToPage("/dashboard");
 	}
 
-	async function signInWithEmail() {
+	function signInWithEmail() {
 		signInWithEmailAndPassword(auth, email, password)
 			.then((userCredential) => {
 				user = userCredential;
@@ -43,6 +39,7 @@
 				console.log(error);
 				errorMsg = error.message;
 			});
+		console.log("Testing", user);
 	}
 
 	function navigate() {
@@ -70,23 +67,16 @@
 					<input
 						class="input"
 						type="email"
-						bind:value={formData.email}
+						bind:value={email}
 						placeholder="Enter email address..." />
 				</label>
 				<label class="label">
 					<span>Password</span>
-					<input
-						class="input"
-						type="password"
-						bind:value={formData.password}
-						placeholder="Enter email address..." />
+					<input class="input" type="password" bind:value={password} />
 				</label>
 				<div class="text-center flex flex-col items-center">
 					<a
 						class="btn mb-6 w-full variant-filled-secondary text-white mb-4"
-						on:click={() => {
-							routeToPage("/dashboard");
-						}}
 						on:click={signInWithEmail}>
 						Sign In
 					</a>

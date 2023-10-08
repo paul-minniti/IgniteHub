@@ -5,33 +5,43 @@
 </script>
 
 <!-- Main navigation container -->
+<nav class="bg-surface-300">
+	<div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+		<div class="relative flex h-16 items-center justify-between">
+			<div
+				class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+				<div class="flex items-center">
+					<a
+						class="toggleColour no-underline hover:no-underline font-bold text-2xl lg:text-4xl"
+						href="#">
+						<i class="fa-solid fa-fire text-secondary-500 text-primary" />
+						IgniteHub
+					</a>
+					<button
+						class="border-0 bg-transparent px-2 text-xl leading-none transition-shadow duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 dark:hover:text-white dark:focus:text-white lg:hidden"
+						type="button"
+						data-te-collapse-init
+						data-te-target="#navbarSupportedContentY"
+						aria-controls="navbarSupportedContentY"
+						aria-expanded="false"
+						aria-label="Toggle navigation">
+						<span class="[&>svg]:w-5">
+							<i class="fa-solid fa-bars" />
+						</span>
+					</button>
+				</div>
+				<div class="hidden sm:ml-6 sm:block">
+					<div class="flex space-x-4">
+						<a href="/" class="leading-6 shadow-none btn bg-initial">Home</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</nav>
 <nav
 	class="flex-no-wrap relative flex w-full items-center justify-between bg-[#FBFBFB] py-2 shadow-md shadow-black/5 dark:bg-neutral-600 dark:shadow-black/10 lg:flex-wrap lg:justify-start lg:py-4">
 	<div class="flex w-full flex-wrap items-center justify-between px-3">
-		<!-- Hamburger button for mobile view -->
-		<button
-			class="block border-0 bg-transparent px-2 text-neutral-500 hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 dark:text-neutral-200 lg:hidden"
-			type="button"
-			data-te-collapse-init
-			data-te-target="#navbarSupportedContent1"
-			aria-controls="navbarSupportedContent1"
-			aria-expanded="false"
-			aria-label="Toggle navigation">
-			<!-- Hamburger icon -->
-			<span class="[&>svg]:w-7">
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					viewBox="0 0 24 24"
-					fill="currentColor"
-					class="h-7 w-7">
-					<path
-						fill-rule="evenodd"
-						d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
-						clip-rule="evenodd" />
-				</svg>
-			</span>
-		</button>
-
 		<!-- Collapsible navigation container -->
 		<div
 			class="!visible hidden flex-grow basis-[100%] items-center lg:!flex lg:basis-auto"

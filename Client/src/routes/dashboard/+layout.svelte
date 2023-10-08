@@ -250,7 +250,7 @@
 			</div>
 		</nav>
 	</svelte:fragment>
-	<div class="container mx-auto p-2 m-2 w-3/5">
+	<div class="container mx-auto p-2 m-2">
 		<slot />
 	</div>
 </AppShell>
