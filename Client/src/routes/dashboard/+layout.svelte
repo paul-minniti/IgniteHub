@@ -4,6 +4,7 @@
 
 	import { Modal, initializeStores } from "@skeletonlabs/skeleton";
 	import Navbar from "./Navbar.svelte";
+	import Sidebar from "./Sidebar.svelte";
 	import AuthCheck from "$lib/components/AuthCheck.svelte";
 
 	initializeStores();
@@ -13,9 +14,8 @@
 
 <AuthCheck>
 	<AppShell>
-		<svelte:fragment slot="header">
-			<Navbar />
-		</svelte:fragment>
+		<svelte:fragment slot="sidebarLeft"><Sidebar /></svelte:fragment>
+		<svelte:fragment slot="pageHeader"><Navbar /></svelte:fragment>
 		<div class="container mx-auto p-2 m-2">
 			<slot />
 		</div>

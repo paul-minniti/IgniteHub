@@ -4,7 +4,7 @@
 	export let data: PageData;
 </script>
 
-<p>
+<p class="">
 	Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus cum
 	saepe laudantium, neque asperiores error beatae! Maxime, nihil eius facilis
 	eaque soluta expedita perferendis. Enim, assumenda. Obcaecati quod vero odio.

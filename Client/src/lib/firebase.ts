@@ -13,7 +13,6 @@ const firebaseConfig = {
 	storageBucket: "ignitehub-d0696.appspot.com",
 	messagingSenderId: "735417507395",
 	appId: "1:735417507395:web:fad6444e2e76ed4b09bef6",
-
 	measurementId: "G-M22ZWDPS97"
 };
 
@@ -50,7 +49,7 @@ function userStore() {
 	};
 }
 
-export const user = userStore();
+const user = userStore();
 
 /**
  * @param  {string} path document path or reference
@@ -78,11 +77,13 @@ export function docStore<T>(path: string) {
 }
 
 interface UserData {
-	username: string;
-	bio: string;
-	photoURL: string;
-	published: boolean;
-	links: any[];
+	email: string;
+	display_name: string;
+	photo_url: string;
+	metadata: {
+		lastSignInTime: string;
+		creationTime: string;
+	};
 }
 
 export const userData: Readable<UserData | null> = derived(

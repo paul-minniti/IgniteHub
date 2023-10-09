@@ -1,12 +1,12 @@
 <!-- @format -->
 <script lang="ts">
 	import { goto } from "$app/navigation";
-	import { user } from "$lib/firebase";
+	import { userData } from "$lib/firebase";
 	import { onMount } from "svelte";
 	import Access from "$lib/assets/access_denied.svg";
 </script>
 
-{#if $user}
+{#if $userData}
 	<slot />
 {:else}
 	<div class="container mx-auto mt-16 p-2 m-2 w-3/5 space-y-8 text-center">
