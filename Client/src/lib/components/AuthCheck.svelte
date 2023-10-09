@@ -1,7 +1,7 @@
 <!-- @format -->
 <script lang="ts">
 	import { goto } from "$app/navigation";
-	import { userData } from "$lib/firebase";
+	import { userData } from "$lib/stores/userStore";
 	import { onMount } from "svelte";
 	import Access from "$lib/assets/access_denied.svg";
 </script>

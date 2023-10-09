@@ -11,7 +11,9 @@
 	} from "firebase/auth";
 	import { auth } from "$lib/firebase";
 	import { routeToPage } from "$lib/navigation";
-	import { db, userData } from "$lib/firebase";
+	import { db } from "$lib/firebase";
+	import { userData } from "$lib/stores/userStore";
+
 	import { doc, getDoc, setDoc } from "firebase/firestore";
 
 	let email: string = "";

@@ -3,7 +3,7 @@
 	import { auth } from "$lib/firebase";
 	import { signOut } from "firebase/auth";
 	import { popup } from "@skeletonlabs/skeleton";
-	import { userData } from "$lib/firebase";
+	import { userData } from "$lib/stores/userStore";
 </script>
 
 <nav class="">
@@ -53,6 +53,11 @@
 						<nav class="list-nav text-sm">
 							<ul>
 								<li>
+									<a class="justify-end" href="/dashboard/profile">
+										<span class="w-6 text-center"
+											><i class="fa-solid fa-home" /></span>
+										<span>Profile</span>
+									</a>
 									<a
 										class="justify-end"
 										href="/"

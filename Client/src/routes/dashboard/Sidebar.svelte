@@ -3,7 +3,7 @@
 	import { auth } from "$lib/firebase";
 	import { signOut } from "firebase/auth";
 	import { popup } from "@skeletonlabs/skeleton";
-	import { userData } from "$lib/firebase";
+	import { userData } from "$lib/stores/userStore";
 </script>
 
 <div class="relative bg-surface-300 dark:bg-gray-800">
@@ -19,11 +19,12 @@
 					</a>
 					<p
 						class="w-full pb-2 mb-4 ml-2 font-normal text-gray-500 border-b-2 border-gray-300 text-md" />
-					<button
+					<a
+						href="/dashboard"
 						class="btn hover:variant-soft-primary shadow-none p-2 lex items-center justify-start transition-colors duration-200 w-full">
 						<i class="fa-solid fa-house-fire text-secondary-500 opacity-80" />
-						<span class="mx-4 font-normal text-md">Projects</span>
-					</button>
+						<span class="mx-4 font-normal text-md">Dashboard</span>
+					</a>
 				</div>
 				<div>
 					<p
