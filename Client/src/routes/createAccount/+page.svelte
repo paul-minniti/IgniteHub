@@ -3,7 +3,7 @@
 	export let data: PageData;
 	import type { PageData } from "./$types";
 	import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-	import { db, user } from "$lib/firebase";
+	import { db, userData } from "$lib/firebase";
 	import { doc, getDoc, writeBatch } from "firebase/firestore";
 	import { routeToPage } from "$lib/navigation";
 

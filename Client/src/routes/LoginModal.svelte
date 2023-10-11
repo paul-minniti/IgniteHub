@@ -11,35 +11,64 @@
 	} from "firebase/auth";
 	import { auth } from "$lib/firebase";
 	import { routeToPage } from "$lib/navigation";
+	import { db } from "$lib/firebase";
+	import { userData } from "$lib/stores/userStore";
+
+	import { doc, getDoc, setDoc } from "firebase/firestore";
 
 	let email: string = "";
 	let password: string = "";
 	let errorMsg: string = "";
-	let user: object;
 
 	async function signInWithGoogle() {
+		console.log(userData);
 		const provider = new GoogleAuthProvider();
 		const user = await signInWithPopup(auth, provider);
-		console.log(user);
+
+		const user_obj = {
+			email: user.user.email,
+			display_name: user.user.displayName,
+			photo_url: user.user.photoURL,
+			metadata: {
+				lastSignInTime: user.user.metadata.lastSignInTime,
+				creationTime: user.user.metadata.creationTime
+			}
+		};
+
+		const userRef = doc(db, "users", user.user.uid);
+		const isUpdated = await getDoc(userRef).then(
+			(doc) => doc.data() === user_obj
+		);
+
+		if (!isUpdated) {
+			console.log("creating User data");
+			console.log(user.user.metadata);
+			await setDoc(userRef, {
+				email: user.user.email,
+				display_name: user.user.displayName,
+				photo_url: user.user.photoURL,
+				metadata: {
+					lastSignInTime: user.user.metadata.lastSignInTime,
+					creationTime: user.user.metadata.creationTime
+				}
+			});
+		}
+
 		modalStore.close();
 		routeToPage("/dashboard");
 	}
 
 	function signInWithEmail() {
 		signInWithEmailAndPassword(auth, email, password)
-			.then((userCredential) => {
-				user = userCredential;
-				console.log("Testing", user);
-				if (user) {
-					modalStore.close();
-					routeToPage("/dashboard");
-				}
+			.then((user) => {
+				console.log("Testing: ", user);
+				modalStore.close();
+				routeToPage("/dashboard");
 			})
 			.catch((error) => {
 				console.log(error);
 				errorMsg = error.message;
 			});
-		console.log("Testing", user);
 	}
 
 	function navigate() {
