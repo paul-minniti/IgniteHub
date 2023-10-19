@@ -7,23 +7,23 @@ import { getStorage } from "firebase/storage";
 import { writable, type Readable, derived } from "svelte/store";
 import { docStore } from "./stores/docStore";
 import {
-	FB_apiKey,
-	FB_authDomain,
-	FB_projectId,
-	FB_storageBucket,
-	FB_messagingSenderId,
-	FB_appId,
-	FB_measurementId
-} from "$env/static/private";
+	PUBLIC_FB_apiKey,
+	PUBLIC_FB_authDomain,
+	PUBLIC_FB_projectId,
+	PUBLIC_FB_storageBucket,
+	PUBLIC_FB_messagingSenderId,
+	PUBLIC_FB_appId,
+	PUBLIC_FB_measurementId
+} from "$env/static/public";
 
 const firebaseConfig = {
-	apiKey: FB_apiKey,
-	authDomain: FB_authDomain,
-	projectId: FB_projectId,
-	storageBucket: FB_storageBucket,
-	messagingSenderId: FB_messagingSenderId,
-	appId: FB_appId,
-	measurementId: FB_measurementId
+	apiKey: PUBLIC_FB_apiKey,
+	authDomain: PUBLIC_FB_authDomain,
+	projectId: PUBLIC_FB_projectId,
+	storageBucket: PUBLIC_FB_storageBucket,
+	messagingSenderId: PUBLIC_FB_messagingSenderId,
+	appId: PUBLIC_FB_appId,
+	measurementId: PUBLIC_FB_measurementId
 };
 
 // Initialize Firebase

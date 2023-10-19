@@ -20,7 +20,7 @@
 	let password: string = "";
 	let errorMsg: string = "";
 
-	async function signInWithGoogle() {
+	const signInWithGoogle = async () => {
 		console.log(userData);
 		const provider = new GoogleAuthProvider();
 		const user = await signInWithPopup(auth, provider);
@@ -54,9 +54,17 @@
 			});
 		}
 
+		cookies.set("sessionId", "info@gmail.com", {
+			httpOnly: true,
+			sameSite: "strict",
+			secure: false,
+			path: "/",
+			maxAge: 60 * 60 * 24 * 7
+		});
+
 		modalStore.close();
 		routeToPage("/dashboard");
-	}
+	};
 
 	function signInWithEmail() {
 		signInWithEmailAndPassword(auth, email, password)

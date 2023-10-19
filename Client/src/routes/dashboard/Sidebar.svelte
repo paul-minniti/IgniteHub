@@ -33,7 +33,13 @@
 					</p>
 					<button
 						class="btn hover:variant-soft-primary shadow-none p-2 lex items-center justify-start transition-colors duration-200 w-full">
-						<i class="fa-solid fa-house-fire text-secondary-500 opacity-80" />
+						<i
+							class="fa-solid fa-magnifying-glass-chart text-secondary-500 opacity-80" />
+						<span class="mx-4 font-normal text-md"> Hub </span>
+					</button>
+					<button
+						class="btn hover:variant-soft-primary shadow-none p-2 lex items-center justify-start transition-colors duration-200 w-full">
+						<i class="fa-solid fa-comments text-secondary-500 opacity-80" />
 						<span class="mx-4 font-normal text-md"> SocialHub </span>
 					</button>
 					<button

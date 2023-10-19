@@ -1,0 +1,115 @@
+# @format
+
+version: "3.7"
+
+services:
+    # Database service
+    db:
+        image: postgres:14.3-alpine
+        hostname: db
+        container_name: db
+        ports:
+            - "5432:5432"
+        env_file:
+            - ./.env
+        volumes:
+            - db-data:/var/lib/postgresql/data
+        networks:
+            - ignite-net
+        healthcheck:
+            test: ["CMD-SHELL", "pg_isready -U ${DB_USER}"]
+            interval: 300s
+            timeout: 30s
+            retries: 5
+        logging:
+            driver: "json-file"
+            options:
+                max-size: "200k"
+                max-file: "10"
+        restart: on-failure
+
+    # Keycloak service for authentication
+    auth:
+        image: keycloak:15.0.2
+        ports:
+            - "8080:8080"
+        env_file:
+            - ./.env
+        logging:
+            driver: "json-file"
+            options:
+                max-size: "200k"
+                max-file: "10"
+        restart: always
+
+    # Mail service
+    mail:
+        image: mailhog/mailhog:v1.0.1
+        ports:
+            - "8025:8025"
+        logging:
+            driver: "json-file"
+            options:
+                max-size: "200k"
+                max-file: "10"
+        restart: always
+
+    # Client service
+    client:
+        image: node:16.13.0
+        build: ./client
+        ports:
+            - "3000:3000"
+        volumes:
+            - ./client:/usr/src/app
+            - /usr/src/app/node_modules
+        working_dir: /usr/src/app
+        command: ["npm", "start"]
+        logging:
+            driver: "json-file"
+            options:
+                max-size: "200k"
+                max-file: "10"
+        restart: on-failure
+
+    # Server service
+    server:
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        hostname: server
+        container_name: server
+        depends_on:
+            - db_postgres
+        ports:
+            - "8000:8000"
+        volumes:
+            - ./server:/app
+        logging:
+            driver: "json-file"
+            options:
+                max-size: "200k"
+                max-file: "10"
+        restart: on-failure
+        networks:
+            - ignite-net
+
+    # Workflows service
+    workflows:
+        image: prefect/prefect:0.15.7
+        ports:
+            - "8081:8081"
+        logging:
+            driver: "json-file"
+            options:
+                max-size: "200k"
+                max-file: "10"
+        restart: on-failure
+
+networks:
+    ignite-net:
+        external: true
+
+volumes:
+    db-data:
+        driver: local
