@@ -20,9 +20,10 @@ jobs:
             - name: Build docker
               run: |
                   echo ---Building and starting up docker---
-                  docker-compose -f IgniteHub/docker-compose.yml up -d --build
+                  ls
+                  # docker-compose -f IgniteHub/docker-compose.yml up -d --build
                   echo ---Containers up---
-                  docker ps -a
+                  # docker ps -a
 
         # - name: Run test
         #   run: |
