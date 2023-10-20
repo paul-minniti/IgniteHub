@@ -56,7 +56,7 @@ services:
         ports:
             - "3000:3000"
         volumes:
-            - ./client:/app
+            - ./Client:/app
         restart: on-failure
 
     # Server service
