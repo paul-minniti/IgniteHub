@@ -10,58 +10,38 @@ on:
 jobs:
     build:
         # The type of runner that the job will run on
+        name: Build and Push to ECR
         runs-on: ubuntu-latest
         steps:
             # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-            - uses: actions/checkout@v2
+            - name: Checkout
+              uses: actions/checkout@v2
 
             - name: Test File sys
               run: |
                   echo ---Building and starting up docker---
                   ls
 
-            - name: Build docker
+            - name: Configure AWS Credentials
+              uses: aws-actions/configure-aws-credentials@v1
+              with:
+                  aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID}}
+                  aws-secre-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
+                  aws-region: us-east-2
+
+            - name: Login to Amazon ECR
+              id: login-ecr
+              uses: aws-actions/amazon-ecr-login@v1
+
+            - name: Build, Tag, Push Docker Images
+              id: build-images
+              env:
+                  ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry}}
+                  ECR_REPOSITORY: ignitehub-registry
+                  IMAGE_TAG: latest
               run: |
                   echo ---Building and starting up docker---
                   docker-compose pull
                   docker-compose -f docker-compose.yaml up -d --build
                   echo ---Containers up---
                   docker ps -a
-
-        # - name: Run test
-        #   run: |
-        #     echo --- Running test cases ---
-        #     docker-compose -f ./<REPO_NAME>/docker-compose.test-github.yml -p testing up --build --exit-code-from api-test
-        #     echo --- Completed test cases ---
-
-        #  - name: Extract commit
-        #       shell: bash
-        #       run: |
-        #         echo "GITHUB_SHA_SHORT=$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB_ENV
-
-        # - name: Get branch name (merge)
-        #   if: github.event_name != 'pull_request'
-        #   shell: bash
-        #   run: echo "BRANCH=$(echo ${GITHUB_REF#refs/heads/} | tr / -)" >> $GITHUB_ENV
-
-        # - name: Get branch name (pull request)
-        #   if: github.event_name == 'pull_request'
-        #   shell: bash
-        #   run: echo "BRANCH=$(echo ${GITHUB_HEAD_REF} | tr / -)" >> $GITHUB_ENV
-
-        # - name: Send slack notification
-        #   if: always()
-        #   uses: edge/simple-slack-notify@master
-        #   env:
-        #     SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        #   with:
-        #     channel: '#deployment'
-        #     status: ${{ job.status }}
-        #     success_text: '${env.GITHUB_WORKFLOW} #${env.GITHUB_RUN_NUMBER} build completed successfully'
-        #     failure_text: '${env.GITHUB_WORKFLOW} #${env.GITHUB_RUN_NUMBER} build failed'
-        #     cancelled_text: '${env.GITHUB_WORKFLOW} #${env.GITHUB_RUN_NUMBER} build was cancelled'
-        #     fields: |
-        #       [{ "title": "Repository", "value": "${env.GITHUB_REPOSITORY}", "short": true },
-        #       { "title": "Branch", "value": "${env.BRANCH}", "short": true },
-        #       { "title": "Commit", "value": "${env.GITHUB_SHA_SHORT}", "short": true },
-        #       { "title": "Action URL", "value": "${env.GITHUB_SERVER_URL}/${env.GITHUB_REPOSITORY}/actions/runs/${env.GITHUB_RUN_ID}"}]
