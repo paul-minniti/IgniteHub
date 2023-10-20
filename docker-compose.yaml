@@ -52,12 +52,11 @@ services:
 
     # Client service
     client:
-        build: ./client/Dockerfile
+        build: ./client
         ports:
             - "3000:3000"
         volumes:
-            - ./client:/usr/src/app
-        working_dir: /usr/src/app
+            - ./client:/app
         restart: on-failure
 
     # Server service
