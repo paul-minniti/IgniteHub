@@ -52,7 +52,7 @@ services:
 
     # Client service
     client:
-        build: ./client
+        build: ./Client
         ports:
             - "3000:3000"
         volumes:
