@@ -61,7 +61,7 @@ services:
 
     # Server service
     server:
-        build: ./server
+        build: ./Server
         depends_on:
             - db
         ports:
