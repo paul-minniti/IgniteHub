@@ -16,11 +16,6 @@ services:
             - db-data:/var/lib/postgresql/data
         networks:
             - ignite-net
-        healthcheck:
-            test: ["CMD-SHELL", "pg_isready -U ${DB_USER}"]
-            interval: 300s
-            timeout: 30s
-            retries: 5
         restart: on-failure
 
     pgadmin:
@@ -57,7 +52,7 @@ services:
 
     # Client service
     client:
-        build: ./client
+        build: ./client/Dockerfile
         ports:
             - "3000:3000"
         volumes:
