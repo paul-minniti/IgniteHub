@@ -23,7 +23,8 @@ jobs:
             - name: Build docker
               run: |
                   echo ---Building and starting up docker---
-                  docker-compose -f docker-compose.yml up -d --build
+                  docker-compose pull
+                  docker-compose -f docker-compose.yaml up -d --build
                   echo ---Containers up---
                   docker ps -a
 

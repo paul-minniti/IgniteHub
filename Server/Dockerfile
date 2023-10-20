@@ -1,12 +1,20 @@
-FROM python:3.10  
-  
-ENV PYTHONDONTWRITEBYTECODE 1  
-ENV PYTHONUNBUFFERED 1  
-  
-WORKDIR /home/app  
-COPY ./pyproject.toml ./poetry.lock* ./  
-  
-RUN pip install poetry  
-RUN poetry install  
-  
-CMD ["poetry", "run", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+# Use an official Python runtime as a parent image
+FROM python:3.9-slim-buster
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the current directory contents into the container at /app
+COPY . /app
+
+# Install any needed packages specified in requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Make port 80 available to the world outside this container
+EXPOSE 8000
+
+# Define environment variable for database URL
+# ENV DATABASE_URL=postgresql://username:password@localhost/dbname
+
+# Run the application
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]

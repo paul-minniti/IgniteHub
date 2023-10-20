@@ -5,7 +5,7 @@ import { error } from "@sveltejs/kit";
 import { userData } from "$lib/stores/userStore";
 import { get } from "svelte/store";
 
-const user = await get(userData);
+const user = get(userData);
 
 export const load = (async ({ params }) => {
 	console.log("USER: ", user);
