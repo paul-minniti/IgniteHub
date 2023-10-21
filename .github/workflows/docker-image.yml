@@ -44,5 +44,5 @@ jobs:
                   docker-compose pull
                   docker-compose -f docker-compose.yaml up -d --build
                   echo ---Containers up---
-                  docker ps -a
                   docker image ls
+                  docker ps -a
