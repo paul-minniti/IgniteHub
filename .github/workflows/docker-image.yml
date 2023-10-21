@@ -40,9 +40,7 @@ jobs:
                   ECR_REPOSITORY: ignitehub-registry
                   IMAGE_TAG: latest
               run: |
-                  echo --Printing registry--
-                  echo $ECR_REGISTRY
+                  echo --Building containers--
                   docker-compose pull
-                  docker-compose -f docker-compose.yaml up -d --build
-                  docker ps -a
-                  docker image ls
+                  docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:client_v0 ./Client
+                  docker push $ECR_REGISTRY/$ECR_REPOSITORY:client_v0
