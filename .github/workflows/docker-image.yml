@@ -42,15 +42,15 @@ jobs:
               run: |
                   echo --Building containers--
                   docker-compose pull
-                  docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:client_v0 ./Client
-                  docker push $ECR_REGISTRY/$ECR_REPOSITORY:client_v0
-                  docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:keycloak_v0 ./keycloak
-                  docker push $ECR_REGISTRY/$ECR_REPOSITORY:keycloak_v0
-                  docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:mailhog_v0 ./mailhog
-                  docker push $ECR_REGISTRY/$ECR_REPOSITORY:mailhog_v0
-                  docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:pg_admin_v0 ./pg_admin
-                  docker push $ECR_REGISTRY/$ECR_REPOSITORY:pg_admin_v0
-                  docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:postgres_v0 ./postgres
-                  docker push $ECR_REGISTRY/$ECR_REPOSITORY:postgres_v0
-                  docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:server_v0 ./Server
-                  docker push $ECR_REGISTRY/$ECR_REPOSITORY:server_v0
+                  docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:client_v0_${{github.sha}} ./Client
+                  docker push $ECR_REGISTRY/$ECR_REPOSITORY:client_v0_${{github.sha}}
+                  docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:keycloak_v0_${{github.sha}} ./keycloak
+                  docker push $ECR_REGISTRY/$ECR_REPOSITORY:keycloak_v0_${{github.sha}}
+                  docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:mailhog_v0_${{github.sha}} ./mailhog
+                  docker push $ECR_REGISTRY/$ECR_REPOSITORY:mailhog_v0_${{github.sha}}
+                  docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:pg_admin_v0_${{github.sha}} ./pg_admin
+                  docker push $ECR_REGISTRY/$ECR_REPOSITORY:pg_admin_v0_${{github.sha}}
+                  docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:postgres_v0_${{github.sha}} ./postgres
+                  docker push $ECR_REGISTRY/$ECR_REPOSITORY:postgres_v0_${{github.sha}}
+                  docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:server_v0_${{github.sha}} ./Server
+                  docker push $ECR_REGISTRY/$ECR_REPOSITORY:server_v0_${{github.sha}}
