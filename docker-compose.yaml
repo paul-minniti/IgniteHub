@@ -6,6 +6,7 @@ services:
     # Database service
     db:
         image: postgres:14.3-alpine
+        build: ./postgres
         ports:
             - "5432:5432"
         environment:
@@ -19,7 +20,8 @@ services:
         restart: on-failure
 
     pgadmin:
-        image: "dpage/pgadmin4:5.1"
+        image: dpage/pgadmin4:5.1
+        build: ./pg_admin
         environment:
             PGADMIN_DEFAULT_EMAIL: postgres@ignite.app
             PGADMIN_DEFAULT_PASSWORD: postgres
