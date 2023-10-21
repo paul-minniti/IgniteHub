@@ -46,6 +46,7 @@ services:
     # Mail service
     mail:
         image: mailhog/mailhog:v1.0.1
+        build: ./mailhog
         ports:
             - "8025:8025"
         restart: always
