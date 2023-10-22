@@ -46,9 +46,4 @@ jobs:
               run: |
                   echo --Building containers--
                   docker-compose -f docker-compose.yaml up -d --build
-                  docker push $ECR_REGISTRY/ignite-client:latest
-                  docker push $ECR_REGISTRY/ignite-auth:latest
-                  docker push $ECR_REGISTRY/ignite-mail:latest
-                  docker push $ECR_REGISTRY/ignite-db-admin:latest
-                  docker push $ECR_REGISTRY/ignite-db:latest
-                  docker push $ECR_REGISTRY/ignite-api:latest
+                  docker-compose push
