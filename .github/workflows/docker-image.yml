@@ -17,14 +17,14 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v2
 
-            - name: Test File sys
-              run: |
-                  echo ---Building and starting up docker---
-                  ls
-
             - name: "Create env file"
               run: |
                   echo "${{ secrets.ENV_FILE }}" > .env
+
+            - name: Test File sys
+              run: |
+                  echo ---File System---
+                  ls -ll
 
             - name: Configure AWS Credentials
               uses: aws-actions/configure-aws-credentials@v1
@@ -46,15 +46,5 @@ jobs:
               run: |
                   echo --Building containers--
                   docker-compose pull
-                  docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:client_v0 ./Client
-                  docker push $ECR_REGISTRY/$ECR_REPOSITORY:client_v0
-                  docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:keycloak_v0 ./keycloak
-                  docker push $ECR_REGISTRY/$ECR_REPOSITORY:keycloak_v0
-                  docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:mailhog_v0 ./mailhog
-                  docker push $ECR_REGISTRY/$ECR_REPOSITORY:mailhog_v0
-                  docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:pg_admin_v0 ./pg_admin
-                  docker push $ECR_REGISTRY/$ECR_REPOSITORY:pg_admin_v0
-                  docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:postgres_v0 ./postgres
-                  docker push $ECR_REGISTRY/$ECR_REPOSITORY:postgres_v0
-                  docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:server_v0 ./Server
-                  docker push $ECR_REGISTRY/$ECR_REPOSITORY:server_v0
+                  docker-compose -f docker-compose.yaml up -d --build
+                  docker-compose push
