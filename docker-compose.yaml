@@ -20,11 +20,11 @@ services:
         restart: on-failure
 
     pgadmin:
-        image: dpage/pgadmin4:5.1
+        image: ${AWS_ECR_URI}/ignite-db-admin:latest
         build: ./pg_admin
         environment:
-            PGADMIN_DEFAULT_EMAIL: postgres@ignite.app
-            PGADMIN_DEFAULT_PASSWORD: postgres
+            PGADMIN_DEFAULT_EMAIL: ${PG_ADMIN_EMAIL}
+            PGADMIN_DEFAULT_PASSWORD: ${ADMIN_PASSWORD}
         ports:
             - "5050:80"
         networks:
@@ -32,6 +32,7 @@ services:
 
     # Keycloak service for authentication
     auth:
+        image: ${AWS_ECR_URI}/ignite-auth:latest
         build: ./keycloak
         ports:
             - "8080:8080"
@@ -47,7 +48,7 @@ services:
 
     # Mail service
     mail:
-        image: mailhog/mailhog:v1.0.1
+        image: ${AWS_ECR_URI}/ignite-main:latest
         build: ./mailhog
         ports:
             - "8025:8025"
@@ -55,6 +56,7 @@ services:
 
     # Client service
     client:
+        image: ${AWS_ECR_URI}/ignite-client:latest
         build: ./Client
         ports:
             - "3000:3000"
@@ -64,6 +66,7 @@ services:
 
     # Server service
     server:
+        image: ${AWS_ECR_URI}/ignite-api:latest
         build: ./Server
         depends_on:
             - db
@@ -74,13 +77,6 @@ services:
         restart: on-failure
         networks:
             - ignite-net
-
-    # Workflows service
-    # workflows:
-    #     image: prefect/prefect:0.15.7
-    #     ports:
-    #         - "8081:8081"
-    #     restart: on-failure
 
 networks:
     ignite-net:
