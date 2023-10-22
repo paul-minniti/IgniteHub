@@ -48,7 +48,7 @@ services:
 
     # Mail service
     mail:
-        image: ${AWS_ECR_URI}/ignite-main:latest
+        image: ${AWS_ECR_URI}/ignite-mail:latest
         build: ./mailhog
         ports:
             - "8025:8025"
