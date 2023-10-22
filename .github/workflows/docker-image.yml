@@ -24,7 +24,7 @@ jobs:
             - name: Test File sys
               run: |
                   echo ---File System---
-                  ls -ll
+                  ls -a
 
             - name: Configure AWS Credentials
               uses: aws-actions/configure-aws-credentials@v1
@@ -45,6 +45,5 @@ jobs:
                   IMAGE_TAG: latest
               run: |
                   echo --Building containers--
-                  docker-compose pull
                   docker-compose -f docker-compose.yaml up -d --build
                   docker-compose push
