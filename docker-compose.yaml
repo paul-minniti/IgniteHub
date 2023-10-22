@@ -5,8 +5,7 @@ version: "3.7"
 services:
     # Database service
     db:
-        image: postgres:14.3-alpine
-        # image: ${AWS_ECR_URI}/ignite-db:latest
+        image: ${AWS_ECR_URI}/ignite-db:latest
         build: ./postgres
         ports:
             - "5432:5432"

@@ -22,6 +22,10 @@ jobs:
                   echo ---Building and starting up docker---
                   ls
 
+            - name: "Create env file"
+              run: |
+                  echo "${{ secrets.ENV_FILE }}" > .env
+
             - name: Configure AWS Credentials
               uses: aws-actions/configure-aws-credentials@v1
               with:
