@@ -72,6 +72,11 @@ services:
             - db
         ports:
             - "8000:8000"
+        environment:
+            - DB_IP=${DB_IP}
+            - ADMIN_USER=${ADMIN_USER}
+            - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+            - DB_NAME=${DB_NAME}
         volumes:
             - ./server:/app
         restart: on-failure

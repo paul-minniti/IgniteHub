@@ -4,12 +4,19 @@ from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, Session
 import uvicorn
+import os
+
+DB_IP = os.environ['DB_IP']
+ADMIN_USER = os.environ['ADMIN_USER']
+ADMIN_PASSWORD = os.environ['ADMIN_PASSWORD']
+DB_IP = os.environ['DB_IP']
+DB_NAME = os.environ['DB_NAME']
 
 # Initialize FastAPI
 app = FastAPI()
 
 # Database setup postgresql://fastapi_traefik:fastapi_traefik@db:5432/fastapi_traefik
-DATABASE_URL = "postgresql://admin:admin@db:5432/ignite_db"
+DATABASE_URL = f"postgresql://{ADMIN_USER}:{ADMIN_PASSWORD}@{DB_IP}:5432/{DB_NAME}"
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
