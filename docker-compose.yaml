@@ -76,6 +76,8 @@ services:
             - DB_IP=${DB_IP}
             - ADMIN_USER=${ADMIN_USER}
             - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+            - RDS_ADMIN=${RDS_ADMIN}
+            - RDS_PASSWORD=${RDS_PASSWORD}
             - DB_NAME=${DB_NAME}
         volumes:
             - ./server:/app

@@ -1,24 +1,34 @@
 from fastapi import FastAPI, HTTPException, Depends
 from pydantic import BaseModel
-from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy import create_engine, Column, Integer, String, inspect
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, Session
 import uvicorn
 import os
+import logging
+
+logger = logging.getLogger(__name__)
+logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
 DB_IP = os.environ['DB_IP']
 ADMIN_USER = os.environ['ADMIN_USER']
 ADMIN_PASSWORD = os.environ['ADMIN_PASSWORD']
 DB_IP = os.environ['DB_IP']
 DB_NAME = os.environ['DB_NAME']
+RDS_ADMIN = os.environ['RDS_ADMIN']
+RDS_PASSWORD = os.environ['RDS_PASSWORD']
 
 # Initialize FastAPI
 app = FastAPI()
-
 # Database setup postgresql://fastapi_traefik:fastapi_traefik@db:5432/fastapi_traefik
-DATABASE_URL = f"postgresql://{ADMIN_USER}:{ADMIN_PASSWORD}@{DB_IP}:5432/{DB_NAME}"
+DATABASE_URL = f"postgresql://{RDS_ADMIN}:{RDS_PASSWORD}@ignite-db-dev.cpjwpruxdv5c.us-east-2.rds.amazonaws.com/postgres"
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+logger.info(f"DB connection: {SessionLocal}")
+insp = inspect(engine)
+logger.info(f"TABLES: {insp.get_table_names()}")
+
 
 Base = declarative_base()
 
