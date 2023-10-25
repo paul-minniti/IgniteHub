@@ -131,20 +131,14 @@
 				<a
 					class="btn w-full text-sm font-medium uppercase leading-normal text-white"
 					style="background-color: #3b5998"
-					role="button"
-					on:click={navigate}
-					on:click={parent.onClose}>
+					role="button">
 					<i class="mr-2 fa-solid fa-envelope" />
 					Sign Up
 				</a>
-				<a
-					class="btn w-full text-sm font-medium uppercase leading-normal text-white"
-					style="background-color: #55acee"
-					role="button"
-					on:click={signInWithGoogle}>
-					<i class="mr-2 fa-brands fa-google" />
-					Continue with Google
-				</a>
+				<p class="text-center font-bold text-secondary-500">
+					Signups are turned off for now. Come back later when beta access
+					opens.
+				</p>
 			</form>
 		</div>
 
