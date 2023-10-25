@@ -589,7 +589,7 @@
 			<div class="flex flex-col flex-grow flex-shrink pt-4 pb-4 items-center">
 				<h2
 					class="w-5/6 md:w-3/6 my-2 text-2xl font-bold leading-tight text-left text-gray-800">
-					How fast will I receive my designs?
+					How fast will I receive my request?
 				</h2>
 				<div class="w-full mb-4">
 					<div
@@ -758,7 +758,7 @@
 		<div class="flex flex-col flex-grow flex-shrink pt-4 pb-12 items-center">
 			<h2
 				class="w-full my-2 text-5xl font-bold leading-tight text-center text-white">
-				See if IgniteHub is right for
+				See if IgniteHub is right for you.
 			</h2>
 			<div class="w-full mb-4">
 				<div class="h-1 mx-auto bg-white w-64 opacity-25 my-0 py-0 rounded-t" />
