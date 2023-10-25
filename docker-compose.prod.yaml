@@ -6,7 +6,6 @@ services:
     # Keycloak service for authentication
     auth:
         image: ${AWS_ECR_URI}/ignite-auth:latest
-        build: ./keycloak
         ports:
             - "8080:8080"
         networks:
@@ -20,7 +19,6 @@ services:
     # Mail service
     mail:
         image: ${AWS_ECR_URI}/ignite-mail:latest
-        build: ./mailhog
         ports:
             - "8025:8025"
         restart: always
@@ -28,15 +26,15 @@ services:
     # Client service
     client:
         image: ${AWS_ECR_URI}/ignite-client:latest
-        build: ./Client
         ports:
-            - "3000:3000"
+            - "80:3000"
+        volumes:
+            - ./Client:/app
         restart: on-failure
 
     # Server service
     server:
         image: ${AWS_ECR_URI}/ignite-api:latest
-        build: ./Server
         ports:
             - "8000:8000"
         environment:
@@ -46,6 +44,8 @@ services:
             - RDS_ADMIN=${RDS_ADMIN}
             - RDS_PASSWORD=${RDS_PASSWORD}
             - DB_NAME=${DB_NAME}
+        volumes:
+            - ./server:/app
         restart: on-failure
         networks:
             - ignite-net
