@@ -2,8 +2,7 @@
 
 # Summary
 
-IgniteHub, is a startup SaaS company based building software for freelancers and entrapaneurs. Driven by a passion for design and technology, IgniteHub aims to simplify business software, to allow users focus on serving their own users. We are building a suite of applications to service all your busness needs including web design, management & hosting, marketing, social media, and branding. The immediate goal for IgniteHub is to obtain some clients so the Business is self sustaining. Our longer tearm goal: grow the IgniteHub community, document our process, enjoy life.
-
+IgniteHub, is a startup SaaS company based building software for freelancers and entrapaneurs. Driven by a passion for design and technology, IgniteHub aims to simplify business software, to allow users focus on serving their own users. We are building a suite of applications to service all your busness needs including web design, management & hosting, marketing, social media, and branding.
 ## Values
 
 -   **Client Empowerment:** We strive to empower our users by providing them with user-friendly software, enabling them to focus on their core business.
