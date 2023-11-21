@@ -24,22 +24,6 @@ The small business market in the Baltimore area is significant, with 52,418 smal
 
 Small business owners in Baltimore are diverse, with a notable number of minority and women-owned businesses. Their IT and web service needs typically include managed IT services, cybersecurity, network support, and web development.
 
-## Competitive Landscape
-
-IgniteHub faces competition from several IT and web services providers in the Baltimore area, including Eitex, Preemo, Bmore Technology LLC, and Chrysalis MSP LLC. A more in-depth analysis will be conducted to understand their strengths and weaknesses.
-
-## Pricing
-
-The market rates for IT and web services in Baltimore vary depending on the specific service. Further research will be conducted to determine competitive pricing for IgniteHub's services.
-
-## Trends
-
-Global trends like 5G, Blockchain, AR, and AI are shaping the IT services market and present opportunities for IgniteHub to innovate and differentiate its service offerings.
-
-## Purchasing Factors
-
-Factors influencing the purchasing decisions of small business owners when it comes to IT and web services include the quality of the product and information about it, the reputation of the firm, perceived ease of payment, site design, benefits of online shopping, and trust. Other factors include the customer experience, available offers and values, and social proof and credibility.
-
 # Operations
 
 ## Product/Service Development Pillar
@@ -100,24 +84,6 @@ The customer retention phase focuses on maintaining and keeping existing custome
 -   HubSpot CRM: Use HubSpot CRM to manage customer relationships and track interactions with customers. This tool can help identify opportunities for upselling or cross-selling, and can also help manage customer retention efforts.
 -   Quality Service Delivery: Ensure high-quality service delivery to retain customers. Use Trello to manage tasks and track progress, and use Slack and Zoom for efficient communication.
 
-## Customer Service
-
-# Services
-
-## I. Service Offerings
-
-IgniteHub offers a range of comprehensive web services and marketing solutions to meet the needs of our users. Our service offerings include:
-
--   **Web Design, Management & Hosting:** IgniteHub provides complete web services, including designing, managing, and hosting websites. This allows users to have a professional online presence without the need to manage it themselves.
--   **Marketing, Social Media, and Branding:** IgniteHub offers marketing services to help users effectively reach their target audience. This includes managing social media accounts and developing a strong brand identity.
-
-## II. Service Tiers
-
-IgniteHub's services are structured into three different tiers, allowing users to choose the level of service that best meets their needs. The specifics of each tier are still being finalized, but the initial idea is as follows:
-
--   **Tier One:** This tier includes initial web design, continued management, and change requests.
--   **Tier Two:** In addition to the services offered in Tier One, Tier Two adds graphic design and advertising.
--   **Tier Three:** This tier expands on the services provided in Tier Two, adding brand management, e-commerce store setup, company email setup, and more.
 
 # Marketing
 
@@ -131,38 +97,3 @@ The marketing strategy focuses on promoting IgniteHub's services, increasing bra
 -   Facebook Ads: Utilize Facebook Ads to target potential customers. Facebook's detailed targeting options allow us to reach a specific audience that's likely to be interested in IgniteHub's services.
 -   Referral Program: Implement a referral program to encourage existing customers to refer others to IgniteHub. Offer a discount or other incentive for each successful referral.
 
-# Finance
-
-## Current Financial Status
-
-IgniteHub is currently self-funded, with no external funding or revenue. As of now, the startup has $0 in revenue and 0 customers.
-
-## Financial Projections:
-
-### Revenue Projections:
-
-The short-term goal for IgniteHub is to acquire enough users to generate around $3,000 in monthly revenue. This would allow the founder to quit his full-time job and focus on growing IgniteHub.
-
-### Expense Projections:
-
-Expenses for IgniteHub will primarily consist of operational costs, including the costs of essential software and tools, contractor services, and marketing and sales efforts. Specific expense projections will require more detailed planning and budgeting.
-
-### Profitability Projections:
-
-Profitability projections for IgniteHub will depend on the balance between revenue and expenses. The goal is to reach profitability as soon as possible by acquiring a steady stream of users and managing expenses effectively.
-
-## Funding
-
-At this stage, IgniteHub has identified several funding needs to support its operations:
-
--   Software and Tools: Funds will be needed to cover the costs of essential software and tools, such as Webflow for website development, HubSpot CRM for customer relationship management, Mailchimp for email marketing, and Facebook Ads for advertising.
--   Contractor Services: Funds will be needed to pay for contractor services for tasks such as graphic design and advertising.
--   Marketing and Sales: Funds will be needed to invest in marketing and sales efforts to attract and convert customers.
-
-## #Use of Funds
-
-Any funds received by IgniteHub will be allocated towards the following areas:
-
--   Covering operational expenses
--   Investing in marketing and sales efforts to attract and convert customers
--   Potentially expanding the service offerings of IgniteHub
