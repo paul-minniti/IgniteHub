@@ -6,24 +6,23 @@ import { getAuth, onAuthStateChanged, type User } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 import { writable, type Readable, derived } from "svelte/store";
 import { docStore } from "./stores/docStore";
-import {
-	FB_apiKey,
-	FB_authDomain,
-	FB_projectId,
-	FB_storageBucket,
-	FB_messagingSenderId,
-	FB_appId,
-	FB_measurementId
-} from "$env/static/private";
+
+const PUBLIC_FB_apiKey = "AIzaSyAHPng-HYy5uqslnxk1QnnPXwzdDcQ12ls";
+const PUBLIC_FB_authDomain = "ignitehub-d0696.firebaseapp.com";
+const PUBLIC_FB_projectId = "ignitehub-d0696";
+const PUBLIC_FB_storageBucket = "ignitehub-d0696.appspot.com";
+const PUBLIC_FB_messagingSenderId = "735417507395";
+const PUBLIC_FB_measurementId = "G-M22ZWDPS97";
+const PUBLIC_FB_appId = "1:735417507395:web:fad6444e2e76ed4b09bef6";
 
 const firebaseConfig = {
-	apiKey: FB_apiKey,
-	authDomain: FB_authDomain,
-	projectId: FB_projectId,
-	storageBucket: FB_storageBucket,
-	messagingSenderId: FB_messagingSenderId,
-	appId: FB_appId,
-	measurementId: FB_measurementId
+	apiKey: PUBLIC_FB_apiKey,
+	authDomain: PUBLIC_FB_authDomain,
+	projectId: PUBLIC_FB_projectId,
+	storageBucket: PUBLIC_FB_storageBucket,
+	messagingSenderId: PUBLIC_FB_messagingSenderId,
+	appId: PUBLIC_FB_appId,
+	measurementId: PUBLIC_FB_measurementId
 };
 
 // Initialize Firebase
