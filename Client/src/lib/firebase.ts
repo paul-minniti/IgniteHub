@@ -7,13 +7,14 @@ import { getStorage } from "firebase/storage";
 import { writable, type Readable, derived } from "svelte/store";
 import { docStore } from "./stores/docStore";
 
-const PUBLIC_FB_apiKey = "AIzaSyAHPng-HYy5uqslnxk1QnnPXwzdDcQ12ls";
-const PUBLIC_FB_authDomain = "ignitehub-d0696.firebaseapp.com";
-const PUBLIC_FB_projectId = "ignitehub-d0696";
-const PUBLIC_FB_storageBucket = "ignitehub-d0696.appspot.com";
-const PUBLIC_FB_messagingSenderId = "735417507395";
-const PUBLIC_FB_measurementId = "G-M22ZWDPS97";
-const PUBLIC_FB_appId = "1:735417507395:web:fad6444e2e76ed4b09bef6";
+const PUBLIC_FB_apiKey = import.meta.env.VITE_PUBLIC_FB_API_KEY;
+const PUBLIC_FB_authDomain = import.meta.env.VITE_PUBLIC_FB_AUTH_DOMAIN;
+const PUBLIC_FB_projectId = import.meta.env.VITE_PUBLIC_FB_PROJECT_ID;
+const PUBLIC_FB_storageBucket = import.meta.env.VITE_PUBLIC_FB_STORAGE_BUCKET;
+const PUBLIC_FB_messagingSenderId = import.meta.env
+	.VITE_PUBLIC_FB_MESSAGING_SENDER_ID;
+const PUBLIC_FB_measurementId = import.meta.env.VITE_PUBLIC_FB_MEASUREMENT_ID;
+const PUBLIC_FB_appId = import.meta.env.VITE_PUBLIC_FB_APP_ID;
 
 const firebaseConfig = {
 	apiKey: PUBLIC_FB_apiKey,
