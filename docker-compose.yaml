@@ -1,0 +1,58 @@
+# @format
+
+version: "3.7"
+
+services:
+    # Keycloak service for authentication
+    auth:
+        image: ${AWS_ECR_URI}/ignite-auth:latest
+        build: ./keycloak
+        ports:
+            - "8080:8080"
+        networks:
+            - ignite-net
+        command: ["start-dev"]
+        environment:
+            KEYCLOAK_ADMIN: ${ADMIN_USER}
+            KEYCLOAK_ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+        restart: always
+
+    # Mail service
+    mail:
+        image: ${AWS_ECR_URI}/ignite-mail:latest
+        build: ./mailhog
+        ports:
+            - "8025:8025"
+        restart: always
+
+    # Client service
+    client:
+        image: ${AWS_ECR_URI}/ignite-client:latest
+        build: ./Client
+        ports:
+            - "3000:3000"
+        restart: on-failure
+
+    # Server service
+    server:
+        image: ${AWS_ECR_URI}/ignite-api:latest
+        build: ./Server
+        ports:
+            - "8000:8000"
+        environment:
+            - DB_IP=${DB_IP}
+            - ADMIN_USER=${ADMIN_USER}
+            - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+            - RDS_ADMIN=${RDS_ADMIN}
+            - RDS_PASSWORD=${RDS_PASSWORD}
+            - DB_NAME=${DB_NAME}
+        restart: on-failure
+        networks:
+            - ignite-net
+
+networks:
+    ignite-net:
+
+volumes:
+    db-data:
+        driver: local
