@@ -145,7 +145,7 @@ const Navbar: React.FC = () => {
 							</MenuItem>
 						))}
 						<MenuItem onClick={handleClose}>
-							<Link href="https://calendly.com/pminniti94/ignitehub">
+							<Link href="https://calendly.com/pminniti94/introductory-call">
 								Book A Call
 							</Link>
 						</MenuItem>

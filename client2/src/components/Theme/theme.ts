@@ -117,6 +117,11 @@ const theme = createTheme({
 			900: "#666666"
 		},
 
+		common: {
+			white: "#ffffff",
+			black: "#000000"
+		},
+
 		// Background typically from "surface" colors
 		background: {
 			default: "#f8f8f8", // e.g. grey.50

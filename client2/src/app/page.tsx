@@ -10,11 +10,14 @@ import {
 	Grid,
 	Typography,
 	Card,
-	CardContent
+	CardContent,
+	SvgIcon,
+	Stack
 } from "@mui/material";
 import Navbar from "./Navbar"; // Adjust path as needed
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFire } from "@fortawesome/free-solid-svg-icons";
+import BenefitsSection from "./Benefits";
 
 export default function LandingPage() {
 	return (
@@ -145,96 +148,7 @@ export default function LandingPage() {
 				</svg>
 			</Box>
 
-			{/* BENEFITS SECTION */}
-			<Box
-				component="section"
-				id="Benefits"
-				sx={{ backgroundColor: "#fff", py: 6 }}>
-				<Container>
-					<Box textAlign="center" mb={4}>
-						<Typography variant="h4" fontWeight="bold" color="gray.800" mb={2}>
-							Sit Back, We&apos;ve Got It From Here
-						</Typography>
-						<Box
-							sx={{
-								width: "160px",
-								height: "4px",
-								mx: "auto",
-								backgroundColor: "#fb923c",
-								opacity: 0.25,
-								borderRadius: 1,
-								mb: 3
-							}}
-						/>
-						<Typography variant="h6" color="gray.800">
-							We bridge the gap between your business needs and top-notch
-							software development, making custom software accessible to
-							businesses of all scales.
-						</Typography>
-					</Box>
-
-					<Grid container spacing={4} justifyContent="center">
-						{/* CARD #1 */}
-						<Grid item xs={12} md={4}>
-							<Card elevation={0} sx={{ textAlign: "center" }}>
-								<CardContent>
-									{/* Using next/image with your SVG in public/ */}
-									<Box mb={2}>
-										<Image
-											src="/check_boxes.svg"
-											alt="Check Boxes"
-											width={120}
-											height={120}
-										/>
-									</Box>
-									<Typography variant="body1" color="gray.800">
-										Subscribe to a plan that matches your needs. Cancel at any
-										time, no questions asked.
-									</Typography>
-								</CardContent>
-							</Card>
-						</Grid>
-						{/* CARD #2 */}
-						<Grid item xs={12} md={4}>
-							<Card elevation={0} sx={{ textAlign: "center" }}>
-								<CardContent>
-									<Box mb={2}>
-										<Image
-											src="/working.svg"
-											alt="Working"
-											width={120}
-											height={120}
-										/>
-									</Box>
-									<Typography variant="body1" color="gray.800">
-										Select a task from our task board, most requests can be
-										completed within three working days.
-									</Typography>
-								</CardContent>
-							</Card>
-						</Grid>
-						{/* CARD #3 */}
-						<Grid item xs={12} md={4}>
-							<Card elevation={0} sx={{ textAlign: "center" }}>
-								<CardContent>
-									<Box mb={2}>
-										<Image
-											src="/iteration.svg"
-											alt="Iteration"
-											width={120}
-											height={120}
-										/>
-									</Box>
-									<Typography variant="body1" color="gray.800">
-										We tirelessly refine our approach based on your feedback,
-										striving for nothing short of your complete satisfaction.
-									</Typography>
-								</CardContent>
-							</Card>
-						</Grid>
-					</Grid>
-				</Container>
-			</Box>
+			<BenefitsSection />
 
 			{/* "NO TRICKS, JUST CODE" SECTION */}
 			<Box sx={{ position: "relative", p: 4, backgroundColor: "#fff" }}>
@@ -662,7 +576,7 @@ export default function LandingPage() {
 											backgroundColor: "#fb923c",
 											":hover": { backgroundColor: "#f28c24" }
 										}}
-										href="https://calendly.com/pminniti94/ignitehub"
+										href="https://calendly.com/pminniti94/introductory-call"
 										target="_blank"
 										rel="noopener noreferrer">
 										Book A Call
@@ -736,7 +650,7 @@ export default function LandingPage() {
 											backgroundColor: "#fb923c",
 											":hover": { backgroundColor: "#f28c24" }
 										}}
-										href="https://calendly.com/pminniti94/ignitehub"
+										href="https://calendly.com/pminniti94/introductory-call"
 										target="_blank"
 										rel="noopener noreferrer">
 										Book A Call
@@ -796,7 +710,7 @@ export default function LandingPage() {
 											backgroundColor: "#fb923c",
 											":hover": { backgroundColor: "#f28c24" }
 										}}
-										href="https://calendly.com/pminniti94/ignitehub"
+										href="https://calendly.com/pminniti94/introductory-call"
 										target="_blank"
 										rel="noopener noreferrer">
 										Book A Call
@@ -967,7 +881,7 @@ export default function LandingPage() {
 							color: "#000",
 							":hover": { backgroundColor: "#f0f0f0" }
 						}}
-						href="https://calendly.com/pminniti94/ignitehub"
+						href="https://calendly.com/pminniti94/introductory-call"
 						target="_blank"
 						rel="noopener noreferrer">
 						Book A Call
