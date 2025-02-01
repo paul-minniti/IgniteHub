@@ -12,28 +12,28 @@
 
 	<!--Hero x -->
 	<div class="pt-24">
-		<div
-			class="container px-3 pb-2 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+		<div class="px-3 pb-2 mx-auto flex flex-wrap flex-row justify-around">
 			<!--Left Col-->
-			<div
-				class="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
-				<h1 class="my-4 text-5xl font-bold leading-tight">
-					Ignite your Businesses Potential on Fire!
-				</h1>
-				<p class="leading-normal text-2xl mb-8">
-					Take your business to the next level with a top-quality software
-					development agency.
-				</p>
-				<a
-					href="#Pricing"
-					class="m-2 bg-white btn btn-lg variant-filled-tertiary z-0">
-					Explore Our Plans
-				</a>
+			<div class="flex-1 flex justify-center text-center">
+				<div class="max-w-2xl">
+					<h1 class="my-4 text-5xl font-bold leading-tight">
+						Ignite Your Business's Potential on Fire!
+					</h1>
+					<p class="leading-normal text-2xl mb-8">
+						Take your business to the next level with<br /> a top-quality software
+						development agency.
+					</p>
+					<a
+						href="#Pricing"
+						class="m-2 bg-white btn btn-lg variant-filled-tertiary z-0">
+						Explore Our Plans
+					</a>
+				</div>
 			</div>
 			<!--Right Col-->
-			<div class="w-full flex flex-shrink flex-grow md:w-3/5 py-6 text-center">
+			<div class="flex-1 flex justify-center py-6">
 				<iframe
-					width="560"
+					width="540"
 					height="315"
 					src="https://www.youtube.com/embed/IVNK5gkVq2Q?si=JuJ_wUuQVM_DEj9s"
 					title="YouTube video player"
@@ -84,7 +84,7 @@
 			<div class="flex flex-col flex-grow flex-shrink pt-4 pb-12 items-center">
 				<h2
 					class="w-full my-2 mt-10 text-5xl font-bold leading-tight text-center text-gray-800">
-					Sit back, We've got it from here
+					Sit Back, We've Got It From Here
 				</h2>
 				<div class="w-full mb-4">
 					<div
@@ -106,7 +106,7 @@
 								<img src={checkBoxesSVG} />
 							</p>
 							<p class="text-gray-800 text-xl px-6 mb-5 mt-12">
-								Subscribe to plan that matches your needs. Cancel at any time,
+								Subscribe to a plan that matches your needs. Cancel at any time,
 								no questions asked.
 							</p>
 						</a>
@@ -172,13 +172,13 @@
 							<div class="ml-4">
 								<h5
 									class="text-lg font-bold leading-6 text-gray-900 dark:text-white">
-									Real Time Updates
+									Real-Time Updates
 								</h5>
 								<p
 									class="mt-2 text-base leading-6 text-gray-500 dark:text-gray-300">
 									We make sure you are kept in the loop 100% of the time. You
 									will see changes daily and blockers are communicated as soon
-									they are identified
+									as they are identified.
 								</p>
 							</div>
 						</div>
@@ -199,7 +199,7 @@
 								<p
 									class="mt-2 text-base leading-6 text-gray-500 dark:text-gray-300">
 									Got a big team? No problem, invite as many users to your
-									worksapce as needed. Zero hidden fees.
+									workspace as needed. Zero hidden fees.
 								</p>
 							</div>
 						</div>
@@ -330,9 +330,9 @@
 						</div>
 						<p class="text-gray-800 text-base px-6 mb-5">
 							Propel your software delivery pipelines to new speeds with our
-							(CI/CD) process. Revel in a realm where code merges are sleek, and
-							deployments are prompt, Keeping pace with your ever evolveing
-							busines.
+							CI/CD process. Revel in a realm where code merges are sleek, and
+							deployments are prompt, keeping pace with your ever-evolving
+							business.
 						</p>
 					</div>
 				</div>
@@ -352,9 +352,9 @@
 						</div>
 						<p class="text-gray-800 text-base px-6 mb-5">
 							We prioritize your data's safety. Achieve peace of mind with our
-							database management and security processes, ensuring, organized,
-							and instant access to your critical business data whenever
-							required. Our seasoned security protocols are crafted to provide a
+							database management and security processes, ensuring organized and
+							instant access to your critical business data whenever required.
+							Our seasoned security protocols are crafted to provide
 							fortification, ensuring your business's sensitive data remains
 							untouched.
 						</p>
@@ -435,7 +435,7 @@
 						</ul>
 						<div class="items-center">
 							<a
-								href="https://calendly.com/pminniti94/ignitehub"
+								href="https://calendly.com/pminniti94/introductory-call"
 								class="m-2 btn variant-filled-tertiary">
 								Book A Call</a>
 
@@ -456,7 +456,7 @@
 							Best for large scale uses and extended redistribution rights.
 						</p>
 						<div class="flex justify-center items-baseline my-8">
-							<span class="mr-2 text-5xl font-extrabold">$2499</span>
+							<span class="mr-2 text-5xl font-extrabold">$2,499</span>
 							<span class="text-gray-500">/month</span>
 						</div>
 						<!-- List -->
@@ -484,7 +484,7 @@
 						</ul>
 						<div class="items-center">
 							<a
-								href="https://calendly.com/pminniti94/ignitehub"
+								href="https://calendly.com/pminniti94/introductory-call"
 								class="m-2 btn variant-filled-tertiary">
 								Book A Call</a>
 							<!-- <button
@@ -524,7 +524,7 @@
 						</ul>
 						<div class="items-center">
 							<a
-								href="https://calendly.com/pminniti94/ignitehub"
+								href="https://calendly.com/pminniti94/introductory-call"
 								class="m-2 btn variant-filled-tertiary">
 								Book A Call</a>
 							<!-- <button
@@ -770,7 +770,7 @@
 				solutions. Let's build something extraordinary together.
 			</p>
 			<a
-				href="https://calendly.com/pminniti94/ignitehub"
+				href="https://calendly.com/pminniti94/introductory-call"
 				class="m-2 btn variant-filled-tertiary">
 				Book A Call</a>
 		</div>

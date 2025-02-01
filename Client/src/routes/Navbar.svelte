@@ -76,7 +76,7 @@
 				{/each}
 			</ul>
 			<a
-				href="https://calendly.com/pminniti94/ignitehub"
+				href="https://calendly.com/pminniti94/introductory-call"
 				class="m-2 btn variant-filled-tertiary">
 				Book A Call</a>
 			<button
