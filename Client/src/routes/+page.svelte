@@ -12,28 +12,28 @@
 
 	<!--Hero x -->
 	<div class="pt-24">
-		<div
-			class="container px-3 pb-2 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+		<div class="px-3 pb-2 mx-auto flex flex-wrap flex-row justify-around">
 			<!--Left Col-->
-			<div
-				class="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
-				<h1 class="my-4 text-5xl font-bold leading-tight">
-					Ignite Your Business's Potential on Fire!
-				</h1>
-				<p class="leading-normal text-2xl mb-8">
-					Take your business to the next level with a top-quality software
-					development agency.
-				</p>
-				<a
-					href="#Pricing"
-					class="m-2 bg-white btn btn-lg variant-filled-tertiary z-0">
-					Explore Our Plans
-				</a>
+			<div class="flex-1 flex justify-center text-center">
+				<div class="max-w-2xl">
+					<h1 class="my-4 text-5xl font-bold leading-tight">
+						Ignite Your Business's Potential on Fire!
+					</h1>
+					<p class="leading-normal text-2xl mb-8">
+						Take your business to the next level with<br /> a top-quality software
+						development agency.
+					</p>
+					<a
+						href="#Pricing"
+						class="m-2 bg-white btn btn-lg variant-filled-tertiary z-0">
+						Explore Our Plans
+					</a>
+				</div>
 			</div>
 			<!--Right Col-->
-			<div class="w-full flex flex-shrink flex-grow md:w-3/5 py-6 text-center">
+			<div class="flex-1 flex justify-center py-6">
 				<iframe
-					width="560"
+					width="540"
 					height="315"
 					src="https://www.youtube.com/embed/IVNK5gkVq2Q?si=JuJ_wUuQVM_DEj9s"
 					title="YouTube video player"
