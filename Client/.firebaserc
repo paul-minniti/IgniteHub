@@ -1,8 +1,5 @@
 {
   "projects": {
-    "default": "ignitehub-f2251",
-    "dev": "ignitehub-f2251"
-  },
-  "targets": {},
-  "etags": {}
+    "default": "ignitehub-f2251"
+  }
 }
