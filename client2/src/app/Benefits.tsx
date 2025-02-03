@@ -1,3 +1,4 @@
+import { LandingSubheader } from "@/components/Typography/Subheaders";
 import { Box, Stack, Typography, Card, CardContent } from "@mui/material";
 import Image from "next/image";
 
@@ -6,29 +7,14 @@ const BenefitsSection = () => {
 		<Box
 			component="section"
 			id="Benefits"
-			sx={{ backgroundColor: "common.white", py: 6 }}>
-			<Stack direction="column" alignItems="center" mb={4} px="32px">
-				<Stack direction="column" textAlign="center" mb={4} maxWidth="40rem">
-					<Typography variant="h2" fontWeight="bold" mb={2}>
-						Sit Back, We&apos;ve Got It From Here
-					</Typography>
-					<Box
-						sx={{
-							width: "16rem",
-							height: "4px",
-							mx: "auto",
-							backgroundColor: "#fb923c",
-							opacity: 0.25,
-							borderRadius: 1,
-							mb: 3
-						}}
-					/>
-					<Typography variant="h6" color="gray.800">
-						We bridge the gap between your business needs and top-notch software
+			sx={{ backgroundColor: "common.white", p: 6 }}>
+			<Stack direction="column" alignItems="center" mb={4}>
+				<LandingSubheader
+					title="Sit Back, We've Got It From Here"
+					text="We bridge the gap between your business needs and top-notch software
 						development, making custom software accessible to businesses of all
-						scales.
-					</Typography>
-				</Stack>
+						scales."
+				/>
 
 				<Stack
 					direction="row"

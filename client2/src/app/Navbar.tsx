@@ -10,9 +10,10 @@ import {
 	IconButton,
 	Menu,
 	MenuItem,
-	SvgIcon
+	SvgIcon,
+	Stack
 } from "@mui/material";
-// import MenuIcon from "@mui/icons-material/Menu";
+import MenuIcon from "@mui/icons-material/Menu";
 // import AccountCircle from "@mui/icons-material/AccountCircle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFire } from "@fortawesome/free-solid-svg-icons";
@@ -66,7 +67,6 @@ const Navbar: React.FC = () => {
 				<Toolbar
 					sx={{
 						width: "75%",
-						display: "flex",
 						justifyContent: "space-between",
 						boxShadow: 2,
 						backgroundColor: "background.default",
@@ -80,8 +80,6 @@ const Navbar: React.FC = () => {
 								display="flex"
 								alignItems="center"
 								gap={1}>
-								{/* <a style={{ textDecoration: "none", color: "inherit" }}> */}
-								{/* <i className="fa-solid fa-fire" style={{ color: "#FB923C" }} />{" "} */}
 								<SvgIcon sx={{ color: "secondary.main", fontSize: 40 }}>
 									<FontAwesomeIcon icon={faFire} />
 								</SvgIcon>
@@ -106,7 +104,18 @@ const Navbar: React.FC = () => {
 							</Link>
 						))}
 					</Box>
-					<Box>
+					<Stack
+						direction="row"
+						gap={2}
+						sx={{ display: { xs: "none", md: "flex" }, gap: 2 }}>
+						<Button
+							variant="contained"
+							color="info"
+							href="https://calendly.com/pminniti94/introductory-call"
+							sx={{ color: "text.primary" }}
+							onClick={handleOpenModal}>
+							Book A Call
+						</Button>
 						<Button
 							variant="contained"
 							color="secondary"
@@ -114,8 +123,9 @@ const Navbar: React.FC = () => {
 							onClick={handleOpenModal}>
 							Login
 						</Button>
-					</Box>
-					{/* <IconButton
+					</Stack>
+					<IconButton
+						sx={{ display: { xs: "flex", md: "none" } }}
 						size="large"
 						edge="end"
 						color="inherit"
@@ -144,13 +154,27 @@ const Navbar: React.FC = () => {
 								<Link href={`#${item.name}`}>{item.name}</Link>
 							</MenuItem>
 						))}
+
 						<MenuItem onClick={handleClose}>
-							<Link href="https://calendly.com/pminniti94/introductory-call">
+							<Button
+								variant="contained"
+								color="info"
+								href="https://calendly.com/pminniti94/introductory-call"
+								sx={{ color: "text.primary" }}
+								onClick={handleOpenModal}>
 								Book A Call
-							</Link>
+							</Button>
 						</MenuItem>
-						<MenuItem onClick={handleOpenModal}>Login</MenuItem>
-					</Menu> */}
+						<MenuItem>
+							<Button
+								variant="contained"
+								color="secondary"
+								sx={{ color: "text.primary" }}
+								onClick={handleOpenModal}>
+								Login
+							</Button>
+						</MenuItem>
+					</Menu>
 				</Toolbar>
 			</AppBar>
 

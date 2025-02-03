@@ -18,80 +18,18 @@ import Navbar from "./Navbar"; // Adjust path as needed
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFire } from "@fortawesome/free-solid-svg-icons";
 import BenefitsSection from "./Benefits";
+import HeroSection from "./Hero";
+import { LandingSubheader } from "@/components/Typography/Subheaders";
 
 export default function LandingPage() {
 	return (
-		<Box sx={{ backgroundColor: "#fb923c" /* same as bg-primary */ }}>
-			{/* NAVBAR */}
+		<Box sx={{ backgroundColor: "secondary.main" }}>
 			<Navbar />
 
-			{/* HERO SECTION */}
-			<Box
-				sx={{
-					pt: { xs: 8, md: 12 },
-					pb: 2,
-					color: "white"
-				}}>
-				<Container>
-					<Grid container spacing={4} justifyContent="space-around">
-						{/* LEFT COL */}
-						<Grid
-							item
-							xs={12}
-							md={6}
-							display="flex"
-							justifyContent="center"
-							textAlign="center">
-							<Box maxWidth="600px">
-								<Typography variant="h3" fontWeight="bold" mb={2}>
-									Ignite Your Business&apos;s Potential on Fire!
-								</Typography>
-								<Typography variant="h6" mb={4}>
-									Take your business to the next level with
-									<br />a top-quality software development agency.
-								</Typography>
-								{/* Use Next.js Link for in-app navigation */}
-								<Link href="#Pricing" passHref>
-									<Button
-										variant="contained"
-										sx={{
-											color: "#000",
-											backgroundColor: "#fff",
-											":hover": { backgroundColor: "#f0f0f0" }
-										}}
-										size="large">
-										Explore Our Plans
-									</Button>
-								</Link>
-							</Box>
-						</Grid>
-
-						{/* RIGHT COL - YouTube embed */}
-						<Grid
-							item
-							xs={12}
-							md={6}
-							display="flex"
-							justifyContent="center"
-							alignItems="center">
-							<Box
-								component="iframe"
-								width="540"
-								height="315"
-								src="https://www.youtube.com/embed/IVNK5gkVq2Q?si=JuJ_wUuQVM_DEj9s"
-								title="YouTube video player"
-								frameBorder="0"
-								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-								allowFullScreen
-								sx={{ maxWidth: "100%" }}
-							/>
-						</Grid>
-					</Grid>
-				</Container>
-			</Box>
+			<HeroSection />
 
 			{/* WAVE SVG #1 (INLINE) */}
-			<Box sx={{ position: "relative" }}>
+			<Box>
 				<svg
 					viewBox="0 0 1428 174"
 					version="1.1"
@@ -150,136 +88,110 @@ export default function LandingPage() {
 
 			<BenefitsSection />
 
-			{/* "NO TRICKS, JUST CODE" SECTION */}
-			<Box sx={{ position: "relative", p: 4, backgroundColor: "#fff" }}>
-				<Container>
-					<Grid
-						container
-						spacing={6}
-						direction={{ xs: "column-reverse", md: "row" }}
-						alignItems="center">
-						{/* TEXT SIDE */}
-						<Grid item xs={12} md={6}>
-							<Typography
-								variant="h4"
-								fontWeight="bold"
-								color="gray.800"
-								mb={2}
-								textAlign={{ xs: "center", md: "left" }}>
-								No Tricks, Just Code
-							</Typography>
-							<Box
-								sx={{
-									width: "160px",
-									height: "4px",
-									backgroundColor: "#fb923c",
-									opacity: 0.25,
-									borderRadius: 1,
-									mb: 2,
-									mx: { xs: "auto", md: 0 }
-								}}
-							/>
-							<Box component="ul" sx={{ listStyle: "none", pl: 0, mt: 4 }}>
-								<Box component="li" mb={4} display="flex">
-									<Box
-										sx={{
-											width: 48,
-											height: 48,
-											backgroundColor: "#fb923c",
-											color: "#fff",
-											borderRadius: 1,
-											display: "flex",
-											alignItems: "center",
-											justifyContent: "center",
-											mr: 2
-										}}>
-										<FontAwesomeIcon icon={faFire} />
-									</Box>
-									<Box>
-										<Typography
-											variant="subtitle1"
-											fontWeight="bold"
-											color="gray.900">
-											Real-Time Updates
-										</Typography>
-										<Typography variant="body2" color="gray.600">
-											We make sure you are kept in the loop 100% of the time.
-											You will see changes daily...
-										</Typography>
-									</Box>
+			<Box
+				component="section"
+				id="Benefits"
+				sx={{ p: 1, backgroundColor: "common.white" }}>
+				<Stack direction={"column"} alignItems={"center"} mb={4} px={4}>
+					<LandingSubheader title="No Tricks, Just Code" />
+					<Stack
+						direction={"row"}
+						gap={4}
+						flexWrap={"wrap"}
+						justifyContent={"center"}>
+						<Image
+							src="/coder.svg"
+							alt="illustration"
+							width={600}
+							height={400}
+							style={{ maxWidth: "100%", height: "auto" }}
+						/>
+						<Stack direction={"column"} alignItems={"center"}>
+							<Stack direction={"row"} alignItems={"center"} gap={2} mb={2}>
+								<Box
+									sx={{
+										width: 48,
+										height: 48,
+										backgroundColor: "#fb923c",
+										color: "#fff",
+										borderRadius: 1,
+										display: "flex",
+										alignItems: "center",
+										justifyContent: "center"
+									}}>
+									<FontAwesomeIcon icon={faFire} />
 								</Box>
-								<Box component="li" mb={4} display="flex">
-									<Box
-										sx={{
-											width: 48,
-											height: 48,
-											backgroundColor: "#fb923c",
-											color: "#fff",
-											borderRadius: 1,
-											display: "flex",
-											alignItems: "center",
-											justifyContent: "center",
-											mr: 2
-										}}>
-										<FontAwesomeIcon icon={faFire} />
-									</Box>
-									<Box>
-										<Typography
-											variant="subtitle1"
-											fontWeight="bold"
-											color="gray.900">
-											Unlimited Members
-										</Typography>
-										<Typography variant="body2" color="gray.600">
-											Invite as many users to your workspace as needed. Zero
-											hidden fees.
-										</Typography>
-									</Box>
+								<Box maxWidth={400}>
+									<Typography
+										variant="subtitle1"
+										fontWeight="bold"
+										color="gray.900">
+										Real-Time Updates
+									</Typography>
+									<Typography variant="body2" color="gray.600">
+										We make sure you are kept in the loop 100% of the time. You
+										will see changes daily...
+									</Typography>
 								</Box>
-								<Box component="li" mb={4} display="flex">
-									<Box
-										sx={{
-											width: 48,
-											height: 48,
-											backgroundColor: "#fb923c",
-											color: "#fff",
-											borderRadius: 1,
-											display: "flex",
-											alignItems: "center",
-											justifyContent: "center",
-											mr: 2
-										}}>
-										<FontAwesomeIcon icon={faFire} />
-									</Box>
-									<Box>
-										<Typography
-											variant="subtitle1"
-											fontWeight="bold"
-											color="blue.900">
-											Manage With One Tool
-										</Typography>
-										<Typography variant="body2" color="gray.600">
-											Use our software to submit and prioritize your requests,
-											manage your projects, communicate directly with your
-											Ignite engineers...
-										</Typography>
-									</Box>
+							</Stack>
+							<Stack direction={"row"} alignItems={"center"} gap={2} mb={2}>
+								<Box
+									sx={{
+										width: 48,
+										height: 48,
+										backgroundColor: "#fb923c",
+										color: "#fff",
+										borderRadius: 1,
+										display: "flex",
+										alignItems: "center",
+										justifyContent: "center"
+									}}>
+									<FontAwesomeIcon icon={faFire} />
 								</Box>
-							</Box>
-						</Grid>
-
-						{/* IMAGE SIDE */}
-						<Grid item xs={12} md={6} textAlign="center">
-							<Image
-								src="/coder.svg"
-								alt="illustration"
-								width={600}
-								height={400}
-								style={{ maxWidth: "100%", height: "auto" }}
-							/>
-						</Grid>
-					</Grid>
-				</Container>
+								<Box maxWidth={400}>
+									<Typography
+										variant="subtitle1"
+										fontWeight="bold"
+										color="gray.900">
+										Unlimited Members
+									</Typography>
+									<Typography variant="body2" color="gray.600">
+										Invite as many users to your workspace as needed. Zero
+										hidden fees.
+									</Typography>
+								</Box>
+							</Stack>
+							<Stack direction={"row"} alignItems={"center"} gap={2} mb={2}>
+								<Box
+									sx={{
+										width: 48,
+										height: 48,
+										backgroundColor: "#fb923c",
+										color: "#fff",
+										borderRadius: 1,
+										display: "flex",
+										alignItems: "center",
+										justifyContent: "center"
+									}}>
+									<FontAwesomeIcon icon={faFire} />
+								</Box>
+								<Box maxWidth={400}>
+									<Typography
+										variant="subtitle1"
+										fontWeight="bold"
+										color="gray.900">
+										Manage With One Tool
+									</Typography>
+									<Typography variant="body2" color="gray.600">
+										Use our software to submit and prioritize your requests,
+										manage your projects, communicate directly with your Ignite
+										engineers...
+									</Typography>
+								</Box>
+							</Stack>
+						</Stack>
+					</Stack>
+				</Stack>
 			</Box>
 
 			{/* WHAT WE DO SECTION */}
