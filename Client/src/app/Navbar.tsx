@@ -190,7 +190,6 @@ const Navbar: React.FC = () => {
 					<Typography variant="h6" component="h2">
 						Login
 					</Typography>
-					{/* Add your login form here */}
 				</Box>
 			</Modal>
 		</>

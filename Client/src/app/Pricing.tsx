@@ -84,7 +84,7 @@ const PricingSection = () => {
 									<Typography variant="h4" fontWeight="bold" mr={1}>
 										{card.price}
 									</Typography>
-									<Typography variant="body1" color="gray.500">
+									<Typography variant="body1" color="grey.500">
 										{card.period}
 									</Typography>
 								</Box>

@@ -43,10 +43,10 @@ const MembershipSection = () => {
 								<Typography
 									variant="subtitle1"
 									fontWeight="bold"
-									color="gray.900">
+									color="grey.900">
 									Real-Time Updates
 								</Typography>
-								<Typography variant="body2" color="gray.600">
+								<Typography variant="body2" color="grey.600">
 									We make sure you are kept in the loop 100% of the time. You
 									will see changes daily...
 								</Typography>
@@ -70,10 +70,10 @@ const MembershipSection = () => {
 								<Typography
 									variant="subtitle1"
 									fontWeight="bold"
-									color="gray.900">
+									color="grey.900">
 									Unlimited Members
 								</Typography>
-								<Typography variant="body2" color="gray.600">
+								<Typography variant="body2" color="grey.600">
 									Invite as many users to your workspace as needed. Zero hidden
 									fees.
 								</Typography>
@@ -97,10 +97,10 @@ const MembershipSection = () => {
 								<Typography
 									variant="subtitle1"
 									fontWeight="bold"
-									color="gray.900">
+									color="grey.900">
 									Manage With One Tool
 								</Typography>
-								<Typography variant="body2" color="gray.600">
+								<Typography variant="body2" color="grey.600">
 									Use our software to submit and prioritize your requests,
 									manage your projects, communicate directly with your Ignite
 									engineers...
