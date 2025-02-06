@@ -36,7 +36,7 @@ const BenefitsSection = () => {
 								height={200}
 							/>
 						</Box>
-						<Typography variant="body1" color="gray.800">
+						<Typography variant="body1" color="grey.800">
 							Subscribe to a plan that matches your needs. Cancel at any time,
 							no questions asked.
 						</Typography>
@@ -52,7 +52,7 @@ const BenefitsSection = () => {
 									height={200}
 								/>
 							</Box>
-							<Typography variant="body1" color="gray.800">
+							<Typography variant="body1" color="grey.800">
 								Select a task from our task board, most requests can be
 								completed within three working days.
 							</Typography>
@@ -69,7 +69,7 @@ const BenefitsSection = () => {
 									height={200}
 								/>
 							</Box>
-							<Typography variant="body1" color="gray.800">
+							<Typography variant="body1" color="grey.800">
 								We tirelessly refine our approach based on your feedback,
 								striving for nothing short of your complete satisfaction.
 							</Typography>

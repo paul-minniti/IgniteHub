@@ -30,18 +30,17 @@ const HeroSection = () => {
 						Take your business to the next level with
 						<br />a top-quality software development agency.
 					</Typography>
-					<Link href="#Pricing" passHref>
-						<Button
-							variant="contained"
-							sx={{
-								color: "#000",
-								backgroundColor: "#fff",
-								":hover": { backgroundColor: "#f0f0f0" }
-							}}
-							size="large">
-							Explore Our Plans
-						</Button>
-					</Link>
+					<Button
+						variant="contained"
+						href="#Pricing"
+						sx={{
+							color: "#000",
+							backgroundColor: "#fff",
+							":hover": { backgroundColor: "#f0f0f0" }
+						}}
+						size="large">
+						Explore Our Plans
+					</Button>
 				</Stack>
 
 				<Stack

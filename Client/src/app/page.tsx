@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Button, Container, Typography } from "@mui/material";
-import Navbar from "./Navbar"; // Adjust path as needed
+import Navbar from "./Navbar";
 import BenefitsSection from "./Benefits";
 import HeroSection from "./Hero";
 import MembershipSection from "./Membership";
@@ -15,8 +15,7 @@ export default function LandingPage() {
 
 			<HeroSection />
 
-			{/* WAVE SVG #1 (INLINE) */}
-			<Box>
+			<Box id="wave1" sx={{ position: "relative" }} suppressHydrationWarning>
 				<svg
 					viewBox="0 0 1428 174"
 					version="1.1"
@@ -83,8 +82,7 @@ export default function LandingPage() {
 
 			<FAQSection />
 
-			{/* WAVE SVG #2 (INLINE) */}
-			<Box sx={{ position: "relative" }}>
+			<Box id="wave2" sx={{ position: "relative" }} suppressHydrationWarning>
 				<svg
 					viewBox="0 0 1439 147"
 					version="1.1"
@@ -139,7 +137,6 @@ export default function LandingPage() {
 				</svg>
 			</Box>
 
-			{/* CTA SECTION */}
 			<Box
 				sx={{
 					textAlign: "center",
