@@ -7,7 +7,8 @@ import {
 	signInWithPopup,
 	GoogleAuthProvider,
 	FacebookAuthProvider,
-	signInWithEmailAndPassword
+	signInWithEmailAndPassword,
+	createUserWithEmailAndPassword
 } from "firebase/auth";
 import { auth } from "@/utils/firebase";
 import { useRouter } from "next/navigation";
@@ -24,6 +25,7 @@ interface AuthContextProps {
 	handleGoogleSignIn: () => Promise<void>;
 	handleFacebookSignIn: () => Promise<void>;
 	handleEmailSignIn: (email: string, password: string) => Promise<void>;
+	handleEmailSignUp: (email: string, password: string) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextProps>({
@@ -34,7 +36,8 @@ const AuthContext = createContext<AuthContextProps>({
 	setModalView: () => {},
 	handleGoogleSignIn: async () => {},
 	handleFacebookSignIn: async () => {},
-	handleEmailSignIn: async () => {}
+	handleEmailSignIn: async () => {},
+	handleEmailSignUp: async () => {}
 });
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
@@ -62,6 +65,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 			setLoading(true);
 			const provider = new GoogleAuthProvider();
 			await signInWithPopup(auth, provider);
+			handleCloseModal();
 			router.push("/dashboard");
 		} catch (error) {
 			console.error("Google sign-in error:", error);
@@ -76,6 +80,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 			setLoading(true);
 			const provider = new FacebookAuthProvider();
 			await signInWithPopup(auth, provider);
+			handleCloseModal();
 			router.push("/dashboard");
 		} catch (error) {
 			console.error("Facebook sign-in error:", error);
@@ -89,9 +94,24 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 		try {
 			setLoading(true);
 			await signInWithEmailAndPassword(auth, email, password);
+			handleCloseModal();
 			router.push("/dashboard");
 		} catch (error) {
 			console.error("Email sign-in error:", error);
+		} finally {
+			setLoading(false);
+		}
+	}
+
+	// Email/Password sign-up function
+	async function handleEmailSignUp(email: string, password: string) {
+		try {
+			setLoading(true);
+			await createUserWithEmailAndPassword(auth, email, password);
+			handleCloseModal();
+			router.push("/dashboard");
+		} catch (error) {
+			console.error("Email sign-up error:", error);
 		} finally {
 			setLoading(false);
 		}
@@ -107,7 +127,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 				setModalView,
 				handleGoogleSignIn,
 				handleFacebookSignIn,
-				handleEmailSignIn
+				handleEmailSignIn,
+				handleEmailSignUp
 			}}>
 			{children}
 			<Modal open={isModalOpen} onClose={handleCloseModal}>

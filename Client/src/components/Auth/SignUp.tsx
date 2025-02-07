@@ -36,7 +36,7 @@ export default function SignUp() {
 	const [passwordErrorMessage, setPasswordErrorMessage] = React.useState("");
 	const [nameError, setNameError] = React.useState(false);
 	const [nameErrorMessage, setNameErrorMessage] = React.useState("");
-	const { setModalView } = useAuth();
+	const { setModalView, handleEmailSignUp } = useAuth();
 
 	const handleClickOpenSignUp = () => {
 		setModalView("login");
@@ -80,17 +80,15 @@ export default function SignUp() {
 	};
 
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
 		if (nameError || emailError || passwordError) {
-			event.preventDefault();
 			return;
 		}
 		const data = new FormData(event.currentTarget);
-		console.log({
-			name: data.get("name"),
-			lastName: data.get("lastName"),
-			email: data.get("email"),
-			password: data.get("password")
-		});
+		handleEmailSignUp(
+			data.get("email") as string,
+			data.get("password") as string
+		);
 	};
 
 	return (

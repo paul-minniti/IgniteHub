@@ -14,7 +14,7 @@ import {
 import { styled } from "@mui/material/styles";
 import MuiCard from "@mui/material/Card";
 import ForgotPassword from "./ForgotPassword";
-import { GoogleIcon, FacebookIcon } from "@/components/Icons/CustomIcons";
+import { GoogleIcon } from "@/components/Icons/CustomIcons";
 import IgniteHub from "@/components/Typography/IgniteHub";
 import { useAuth } from "@/context/authContext";
 
@@ -37,12 +37,7 @@ export default function SignIn() {
 	const [passwordError, setPasswordError] = useState(false);
 	const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
 	const [open, setOpen] = useState(false);
-	const {
-		setModalView,
-		handleGoogleSignIn,
-		handleFacebookSignIn,
-		handleEmailSignIn
-	} = useAuth();
+	const { setModalView, handleGoogleSignIn, handleEmailSignIn } = useAuth();
 
 	const handleClickOpenSignUp = () => {
 		setModalView("signup");
@@ -57,8 +52,8 @@ export default function SignIn() {
 	};
 
 	const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
 		if (emailError || passwordError) {
-			event.preventDefault();
 			return;
 		}
 		const data = new FormData(event.currentTarget);
@@ -196,13 +191,13 @@ export default function SignIn() {
 						startIcon={<GoogleIcon />}>
 						Sign in with Google
 					</Button>
-					<Button
+					{/* <Button
 						fullWidth
 						variant="outlined"
-						onClick={() => handleFacebookSignIn}
+						onClick={handleFacebookSignIn}
 						startIcon={<FacebookIcon />}>
 						Sign in with Facebook
-					</Button>
+					</Button> */}
 					<Typography
 						component={"div"}
 						variant="body2"
