@@ -1,5 +1,4 @@
 import { Box, Stack, Typography, Button } from "@mui/material";
-import Link from "next/link";
 
 const HeroSection = () => {
 	return (

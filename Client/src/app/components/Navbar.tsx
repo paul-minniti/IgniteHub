@@ -7,18 +7,16 @@ import {
 	Toolbar,
 	Typography,
 	Button,
-	Modal,
 	Box,
 	IconButton,
 	Menu,
 	MenuItem,
-	SvgIcon,
 	Stack
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 // import AccountCircle from "@mui/icons-material/AccountCircle";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFire } from "@fortawesome/free-solid-svg-icons";
+import IgniteHub from "@/components/Typography/IgniteHub";
+import { useAuth } from "@/context/authContext";
 
 interface PageData {
 	name: string;
@@ -26,8 +24,8 @@ interface PageData {
 }
 
 const Navbar: React.FC = () => {
-	const [loginModal, setLoginModal] = useState(false);
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+	const { setIsModalOpen } = useAuth();
 	const pageData: PageData[] = [
 		{ name: "Benefits", image: "" },
 		{ name: "Projects", image: "" },
@@ -35,12 +33,8 @@ const Navbar: React.FC = () => {
 		{ name: "FAQs", image: "" }
 	];
 
-	const handleOpenModal = () => {
-		setLoginModal(true);
-	};
-
-	const handleCloseModal = () => {
-		setLoginModal(false);
+	const handleOpenLoginModal = () => {
+		setIsModalOpen(true);
 	};
 
 	const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -75,16 +69,7 @@ const Navbar: React.FC = () => {
 					}}>
 					<Box display="flex" alignItems="center" gap={1}>
 						<Link href="/">
-							<Typography
-								variant="h2"
-								display="flex"
-								alignItems="center"
-								gap={1}>
-								<SvgIcon sx={{ color: "secondary.main", fontSize: 40 }}>
-									<FontAwesomeIcon icon={faFire} />
-								</SvgIcon>
-								IgniteHub
-							</Typography>
+							<IgniteHub />
 						</Link>
 					</Box>
 					<Box sx={{ display: { xs: "none", md: "flex" }, gap: 2 }}>
@@ -111,15 +96,14 @@ const Navbar: React.FC = () => {
 							variant="contained"
 							color="info"
 							href="https://calendly.com/pminniti94/introductory-call"
-							sx={{ color: "text.primary" }}
-							onClick={handleOpenModal}>
+							sx={{ color: "text.primary" }}>
 							Book A Call
 						</Button>
 						<Button
 							variant="contained"
 							color="secondary"
 							sx={{ color: "text.primary" }}
-							onClick={handleOpenModal}>
+							onClick={handleOpenLoginModal}>
 							Login
 						</Button>
 					</Stack>
@@ -159,8 +143,7 @@ const Navbar: React.FC = () => {
 								variant="contained"
 								color="info"
 								href="https://calendly.com/pminniti94/introductory-call"
-								sx={{ color: "text.primary" }}
-								onClick={handleOpenModal}>
+								sx={{ color: "text.primary" }}>
 								Book A Call
 							</Button>
 						</MenuItem>
@@ -169,29 +152,13 @@ const Navbar: React.FC = () => {
 								variant="contained"
 								color="secondary"
 								sx={{ color: "text.primary" }}
-								onClick={handleOpenModal}>
+								onClick={handleOpenLoginModal}>
 								Login
 							</Button>
 						</MenuItem>
 					</Menu>
 				</Toolbar>
 			</AppBar>
-
-			<Modal open={loginModal} onClose={handleCloseModal}>
-				<Box
-					sx={{
-						p: 4,
-						backgroundColor: "white",
-						borderRadius: 1,
-						width: 400,
-						mx: "auto",
-						mt: "20vh"
-					}}>
-					<Typography variant="h6" component="h2">
-						Login
-					</Typography>
-				</Box>
-			</Modal>
 		</>
 	);
 };

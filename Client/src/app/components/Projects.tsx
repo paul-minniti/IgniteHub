@@ -72,11 +72,14 @@ const ProjectsSection = () => {
 										}}>
 										<FontAwesomeIcon icon={faFire} />
 									</Box>
-									<Typography variant="h6" fontWeight="bold" color="grey.800">
+									<Typography
+										variant="h6"
+										fontWeight="bold"
+										color="text.primary">
 										{item.title}
 									</Typography>
 								</Box>
-								<Typography variant="body2" color="grey.800">
+								<Typography variant="body2" color="text.primary">
 									{item.description}
 								</Typography>
 							</CardContent>
