@@ -1,6 +1,7 @@
 "use client";
+
 import React, { useState } from "react";
-import createCache, { Options as EmotionCacheOptions } from "@emotion/cache";
+import createCache from "@emotion/cache";
 import { useServerInsertedHTML } from "next/navigation";
 import { CacheProvider, ThemeProvider } from "@emotion/react";
 import theme from "@/utils/Theme/theme";
