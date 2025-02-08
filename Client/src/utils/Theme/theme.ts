@@ -148,37 +148,43 @@ const theme = createTheme({
 			fontFamily: "system-ui",
 			fontWeight: 700,
 			fontSize: "2.5rem",
-			lineHeight: 1.2
+			lineHeight: 1.2,
+			color: "#000000"
 		},
 		h2: {
 			fontFamily: "system-ui",
 			fontWeight: 700,
 			fontSize: "2rem",
-			lineHeight: 1.3
+			lineHeight: 1.3,
+			color: "#000000"
 		},
 		h3: {
 			fontFamily: "system-ui",
 			fontWeight: 600,
 			fontSize: "1.75rem",
-			lineHeight: 1.3
+			lineHeight: 1.3,
+			color: "#000000"
 		},
 		h4: {
 			fontFamily: "system-ui",
 			fontWeight: 600,
 			fontSize: "1.5rem",
-			lineHeight: 1.3
+			lineHeight: 1.3,
+			color: "#000000"
 		},
 		h5: {
 			fontFamily: "system-ui",
 			fontWeight: 500,
 			fontSize: "1.25rem",
-			lineHeight: 1.3
+			lineHeight: 1.3,
+			color: "#000000"
 		},
 		h6: {
 			fontFamily: "system-ui",
 			fontWeight: 500,
 			fontSize: "1.125rem",
-			lineHeight: 1.4
+			lineHeight: 1.4,
+			color: "#000000"
 		},
 
 		// Subtitles
@@ -186,13 +192,15 @@ const theme = createTheme({
 			fontFamily: "system-ui",
 			fontSize: "1rem",
 			fontWeight: 400,
-			lineHeight: 1.5
+			lineHeight: 1.5,
+			color: "#000000"
 		},
 		subtitle2: {
 			fontFamily: "system-ui",
 			fontSize: "0.875rem",
 			fontWeight: 500,
-			lineHeight: 1.4
+			lineHeight: 1.4,
+			color: "#000000"
 		},
 
 		// Body text
@@ -200,13 +208,15 @@ const theme = createTheme({
 			fontFamily: "system-ui",
 			fontSize: "1rem",
 			fontWeight: 400,
-			lineHeight: 1.5
+			lineHeight: 1.5,
+			color: "#000000"
 		},
 		body2: {
 			fontFamily: "system-ui",
 			fontSize: "0.875rem",
 			fontWeight: 400,
-			lineHeight: 1.4
+			lineHeight: 1.4,
+			color: "#000000 !important"
 		},
 
 		// Other common text variants
@@ -221,14 +231,16 @@ const theme = createTheme({
 			fontFamily: "system-ui",
 			fontSize: "0.75rem",
 			fontWeight: 400,
-			lineHeight: 1.4
+			lineHeight: 1.4,
+			color: "#000000"
 		},
 		overline: {
 			fontFamily: "system-ui",
 			fontSize: "0.75rem",
 			fontWeight: 400,
 			lineHeight: 1.4,
-			textTransform: "uppercase"
+			textTransform: "uppercase",
+			color: "#000000"
 		}
 	}
 });
