@@ -1,3 +1,5 @@
+"use client";
+
 import { LandingSubheader } from "@/components/Typography/Subheaders";
 import {
 	Box,
@@ -7,45 +9,28 @@ import {
 	CardContent,
 	Button
 } from "@mui/material";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
-// Data for each pricing card
 const pageData = [
 	{
-		title: "Entry Level",
-		description: "Best option for small businesses...",
-		price: "$299",
-		period: "/month",
-		benefits: [
-			"Static Frontend WebPages",
-			"SEO Optimization for Organic Traffic",
-			"Maintenance and Support"
-		]
+		title: "Other ERP's",
+		description:
+			"Traditional ERP providers charge exorbitant fees—up to $1,800 for a single license or over $99 per user, making scalability expensive and restrictive.",
+		price: "$1XXX+",
+		period: "/month"
 	},
 	{
-		title: "Senior Architect",
-		description: "Best for large scale uses...",
-		price: "$2499",
-		period: "/month",
-		benefits: [
-			"Full Stack Custom Development",
-			"Containerized Cloud Deployments",
-			"CI/CD Automated Pipelines",
-			"UI/UX Design",
-			"Business Integration Automation"
-		]
+		title: "Base Subscription",
+		description:
+			"Get full access to IgniteHub’s powerful features for a simple, predictable flat rate. No hidden costs, just seamless business management.",
+		price: "$49",
+		period: "/month"
 	},
 	{
-		title: "Mid-Level Dev",
-		description: "Relevant for multiple users...",
-		price: "$999",
-		period: "/month",
-		benefits: [
-			"Dynamic Frontend Components",
-			"Database Management",
-			"Cloud Hosting"
-		]
+		title: "Additional Users",
+		description:
+			"Scale your team effortlessly. Add unlimited users at an affordable price, ensuring everyone has access without breaking the bank.",
+		price: "$9.99",
+		period: "/month"
 	}
 ];
 
@@ -57,9 +42,8 @@ const PricingSection = () => {
 			sx={{ backgroundColor: "common.white", pt: 10, pb: 2, px: 6 }}>
 			<Stack direction="column" alignItems="center" mb={4}>
 				<LandingSubheader
-					title="Software Excellence, Transparent Pricing"
-					text="Achieving your software goals shouldn't be a budgetary
-						battle..."
+					title="Transparent Pricing"
+					text="Our Competitors Hide Their Prices Behind A Sales Call, We Don't!"
 				/>
 
 				<Stack
@@ -73,9 +57,6 @@ const PricingSection = () => {
 								<Typography variant="h3" fontWeight="bold" mb={1}>
 									{card.title}
 								</Typography>
-								<Typography variant="body2" color="grey.700">
-									{card.description}
-								</Typography>
 								<Box
 									display="flex"
 									justifyContent="center"
@@ -84,38 +65,40 @@ const PricingSection = () => {
 									<Typography variant="h4" fontWeight="bold" mr={1}>
 										{card.price}
 									</Typography>
-									<Typography variant="body1" color="grey.500">
+									<Typography variant="body1" color="text.primary">
 										{card.period}
 									</Typography>
 								</Box>
 								<Box textAlign="left" mb={4} px={2}>
-									{card.benefits.map((benefit, benefitIndex) => (
-										<Box
-											display="flex"
-											alignItems="center"
-											mb={1}
-											key={benefitIndex}>
-											<FontAwesomeIcon
-												icon={faCheck}
-												style={{ color: "#fb923c", marginRight: 8 }}
-											/>
-											<Typography>{benefit}</Typography>
-										</Box>
-									))}
+									<Typography variant="body2" color="text.primary">
+										{card.description}
+									</Typography>
 								</Box>
-								<Box sx={{ flexGrow: 1 }}>
-									<Button
-										variant="contained"
+								{card.title !== "Other ERP's" && (
+									<Box
 										sx={{
-											backgroundColor: "#fb923c",
-											":hover": { backgroundColor: "#f28c24" }
-										}}
-										href="https://calendly.com/pminniti94/introductory-call"
-										target="_blank"
-										rel="noopener noreferrer">
-										Book A Call
-									</Button>
-								</Box>
+											display: "flex",
+											flexDirection: "column",
+											gap: 2
+										}}>
+										<Button
+											variant="contained"
+											sx={{
+												backgroundColor: "#fb923c",
+												":hover": { backgroundColor: "#f28c24" }
+											}}>
+											Sign Up For Free
+										</Button>
+										<Button
+											variant="contained"
+											color="info"
+											href="https://calendly.com/pminniti94/introductory-call"
+											target="_blank"
+											rel="noopener noreferrer">
+											Book A Call
+										</Button>
+									</Box>
+								)}
 							</CardContent>
 						</Card>
 					))}

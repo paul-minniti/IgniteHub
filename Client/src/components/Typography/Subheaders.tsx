@@ -26,7 +26,7 @@ export const LandingSubheader: React.FC<LandingSubheaderProps> = ({
 				}}
 			/>
 			{text && (
-				<Typography variant="h6" color="grey.800">
+				<Typography variant="h6" color="text.primary">
 					{text}
 				</Typography>
 			)}

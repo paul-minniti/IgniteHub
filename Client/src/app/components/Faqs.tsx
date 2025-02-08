@@ -3,53 +3,57 @@ import { Box, Stack, Typography, Container } from "@mui/material";
 
 const pageData = [
 	{
-		question: "Why wouldn't I just hire a full-time engineer?",
+		question: "What is IgniteHub, and who is it for?",
 		answer:
-			"Good question! For starters, the annual cost of a full-time senior-level engineer now exceeds $100,000, plus benefits (and good luck finding one available). Aside from that, you may not always have enough work to keep them busy at all times, so you're stuck paying for time you aren't able to utilize. With the monthly plan, you can pause and resume your subscription as often as you need to ensure you're only paying your engineer when you have work available for them."
+			"IgniteHub is an ERP-style platform designed for influencers, freelancers, and entrepreneurs looking for a simple, integrated way to manage every aspect of their business—from building a website to handling finances. We aim to streamline your tech stack so you can focus on what you do best: serving your customers."
 	},
 	{
-		question: "Is there a limit to how many requests I can have?",
+		question:
+			"How is IgniteHub different from other business management tools?",
 		answer:
-			"Once subscribed, you're able to add as many requests to your queue as you'd like, and they will be delivered one by one."
+			"Unlike one-size-fits-all solutions, IgniteHub offers specialized Hubs—Web, Marketing, Social, Sales, Inventory, HR, Finance, and AI—that each address a specific area of your business. All Hubs work seamlessly together, giving you a single source of truth for data and eliminating the need for multiple, disjointed platforms."
 	},
 	{
-		question: "How fast will I receive my request?",
+		question: "Do I need technical skills to build a website with the Web Hub?",
 		answer:
-			"On average, most requests are completed in just three days or less. However, more complex requests can take longer. Each request on our board is tagged with an expected compltion date."
+			"Not at all. The Web Hub comes with intuitive drag-and-drop features and pre-made templates, making it easy for anyone to create a professional-looking website—no coding required. Plus, our integrated SEO and analytics tools give you actionable insights without needing to be an expert."
 	},
 	{
-		question: "Who are the engineers?",
+		question: "How does IgniteHub help me manage my marketing campaigns?",
 		answer:
-			"You might be surprised to hear this, but IgniteHub is actually an agency of one, you will work directly with me. However, we will work to integrate with other service providers as your business grows. You might also exprect to hear from an intern or two."
+			"The Marketing Hub provides an all-in-one dashboard for planning, executing, and tracking multi-channel campaigns (email, SMS, social, and more). You can segment audiences, automate follow-ups, and measure conversions, ensuring your marketing efforts are both targeted and effective."
 	},
 	{
-		question: "What technologies do you use to develope your applications?",
+		question:
+			"Can I handle social media scheduling and engagement from one place?",
 		answer:
-			"This is a hard question to answer because not every problem has a once sized fits all solution. Adapting old technologies to newer onces is also a challenge we face in our industry. Here is a list of technologies we will work with: Git/Github, GitLab, Python, Typescript, Node, TailwindCss, Bootstrap, MaterialUI Svelte, React, Angular, Vue, Docker, AWS, GCP, Nginx, Kubernetes, MongDB, PostgreSQL, JWT Auth, Restful APIs, Redis, Testing... and so much more."
+			"Yes. The Social Hub consolidates your social media accounts, allowing you to schedule posts, track real-time engagement, and analyze performance metrics—all from a unified interface."
 	},
 	{
-		question: "How do I request work?",
+		question: "What if I already have a CRM or other business tools?",
 		answer:
-			"IgniteHub offers a ton of flexibility in how you request designs using our custom built request boards. It has pre built requests with forms for information about your specific request. Upload any relevant inforamtion to the ticket and put into your queue. Basically, if it can be linked to or shared over the internet, it's fair game."
+			"IgniteHub is designed to integrate smoothly with many popular platforms. We also provide migration tools and support to help you bring over existing data from your current systems, ensuring a seamless transition."
 	},
 	{
-		question: "What if I don't like the end result?",
-		answer: "No worries! We'll continue to revise until you're 100% satisfied."
+		question:
+			"How does IgniteHub’s AI work, and what can it do for my business?",
+		answer:
+			"IgniteHub’s AI engine analyzes data across all Hubs—sales, marketing, inventory, and more—to identify patterns and opportunities. It can forecast demand, suggest marketing strategies, or even generate content ideas. The more data you supply, the more accurate and valuable its insights become."
 	},
 	{
-		question: "Is there any design work you don't cover?",
+		question: "Is my data secure on IgniteHub?",
 		answer:
-			"Absolutely. If there isnt already a ticket for it on our board, Create a custom ticket, we will review and see if its something we think we can do. If it is we will add it as a new request type!"
+			"Absolutely. We prioritize security and data protection with encrypted data transfer, secure hosting environments, and regular security audits. We also follow industry best practices to ensure compliance with relevant data protection regulations."
 	},
 	{
-		question: "What if I only have a single request?",
+		question: "How do updates and new features work?",
 		answer:
-			"That's fine. You can pause your subscription when finished and return when you have additional design needs. There's no need to let the remainder of your subscription go to waste."
+			"As part of your subscription or service package, you automatically receive updates and new features. We continuously improve IgniteHub based on user feedback and market trends, so you always have access to the latest capabilities without any extra cost."
 	},
 	{
-		question: "Are there any refunds if I don't like the service?",
+		question: "What kind of customer support can I expect?",
 		answer:
-			"There are no refunds. We strive to make sure you feel your getting value out of your subscription. IF you dont feel like you are, cancel at any time, no questions asked."
+			"We offer multiple support channels—email, live chat, knowledge base, and even one-on-one onboarding sessions. Our team is dedicated to helping you set up, troubleshoot, and optimize your use of IgniteHub, ensuring you get the most out of our platform."
 	}
 ];
 
@@ -69,7 +73,7 @@ const FAQSection = () => {
 							mb={4}
 							display={"flex"}
 							flexDirection={"column"}
-							textAlign="center"
+							textAlign="left"
 							alignItems={"center"}>
 							<Typography
 								variant="h4"

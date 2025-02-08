@@ -4,7 +4,7 @@ import Navbar from "@/app/components/Navbar";
 import BenefitsSection from "@/app/components/Benefits";
 import HeroSection from "@/app/components/Hero";
 import MembershipSection from "@/app/components/Membership";
-import TasksSection from "@/app/components/Projects";
+import TasksSection from "@/app/components/Products";
 import PricingSection from "@/app/components/Pricing";
 import FAQSection from "@/app/components/Faqs";
 
