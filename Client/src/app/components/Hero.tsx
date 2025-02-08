@@ -1,65 +1,89 @@
-import { Box, Stack, Typography, Button } from "@mui/material";
+"use client";
+
+import React, { useState } from "react";
+import { Box, Stack, Typography, Button, TextField } from "@mui/material";
 
 const HeroSection = () => {
+	const [email, setEmail] = useState("");
+
+	const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		setEmail(event.target.value);
+	};
+
+	const handleSignUp = () => {
+		// TODO: Add your sign-up logic here (e.g., call an API or add to mailing list)
+		console.log(`Signing up with email: ${email}`);
+	};
+
 	return (
 		<Box
 			sx={{
-				pt: { xs: 8, md: 12 },
+				pt: { xs: 12, md: 20 },
 				pb: 2,
-				color: "white"
+				color: "white",
+				textAlign: "center"
 			}}>
-			<Stack
-				direction={{ xs: "column", md: "row" }}
-				gap={2}
-				justifyContent="space-around"
-				alignItems="center">
+			<Stack spacing={2} gap={6} alignItems="center">
 				<Stack
 					spacing={2}
-					sx={{
-						width: { xs: "100%", md: "45%" },
-						textAlign: "center"
-					}}
+					gap={4}
+					direction={{ xs: "column", md: "row" }}
 					alignItems="center">
-					<Typography variant="h1" fontWeight="bold">
-						Ignite Your Business&apos;s
-						<br />
+					{/* Headline */}
+					<Typography variant="h1" fontWeight="bold" sx={{ lineHeight: 1.2 }}>
+						Ignite Your Business’s <br />
 						Potential on Fire!
 					</Typography>
-					<Typography variant="h4">
-						Take your business to the next level with
-						<br />a top-quality software development agency.
-					</Typography>
-					<Button
-						variant="contained"
-						href="#Pricing"
-						sx={{
-							color: "#000",
-							backgroundColor: "#fff",
-							":hover": { backgroundColor: "#f0f0f0" }
-						}}
-						size="large">
-						Explore Our Plans
-					</Button>
-				</Stack>
+					<Stack
+						spacing={2}
+						alignItems="center"
+						sx={{ width: "100%", maxWidth: 400 }}>
+						{/* One-sentence pitch about IgniteHub */}
+						<Typography variant="h5" sx={{ fontWeight: 400, maxWidth: 600 }}>
+							One AI-powered ERP to unify your entire business—so you can focus
+							on serving your customers.
+						</Typography>
 
-				<Stack
-					sx={{
-						width: { xs: "100%", md: "45%" }
-					}}
-					alignItems="center"
-					justifyContent="center">
-					<Box
-						component="iframe"
-						width="580px"
-						height="315px"
-						src="https://www.youtube.com/embed/IVNK5gkVq2Q?si=JuJ_wUuQVM_DEj9s"
-						title="YouTube video player"
-						frameBorder="0"
-						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-						allowFullScreen
-						sx={{ maxWidth: "100%" }}
-					/>
+						{/* Email Sign-Up Form */}
+						<Stack
+							direction={{ xs: "column", sm: "row" }}
+							spacing={2}
+							alignItems={"center"}
+							justifyContent={"space-between"}>
+							<TextField
+								type="email"
+								variant="outlined"
+								size="small"
+								placeholder="Sign up for updates!"
+								value={email}
+								onChange={handleEmailChange}
+								sx={{ backgroundColor: "#fff", borderRadius: 1, width: 250 }}
+							/>
+							<Button
+								variant="contained"
+								size="large"
+								sx={{
+									color: "#000",
+									backgroundColor: "#fff",
+									":hover": { backgroundColor: "#f0f0f0" }
+								}}
+								onClick={handleSignUp}>
+								Sign Up
+							</Button>
+						</Stack>
+					</Stack>
 				</Stack>
+				<Button
+					variant="contained"
+					href="#Pricing"
+					size="large"
+					sx={{
+						color: "#000",
+						backgroundColor: "#fff",
+						":hover": { backgroundColor: "#f0f0f0" }
+					}}>
+					Explore Our Plans
+				</Button>
 			</Stack>
 		</Box>
 	);

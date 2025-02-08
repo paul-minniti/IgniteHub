@@ -28,7 +28,7 @@ const Navbar: React.FC = () => {
 	const { setIsModalOpen } = useAuth();
 	const pageData: PageData[] = [
 		{ name: "Benefits", image: "" },
-		{ name: "Projects", image: "" },
+		{ name: "Products", image: "" },
 		{ name: "Pricing", image: "" },
 		{ name: "FAQs", image: "" }
 	];
@@ -94,13 +94,6 @@ const Navbar: React.FC = () => {
 						sx={{ display: { xs: "none", md: "flex" }, gap: 2 }}>
 						<Button
 							variant="contained"
-							color="info"
-							href="https://calendly.com/pminniti94/introductory-call"
-							sx={{ color: "text.primary" }}>
-							Book A Call
-						</Button>
-						<Button
-							variant="contained"
 							color="secondary"
 							sx={{ color: "text.primary" }}
 							onClick={handleOpenLoginModal}>
@@ -138,15 +131,6 @@ const Navbar: React.FC = () => {
 							</MenuItem>
 						))}
 
-						<MenuItem onClick={handleClose}>
-							<Button
-								variant="contained"
-								color="info"
-								href="https://calendly.com/pminniti94/introductory-call"
-								sx={{ color: "text.primary" }}>
-								Book A Call
-							</Button>
-						</MenuItem>
 						<MenuItem>
 							<Button
 								variant="contained"

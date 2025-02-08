@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar";
 import BenefitsSection from "./components/Benefits";
 import HeroSection from "./components/Hero";
 import MembershipSection from "./components/Membership";
-import TasksSection from "./components/Projects";
+import TasksSection from "./components/Products";
 import PricingSection from "./components/Pricing";
 import FAQSection from "./components/Faqs";
 
