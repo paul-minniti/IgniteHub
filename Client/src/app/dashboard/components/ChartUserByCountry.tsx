@@ -16,7 +16,7 @@ import {
 	UsaFlag,
 	BrazilFlag,
 	GlobeFlag
-} from "../internals/components/CustomIcons";
+} from "../../../components/Common/CustomIcons";
 
 const data = [
 	{ label: "India", value: 50000 },
@@ -61,7 +61,7 @@ const StyledText = styled("text", {
 })<StyledTextProps>(({ theme }) => ({
 	textAnchor: "middle",
 	dominantBaseline: "central",
-	fill: (theme.vars || theme).palette.text.primary,
+	fill: theme.palette.text.primary,
 	variants: [
 		{
 			props: {

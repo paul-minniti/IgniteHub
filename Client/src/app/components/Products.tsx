@@ -3,14 +3,15 @@
 import { useState } from "react";
 import {
 	Box,
-	Grid2 as Grid,
 	Typography,
 	Card,
 	CardContent,
 	List,
 	ListItem,
 	ListItemButton,
-	ListItemText
+	ListItemText,
+	Stack,
+	SvgIcon
 } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFire } from "@fortawesome/free-solid-svg-icons";
@@ -103,7 +104,7 @@ const products = [
 	}
 ];
 
-const ProjectsSection = () => {
+const ProductsSection = () => {
 	const [selectedIndex, setSelectedIndex] = useState(0);
 	const selectedProject = products[selectedIndex];
 
@@ -118,40 +119,73 @@ const ProjectsSection = () => {
 				backgroundColor: "common.white",
 				pt: 10,
 				pb: 2,
-				px: 6
+				px: { xs: 1, md: 6 }
 			}}>
 			<LandingSubheader title={"A Hub For Every Purpose"} />
 
 			<Card sx={{ p: 0 }}>
 				<CardContent sx={{ p: 0, paddingBottom: "0px !important" }}>
-					<Grid container>
-						<Grid size={{ xs: 12, md: 3 }} sx={{ alignItems: "center" }}>
-							<List
-								sx={{
-									display: { xs: "flex", md: "block" }
-								}}>
-								{products.map((project, index) => (
-									<ListItem key={index} disablePadding>
-										<ListItemButton
-											selected={selectedIndex === index}
-											onClick={() => setSelectedIndex(index)}
+					<Stack direction={{ xs: "column", md: "row" }}>
+						<List
+							sx={{
+								display: { xs: "flex", md: "block" },
+								flexWrap: "wrap"
+							}}>
+							{products.map((project, index) => (
+								<ListItem
+									key={index}
+									disablePadding
+									sx={{ width: { xs: "90px", md: "175px" } }}>
+									<ListItemButton
+										selected={selectedIndex === index}
+										onClick={() => setSelectedIndex(index)}
+										sx={{
+											p: { xs: 1 },
+											height: "100%",
+											"&.Mui-selected": {
+												backgroundColor: "secondary.main",
+												color: "text.secondary"
+											},
+											"&.Mui-selected:hover": {
+												backgroundColor: "secondary.600"
+											}
+										}}>
+										<SvgIcon
 											sx={{
-												"&.Mui-selected": {
-													backgroundColor: "#fb923c",
-													color: "#fff"
-												},
-												"&.Mui-selected:hover": { backgroundColor: "#f97316" }
+												display: { xs: "none", md: "block" },
+												marginRight: 1
 											}}>
-											<FontAwesomeIcon
-												icon={faFire}
-												style={{ marginRight: 10 }}
-											/>
-											<ListItemText primary={project.title} />
-										</ListItemButton>
-									</ListItem>
-								))}
-							</List>
-						</Grid>
+											<FontAwesomeIcon icon={faFire} />
+										</SvgIcon>
+										<ListItemText primary={project.title} />
+									</ListItemButton>
+								</ListItem>
+							))}
+						</List>
+						<Card sx={{ p: 3 }}>
+							<CardContent>
+								<Typography variant="h5" fontWeight="bold">
+									{selectedProject.title}
+								</Typography>
+								<Typography variant="body1" sx={{ mt: 2 }}>
+									{selectedProject.description}
+								</Typography>
+								<Typography variant="h6" sx={{ mt: 2 }}>
+									Features:
+								</Typography>
+								<ul>
+									{selectedProject.features.map((feature, idx) => (
+										<li key={idx}>
+											<Typography variant="body2">{feature}</Typography>
+										</li>
+									))}
+								</ul>
+							</CardContent>
+						</Card>
+					</Stack>
+
+					{/* <Grid container>
+						<Grid size={{ xs: 12, md: 3 }} sx={{ alignItems: "center" }}></Grid>
 
 						<Grid size={{ xs: 12, md: 9 }}>
 							<Card sx={{ p: 3 }}>
@@ -175,11 +209,11 @@ const ProjectsSection = () => {
 								</CardContent>
 							</Card>
 						</Grid>
-					</Grid>
+					</Grid> */}
 				</CardContent>
 			</Card>
 		</Box>
 	);
 };
 
-export default ProjectsSection;
+export default ProductsSection;

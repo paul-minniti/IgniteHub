@@ -60,8 +60,10 @@ const MembershipSection = () => {
 								mb={2}>
 								<Box
 									sx={{
-										width: 48,
-										height: 48,
+										// width: 48,
+										// height: 48,
+										minWidth: 48,
+										minHeight: 48,
 										backgroundColor: "#fb923c",
 										color: "#fff",
 										borderRadius: 1,
