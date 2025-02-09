@@ -3,6 +3,9 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/authContext";
+import { Box, Stack } from "@mui/material";
+import Header from "./components/Header";
+import MainGrid from "./components/MainGrid";
 
 export default function Dashboard() {
 	const router = useRouter();
@@ -21,9 +24,23 @@ export default function Dashboard() {
 
 	// If user exists, show the protected content
 	return (
-		<div>
-			<h1>Welcome to your dashboard</h1>
-			<p>User email: {user.email}</p>
-		</div>
+		<Box
+			component="main"
+			sx={{
+				flexGrow: 1,
+				overflow: "auto"
+			}}>
+			<Stack
+				spacing={2}
+				sx={{
+					alignItems: "center",
+					mx: 3,
+					pb: 5,
+					mt: { xs: 8, md: 0 }
+				}}>
+				<Header />
+				<MainGrid />
+			</Stack>
+		</Box>
 	);
 }

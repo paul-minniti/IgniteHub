@@ -20,7 +20,7 @@ export default function PrivacyPolicy() {
 				Privacy Policy
 			</Typography>
 
-			<Typography variant="body2" color="text.secondary">
+			<Typography variant="body2" color="text.primary">
 				Last Updated: February 1, 2025
 			</Typography>
 
@@ -183,7 +183,7 @@ export default function PrivacyPolicy() {
 			</Typography>
 
 			{/* Footer / Note */}
-			<Typography variant="body2" color="text.secondary">
+			<Typography variant="body2" color="text.primary">
 				By using our App, you acknowledge that you have read and understood this
 				Privacy Policy. We recommend reviewing it periodically to stay informed
 				about how we are protecting your information.

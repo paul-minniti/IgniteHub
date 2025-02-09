@@ -15,7 +15,7 @@ const BenefitsSection = () => {
 				/>
 
 				<Stack
-					direction="row"
+					direction={{ xs: "column", md: "row" }}
 					gap="24px"
 					flexWrap="wrap"
 					justifyContent="center">
