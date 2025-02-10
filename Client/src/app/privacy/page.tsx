@@ -1,4 +1,4 @@
-"use client"; // If using Next.js App Router, ensure this is a client component
+"use static";
 
 import React from "react";
 import { Box, Typography, Link } from "@mui/material";

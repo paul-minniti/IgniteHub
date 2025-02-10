@@ -79,7 +79,7 @@ export default function Footer() {
 						flexDirection: "column",
 						gap: 1
 					}}>
-					<Link color="text.secondary" variant="body2" href="#">
+					<Link color="text.secondary" variant="body2" href="/terms">
 						Terms
 					</Link>
 					<Link color="text.secondary" variant="body2" href="/privacy">
@@ -112,7 +112,7 @@ export default function Footer() {
 						}}>
 						&nbsp;•&nbsp;
 					</Typography>
-					<Link color="text.secondary" variant="body2" href="#">
+					<Link color="text.secondary" variant="body2" href="/terms">
 						Terms of Service
 					</Link>
 					<Copyright sx={{ color: "text.secondary" }} />
