@@ -1,23 +1,5 @@
 extend type Mutation {
   """
-  ✨ Insert a single `Movie` into the table. Columns not specified in `data` will receive defaults (e.g. `null`).
-  """
-  movie_insert(
-    """
-    Data object to insert into the table.
-    """
-    data: Movie_Data!
-  ): Movie_KeyOutput! @fdc_generated(from: "Movie", purpose: INSERT_SINGLE)
-  """
-  ✨ Insert a single `MovieMetadata` into the table. Columns not specified in `data` will receive defaults (e.g. `null`).
-  """
-  movieMetadata_insert(
-    """
-    Data object to insert into the table.
-    """
-    data: MovieMetadata_Data!
-  ): MovieMetadata_KeyOutput! @fdc_generated(from: "MovieMetadata", purpose: INSERT_SINGLE)
-  """
   ✨ Insert a single `Newsletter` into the table. Columns not specified in `data` will receive defaults (e.g. `null`).
   """
   newsletter_insert(
@@ -27,14 +9,23 @@ extend type Mutation {
     data: Newsletter_Data!
   ): Newsletter_KeyOutput! @fdc_generated(from: "Newsletter", purpose: INSERT_SINGLE)
   """
-  ✨ Insert a single `Review` into the table. Columns not specified in `data` will receive defaults (e.g. `null`).
+  ✨ Insert a single `Project` into the table. Columns not specified in `data` will receive defaults (e.g. `null`).
   """
-  review_insert(
+  project_insert(
     """
     Data object to insert into the table.
     """
-    data: Review_Data!
-  ): Review_KeyOutput! @fdc_generated(from: "Review", purpose: INSERT_SINGLE)
+    data: Project_Data!
+  ): Project_KeyOutput! @fdc_generated(from: "Project", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `ProjectMembership` into the table. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  projectMembership_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: ProjectMembership_Data!
+  ): ProjectMembership_KeyOutput! @fdc_generated(from: "ProjectMembership", purpose: INSERT_SINGLE)
   """
   ✨ Insert a single `User` into the table. Columns not specified in `data` will receive defaults (e.g. `null`).
   """
@@ -45,24 +36,6 @@ extend type Mutation {
     data: User_Data!
   ): User_KeyOutput! @fdc_generated(from: "User", purpose: INSERT_SINGLE)
   """
-  ✨ Insert `Movie` objects into the table. Columns not specified in `data` will receive defaults (e.g. `null`).
-  """
-  movie_insertMany(
-    """
-    List of data objects to insert into the table.
-    """
-    data: [Movie_Data!]!
-  ): [Movie_KeyOutput!]! @fdc_generated(from: "Movie", purpose: INSERT_MULTIPLE)
-  """
-  ✨ Insert `MovieMetadata` objects into the table. Columns not specified in `data` will receive defaults (e.g. `null`).
-  """
-  movieMetadata_insertMany(
-    """
-    List of data objects to insert into the table.
-    """
-    data: [MovieMetadata_Data!]!
-  ): [MovieMetadata_KeyOutput!]! @fdc_generated(from: "MovieMetadata", purpose: INSERT_MULTIPLE)
-  """
   ✨ Insert `Newsletter` objects into the table. Columns not specified in `data` will receive defaults (e.g. `null`).
   """
   newsletter_insertMany(
@@ -72,14 +45,23 @@ extend type Mutation {
     data: [Newsletter_Data!]!
   ): [Newsletter_KeyOutput!]! @fdc_generated(from: "Newsletter", purpose: INSERT_MULTIPLE)
   """
-  ✨ Insert `Review` objects into the table. Columns not specified in `data` will receive defaults (e.g. `null`).
+  ✨ Insert `Project` objects into the table. Columns not specified in `data` will receive defaults (e.g. `null`).
   """
-  review_insertMany(
+  project_insertMany(
     """
     List of data objects to insert into the table.
     """
-    data: [Review_Data!]!
-  ): [Review_KeyOutput!]! @fdc_generated(from: "Review", purpose: INSERT_MULTIPLE)
+    data: [Project_Data!]!
+  ): [Project_KeyOutput!]! @fdc_generated(from: "Project", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `ProjectMembership` objects into the table. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  projectMembership_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [ProjectMembership_Data!]!
+  ): [ProjectMembership_KeyOutput!]! @fdc_generated(from: "ProjectMembership", purpose: INSERT_MULTIPLE)
   """
   ✨ Insert `User` objects into the table. Columns not specified in `data` will receive defaults (e.g. `null`).
   """
@@ -90,24 +72,6 @@ extend type Mutation {
     data: [User_Data!]!
   ): [User_KeyOutput!]! @fdc_generated(from: "User", purpose: INSERT_MULTIPLE)
   """
-  ✨ Insert or update a single `Movie` into the table, based on the primary key. Returns the key of the newly inserted `Movie`.
-  """
-  movie_upsert(
-    """
-    Data object to insert or update if it already exists.
-    """
-    data: Movie_Data!
-  ): Movie_KeyOutput! @fdc_generated(from: "Movie", purpose: UPSERT_SINGLE)
-  """
-  ✨ Insert or update a single `MovieMetadata` into the table, based on the primary key. Returns the key of the newly inserted `MovieMetadata`.
-  """
-  movieMetadata_upsert(
-    """
-    Data object to insert or update if it already exists.
-    """
-    data: MovieMetadata_Data!
-  ): MovieMetadata_KeyOutput! @fdc_generated(from: "MovieMetadata", purpose: UPSERT_SINGLE)
-  """
   ✨ Insert or update a single `Newsletter` into the table, based on the primary key. Returns the key of the newly inserted `Newsletter`.
   """
   newsletter_upsert(
@@ -117,14 +81,23 @@ extend type Mutation {
     data: Newsletter_Data!
   ): Newsletter_KeyOutput! @fdc_generated(from: "Newsletter", purpose: UPSERT_SINGLE)
   """
-  ✨ Insert or update a single `Review` into the table, based on the primary key. Returns the key of the newly inserted `Review`.
+  ✨ Insert or update a single `Project` into the table, based on the primary key. Returns the key of the newly inserted `Project`.
   """
-  review_upsert(
+  project_upsert(
     """
     Data object to insert or update if it already exists.
     """
-    data: Review_Data!
-  ): Review_KeyOutput! @fdc_generated(from: "Review", purpose: UPSERT_SINGLE)
+    data: Project_Data!
+  ): Project_KeyOutput! @fdc_generated(from: "Project", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `ProjectMembership` into the table, based on the primary key. Returns the key of the newly inserted `ProjectMembership`.
+  """
+  projectMembership_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: ProjectMembership_Data!
+  ): ProjectMembership_KeyOutput! @fdc_generated(from: "ProjectMembership", purpose: UPSERT_SINGLE)
   """
   ✨ Insert or update a single `User` into the table, based on the primary key. Returns the key of the newly inserted `User`.
   """
@@ -135,24 +108,6 @@ extend type Mutation {
     data: User_Data!
   ): User_KeyOutput! @fdc_generated(from: "User", purpose: UPSERT_SINGLE)
   """
-  ✨ Insert or update `Movie` objects into the table, based on the primary key. Returns the key of the newly inserted `Movie`.
-  """
-  movie_upsertMany(
-    """
-    List of data objects to insert or update if it already exists.
-    """
-    data: [Movie_Data!]!
-  ): [Movie_KeyOutput!]! @fdc_generated(from: "Movie", purpose: UPSERT_MULTIPLE)
-  """
-  ✨ Insert or update `MovieMetadata` objects into the table, based on the primary key. Returns the key of the newly inserted `MovieMetadata`.
-  """
-  movieMetadata_upsertMany(
-    """
-    List of data objects to insert or update if it already exists.
-    """
-    data: [MovieMetadata_Data!]!
-  ): [MovieMetadata_KeyOutput!]! @fdc_generated(from: "MovieMetadata", purpose: UPSERT_MULTIPLE)
-  """
   ✨ Insert or update `Newsletter` objects into the table, based on the primary key. Returns the key of the newly inserted `Newsletter`.
   """
   newsletter_upsertMany(
@@ -162,14 +117,23 @@ extend type Mutation {
     data: [Newsletter_Data!]!
   ): [Newsletter_KeyOutput!]! @fdc_generated(from: "Newsletter", purpose: UPSERT_MULTIPLE)
   """
-  ✨ Insert or update `Review` objects into the table, based on the primary key. Returns the key of the newly inserted `Review`.
+  ✨ Insert or update `Project` objects into the table, based on the primary key. Returns the key of the newly inserted `Project`.
   """
-  review_upsertMany(
+  project_upsertMany(
     """
     List of data objects to insert or update if it already exists.
     """
-    data: [Review_Data!]!
-  ): [Review_KeyOutput!]! @fdc_generated(from: "Review", purpose: UPSERT_MULTIPLE)
+    data: [Project_Data!]!
+  ): [Project_KeyOutput!]! @fdc_generated(from: "Project", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `ProjectMembership` objects into the table, based on the primary key. Returns the key of the newly inserted `ProjectMembership`.
+  """
+  projectMembership_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [ProjectMembership_Data!]!
+  ): [ProjectMembership_KeyOutput!]! @fdc_generated(from: "ProjectMembership", purpose: UPSERT_MULTIPLE)
   """
   ✨ Insert or update `User` objects into the table, based on the primary key. Returns the key of the newly inserted `User`.
   """
@@ -179,54 +143,6 @@ extend type Mutation {
     """
     data: [User_Data!]!
   ): [User_KeyOutput!]! @fdc_generated(from: "User", purpose: UPSERT_MULTIPLE)
-  """
-  ✨ Update a single `Movie` based on `id`, `key` or `first`, setting columns specified in `data`. Returns `null` if not found.
-  """
-  movie_update(
-    """
-    The unique ID of the object.
-    """
-    id: UUID
-
-    """
-    The key used to identify the object.
-    """
-    key: Movie_Key
-
-    """
-    Fetch the first row based on the filters and ordering.
-    """
-    first: Movie_FirstRow
-
-    """
-    Data object containing fields to be updated.
-    """
-    data: Movie_Data!
-  ): Movie_KeyOutput @fdc_generated(from: "Movie", purpose: UPDATE_SINGLE)
-  """
-  ✨ Update a single `MovieMetadata` based on `id`, `key` or `first`, setting columns specified in `data`. Returns `null` if not found.
-  """
-  movieMetadata_update(
-    """
-    The unique ID of the object.
-    """
-    id: UUID
-
-    """
-    The key used to identify the object.
-    """
-    key: MovieMetadata_Key
-
-    """
-    Fetch the first row based on the filters and ordering.
-    """
-    first: MovieMetadata_FirstRow
-
-    """
-    Data object containing fields to be updated.
-    """
-    data: MovieMetadata_Data!
-  ): MovieMetadata_KeyOutput @fdc_generated(from: "MovieMetadata", purpose: UPDATE_SINGLE)
   """
   ✨ Update a single `Newsletter` based on `id`, `key` or `first`, setting columns specified in `data`. Returns `null` if not found.
   """
@@ -252,24 +168,53 @@ extend type Mutation {
     data: Newsletter_Data!
   ): Newsletter_KeyOutput @fdc_generated(from: "Newsletter", purpose: UPDATE_SINGLE)
   """
-  ✨ Update a single `Review` based on `id`, `key` or `first`, setting columns specified in `data`. Returns `null` if not found.
+  ✨ Update a single `Project` based on `id`, `key` or `first`, setting columns specified in `data`. Returns `null` if not found.
   """
-  review_update(
+  project_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
     """
     The key used to identify the object.
     """
-    key: Review_Key
+    key: Project_Key
 
     """
     Fetch the first row based on the filters and ordering.
     """
-    first: Review_FirstRow
+    first: Project_FirstRow
 
     """
     Data object containing fields to be updated.
     """
-    data: Review_Data!
-  ): Review_KeyOutput @fdc_generated(from: "Review", purpose: UPDATE_SINGLE)
+    data: Project_Data!
+  ): Project_KeyOutput @fdc_generated(from: "Project", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `ProjectMembership` based on `id`, `key` or `first`, setting columns specified in `data`. Returns `null` if not found.
+  """
+  projectMembership_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: ProjectMembership_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: ProjectMembership_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: ProjectMembership_Data!
+  ): ProjectMembership_KeyOutput @fdc_generated(from: "ProjectMembership", purpose: UPDATE_SINGLE)
   """
   ✨ Update a single `User` based on `id`, `key` or `first`, setting columns specified in `data`. Returns `null` if not found.
   """
@@ -300,44 +245,6 @@ extend type Mutation {
     data: User_Data!
   ): User_KeyOutput @fdc_generated(from: "User", purpose: UPDATE_SINGLE)
   """
-  ✨ Update `Movie` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
-  """
-  movie_updateMany(
-    """
-    Filter condition to specify which rows to update.
-    """
-    where: Movie_Filter
-
-    """
-    Set to true to update all rows.
-    """
-    all: Boolean = false
-
-    """
-    Data object containing fields to update.
-    """
-    data: Movie_Data!
-  ): Int! @fdc_generated(from: "Movie", purpose: UPDATE_MULTIPLE)
-  """
-  ✨ Update `MovieMetadata` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
-  """
-  movieMetadata_updateMany(
-    """
-    Filter condition to specify which rows to update.
-    """
-    where: MovieMetadata_Filter
-
-    """
-    Set to true to update all rows.
-    """
-    all: Boolean = false
-
-    """
-    Data object containing fields to update.
-    """
-    data: MovieMetadata_Data!
-  ): Int! @fdc_generated(from: "MovieMetadata", purpose: UPDATE_MULTIPLE)
-  """
   ✨ Update `Newsletter` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
   """
   newsletter_updateMany(
@@ -357,13 +264,13 @@ extend type Mutation {
     data: Newsletter_Data!
   ): Int! @fdc_generated(from: "Newsletter", purpose: UPDATE_MULTIPLE)
   """
-  ✨ Update `Review` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  ✨ Update `Project` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
   """
-  review_updateMany(
+  project_updateMany(
     """
     Filter condition to specify which rows to update.
     """
-    where: Review_Filter
+    where: Project_Filter
 
     """
     Set to true to update all rows.
@@ -373,8 +280,27 @@ extend type Mutation {
     """
     Data object containing fields to update.
     """
-    data: Review_Data!
-  ): Int! @fdc_generated(from: "Review", purpose: UPDATE_MULTIPLE)
+    data: Project_Data!
+  ): Int! @fdc_generated(from: "Project", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `ProjectMembership` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  projectMembership_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: ProjectMembership_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: ProjectMembership_Data!
+  ): Int! @fdc_generated(from: "ProjectMembership", purpose: UPDATE_MULTIPLE)
   """
   ✨ Update `User` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
   """
@@ -395,44 +321,6 @@ extend type Mutation {
     data: User_Data!
   ): Int! @fdc_generated(from: "User", purpose: UPDATE_MULTIPLE)
   """
-  ✨ Delete a single `Movie` based on `id`, `key` or `first` and return its key (or `null` if not found).
-  """
-  movie_delete(
-    """
-    The unique ID of the object.
-    """
-    id: UUID
-
-    """
-    The key used to identify the object.
-    """
-    key: Movie_Key
-
-    """
-    Fetch the first row based on the filters and ordering.
-    """
-    first: Movie_FirstRow
-  ): Movie_KeyOutput @fdc_generated(from: "Movie", purpose: DELETE_SINGLE)
-  """
-  ✨ Delete a single `MovieMetadata` based on `id`, `key` or `first` and return its key (or `null` if not found).
-  """
-  movieMetadata_delete(
-    """
-    The unique ID of the object.
-    """
-    id: UUID
-
-    """
-    The key used to identify the object.
-    """
-    key: MovieMetadata_Key
-
-    """
-    Fetch the first row based on the filters and ordering.
-    """
-    first: MovieMetadata_FirstRow
-  ): MovieMetadata_KeyOutput @fdc_generated(from: "MovieMetadata", purpose: DELETE_SINGLE)
-  """
   ✨ Delete a single `Newsletter` based on `id`, `key` or `first` and return its key (or `null` if not found).
   """
   newsletter_delete(
@@ -452,19 +340,43 @@ extend type Mutation {
     first: Newsletter_FirstRow
   ): Newsletter_KeyOutput @fdc_generated(from: "Newsletter", purpose: DELETE_SINGLE)
   """
-  ✨ Delete a single `Review` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  ✨ Delete a single `Project` based on `id`, `key` or `first` and return its key (or `null` if not found).
   """
-  review_delete(
+  project_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
     """
     The key used to identify the object.
     """
-    key: Review_Key
+    key: Project_Key
 
     """
     Fetch the first row based on the filters and ordering.
     """
-    first: Review_FirstRow
-  ): Review_KeyOutput @fdc_generated(from: "Review", purpose: DELETE_SINGLE)
+    first: Project_FirstRow
+  ): Project_KeyOutput @fdc_generated(from: "Project", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `ProjectMembership` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  projectMembership_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: ProjectMembership_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: ProjectMembership_FirstRow
+  ): ProjectMembership_KeyOutput @fdc_generated(from: "ProjectMembership", purpose: DELETE_SINGLE)
   """
   ✨ Delete a single `User` based on `id`, `key` or `first` and return its key (or `null` if not found).
   """
@@ -490,34 +402,6 @@ extend type Mutation {
     first: User_FirstRow
   ): User_KeyOutput @fdc_generated(from: "User", purpose: DELETE_SINGLE)
   """
-  ✨ Delete `Movie` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
-  """
-  movie_deleteMany(
-    """
-    Filter condition to specify which rows to delete.
-    """
-    where: Movie_Filter
-
-    """
-    Set to true to delete all rows.
-    """
-    all: Boolean = false
-  ): Int! @fdc_generated(from: "Movie", purpose: DELETE_MULTIPLE)
-  """
-  ✨ Delete `MovieMetadata` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
-  """
-  movieMetadata_deleteMany(
-    """
-    Filter condition to specify which rows to delete.
-    """
-    where: MovieMetadata_Filter
-
-    """
-    Set to true to delete all rows.
-    """
-    all: Boolean = false
-  ): Int! @fdc_generated(from: "MovieMetadata", purpose: DELETE_MULTIPLE)
-  """
   ✨ Delete `Newsletter` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
   """
   newsletter_deleteMany(
@@ -532,19 +416,33 @@ extend type Mutation {
     all: Boolean = false
   ): Int! @fdc_generated(from: "Newsletter", purpose: DELETE_MULTIPLE)
   """
-  ✨ Delete `Review` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  ✨ Delete `Project` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
   """
-  review_deleteMany(
+  project_deleteMany(
     """
     Filter condition to specify which rows to delete.
     """
-    where: Review_Filter
+    where: Project_Filter
 
     """
     Set to true to delete all rows.
     """
     all: Boolean = false
-  ): Int! @fdc_generated(from: "Review", purpose: DELETE_MULTIPLE)
+  ): Int! @fdc_generated(from: "Project", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `ProjectMembership` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  projectMembership_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: ProjectMembership_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "ProjectMembership", purpose: DELETE_MULTIPLE)
   """
   ✨ Delete `User` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
   """

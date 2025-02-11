@@ -1,17 +1,17 @@
-extend type Movie {
+extend type Project {
   """
-  ✨ List `Review` objects in a one-to-many relationship (where `Review`.`movie` is this object).
+  ✨ List `ProjectMembership` objects in a one-to-many relationship (where `ProjectMembership`.`project` is this object).
   """
-  reviews_on_movie(
+  projectMemberships_on_project(
     """
     Filter condition to narrow down the query results.
     """
-    where: Review_Filter
+    where: ProjectMembership_Filter
 
     """
     Order the query results by specific fields.
     """
-    orderBy: [Review_Order!]
+    orderBy: [ProjectMembership_Order!]
 
     """
     Number of rows to skip before starting to return the results.
@@ -22,24 +22,22 @@ extend type Movie {
     Maximum number of rows to return (defaults to 100 rows).
     """
     limit: Int = 100
-  ): [Review!]! @fdc_generated(from: "Review.movie", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  ): [ProjectMembership!]! @fdc_generated(from: "ProjectMembership.project", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+}
+extend type ProjectMembership {
   """
-  ✨ List `MovieMetadata` objects in a one-to-one relationship (where `MovieMetadata`.`movie` is this object).
+  ✨ List `Project` objects in a one-to-many relationship (where `Project`.`memberships` is this object).
   """
-  movieMetadata_on_movie: MovieMetadata @fdc_generated(from: "MovieMetadata.movie", purpose: QUERY_SINGLE_ONE_TO_ONE)
-  """
-  ✨ List `User` objects using `Review` as the join table (a `Review` object exists where its `movie` is this and its `user` is that).
-  """
-  users_via_Review(
+  projects_on_memberships(
     """
     Filter condition to narrow down the query results.
     """
-    where: Review_Filter
+    where: Project_Filter
 
     """
     Order the query results by specific fields.
     """
-    orderBy: [Review_Order!]
+    orderBy: [Project_Order!]
 
     """
     Number of rows to skip before starting to return the results.
@@ -50,22 +48,46 @@ extend type Movie {
     Maximum number of rows to return (defaults to 100 rows).
     """
     limit: Int = 100
-  ): [User!]! @fdc_generated(from: "Review", purpose: QUERY_MULTIPLE_MANY_TO_MANY)
+  ): [Project!]! @fdc_generated(from: "Project.memberships", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  ✨ List `User` objects in a one-to-many relationship (where `User`.`memberships` is this object).
+  """
+  users_on_memberships(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: User_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [User_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+  ): [User!]! @fdc_generated(from: "User.memberships", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
 }
 extend type User {
   """
-  ✨ List `Review` objects in a one-to-many relationship (where `Review`.`user` is this object).
+  ✨ List `ProjectMembership` objects in a one-to-many relationship (where `ProjectMembership`.`user` is this object).
   """
-  reviews_on_user(
+  projectMemberships_on_user(
     """
     Filter condition to narrow down the query results.
     """
-    where: Review_Filter
+    where: ProjectMembership_Filter
 
     """
     Order the query results by specific fields.
     """
-    orderBy: [Review_Order!]
+    orderBy: [ProjectMembership_Order!]
 
     """
     Number of rows to skip before starting to return the results.
@@ -76,29 +98,5 @@ extend type User {
     Maximum number of rows to return (defaults to 100 rows).
     """
     limit: Int = 100
-  ): [Review!]! @fdc_generated(from: "Review.user", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
-  """
-  ✨ List `Movie` objects using `Review` as the join table (a `Review` object exists where its `user` is this and its `movie` is that).
-  """
-  movies_via_Review(
-    """
-    Filter condition to narrow down the query results.
-    """
-    where: Review_Filter
-
-    """
-    Order the query results by specific fields.
-    """
-    orderBy: [Review_Order!]
-
-    """
-    Number of rows to skip before starting to return the results.
-    """
-    offset: Int
-
-    """
-    Maximum number of rows to return (defaults to 100 rows).
-    """
-    limit: Int = 100
-  ): [Movie!]! @fdc_generated(from: "Review", purpose: QUERY_MULTIPLE_MANY_TO_MANY)
+  ): [ProjectMembership!]! @fdc_generated(from: "ProjectMembership.user", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
 }
