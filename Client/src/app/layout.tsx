@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Providers from "./providers";
 import "./globals.css";
 
@@ -18,19 +18,19 @@ export const metadata: Metadata = {
 		"Startup",
 		"Technology"
 	],
-	authors: [{ name: "IgniteHub Team", url: "https://www.getignitehub.com" }],
+	authors: [{ name: "IgniteHub Team", url: "https://getignitehub.com" }],
 	creator: "IgniteHub",
 	publisher: "IgniteHub",
 	openGraph: {
 		type: "website",
-		url: "https://www.getignitehub.com",
+		url: "https://getignitehub.com",
 		title: "IgniteHub",
 		description:
 			"IgniteHub is a next-gen ERP platform for influencers, freelancers, and entrepreneurs.",
 		siteName: "IgniteHub",
 		images: [
 			{
-				url: "https://www.getignitehub.com/og-image.png",
+				url: "https://getignitehub.com/og-image.png",
 				width: 1200,
 				height: 630,
 				alt: "IgniteHub – Next-Gen ERP Software"
@@ -44,18 +44,12 @@ export const metadata: Metadata = {
 		title: "IgniteHub",
 		description:
 			"IgniteHub is a next-gen ERP platform for influencers, freelancers, and entrepreneurs.",
-		images: ["https://www.getignitehub.com/og-image.png"]
-	},
-	viewport: {
-		width: "device-width",
-		initialScale: 1,
-		maximumScale: 1
+		images: ["https://getignitehub.com/og-image.png"]
 	},
 	icons: {
-		icon: "/favicon.ico" // Favicon path
+		icon: "/favicon.ico"
 	},
 	manifest: "/site.webmanifest",
-	themeColor: "#FFFFFF", // Customize based on your brand color
 	robots: {
 		index: true,
 		follow: true,
@@ -69,9 +63,17 @@ export const metadata: Metadata = {
 		}
 	},
 	alternates: {
-		canonical: "https://www.getignitehub.com"
+		canonical: "https://getignitehub.com"
 	}
 };
+
+export const viewport: Viewport = {
+	width: "device-width",
+	initialScale: 1,
+	maximumScale: 1
+};
+
+export const themeColor = "#ffffff";
 
 export default function RootLayout({
 	children

@@ -1,43 +1,5 @@
 extend type Query {
   """
-  ✨ Look up a single `Movie` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
-  """
-  movie(
-    """
-    The unique ID of the object.
-    """
-    id: UUID
-
-    """
-    The key used to identify the object.
-    """
-    key: Movie_Key
-
-    """
-    Fetch the first row based on the filters and ordering.
-    """
-    first: Movie_FirstRow
-  ): Movie @fdc_generated(from: "Movie", purpose: QUERY_SINGLE)
-  """
-  ✨ Look up a single `MovieMetadata` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
-  """
-  movieMetadata(
-    """
-    The unique ID of the object.
-    """
-    id: UUID
-
-    """
-    The key used to identify the object.
-    """
-    key: MovieMetadata_Key
-
-    """
-    Fetch the first row based on the filters and ordering.
-    """
-    first: MovieMetadata_FirstRow
-  ): MovieMetadata @fdc_generated(from: "MovieMetadata", purpose: QUERY_SINGLE)
-  """
   ✨ Look up a single `Newsletter` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
   """
   newsletter(
@@ -57,19 +19,43 @@ extend type Query {
     first: Newsletter_FirstRow
   ): Newsletter @fdc_generated(from: "Newsletter", purpose: QUERY_SINGLE)
   """
-  ✨ Look up a single `Review` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  ✨ Look up a single `Project` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
   """
-  review(
+  project(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
     """
     The key used to identify the object.
     """
-    key: Review_Key
+    key: Project_Key
 
     """
     Fetch the first row based on the filters and ordering.
     """
-    first: Review_FirstRow
-  ): Review @fdc_generated(from: "Review", purpose: QUERY_SINGLE)
+    first: Project_FirstRow
+  ): Project @fdc_generated(from: "Project", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `ProjectMembership` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  projectMembership(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: ProjectMembership_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: ProjectMembership_FirstRow
+  ): ProjectMembership @fdc_generated(from: "ProjectMembership", purpose: QUERY_SINGLE)
   """
   ✨ Look up a single `User` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
   """
@@ -95,54 +81,6 @@ extend type Query {
     first: User_FirstRow
   ): User @fdc_generated(from: "User", purpose: QUERY_SINGLE)
   """
-  ✨ List `Movie` objects in the table, optionally filtered by `where` conditions.
-  """
-  movies(
-    """
-    Filter condition to narrow down the query results.
-    """
-    where: Movie_Filter
-
-    """
-    Order the query results by specific fields.
-    """
-    orderBy: [Movie_Order!]
-
-    """
-    Number of rows to skip before starting to return the results.
-    """
-    offset: Int
-
-    """
-    Maximum number of rows to return (defaults to 100 rows).
-    """
-    limit: Int = 100
-  ): [Movie!]! @fdc_generated(from: "Movie", purpose: QUERY_MULTIPLE)
-  """
-  ✨ List `MovieMetadata` objects in the table, optionally filtered by `where` conditions.
-  """
-  movieMetadatas(
-    """
-    Filter condition to narrow down the query results.
-    """
-    where: MovieMetadata_Filter
-
-    """
-    Order the query results by specific fields.
-    """
-    orderBy: [MovieMetadata_Order!]
-
-    """
-    Number of rows to skip before starting to return the results.
-    """
-    offset: Int
-
-    """
-    Maximum number of rows to return (defaults to 100 rows).
-    """
-    limit: Int = 100
-  ): [MovieMetadata!]! @fdc_generated(from: "MovieMetadata", purpose: QUERY_MULTIPLE)
-  """
   ✨ List `Newsletter` objects in the table, optionally filtered by `where` conditions.
   """
   newsletters(
@@ -167,18 +105,18 @@ extend type Query {
     limit: Int = 100
   ): [Newsletter!]! @fdc_generated(from: "Newsletter", purpose: QUERY_MULTIPLE)
   """
-  ✨ List `Review` objects in the table, optionally filtered by `where` conditions.
+  ✨ List `Project` objects in the table, optionally filtered by `where` conditions.
   """
-  reviews(
+  projects(
     """
     Filter condition to narrow down the query results.
     """
-    where: Review_Filter
+    where: Project_Filter
 
     """
     Order the query results by specific fields.
     """
-    orderBy: [Review_Order!]
+    orderBy: [Project_Order!]
 
     """
     Number of rows to skip before starting to return the results.
@@ -189,7 +127,31 @@ extend type Query {
     Maximum number of rows to return (defaults to 100 rows).
     """
     limit: Int = 100
-  ): [Review!]! @fdc_generated(from: "Review", purpose: QUERY_MULTIPLE)
+  ): [Project!]! @fdc_generated(from: "Project", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `ProjectMembership` objects in the table, optionally filtered by `where` conditions.
+  """
+  projectMemberships(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: ProjectMembership_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [ProjectMembership_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+  ): [ProjectMembership!]! @fdc_generated(from: "ProjectMembership", purpose: QUERY_MULTIPLE)
   """
   ✨ List `User` objects in the table, optionally filtered by `where` conditions.
   """
