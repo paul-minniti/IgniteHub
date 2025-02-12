@@ -32,5 +32,5 @@ extend type User {
   """
   ✨ Implicit foreign key field based on `User`.`memberships`. It must match the value of `ProjectMembership`.`id`. See `@ref` for how to customize it.
   """
-  membershipsId: UUID! @fdc_generated(from: "User.memberships", purpose: IMPLICIT_REF_FIELD)
+  membershipsId: UUID @fdc_generated(from: "User.memberships", purpose: IMPLICIT_REF_FIELD)
 }

@@ -52,14 +52,12 @@
 
 type User @table {
   id: String! @default(expr: "auth.uid")
-  username: String! @col(dataType: "varchar(50)")
   firstName: String! @col(dataType: "varchar(100)")
   lastName: String! @col(dataType: "varchar(100)")
   email: String! @col(dataType: "varchar(255)")
   profilePictureUrl: String @col(dataType: "varchar(255)")
-  company: String @col(dataType: "varchar(255)")
-  memberships: ProjectMembership!
-  roles: [String!]! @col(dataType: "json")
+  memberships: ProjectMembership
+  roles: [String] @col(dataType: "json")
   lastLoggedIn: Date
   settings: String @col(dataType: "json")
   createdAt: Date! @default(expr: "request.time")

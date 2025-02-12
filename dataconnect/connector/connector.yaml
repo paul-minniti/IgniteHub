@@ -1,7 +1,6 @@
 connectorId: default
 generate:
   javascriptSdk:
-    outputDir: ../../Client/dataconnect-generated/js/default-connector
-    package: "@firebasegen/default-connector"
+    outputDir: ../../Client/ignitehub-dataconnect/js/default-connector
+    package: "@ignitehub/dataconnect"
     packageJsonDir: ../../Client
-    react: true

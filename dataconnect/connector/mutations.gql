@@ -1,10 +1,25 @@
 # # Example mutations for a simple movie app
 
-# # Create a movie based on user input
-# mutation CreateMovie($title: String!, $genre: String!, $imageUrl: String!)
-# @auth(level: USER_EMAIL_VERIFIED) {
-#   movie_insert(data: { title: $title, genre: $genre, imageUrl: $imageUrl })
+# type User @table {
+#   id: String! @default(expr: "auth.uid")
+#   firstName: String! @col(dataType: "varchar(100)")
+#   lastName: String! @col(dataType: "varchar(100)")
+#   email: String! @col(dataType: "varchar(255)")
+#   profilePictureUrl: String @col(dataType: "varchar(255)")
+#   memberships: ProjectMembership
+#   roles: [String] @col(dataType: "json")
+#   lastLoggedIn: Date
+#   settings: String @col(dataType: "json")
+#   createdAt: Date! @default(expr: "request.time")
+#   updatedAt: Date
 # }
+
+mutation CreateUser($firstName: String!, $lastName: String!, $email: String!)
+@auth(level: USER) {
+  user_insert(
+    data: { firstName: $firstName, lastName: $lastName, email: $email }
+  )
+}
 
 # # Upsert (update or insert) a user's username based on their auth.uid
 # mutation UpsertUser($username: String!) @auth(level: USER) {
@@ -26,14 +41,9 @@
 #   )
 # }
 
-# mutation AddNewsletterSignUp($email: String!) @auth(level: PUBLIC) {
-#   newsletter_insert(
-#     data: {
-#       email: $email
-#       # reviewDate defaults to today in the schema. No need to set it manually.
-#     }
-#   )
-# }
+mutation AddNewsletterSignUp($email: String!) @auth(level: PUBLIC) {
+  newsletter_insert(data: { email: $email })
+}
 
 # # Logged in user can delete their review for a movie
 # mutation DeleteReview($movieId: UUID!) @auth(level: USER) {
