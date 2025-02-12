@@ -3,7 +3,7 @@ This README will guide you through the process of using the generated TypeScript
 
 ***NOTE:** This README is generated alongside the generated SDK. If you make changes to this file, they will be overwritten when the SDK is regenerated.*
 
-You can use this generated SDK by importing from the package `@firebasegen/default-connector` as shown below. Both CommonJS and ESM imports are supported.
+You can use this generated SDK by importing from the package `@ignitehub/dataconnect` as shown below. Both CommonJS and ESM imports are supported.
 You can also follow the instructions from the [Data Connect documentation](https://firebase.google.com/docs/data-connect/web-sdk#set-client).
 
 # Accessing the connector
@@ -15,7 +15,7 @@ In order to call Data Connect queries and mutations, you need to create an insta
 
 ```javascript
 import { getDataConnect, DataConnect } from 'firebase/data-connect';
-import { connectorConfig } from '@firebasegen/default-connector';
+import { connectorConfig } from '@ignitehub/dataconnect';
 
 const connector: DataConnect = getDataConnect(connectorConfig);
 ```
@@ -29,7 +29,7 @@ You can also follow the emulator instructions from the [Data Connect documentati
 ```javascript
 // add connectDataConnectEmulator to your imports 
 import { connectDataConnectEmulator, getDataConnect, DataConnect } from 'firebase/data-connect';
-import { connectorConfig } from '@firebasegen/default-connector';
+import { connectorConfig } from '@ignitehub/dataconnect';
 
 const connector: DataConnect = getDataConnect(connectorConfig);
 connectDataConnectEmulator(connector, 'localhost', 9399);

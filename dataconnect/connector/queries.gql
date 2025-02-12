@@ -11,12 +11,12 @@
 #   }
 # }
 
-# query ListNewsletterSignIps @auth(level: PUBLIC) {
-#   newsletter {
-#     id
-#     email
-#   }
-# }
+query ListNewsletterSignIps @auth(level: PUBLIC) {
+  newsletter {
+    id
+    email
+  }
+}
 
 # # List all users, only admins should be able to list all users, so we use NO_ACCESS
 # query ListUsers @auth(level: NO_ACCESS) {
@@ -47,28 +47,17 @@
 # }
 
 # # Get movie by id
-# query GetMovieById($id: UUID!) @auth(level: PUBLIC) {
-#   movie(id: $id) {
-#     id
-#     title
-#     imageUrl
-#     genre
-#     metadata: movieMetadata_on_movie {
-#       rating
-#       releaseYear
-#       description
-#     }
-#     reviews: reviews_on_movie {
-#       reviewText
-#       reviewDate
-#       rating
-#       user {
-#         id
-#         username
-#       }
-#     }
-#   }
-# }
+query GetUserById($id: UUID!) @auth(level: PUBLIC) {
+  user(id: $id) {
+    id
+    firstName
+    lastName
+    profilePictureUrl
+    memberships
+    roles
+    projectMemberships_on_user
+  }
+}
 
 # # Search for movies, actors, and reviews
 # query SearchMovie($titleInput: String, $genre: String) @auth(level: PUBLIC) {
