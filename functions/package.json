@@ -16,7 +16,6 @@
   "main": "lib/index.js",
   "type": "module",
   "dependencies": {
-    "@firebasegen/default-connector": "file:dataconnect-generated/js/default-connector",
     "express": "^4.21.2",
     "firebase-admin": "^12.6.0",
     "firebase-functions": "^6.0.1",
