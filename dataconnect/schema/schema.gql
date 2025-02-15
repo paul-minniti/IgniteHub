@@ -56,27 +56,21 @@ type User @table {
   lastName: String! @col(dataType: "varchar(100)")
   email: String! @col(dataType: "varchar(255)")
   profilePictureUrl: String @col(dataType: "varchar(255)")
-  memberships: ProjectMembership
-  roles: [String] @col(dataType: "json")
+  project: Orginization
+  roles: [String]
   lastLoggedIn: Date
-  settings: String @col(dataType: "json")
   createdAt: Date! @default(expr: "request.time")
   updatedAt: Date
 }
 
-type Project @table {
-  name: String! @col(dataType: "varchar(255)")
-  hubIntegrations: String @col(dataType: "json")
+type Orginization @table {
+  name: String @col(dataType: "varchar(255)")
   status: String @col(dataType: "varchar(50)")
-  memberships: ProjectMembership!
-  settings: String @col(dataType: "json")
   createdAt: Date! @default(expr: "request.time")
   updatedAt: Date
 }
 
 type ProjectMembership @table {
-  user: User!
-  project: Project!
   role: String!
 }
 

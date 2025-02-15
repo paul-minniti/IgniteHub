@@ -14,10 +14,14 @@
 #   updatedAt: Date
 # }
 
-mutation CreateUser($firstName: String!, $lastName: String!, $email: String!)
-@auth(level: USER) {
+mutation CreateUser(
+  $id: String!
+  $firstName: String!
+  $lastName: String!
+  $email: String!
+) @auth(level: USER) {
   user_insert(
-    data: { firstName: $firstName, lastName: $lastName, email: $email }
+    data: { id: $id, firstName: $firstName, lastName: $lastName, email: $email }
   )
 }
 

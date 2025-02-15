@@ -1,58 +1,8 @@
-extend type Project {
+extend type Orginization {
   """
-  ✨ List `ProjectMembership` objects in a one-to-many relationship (where `ProjectMembership`.`project` is this object).
+  ✨ List `User` objects in a one-to-many relationship (where `User`.`project` is this object).
   """
-  projectMemberships_on_project(
-    """
-    Filter condition to narrow down the query results.
-    """
-    where: ProjectMembership_Filter
-
-    """
-    Order the query results by specific fields.
-    """
-    orderBy: [ProjectMembership_Order!]
-
-    """
-    Number of rows to skip before starting to return the results.
-    """
-    offset: Int
-
-    """
-    Maximum number of rows to return (defaults to 100 rows).
-    """
-    limit: Int = 100
-  ): [ProjectMembership!]! @fdc_generated(from: "ProjectMembership.project", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
-}
-extend type ProjectMembership {
-  """
-  ✨ List `Project` objects in a one-to-many relationship (where `Project`.`memberships` is this object).
-  """
-  projects_on_memberships(
-    """
-    Filter condition to narrow down the query results.
-    """
-    where: Project_Filter
-
-    """
-    Order the query results by specific fields.
-    """
-    orderBy: [Project_Order!]
-
-    """
-    Number of rows to skip before starting to return the results.
-    """
-    offset: Int
-
-    """
-    Maximum number of rows to return (defaults to 100 rows).
-    """
-    limit: Int = 100
-  ): [Project!]! @fdc_generated(from: "Project.memberships", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
-  """
-  ✨ List `User` objects in a one-to-many relationship (where `User`.`memberships` is this object).
-  """
-  users_on_memberships(
+  users_on_project(
     """
     Filter condition to narrow down the query results.
     """
@@ -72,31 +22,5 @@ extend type ProjectMembership {
     Maximum number of rows to return (defaults to 100 rows).
     """
     limit: Int = 100
-  ): [User!]! @fdc_generated(from: "User.memberships", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
-}
-extend type User {
-  """
-  ✨ List `ProjectMembership` objects in a one-to-many relationship (where `ProjectMembership`.`user` is this object).
-  """
-  projectMemberships_on_user(
-    """
-    Filter condition to narrow down the query results.
-    """
-    where: ProjectMembership_Filter
-
-    """
-    Order the query results by specific fields.
-    """
-    orderBy: [ProjectMembership_Order!]
-
-    """
-    Number of rows to skip before starting to return the results.
-    """
-    offset: Int
-
-    """
-    Maximum number of rows to return (defaults to 100 rows).
-    """
-    limit: Int = 100
-  ): [ProjectMembership!]! @fdc_generated(from: "ProjectMembership.user", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  ): [User!]! @fdc_generated(from: "User.project", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
 }

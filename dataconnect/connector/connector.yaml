@@ -2,5 +2,6 @@ connectorId: default
 generate:
   javascriptSdk:
     outputDir: ../../Client/ignitehub-dataconnect/js/default-connector
-    package: "@ignitehub/dataconnect"
+    package: "@IgniteHub/dataconnect"
     packageJsonDir: ../../Client
+    react: true

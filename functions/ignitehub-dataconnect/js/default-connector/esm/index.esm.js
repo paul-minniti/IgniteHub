@@ -46,13 +46,3 @@ export function listUsersRef(dc) {
 export function listUsers(dc) {
   return executeQuery(listUsersRef(dc));
 }
-
-export function getUserByIdRef(dcOrVars, vars) {
-  const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars, true);
-  dcInstance._useGeneratedSdk();
-  return queryRef(dcInstance, 'GetUserById', inputVars);
-}
-
-export function getUserById(dcOrVars, vars) {
-  return executeQuery(getUserByIdRef(dcOrVars, vars));
-}

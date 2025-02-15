@@ -27,21 +27,6 @@ export interface CreateUserVariables {
   email: string;
 }
 
-export interface GetUserByIdData {
-  user?: {
-    id: string;
-    email: string;
-    firstName: string;
-    lastName: string;
-    projectId?: UUIDString | null;
-    roles?: string[] | null;
-  } & User_Key;
-}
-
-export interface GetUserByIdVariables {
-  id: string;
-}
-
 export interface ListNewsletterSignIpsData {
   newsletters: ({
     id: UUIDString;
@@ -115,13 +100,4 @@ export function listUsersRef(dc: DataConnect): (QueryRef<ListUsersData, undefine
 
 export function listUsers(): QueryPromise<ListUsersData, undefined>;
 export function listUsers(dc: DataConnect): QueryPromise<ListUsersData, undefined>;
-
-
-/* Allow users to create refs without passing in DataConnect */
-export function getUserByIdRef(vars: GetUserByIdVariables): (QueryRef<GetUserByIdData, GetUserByIdVariables> & { __angular?: false });
-/* Allow users to pass in custom DataConnect instances */
-export function getUserByIdRef(dc: DataConnect, vars: GetUserByIdVariables): (QueryRef<GetUserByIdData, GetUserByIdVariables> & { __angular?: false });
-
-export function getUserById(vars: GetUserByIdVariables): QueryPromise<GetUserByIdData, GetUserByIdVariables>;
-export function getUserById(dc: DataConnect, vars: GetUserByIdVariables): QueryPromise<GetUserByIdData, GetUserByIdVariables>;
 
