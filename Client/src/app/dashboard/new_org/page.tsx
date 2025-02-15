@@ -42,8 +42,7 @@ export default function Dashboard() {
 					pb: 5,
 					mt: { xs: 8, md: 0 }
 				}}>
-				<Header />
-				<MainGrid />
+				Setup new Org
 			</Stack>
 		</Box>
 	);

@@ -9,14 +9,14 @@ extend type Mutation {
     data: Newsletter_Data!
   ): Newsletter_KeyOutput! @fdc_generated(from: "Newsletter", purpose: INSERT_SINGLE)
   """
-  ✨ Insert a single `Project` into the table. Columns not specified in `data` will receive defaults (e.g. `null`).
+  ✨ Insert a single `Orginization` into the table. Columns not specified in `data` will receive defaults (e.g. `null`).
   """
-  project_insert(
+  orginization_insert(
     """
     Data object to insert into the table.
     """
-    data: Project_Data!
-  ): Project_KeyOutput! @fdc_generated(from: "Project", purpose: INSERT_SINGLE)
+    data: Orginization_Data!
+  ): Orginization_KeyOutput! @fdc_generated(from: "Orginization", purpose: INSERT_SINGLE)
   """
   ✨ Insert a single `ProjectMembership` into the table. Columns not specified in `data` will receive defaults (e.g. `null`).
   """
@@ -45,14 +45,14 @@ extend type Mutation {
     data: [Newsletter_Data!]!
   ): [Newsletter_KeyOutput!]! @fdc_generated(from: "Newsletter", purpose: INSERT_MULTIPLE)
   """
-  ✨ Insert `Project` objects into the table. Columns not specified in `data` will receive defaults (e.g. `null`).
+  ✨ Insert `Orginization` objects into the table. Columns not specified in `data` will receive defaults (e.g. `null`).
   """
-  project_insertMany(
+  orginization_insertMany(
     """
     List of data objects to insert into the table.
     """
-    data: [Project_Data!]!
-  ): [Project_KeyOutput!]! @fdc_generated(from: "Project", purpose: INSERT_MULTIPLE)
+    data: [Orginization_Data!]!
+  ): [Orginization_KeyOutput!]! @fdc_generated(from: "Orginization", purpose: INSERT_MULTIPLE)
   """
   ✨ Insert `ProjectMembership` objects into the table. Columns not specified in `data` will receive defaults (e.g. `null`).
   """
@@ -81,14 +81,14 @@ extend type Mutation {
     data: Newsletter_Data!
   ): Newsletter_KeyOutput! @fdc_generated(from: "Newsletter", purpose: UPSERT_SINGLE)
   """
-  ✨ Insert or update a single `Project` into the table, based on the primary key. Returns the key of the newly inserted `Project`.
+  ✨ Insert or update a single `Orginization` into the table, based on the primary key. Returns the key of the newly inserted `Orginization`.
   """
-  project_upsert(
+  orginization_upsert(
     """
     Data object to insert or update if it already exists.
     """
-    data: Project_Data!
-  ): Project_KeyOutput! @fdc_generated(from: "Project", purpose: UPSERT_SINGLE)
+    data: Orginization_Data!
+  ): Orginization_KeyOutput! @fdc_generated(from: "Orginization", purpose: UPSERT_SINGLE)
   """
   ✨ Insert or update a single `ProjectMembership` into the table, based on the primary key. Returns the key of the newly inserted `ProjectMembership`.
   """
@@ -117,14 +117,14 @@ extend type Mutation {
     data: [Newsletter_Data!]!
   ): [Newsletter_KeyOutput!]! @fdc_generated(from: "Newsletter", purpose: UPSERT_MULTIPLE)
   """
-  ✨ Insert or update `Project` objects into the table, based on the primary key. Returns the key of the newly inserted `Project`.
+  ✨ Insert or update `Orginization` objects into the table, based on the primary key. Returns the key of the newly inserted `Orginization`.
   """
-  project_upsertMany(
+  orginization_upsertMany(
     """
     List of data objects to insert or update if it already exists.
     """
-    data: [Project_Data!]!
-  ): [Project_KeyOutput!]! @fdc_generated(from: "Project", purpose: UPSERT_MULTIPLE)
+    data: [Orginization_Data!]!
+  ): [Orginization_KeyOutput!]! @fdc_generated(from: "Orginization", purpose: UPSERT_MULTIPLE)
   """
   ✨ Insert or update `ProjectMembership` objects into the table, based on the primary key. Returns the key of the newly inserted `ProjectMembership`.
   """
@@ -168,9 +168,9 @@ extend type Mutation {
     data: Newsletter_Data!
   ): Newsletter_KeyOutput @fdc_generated(from: "Newsletter", purpose: UPDATE_SINGLE)
   """
-  ✨ Update a single `Project` based on `id`, `key` or `first`, setting columns specified in `data`. Returns `null` if not found.
+  ✨ Update a single `Orginization` based on `id`, `key` or `first`, setting columns specified in `data`. Returns `null` if not found.
   """
-  project_update(
+  orginization_update(
     """
     The unique ID of the object.
     """
@@ -179,18 +179,18 @@ extend type Mutation {
     """
     The key used to identify the object.
     """
-    key: Project_Key
+    key: Orginization_Key
 
     """
     Fetch the first row based on the filters and ordering.
     """
-    first: Project_FirstRow
+    first: Orginization_FirstRow
 
     """
     Data object containing fields to be updated.
     """
-    data: Project_Data!
-  ): Project_KeyOutput @fdc_generated(from: "Project", purpose: UPDATE_SINGLE)
+    data: Orginization_Data!
+  ): Orginization_KeyOutput @fdc_generated(from: "Orginization", purpose: UPDATE_SINGLE)
   """
   ✨ Update a single `ProjectMembership` based on `id`, `key` or `first`, setting columns specified in `data`. Returns `null` if not found.
   """
@@ -264,13 +264,13 @@ extend type Mutation {
     data: Newsletter_Data!
   ): Int! @fdc_generated(from: "Newsletter", purpose: UPDATE_MULTIPLE)
   """
-  ✨ Update `Project` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  ✨ Update `Orginization` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
   """
-  project_updateMany(
+  orginization_updateMany(
     """
     Filter condition to specify which rows to update.
     """
-    where: Project_Filter
+    where: Orginization_Filter
 
     """
     Set to true to update all rows.
@@ -280,8 +280,8 @@ extend type Mutation {
     """
     Data object containing fields to update.
     """
-    data: Project_Data!
-  ): Int! @fdc_generated(from: "Project", purpose: UPDATE_MULTIPLE)
+    data: Orginization_Data!
+  ): Int! @fdc_generated(from: "Orginization", purpose: UPDATE_MULTIPLE)
   """
   ✨ Update `ProjectMembership` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
   """
@@ -340,9 +340,9 @@ extend type Mutation {
     first: Newsletter_FirstRow
   ): Newsletter_KeyOutput @fdc_generated(from: "Newsletter", purpose: DELETE_SINGLE)
   """
-  ✨ Delete a single `Project` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  ✨ Delete a single `Orginization` based on `id`, `key` or `first` and return its key (or `null` if not found).
   """
-  project_delete(
+  orginization_delete(
     """
     The unique ID of the object.
     """
@@ -351,13 +351,13 @@ extend type Mutation {
     """
     The key used to identify the object.
     """
-    key: Project_Key
+    key: Orginization_Key
 
     """
     Fetch the first row based on the filters and ordering.
     """
-    first: Project_FirstRow
-  ): Project_KeyOutput @fdc_generated(from: "Project", purpose: DELETE_SINGLE)
+    first: Orginization_FirstRow
+  ): Orginization_KeyOutput @fdc_generated(from: "Orginization", purpose: DELETE_SINGLE)
   """
   ✨ Delete a single `ProjectMembership` based on `id`, `key` or `first` and return its key (or `null` if not found).
   """
@@ -416,19 +416,19 @@ extend type Mutation {
     all: Boolean = false
   ): Int! @fdc_generated(from: "Newsletter", purpose: DELETE_MULTIPLE)
   """
-  ✨ Delete `Project` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  ✨ Delete `Orginization` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
   """
-  project_deleteMany(
+  orginization_deleteMany(
     """
     Filter condition to specify which rows to delete.
     """
-    where: Project_Filter
+    where: Orginization_Filter
 
     """
     Set to true to delete all rows.
     """
     all: Boolean = false
-  ): Int! @fdc_generated(from: "Project", purpose: DELETE_MULTIPLE)
+  ): Int! @fdc_generated(from: "Orginization", purpose: DELETE_MULTIPLE)
   """
   ✨ Delete `ProjectMembership` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
   """

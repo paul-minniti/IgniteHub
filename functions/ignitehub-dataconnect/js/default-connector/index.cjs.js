@@ -1,58 +1,53 @@
-import { queryRef, executeQuery, mutationRef, executeMutation, validateArgs } from 'firebase/data-connect';
+const { queryRef, executeQuery, mutationRef, executeMutation, validateArgs } = require('firebase/data-connect');
 
-
-export const connectorConfig = {
+const connectorConfig = {
   connector: 'default',
   service: 'ignitehub-data-connect',
   location: 'us-east1'
 };
+exports.connectorConfig = connectorConfig;
 
-export function createUserRef(dcOrVars, vars) {
+function createUserRef(dcOrVars, vars) {
   const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars, true);
   dcInstance._useGeneratedSdk();
   return mutationRef(dcInstance, 'CreateUser', inputVars);
 }
+exports.createUserRef = createUserRef;
 
-export function createUser(dcOrVars, vars) {
+exports.createUser = function createUser(dcOrVars, vars) {
   return executeMutation(createUserRef(dcOrVars, vars));
-}
+};
 
-export function addNewsletterSignUpRef(dcOrVars, vars) {
+function addNewsletterSignUpRef(dcOrVars, vars) {
   const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars, true);
   dcInstance._useGeneratedSdk();
   return mutationRef(dcInstance, 'AddNewsletterSignUp', inputVars);
 }
+exports.addNewsletterSignUpRef = addNewsletterSignUpRef;
 
-export function addNewsletterSignUp(dcOrVars, vars) {
+exports.addNewsletterSignUp = function addNewsletterSignUp(dcOrVars, vars) {
   return executeMutation(addNewsletterSignUpRef(dcOrVars, vars));
-}
+};
 
-export function listNewsletterSignIpsRef(dc) {
+function listNewsletterSignIpsRef(dc) {
   const { dc: dcInstance} = validateArgs(connectorConfig, dc, undefined);
   dcInstance._useGeneratedSdk();
   return queryRef(dcInstance, 'ListNewsletterSignIps');
 }
+exports.listNewsletterSignIpsRef = listNewsletterSignIpsRef;
 
-export function listNewsletterSignIps(dc) {
+exports.listNewsletterSignIps = function listNewsletterSignIps(dc) {
   return executeQuery(listNewsletterSignIpsRef(dc));
-}
+};
 
-export function listUsersRef(dc) {
+function listUsersRef(dc) {
   const { dc: dcInstance} = validateArgs(connectorConfig, dc, undefined);
   dcInstance._useGeneratedSdk();
   return queryRef(dcInstance, 'ListUsers');
 }
+exports.listUsersRef = listUsersRef;
 
-export function listUsers(dc) {
+exports.listUsers = function listUsers(dc) {
   return executeQuery(listUsersRef(dc));
-}
+};
 
-export function getUserByIdRef(dcOrVars, vars) {
-  const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars, true);
-  dcInstance._useGeneratedSdk();
-  return queryRef(dcInstance, 'GetUserById', inputVars);
-}
-
-export function getUserById(dcOrVars, vars) {
-  return executeQuery(getUserByIdRef(dcOrVars, vars));
-}

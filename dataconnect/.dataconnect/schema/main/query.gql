@@ -19,9 +19,9 @@ extend type Query {
     first: Newsletter_FirstRow
   ): Newsletter @fdc_generated(from: "Newsletter", purpose: QUERY_SINGLE)
   """
-  ✨ Look up a single `Project` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  ✨ Look up a single `Orginization` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
   """
-  project(
+  orginization(
     """
     The unique ID of the object.
     """
@@ -30,13 +30,13 @@ extend type Query {
     """
     The key used to identify the object.
     """
-    key: Project_Key
+    key: Orginization_Key
 
     """
     Fetch the first row based on the filters and ordering.
     """
-    first: Project_FirstRow
-  ): Project @fdc_generated(from: "Project", purpose: QUERY_SINGLE)
+    first: Orginization_FirstRow
+  ): Orginization @fdc_generated(from: "Orginization", purpose: QUERY_SINGLE)
   """
   ✨ Look up a single `ProjectMembership` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
   """
@@ -105,18 +105,18 @@ extend type Query {
     limit: Int = 100
   ): [Newsletter!]! @fdc_generated(from: "Newsletter", purpose: QUERY_MULTIPLE)
   """
-  ✨ List `Project` objects in the table, optionally filtered by `where` conditions.
+  ✨ List `Orginization` objects in the table, optionally filtered by `where` conditions.
   """
-  projects(
+  orginizations(
     """
     Filter condition to narrow down the query results.
     """
-    where: Project_Filter
+    where: Orginization_Filter
 
     """
     Order the query results by specific fields.
     """
-    orderBy: [Project_Order!]
+    orderBy: [Orginization_Order!]
 
     """
     Number of rows to skip before starting to return the results.
@@ -127,7 +127,7 @@ extend type Query {
     Maximum number of rows to return (defaults to 100 rows).
     """
     limit: Int = 100
-  ): [Project!]! @fdc_generated(from: "Project", purpose: QUERY_MULTIPLE)
+  ): [Orginization!]! @fdc_generated(from: "Orginization", purpose: QUERY_MULTIPLE)
   """
   ✨ List `ProjectMembership` objects in the table, optionally filtered by `where` conditions.
   """

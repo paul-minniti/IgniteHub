@@ -4,33 +4,21 @@ extend type Newsletter {
   """
   id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "Newsletter", purpose: IMPLICIT_KEY_FIELD)
 }
-extend type Project {
+extend type Orginization {
   """
   ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
   """
-  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "Project", purpose: IMPLICIT_KEY_FIELD)
-  """
-  ✨ Implicit foreign key field based on `Project`.`memberships`. It must match the value of `ProjectMembership`.`id`. See `@ref` for how to customize it.
-  """
-  membershipsId: UUID! @fdc_generated(from: "Project.memberships", purpose: IMPLICIT_REF_FIELD)
+  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "Orginization", purpose: IMPLICIT_KEY_FIELD)
 }
 extend type ProjectMembership {
   """
   ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
   """
   id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "ProjectMembership", purpose: IMPLICIT_KEY_FIELD)
-  """
-  ✨ Implicit foreign key field based on `ProjectMembership`.`project`. It must match the value of `Project`.`id`. See `@ref` for how to customize it.
-  """
-  projectId: UUID! @fdc_generated(from: "ProjectMembership.project", purpose: IMPLICIT_REF_FIELD)
-  """
-  ✨ Implicit foreign key field based on `ProjectMembership`.`user`. It must match the value of `User`.`id`. See `@ref` for how to customize it.
-  """
-  userId: String! @fdc_generated(from: "ProjectMembership.user", purpose: IMPLICIT_REF_FIELD)
 }
 extend type User {
   """
-  ✨ Implicit foreign key field based on `User`.`memberships`. It must match the value of `ProjectMembership`.`id`. See `@ref` for how to customize it.
+  ✨ Implicit foreign key field based on `User`.`project`. It must match the value of `Orginization`.`id`. See `@ref` for how to customize it.
   """
-  membershipsId: UUID @fdc_generated(from: "User.memberships", purpose: IMPLICIT_REF_FIELD)
+  projectId: UUID @fdc_generated(from: "User.project", purpose: IMPLICIT_REF_FIELD)
 }

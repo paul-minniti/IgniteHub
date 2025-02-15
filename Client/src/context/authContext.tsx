@@ -10,7 +10,8 @@ import {
 	signInWithEmailAndPassword,
 	createUserWithEmailAndPassword
 } from "firebase/auth";
-import { auth } from "@/utils/firebase";
+import { listUsers, getUserById } from "@IgniteHub/dataconnect";
+import { auth, dataConnect } from "@/utils/firebase";
 import { useRouter } from "next/navigation";
 import { Modal } from "@mui/material";
 import SignIn from "@/components/Auth/SignIn";
@@ -52,12 +53,20 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 	};
 
 	useEffect(() => {
+		console.log();
 		const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
 			setUser(firebaseUser);
 			setLoading(false);
 		});
 		return () => unsubscribe();
 	}, []);
+
+	useEffect(() => {
+		getUserById(dataConnect, { id: user?.uid as string }).then((data) => {
+			console.log("dataconnect usrs by ID: ", data);
+			return data;
+		});
+	}, [user]);
 
 	// Google sign-in function
 	async function handleGoogleSignIn() {

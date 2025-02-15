@@ -12,20 +12,34 @@
 # }
 
 query ListNewsletterSignIps @auth(level: PUBLIC) {
-  newsletter {
+  newsletters {
     id
     email
   }
 }
 
 # # List all users, only admins should be able to list all users, so we use NO_ACCESS
-# query ListUsers @auth(level: NO_ACCESS) {
-#   users {
-#     id
-#     username
-#   }
-# }
+query ListUsers @auth(level: PUBLIC) {
+  users {
+    id
+    email
+    firstName
+    lastName
+    projectId
+    roles
+  }
+}
 
+query GetUserById($id: String!) @auth(level: PUBLIC) {
+  user(id: $id) {
+    id
+    email
+    firstName
+    lastName
+    projectId
+    roles
+  }
+}
 # # Logged in users can list all their reviews and movie titles associated with the review
 # # Since the query uses the uid of the current authenticated user, we set auth level to USER
 # query ListUserReviews @auth(level: USER) {
@@ -47,17 +61,25 @@ query ListNewsletterSignIps @auth(level: PUBLIC) {
 # }
 
 # # Get movie by id
-query GetUserById($id: UUID!) @auth(level: PUBLIC) {
-  user(id: $id) {
-    id
-    firstName
-    lastName
-    profilePictureUrl
-    memberships
-    roles
-    projectMemberships_on_user
-  }
-}
+# query GetUserById($id: UUID!) @auth(level: PUBLIC) {
+#   user(id: $id) {
+#     id
+#     firstName
+#     lastName
+#     profilePictureUrl
+#     memberships {
+#       user
+#       project
+#       role
+#     }
+#     roles
+#     projectMemberships_on_user {
+#       user
+#       project
+#       role
+#     }
+#   }
+# }
 
 # # Search for movies, actors, and reviews
 # query SearchMovie($titleInput: String, $genre: String) @auth(level: PUBLIC) {
