@@ -8,9 +8,10 @@ import {
 	GoogleAuthProvider,
 	FacebookAuthProvider,
 	signInWithEmailAndPassword,
-	createUserWithEmailAndPassword
+	createUserWithEmailAndPassword,
+	updateProfile
 } from "firebase/auth";
-import { listUsers, getUserById } from "@IgniteHub/dataconnect";
+import { listUsers, getUserById, createUser } from "@IgniteHub/dataconnect";
 import { auth, dataConnect } from "@/utils/firebase";
 import { useRouter } from "next/navigation";
 import { Modal } from "@mui/material";
@@ -26,7 +27,12 @@ interface AuthContextProps {
 	handleGoogleSignIn: () => Promise<void>;
 	handleFacebookSignIn: () => Promise<void>;
 	handleEmailSignIn: (email: string, password: string) => Promise<void>;
-	handleEmailSignUp: (email: string, password: string) => Promise<void>;
+	handleEmailSignUp: (
+		firstName: string,
+		lastName: string,
+		email: string,
+		password: string
+	) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextProps>({
@@ -53,7 +59,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 	};
 
 	useEffect(() => {
-		console.log();
 		const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
 			setUser(firebaseUser);
 			setLoading(false);
@@ -61,12 +66,37 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 		return () => unsubscribe();
 	}, []);
 
-	useEffect(() => {
-		getUserById(dataConnect, { id: user?.uid as string }).then((data) => {
-			console.log("dataconnect usrs by ID: ", data);
-			return data;
-		});
-	}, [user]);
+	// useEffect(() => {
+	// 	console.log("Auth User: ", user);
+	// 	listUsers(dataConnect).then((res) => {
+	// 		console.log("User Created: ", res);
+	// 	});
+	// 	if (user === null) return;
+
+	// 	let firstName: string = "";
+	// 	let lastName: string = "";
+
+	// 	if (typeof user.displayName === "string") {
+	// 		[firstName, lastName = ""] = user.displayName.split(" ");
+	// 	}
+
+	// 	getUserById(dataConnect, { id: user.uid as string }).then((res) => {
+	// 		console.log("dataconnect usrs by ID: ", res);
+	// 		if (res.data.user === null) {
+	// 			console.log("user does not have a profile");
+	// 			createUser({
+	// 				id: user.uid as string,
+	// 				firstName: firstName,
+	// 				lastName: lastName,
+	// 				email: user.email as string
+	// 			});
+	// 		}
+	// 	});
+
+	// 	listUsers(dataConnect).then((res) => {
+	// 		console.log("List Users: ", res);
+	// 	});
+	// }, [user]);
 
 	// Google sign-in function
 	async function handleGoogleSignIn() {
@@ -113,10 +143,27 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 	}
 
 	// Email/Password sign-up function
-	async function handleEmailSignUp(email: string, password: string) {
+	async function handleEmailSignUp(
+		firstName: string,
+		lastName: string,
+		email: string,
+		password: string
+	) {
 		try {
 			setLoading(true);
-			await createUserWithEmailAndPassword(auth, email, password);
+			const displayName = firstName + " " + lastName;
+			const userCredential = await createUserWithEmailAndPassword(
+				auth,
+				email,
+				password
+			);
+			await updateProfile(userCredential.user, { displayName });
+			await createUser({
+				id: userCredential.user.uid,
+				firstName: firstName,
+				lastName: lastName,
+				email: email
+			});
 			handleCloseModal();
 			router.push("/dashboard");
 		} catch (error) {
