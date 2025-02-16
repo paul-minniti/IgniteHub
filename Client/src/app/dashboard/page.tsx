@@ -42,7 +42,6 @@ export default function Dashboard() {
 					pb: 5,
 					mt: { xs: 8, md: 0 }
 				}}>
-				<Header />
 				<MainGrid />
 			</Stack>
 		</Box>

@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import {
 	Box,
 	Button,
@@ -30,26 +30,57 @@ const Card = styled(MuiCard)(({ theme }) => ({
 }));
 
 export default function SignUp() {
-	const [emailError, setEmailError] = React.useState(false);
-	const [emailErrorMessage, setEmailErrorMessage] = React.useState("");
-	const [passwordError, setPasswordError] = React.useState(false);
-	const [passwordErrorMessage, setPasswordErrorMessage] = React.useState("");
-	const [nameError, setNameError] = React.useState(false);
-	const [nameErrorMessage, setNameErrorMessage] = React.useState("");
+	const [email, setEmail] = useState("");
+	const [firstName, setFirstName] = useState("");
+	const [lastName, setLastName] = useState("");
+	const [emailError, setEmailError] = useState(false);
+	const [emailErrorMessage, setEmailErrorMessage] = useState("");
+	const [firstNameError, setFirstNameError] = useState(false);
+	const [firstNameErrorMessage, setFirstNameErrorMessage] = useState("");
+	const [lastNameError, setLastNameError] = useState(false);
+	const [lastNameErrorMessage, setLastNameErrorMessage] = useState("");
+	const [password, setPassword] = useState("");
+	const [confirmPassword, setConfirmPassword] = useState("");
+	const [passwordError, setPasswordError] = useState(false);
+	const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
 	const { setModalView, handleEmailSignUp } = useAuth();
 
 	const handleClickOpenSignUp = () => {
 		setModalView("login");
 	};
 
-	const validateInputs = () => {
-		const email = document.getElementById("email") as HTMLInputElement;
-		const password = document.getElementById("password") as HTMLInputElement;
-		const name = document.getElementById("name") as HTMLInputElement;
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			let pwdError = false;
 
+			if (password && password.length < 6) {
+				pwdError = true;
+				setPasswordErrorMessage("Password must be at least 6 characters long.");
+			} else {
+				setPasswordErrorMessage("");
+			}
+
+			if (password || confirmPassword) {
+				if (password !== confirmPassword) {
+					pwdError = true;
+					setPasswordErrorMessage("Passwords do not match.");
+				} else {
+					if (password.length >= 6) {
+						setPasswordErrorMessage("");
+					}
+				}
+			}
+
+			setPasswordError(pwdError);
+		}, 500);
+
+		return () => clearTimeout(timer);
+	}, [confirmPassword]);
+
+	const validateInputs = () => {
 		let isValid = true;
 
-		if (!email.value || !/\S+@\S+\.\S+/.test(email.value)) {
+		if (!email || !/\S+@\S+\.\S+/.test(email)) {
 			setEmailError(true);
 			setEmailErrorMessage("Please enter a valid email address.");
 			isValid = false;
@@ -58,37 +89,44 @@ export default function SignUp() {
 			setEmailErrorMessage("");
 		}
 
-		if (!password.value || password.value.length < 6) {
+		if (!password || password.length < 6) {
 			setPasswordError(true);
 			setPasswordErrorMessage("Password must be at least 6 characters long.");
 			isValid = false;
-		} else {
-			setPasswordError(false);
-			setPasswordErrorMessage("");
+		}
+		if (password !== confirmPassword) {
+			setPasswordError(true);
+			setPasswordErrorMessage("Passwords do not match.");
+			isValid = false;
 		}
 
-		if (!name.value || name.value.length < 1) {
-			setNameError(true);
-			setNameErrorMessage("Name is required.");
+		if (!firstName) {
+			setFirstNameError(true);
+			setFirstNameErrorMessage("First name is required.");
 			isValid = false;
 		} else {
-			setNameError(false);
-			setNameErrorMessage("");
+			setFirstNameError(false);
+			setFirstNameErrorMessage("");
+		}
+
+		if (!lastName) {
+			setLastNameError(true);
+			setLastNameErrorMessage("Last name is required.");
+			isValid = false;
+		} else {
+			setLastNameError(false);
+			setLastNameErrorMessage("");
 		}
 
 		return isValid;
 	};
 
-	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-		event.preventDefault();
-		if (nameError || emailError || passwordError) {
+	const handleSubmit = () => {
+		if (!validateInputs()) {
 			return;
 		}
-		const data = new FormData(event.currentTarget);
-		handleEmailSignUp(
-			data.get("email") as string,
-			data.get("password") as string
-		);
+
+		handleEmailSignUp(email, password);
 	};
 
 	return (
@@ -98,7 +136,7 @@ export default function SignUp() {
 				top: "50%",
 				left: "50%",
 				transform: "translate(-50%, -50%)",
-				maxWidth: 450, // or whatever fits your design
+				maxWidth: 450,
 				width: "90%",
 				boxShadow: 24
 			}}>
@@ -114,23 +152,46 @@ export default function SignUp() {
 					component="form"
 					onSubmit={handleSubmit}
 					sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-					<FormControl>
-						<FormLabel htmlFor="name" sx={{ color: "text.primary" }}>
-							Full name
-						</FormLabel>
-						<TextField
-							autoComplete="name"
-							name="name"
-							required
-							size="small"
-							fullWidth
-							id="name"
-							placeholder="Jon Snow"
-							error={nameError}
-							helperText={nameErrorMessage}
-							color={nameError ? "error" : "primary"}
-						/>
-					</FormControl>
+					<Box sx={{ display: "flex", gap: 2 }}>
+						<FormControl fullWidth>
+							<FormLabel htmlFor="firstName" sx={{ color: "text.primary" }}>
+								First name
+							</FormLabel>
+							<TextField
+								autoComplete="given-name"
+								name="firstName"
+								required
+								size="small"
+								fullWidth
+								id="firstName"
+								placeholder="Jon"
+								error={firstNameError}
+								helperText={firstNameErrorMessage}
+								color={firstNameError ? "error" : "primary"}
+								value={firstName}
+								onChange={(e) => setFirstName(e.target.value)}
+							/>
+						</FormControl>
+						<FormControl fullWidth>
+							<FormLabel htmlFor="lastName" sx={{ color: "text.primary" }}>
+								Last name
+							</FormLabel>
+							<TextField
+								autoComplete="family-name"
+								name="lastName"
+								required
+								size="small"
+								fullWidth
+								id="lastName"
+								placeholder="Snow"
+								error={lastNameError}
+								helperText={lastNameErrorMessage}
+								color={lastNameError ? "error" : "primary"}
+								value={lastName}
+								onChange={(e) => setLastName(e.target.value)}
+							/>
+						</FormControl>
+					</Box>
 					<FormControl>
 						<FormLabel htmlFor="email" sx={{ color: "text.primary" }}>
 							Email
@@ -146,7 +207,9 @@ export default function SignUp() {
 							variant="outlined"
 							error={emailError}
 							helperText={emailErrorMessage}
-							color={passwordError ? "error" : "primary"}
+							color={emailError ? "error" : "primary"}
+							value={email}
+							onChange={(e) => setEmail(e.target.value)}
 						/>
 					</FormControl>
 					<FormControl>
@@ -164,8 +227,30 @@ export default function SignUp() {
 							autoComplete="new-password"
 							variant="outlined"
 							error={passwordError}
+							color={passwordError ? "error" : "primary"}
+							value={password}
+							onChange={(e) => setPassword(e.target.value)}
+						/>
+					</FormControl>
+					<FormControl>
+						<FormLabel htmlFor="confirmPassword" sx={{ color: "text.primary" }}>
+							Confirm Password
+						</FormLabel>
+						<TextField
+							required
+							fullWidth
+							size="small"
+							name="confirmPassword"
+							placeholder="••••••"
+							type="password"
+							id="confirmPassword"
+							autoComplete="new-password"
+							variant="outlined"
+							error={passwordError}
 							helperText={passwordErrorMessage}
 							color={passwordError ? "error" : "primary"}
+							value={confirmPassword}
+							onChange={(e) => setConfirmPassword(e.target.value)}
 						/>
 					</FormControl>
 					<FormControlLabel
@@ -177,17 +262,13 @@ export default function SignUp() {
 						}
 						label="I want to receive updates via email."
 					/>
-					<Button
-						type="submit"
-						fullWidth
-						variant="contained"
-						onClick={validateInputs}>
+					<Button type="submit" fullWidth variant="contained">
 						Sign up
 					</Button>
 				</Box>
 				<Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
 					<Typography
-						component={"div"}
+						component="div"
 						variant="body2"
 						sx={{
 							textAlign: "center",

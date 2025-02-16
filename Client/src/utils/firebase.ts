@@ -9,7 +9,7 @@ import { getFunctions, connectFunctionsEmulator } from "firebase/functions";
 // import { getStorage } from "firebase/storage";
 
 const firebaseConfig =
-	process.env.NODE_ENV === "development"
+	process.env.NEXT_PUBLIC_ENV === "development"
 		? {
 				apiKey: "dev-api-key",
 				authDomain: "localhost",

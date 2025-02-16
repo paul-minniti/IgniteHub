@@ -6,16 +6,29 @@ import {
 	onAuthStateChanged,
 	signInWithPopup,
 	GoogleAuthProvider,
-	FacebookAuthProvider,
 	signInWithEmailAndPassword,
-	createUserWithEmailAndPassword
+	createUserWithEmailAndPassword,
+	updateProfile
 } from "firebase/auth";
-import { listUsers, getUserById } from "@IgniteHub/dataconnect";
+import { getUserById, createUser } from "@IgniteHub/dataconnect";
 import { auth, dataConnect } from "@/utils/firebase";
 import { useRouter } from "next/navigation";
 import { Modal } from "@mui/material";
 import SignIn from "@/components/Auth/SignIn";
 import SignUp from "@/components/Auth/SignUp";
+
+export interface UserProfile {
+	id: string;
+	firstName: string;
+	lastName: string;
+	email: string;
+	profilePictureUrl: string;
+	project_id: string;
+	roles: Array<string>;
+	lastLoggedIn: Date;
+	createdAt: Date;
+	updatedAt: Date;
+}
 
 interface AuthContextProps {
 	user: User | null;
@@ -24,9 +37,13 @@ interface AuthContextProps {
 	setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 	setModalView: React.Dispatch<React.SetStateAction<"login" | "signup">>;
 	handleGoogleSignIn: () => Promise<void>;
-	handleFacebookSignIn: () => Promise<void>;
 	handleEmailSignIn: (email: string, password: string) => Promise<void>;
-	handleEmailSignUp: (email: string, password: string) => Promise<void>;
+	handleEmailSignUp: (
+		firstName: string,
+		lastName: string,
+		email: string,
+		password: string
+	) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextProps>({
@@ -36,7 +53,6 @@ const AuthContext = createContext<AuthContextProps>({
 	setIsModalOpen: () => {},
 	setModalView: () => {},
 	handleGoogleSignIn: async () => {},
-	handleFacebookSignIn: async () => {},
 	handleEmailSignIn: async () => {},
 	handleEmailSignUp: async () => {}
 });
@@ -53,7 +69,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 	};
 
 	useEffect(() => {
-		console.log();
 		const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
 			setUser(firebaseUser);
 			setLoading(false);
@@ -61,21 +76,29 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 		return () => unsubscribe();
 	}, []);
 
-	useEffect(() => {
-		getUserById(dataConnect, { id: user?.uid as string }).then((data) => {
-			console.log("dataconnect usrs by ID: ", data);
-			return data;
-		});
-	}, [user]);
-
-	// Google sign-in function
 	async function handleGoogleSignIn() {
 		try {
 			setLoading(true);
 			const provider = new GoogleAuthProvider();
-			await signInWithPopup(auth, provider);
+			const userCredential = await signInWithPopup(auth, provider);
+			const userProfile = await getUserById(dataConnect, {
+				id: userCredential.user.uid
+			});
 			handleCloseModal();
-			router.push("/dashboard");
+			if (!userProfile.data.user) {
+				const displayName = userCredential.user.displayName || "";
+				const [firstName, lastName = ""] = displayName.split(" ");
+				await createUser({
+					id: userCredential.user.uid,
+					firstName: firstName,
+					lastName: lastName,
+					email: userCredential.user.email as string
+				});
+				router.push("/dashboard/new_org");
+				return;
+			} else {
+				router.push("/dashboard");
+			}
 		} catch (error) {
 			console.error("Google sign-in error:", error);
 		} finally {
@@ -83,22 +106,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 		}
 	}
 
-	// Facebook sign-in function
-	async function handleFacebookSignIn() {
-		try {
-			setLoading(true);
-			const provider = new FacebookAuthProvider();
-			await signInWithPopup(auth, provider);
-			handleCloseModal();
-			router.push("/dashboard");
-		} catch (error) {
-			console.error("Facebook sign-in error:", error);
-		} finally {
-			setLoading(false);
-		}
-	}
-
-	// Email/Password sign-in function
 	async function handleEmailSignIn(email: string, password: string) {
 		try {
 			setLoading(true);
@@ -113,12 +120,29 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 	}
 
 	// Email/Password sign-up function
-	async function handleEmailSignUp(email: string, password: string) {
+	async function handleEmailSignUp(
+		firstName: string,
+		lastName: string,
+		email: string,
+		password: string
+	) {
 		try {
 			setLoading(true);
-			await createUserWithEmailAndPassword(auth, email, password);
+			const displayName = firstName + " " + lastName;
+			const userCredential = await createUserWithEmailAndPassword(
+				auth,
+				email,
+				password
+			);
+			await updateProfile(userCredential.user, { displayName });
+			await createUser({
+				id: userCredential.user.uid,
+				firstName: firstName,
+				lastName: lastName,
+				email: email
+			});
 			handleCloseModal();
-			router.push("/dashboard");
+			router.push("/dashboard/new_org");
 		} catch (error) {
 			console.error("Email sign-up error:", error);
 		} finally {
@@ -135,7 +159,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 				setIsModalOpen,
 				setModalView,
 				handleGoogleSignIn,
-				handleFacebookSignIn,
 				handleEmailSignIn,
 				handleEmailSignUp
 			}}>

@@ -1,49 +1,90 @@
-"use client";
+"use client"; // Needed if you're on Next.js 13 with the App Router
 
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { useAuth } from "@/context/authContext";
-import { Box, Stack } from "@mui/material";
-import Header from "./components/Header";
-import MainGrid from "./components/MainGrid";
+import React from "react";
+import {
+	Stack,
+	Box,
+	Typography,
+	TextField,
+	Button,
+	useTheme,
+	useMediaQuery
+} from "@mui/material";
+import Image from "next/image";
+import IgniteHub from "@/components/Typography/IgniteHub";
 
-export default function Dashboard() {
-	const router = useRouter();
-	const { user, loading } = useAuth();
-	// const dbUser = listUsers().then((data) => {
-	// 	return data;
-	// });
-	useEffect(() => {
-		// console.log("Auth user: ", user);
-		// console.log("Database user: ", dbUser);
-		// If not loading, but no user, redirect to login
-		if (!loading && !user) {
-			router.push("/");
-		}
-	}, [user, loading, router]);
+export default function CreateProjectPage() {
+	const theme = useTheme();
+	const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
 
-	// If still loading, show a spinner or loading UI
-	if (loading) return <p>Loading...</p>;
-	if (!user) return null; // or return a skeleton
+	const [projectName, setProjectName] = React.useState("");
 
-	// If user exists, show the protected content
+	const handleContinue = () => {
+		// handle what happens on continue
+		alert(`Project name is: ${projectName}`);
+	};
+
 	return (
-		<Box
-			component="main"
+		<Stack
 			sx={{
-				flexGrow: 1,
-				overflow: "auto"
-			}}>
-			<Stack
-				spacing={2}
-				sx={{
-					alignItems: "center",
-					mx: 3,
-					pb: 5,
-					mt: { xs: 8, md: 0 }
-				}}>
-				Setup new Org
+				height: "100vh",
+				width: "100%",
+				p: 4,
+				boxSizing: "border-box"
+			}}
+			spacing={4}
+			justifyContent={"start"}>
+			<IgniteHub />
+
+			<Stack direction={"row"} justifyContent={"space-between"}>
+				<Stack
+					flex={1}
+					justifyContent="center"
+					spacing={2}
+					sx={{
+						maxWidth: 480,
+						mx: "auto"
+					}}>
+					<Typography variant="h5" gutterBottom>
+						Let’s Setup Your Org!
+					</Typography>
+
+					<Typography variant="h6">What’s the name of your company?</Typography>
+
+					<TextField
+						variant="outlined"
+						value={projectName}
+						onChange={(e) => setProjectName(e.target.value)}
+					/>
+
+					<Box>
+						<Button
+							variant="contained"
+							color="primary"
+							onClick={handleContinue}
+							disabled={!projectName}>
+							Continue
+						</Button>
+					</Box>
+				</Stack>
+
+				{!isSmallScreen && (
+					<Box
+						flex={1}
+						display="flex"
+						alignItems="center"
+						justifyContent="center">
+						<Box sx={{ position: "relative", width: 350, height: 400 }}>
+							<Image
+								src="/hello.svg"
+								alt="Illustration"
+								fill
+								style={{ objectFit: "contain" }}
+							/>
+						</Box>
+					</Box>
+				)}
 			</Stack>
-		</Box>
+		</Stack>
 	);
 }
