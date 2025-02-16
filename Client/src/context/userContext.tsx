@@ -13,12 +13,25 @@ import { useAuth } from "@/context/authContext";
 // 	createUserWithEmailAndPassword,
 // 	updateProfile
 // } from "firebase/auth";
-// import { listUsers, getUserById, createUser } from "@IgniteHub/dataconnect";
-// import { auth, dataConnect } from "@/utils/firebase";
+import { listUsers, getUserById, createUser } from "@IgniteHub/dataconnect";
+import { auth, dataConnect } from "@/utils/firebase";
 // import { useRouter } from "next/navigation";
 
-interface OrgContextProps {
-	// user: User | null;
+export interface UserProfile {
+	id: string;
+	firstName: string;
+	lastName: string;
+	email: string;
+	profilePictureUrl?: string;
+	project_id?: string;
+	roles?: Array<string>;
+	lastLoggedIn?: Date;
+	createdAt?: Date;
+	updatedAt?: Date;
+}
+
+interface UserContextProps {
+	userProfile: UserProfile | null;
 	// loading: boolean;
 	// isModalOpen: boolean;
 	// setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -34,8 +47,8 @@ interface OrgContextProps {
 	// ) => Promise<void>;
 }
 
-const OrgContext = createContext<OrgContextProps>({
-	// user: null,
+const UserContext = createContext<UserContextProps>({
+	userProfile: null
 	// loading: true,
 	// isModalOpen: false,
 	// setIsModalOpen: () => {},
@@ -46,46 +59,46 @@ const OrgContext = createContext<OrgContextProps>({
 	// handleEmailSignUp: async () => {}
 });
 
-export const OrgProvider = ({ children }: { children: React.ReactNode }) => {
-	// const [user, setUser] = useState<User | null>(null);
+export const UserProvider = ({ children }: { children: React.ReactNode }) => {
+	const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
 	// const [loading, setLoading] = useState(true);
 	// const router = useRouter();
 	const { user } = useAuth();
 
 	useEffect(() => {
-		// if (user) {
-		// 	console.log("User from Org Context: ", user);
-		// 	const userProfile = fetch(
-		// 		"/api/user?" +
-		// 			new URLSearchParams({
-		// 				userId: user.uid,
-		// 				displayName: user.displayName as string,
-		// 				email: user.email as string
-		// 			}).toString()
-		// 	);
-		// }
+		if (user) {
+			const fetchUserProfile = async () => {
+				try {
+					const userProfile = await getUserById(dataConnect, { id: user.uid });
+					console.log("User Profile: ", userProfile);
+					setUserProfile(userProfile.data.user as UserProfile);
+				} catch (error) {
+					console.error("Error fetching user profile:", error);
+				}
+			};
+
+			fetchUserProfile();
+		}
 	}, [user]);
 
 	return (
-		<OrgContext.Provider
-			value={
-				{
-					// user,
-					// loading,
-					// isModalOpen,
-					// setIsModalOpen,
-					// setModalView,
-					// handleGoogleSignIn,
-					// handleFacebookSignIn,
-					// handleEmailSignIn,
-					// handleEmailSignUp
-				}
-			}>
+		<UserContext.Provider
+			value={{
+				userProfile
+				// loading,
+				// isModalOpen,
+				// setIsModalOpen,
+				// setModalView,
+				// handleGoogleSignIn,
+				// handleFacebookSignIn,
+				// handleEmailSignIn,
+				// handleEmailSignUp
+			}}>
 			{children}
-		</OrgContext.Provider>
+		</UserContext.Provider>
 	);
 };
 
-export function useOrg() {
-	return useContext(OrgContext);
+export function useUser() {
+	return useContext(UserContext);
 }
