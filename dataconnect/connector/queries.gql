@@ -17,19 +17,12 @@ query ListNewsletterSignIps @auth(level: PUBLIC) {
   }
 }
 
-# query GetNewsletterByEmail($email: String!) @auth(level: PUBLIC) {
-#   newsletter(email: $email) {
-#     email
-#   }
-# }
-
 query GetNewsletterByEmail($email: String) @auth(level: PUBLIC) {
   newsletter(first: { where: { email: { eq: $email } } }) {
     email
   }
 }
 
-# # List all users, only admins should be able to list all users, so we use NO_ACCESS
 query ListUsers @auth(level: PUBLIC) {
   users {
     id

@@ -25,7 +25,7 @@ interface PageData {
 
 const Navbar: React.FC = () => {
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-	const { setIsModalOpen } = useAuth();
+	const { setIsModalOpen, setModalView } = useAuth();
 	const pageData: PageData[] = [
 		{ name: "Benefits", image: "" },
 		{ name: "Products", image: "" },
@@ -34,6 +34,11 @@ const Navbar: React.FC = () => {
 	];
 
 	const handleOpenLoginModal = () => {
+		setIsModalOpen(true);
+	};
+
+	const handleOpenSignUpModal = () => {
+		setModalView("signup");
 		setIsModalOpen(true);
 	};
 
@@ -94,6 +99,13 @@ const Navbar: React.FC = () => {
 						sx={{ display: { xs: "none", md: "flex" }, gap: 2 }}>
 						<Button
 							variant="contained"
+							color="info"
+							sx={{ color: "text.primary" }}
+							onClick={handleOpenSignUpModal}>
+							Sign Up
+						</Button>
+						<Button
+							variant="contained"
 							color="secondary"
 							sx={{ color: "text.primary" }}
 							onClick={handleOpenLoginModal}>
@@ -138,6 +150,15 @@ const Navbar: React.FC = () => {
 								sx={{ color: "text.primary" }}
 								onClick={handleOpenLoginModal}>
 								Login
+							</Button>
+						</MenuItem>
+						<MenuItem>
+							<Button
+								variant="contained"
+								color="info"
+								sx={{ color: "text.primary" }}
+								onClick={handleOpenSignUpModal}>
+								Sign Up
 							</Button>
 						</MenuItem>
 					</Menu>

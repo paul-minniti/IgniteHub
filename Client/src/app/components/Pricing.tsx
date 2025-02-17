@@ -1,6 +1,7 @@
 "use client";
 
 import { LandingSubheader } from "@/components/Typography/Subheaders";
+import { useAuth } from "@/context/authContext";
 import {
 	Box,
 	Stack,
@@ -35,6 +36,8 @@ const pageData = [
 ];
 
 const PricingSection = () => {
+	const { setModalView, setIsModalOpen } = useAuth();
+
 	return (
 		<Box
 			component="section"
@@ -84,14 +87,19 @@ const PricingSection = () => {
 										<Button
 											variant="contained"
 											sx={{
-												backgroundColor: "#fb923c",
-												":hover": { backgroundColor: "#f28c24" }
+												color: "text.primary",
+												backgroundColor: "info.main",
+												":hover": { backgroundColor: "info.600" }
+											}}
+											onClick={() => {
+												setModalView("signup");
+												setIsModalOpen(true);
 											}}>
 											Sign Up For Free
 										</Button>
 										<Button
 											variant="contained"
-											color="info"
+											color="secondary"
 											href="https://calendly.com/pminniti94/introductory-call"
 											target="_blank"
 											rel="noopener noreferrer">
