@@ -74,7 +74,6 @@ The `data` property is an object of type `ListNewsletterSignIpsData`, which is d
 ```javascript
 export interface ListNewsletterSignIpsData {
   newsletters: ({
-    id: UUIDString;
     email: string;
   } & Newsletter_Key)[];
 }
@@ -125,6 +124,104 @@ console.log(data.newsletters);
 executeQuery(ref).then((response) => {
   const data = response.data;
   console.log(data.newsletters);
+});
+```
+
+## GetNewsletterByEmail
+You can execute the `GetNewsletterByEmail` query using the following action shortcut function, or by calling `executeQuery()` after calling the following `QueryRef` function, both of which are defined in [default-connector/index.d.ts](./index.d.ts):
+```javascript
+getNewsletterByEmail(vars?: GetNewsletterByEmailVariables): QueryPromise<GetNewsletterByEmailData, GetNewsletterByEmailVariables>;
+
+getNewsletterByEmailRef(vars?: GetNewsletterByEmailVariables): (QueryRef<GetNewsletterByEmailData, GetNewsletterByEmailVariables> & { __angular?: false });
+```
+You can also pass in a `DataConnect` instance to the action shortcut function or `QueryRef` function.
+```javascript
+getNewsletterByEmail(dc: DataConnect, vars?: GetNewsletterByEmailVariables): QueryPromise<GetNewsletterByEmailData, GetNewsletterByEmailVariables>;
+
+getNewsletterByEmailRef(dc: DataConnect, vars?: GetNewsletterByEmailVariables): (QueryRef<GetNewsletterByEmailData, GetNewsletterByEmailVariables> & { __angular?: false });
+```
+
+### Variables
+The `GetNewsletterByEmail` query has an optional argument of type `GetNewsletterByEmailVariables`, which is defined in [default-connector/index.d.ts](./index.d.ts). It has the following fields:
+
+```javascript
+export interface GetNewsletterByEmailVariables {
+  email?: string | null;
+}
+```
+### Return Type
+Recall that executing the `GetNewsletterByEmail` query returns a `QueryPromise` that resolves to an object with a `data` property. 
+
+The `data` property is an object of type `GetNewsletterByEmailData`, which is defined in [default-connector/index.d.ts](./index.d.ts). It has the following fields:
+```javascript
+export interface GetNewsletterByEmailData {
+  newsletter?: {
+    email: string;
+  } & Newsletter_Key;
+}
+```
+### Using `GetNewsletterByEmail`'s action shortcut function
+
+```javascript
+import { getDataConnect, DataConnect } from 'firebase/data-connect';
+import { connectorConfig, getNewsletterByEmail, GetNewsletterByEmailVariables } from '@IgniteHub/dataconnect';
+// The `GetNewsletterByEmail` query has an optional argument of type `GetNewsletterByEmailVariables`:
+const getNewsletterByEmailVars: GetNewsletterByEmailVariables = {
+  email: ..., // optional
+}
+
+// Call the `getNewsletterByEmail()` function to execute the query.
+// You can use the `await` keyword to wait for the promise to resolve.
+const { data } = await getNewsletterByEmail(getNewsletterByEmailVars);
+// Variables can be defined inline as well.
+const { data } = await getNewsletterByEmail({ email: ..., });
+// Since all variables are optional for this query, you can omit the `GetNewsletterByEmailVariables` argument.
+const { data } = await getNewsletterByEmail();
+
+// You can also pass in a `DataConnect` instance to the action shortcut function.
+const connector: DataConnect = getDataConnect(connectorConfig);
+const { data } = await getNewsletterByEmail(connector, getNewsletterByEmailVars);
+
+console.log(data.newsletter);
+
+// Or, you can use the `Promise` API.
+getNewsletterByEmail(getNewsletterByEmailVars).then((response) => {
+  const data = response.data;
+  console.log(data.newsletter);
+});
+```
+
+### Using `GetNewsletterByEmail`'s `QueryRef` function
+
+```javascript
+import { getDataConnect, DataConnect, executeQuery } from 'firebase/data-connect';
+import { connectorConfig, getNewsletterByEmailRef, GetNewsletterByEmailVariables } from '@IgniteHub/dataconnect';
+// The `GetNewsletterByEmail` query has an optional argument of type `GetNewsletterByEmailVariables`:
+const getNewsletterByEmailVars: GetNewsletterByEmailVariables = {
+  email: ..., // optional
+}
+
+// Call the `getNewsletterByEmailRef()` function to get a reference to the query.
+const ref = getNewsletterByEmailRef(getNewsletterByEmailVars);
+// Variables can be defined inline as well.
+const ref = getNewsletterByEmailRef({ email: ..., });
+// Since all variables are optional for this query, you can omit the `GetNewsletterByEmailVariables` argument.
+const ref = getNewsletterByEmailRef();
+
+// You can also pass in a `DataConnect` instance to the `QueryRef` function.
+const connector: DataConnect = getDataConnect(connectorConfig);
+const ref = getNewsletterByEmailRef(connector, getNewsletterByEmailVars);
+
+// Call `executeQuery()` on the reference to execute the query.
+// You can use the `await` keyword to wait for the promise to resolve.
+const { data } = await executeQuery(ref);
+
+console.log(data.newsletter);
+
+// Or, you can use the `Promise` API.
+executeQuery(ref).then((response) => {
+  const data = response.data;
+  console.log(data.newsletter);
 });
 ```
 
@@ -512,6 +609,193 @@ console.log(data.newsletter_insert);
 executeMutation(ref).then((response) => {
   const data = response.data;
   console.log(data.newsletter_insert);
+});
+```
+
+## CreateOrg
+You can execute the `CreateOrg` mutation using the following action shortcut function, or by calling `executeMutation()` after calling the following `MutationRef` function, both of which are defined in [default-connector/index.d.ts](./index.d.ts):
+```javascript
+createOrg(vars: CreateOrgVariables): MutationPromise<CreateOrgData, CreateOrgVariables>;
+
+createOrgRef(vars: CreateOrgVariables): (MutationRef<CreateOrgData, CreateOrgVariables> & { __angular?: false });
+```
+You can also pass in a `DataConnect` instance to the action shortcut function or `MutationRef` function.
+```javascript
+createOrg(dc: DataConnect, vars: CreateOrgVariables): MutationPromise<CreateOrgData, CreateOrgVariables>;
+
+createOrgRef(dc: DataConnect, vars: CreateOrgVariables): (MutationRef<CreateOrgData, CreateOrgVariables> & { __angular?: false });
+```
+
+### Variables
+The `CreateOrg` mutation requires an argument of type `CreateOrgVariables`, which is defined in [default-connector/index.d.ts](./index.d.ts). It has the following fields:
+
+```javascript
+export interface CreateOrgVariables {
+  orgName: string;
+  orgStatus: string;
+}
+```
+### Return Type
+Recall that executing the `CreateOrg` mutation returns a `MutationPromise` that resolves to an object with a `data` property. 
+
+The `data` property is an object of type `CreateOrgData`, which is defined in [default-connector/index.d.ts](./index.d.ts). It has the following fields:
+```javascript
+export interface CreateOrgData {
+  orginization_insert: Orginization_Key;
+}
+```
+### Using `CreateOrg`'s action shortcut function
+
+```javascript
+import { getDataConnect, DataConnect } from 'firebase/data-connect';
+import { connectorConfig, createOrg, CreateOrgVariables } from '@IgniteHub/dataconnect';
+// The `CreateOrg` mutation requires an argument of type `CreateOrgVariables`:
+const createOrgVars: CreateOrgVariables = {
+  orgName: ..., 
+  orgStatus: ..., 
+}
+
+// Call the `createOrg()` function to execute the mutation.
+// You can use the `await` keyword to wait for the promise to resolve.
+const { data } = await createOrg(createOrgVars);
+// Variables can be defined inline as well.
+const { data } = await createOrg({ orgName: ..., orgStatus: ..., });
+
+// You can also pass in a `DataConnect` instance to the action shortcut function.
+const connector: DataConnect = getDataConnect(connectorConfig);
+const { data } = await createOrg(connector, createOrgVars);
+
+console.log(data.orginization_insert);
+
+// Or, you can use the `Promise` API.
+createOrg(createOrgVars).then((response) => {
+  const data = response.data;
+  console.log(data.orginization_insert);
+});
+```
+
+### Using `CreateOrg`'s `MutationRef` function
+
+```javascript
+import { getDataConnect, DataConnect, executeMutation } from 'firebase/data-connect';
+import { connectorConfig, createOrgRef, CreateOrgVariables } from '@IgniteHub/dataconnect';
+// The `CreateOrg` mutation requires an argument of type `CreateOrgVariables`:
+const createOrgVars: CreateOrgVariables = {
+  orgName: ..., 
+  orgStatus: ..., 
+}
+
+// Call the `createOrgRef()` function to get a reference to the mutation.
+const ref = createOrgRef(createOrgVars);
+// Variables can be defined inline as well.
+const ref = createOrgRef({ orgName: ..., orgStatus: ..., });
+
+// You can also pass in a `DataConnect` instance to the `MutationRef` function.
+const connector: DataConnect = getDataConnect(connectorConfig);
+const ref = createOrgRef(connector, createOrgVars);
+
+// Call `executeMutation()` on the reference to execute the mutation.
+// You can use the `await` keyword to wait for the promise to resolve.
+const { data } = await executeMutation(ref);
+
+console.log(data.orginization_insert);
+
+// Or, you can use the `Promise` API.
+executeMutation(ref).then((response) => {
+  const data = response.data;
+  console.log(data.orginization_insert);
+});
+```
+
+## AddUserToOrg
+You can execute the `AddUserToOrg` mutation using the following action shortcut function, or by calling `executeMutation()` after calling the following `MutationRef` function, both of which are defined in [default-connector/index.d.ts](./index.d.ts):
+```javascript
+addUserToOrg(vars: AddUserToOrgVariables): MutationPromise<AddUserToOrgData, AddUserToOrgVariables>;
+
+addUserToOrgRef(vars: AddUserToOrgVariables): (MutationRef<AddUserToOrgData, AddUserToOrgVariables> & { __angular?: false });
+```
+You can also pass in a `DataConnect` instance to the action shortcut function or `MutationRef` function.
+```javascript
+addUserToOrg(dc: DataConnect, vars: AddUserToOrgVariables): MutationPromise<AddUserToOrgData, AddUserToOrgVariables>;
+
+addUserToOrgRef(dc: DataConnect, vars: AddUserToOrgVariables): (MutationRef<AddUserToOrgData, AddUserToOrgVariables> & { __angular?: false });
+```
+
+### Variables
+The `AddUserToOrg` mutation requires an argument of type `AddUserToOrgVariables`, which is defined in [default-connector/index.d.ts](./index.d.ts). It has the following fields:
+
+```javascript
+export interface AddUserToOrgVariables {
+  projectId: UUIDString;
+}
+```
+### Return Type
+Recall that executing the `AddUserToOrg` mutation returns a `MutationPromise` that resolves to an object with a `data` property. 
+
+The `data` property is an object of type `AddUserToOrgData`, which is defined in [default-connector/index.d.ts](./index.d.ts). It has the following fields:
+```javascript
+export interface AddUserToOrgData {
+  user_upsert: User_Key;
+}
+```
+### Using `AddUserToOrg`'s action shortcut function
+
+```javascript
+import { getDataConnect, DataConnect } from 'firebase/data-connect';
+import { connectorConfig, addUserToOrg, AddUserToOrgVariables } from '@IgniteHub/dataconnect';
+// The `AddUserToOrg` mutation requires an argument of type `AddUserToOrgVariables`:
+const addUserToOrgVars: AddUserToOrgVariables = {
+  projectId: ..., 
+}
+
+// Call the `addUserToOrg()` function to execute the mutation.
+// You can use the `await` keyword to wait for the promise to resolve.
+const { data } = await addUserToOrg(addUserToOrgVars);
+// Variables can be defined inline as well.
+const { data } = await addUserToOrg({ projectId: ..., });
+
+// You can also pass in a `DataConnect` instance to the action shortcut function.
+const connector: DataConnect = getDataConnect(connectorConfig);
+const { data } = await addUserToOrg(connector, addUserToOrgVars);
+
+console.log(data.user_upsert);
+
+// Or, you can use the `Promise` API.
+addUserToOrg(addUserToOrgVars).then((response) => {
+  const data = response.data;
+  console.log(data.user_upsert);
+});
+```
+
+### Using `AddUserToOrg`'s `MutationRef` function
+
+```javascript
+import { getDataConnect, DataConnect, executeMutation } from 'firebase/data-connect';
+import { connectorConfig, addUserToOrgRef, AddUserToOrgVariables } from '@IgniteHub/dataconnect';
+// The `AddUserToOrg` mutation requires an argument of type `AddUserToOrgVariables`:
+const addUserToOrgVars: AddUserToOrgVariables = {
+  projectId: ..., 
+}
+
+// Call the `addUserToOrgRef()` function to get a reference to the mutation.
+const ref = addUserToOrgRef(addUserToOrgVars);
+// Variables can be defined inline as well.
+const ref = addUserToOrgRef({ projectId: ..., });
+
+// You can also pass in a `DataConnect` instance to the `MutationRef` function.
+const connector: DataConnect = getDataConnect(connectorConfig);
+const ref = addUserToOrgRef(connector, addUserToOrgVars);
+
+// Call `executeMutation()` on the reference to execute the mutation.
+// You can use the `await` keyword to wait for the promise to resolve.
+const { data } = await executeMutation(ref);
+
+console.log(data.user_upsert);
+
+// Or, you can use the `Promise` API.
+executeMutation(ref).then((response) => {
+  const data = response.data;
+  console.log(data.user_upsert);
 });
 ```
 

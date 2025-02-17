@@ -4,11 +4,6 @@ extend type Query {
   """
   newsletter(
     """
-    The unique ID of the object.
-    """
-    id: UUID
-
-    """
     The key used to identify the object.
     """
     key: Newsletter_Key
@@ -37,25 +32,6 @@ extend type Query {
     """
     first: Orginization_FirstRow
   ): Orginization @fdc_generated(from: "Orginization", purpose: QUERY_SINGLE)
-  """
-  ✨ Look up a single `ProjectMembership` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
-  """
-  projectMembership(
-    """
-    The unique ID of the object.
-    """
-    id: UUID
-
-    """
-    The key used to identify the object.
-    """
-    key: ProjectMembership_Key
-
-    """
-    Fetch the first row based on the filters and ordering.
-    """
-    first: ProjectMembership_FirstRow
-  ): ProjectMembership @fdc_generated(from: "ProjectMembership", purpose: QUERY_SINGLE)
   """
   ✨ Look up a single `User` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
   """
@@ -128,30 +104,6 @@ extend type Query {
     """
     limit: Int = 100
   ): [Orginization!]! @fdc_generated(from: "Orginization", purpose: QUERY_MULTIPLE)
-  """
-  ✨ List `ProjectMembership` objects in the table, optionally filtered by `where` conditions.
-  """
-  projectMemberships(
-    """
-    Filter condition to narrow down the query results.
-    """
-    where: ProjectMembership_Filter
-
-    """
-    Order the query results by specific fields.
-    """
-    orderBy: [ProjectMembership_Order!]
-
-    """
-    Number of rows to skip before starting to return the results.
-    """
-    offset: Int
-
-    """
-    Maximum number of rows to return (defaults to 100 rows).
-    """
-    limit: Int = 100
-  ): [ProjectMembership!]! @fdc_generated(from: "ProjectMembership", purpose: QUERY_MULTIPLE)
   """
   ✨ List `User` objects in the table, optionally filtered by `where` conditions.
   """

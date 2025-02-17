@@ -1,0 +1,6 @@
+{
+	"name": "IgniteHub",
+	"short_name": "IgniteHub",
+	"start_url": "/",
+	"display": "standalone"
+}

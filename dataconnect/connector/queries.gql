@@ -13,7 +13,18 @@
 
 query ListNewsletterSignIps @auth(level: PUBLIC) {
   newsletters {
-    id
+    email
+  }
+}
+
+# query GetNewsletterByEmail($email: String!) @auth(level: PUBLIC) {
+#   newsletter(email: $email) {
+#     email
+#   }
+# }
+
+query GetNewsletterByEmail($email: String) @auth(level: PUBLIC) {
+  newsletter(first: { where: { email: { eq: $email } } }) {
     email
   }
 }

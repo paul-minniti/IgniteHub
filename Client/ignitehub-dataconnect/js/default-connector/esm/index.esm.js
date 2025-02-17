@@ -27,6 +27,26 @@ export function addNewsletterSignUp(dcOrVars, vars) {
   return executeMutation(addNewsletterSignUpRef(dcOrVars, vars));
 }
 
+export function createOrgRef(dcOrVars, vars) {
+  const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars, true);
+  dcInstance._useGeneratedSdk();
+  return mutationRef(dcInstance, 'CreateOrg', inputVars);
+}
+
+export function createOrg(dcOrVars, vars) {
+  return executeMutation(createOrgRef(dcOrVars, vars));
+}
+
+export function addUserToOrgRef(dcOrVars, vars) {
+  const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars, true);
+  dcInstance._useGeneratedSdk();
+  return mutationRef(dcInstance, 'AddUserToOrg', inputVars);
+}
+
+export function addUserToOrg(dcOrVars, vars) {
+  return executeMutation(addUserToOrgRef(dcOrVars, vars));
+}
+
 export function listNewsletterSignIpsRef(dc) {
   const { dc: dcInstance} = validateArgs(connectorConfig, dc, undefined);
   dcInstance._useGeneratedSdk();
@@ -35,6 +55,16 @@ export function listNewsletterSignIpsRef(dc) {
 
 export function listNewsletterSignIps(dc) {
   return executeQuery(listNewsletterSignIpsRef(dc));
+}
+
+export function getNewsletterByEmailRef(dcOrVars, vars) {
+  const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars);
+  dcInstance._useGeneratedSdk();
+  return queryRef(dcInstance, 'GetNewsletterByEmail', inputVars);
+}
+
+export function getNewsletterByEmail(dcOrVars, vars) {
+  return executeQuery(getNewsletterByEmailRef(dcOrVars, vars));
 }
 
 export function listUsersRef(dc) {

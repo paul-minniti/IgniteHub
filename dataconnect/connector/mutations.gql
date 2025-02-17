@@ -1,19 +1,3 @@
-# # Example mutations for a simple movie app
-
-# type User @table {
-#   id: String! @default(expr: "auth.uid")
-#   firstName: String! @col(dataType: "varchar(100)")
-#   lastName: String! @col(dataType: "varchar(100)")
-#   email: String! @col(dataType: "varchar(255)")
-#   profilePictureUrl: String @col(dataType: "varchar(255)")
-#   memberships: ProjectMembership
-#   roles: [String] @col(dataType: "json")
-#   lastLoggedIn: Date
-#   settings: String @col(dataType: "json")
-#   createdAt: Date! @default(expr: "request.time")
-#   updatedAt: Date
-# }
-
 mutation CreateUser(
   $id: String!
   $firstName: String!
@@ -23,6 +7,19 @@ mutation CreateUser(
   user_insert(
     data: { id: $id, firstName: $firstName, lastName: $lastName, email: $email }
   )
+}
+
+mutation AddNewsletterSignUp($email: String!) @auth(level: PUBLIC) {
+  newsletter_insert(data: { email: $email })
+}
+
+mutation CreateOrg($orgName: String!, $orgStatus: String!)
+@auth(level: PUBLIC) {
+  orginization_insert(data: { name: $orgName, status: $orgStatus })
+}
+
+mutation AddUserToOrg($projectId: UUID!) @auth(level: USER) {
+  user_upsert(data: { id_expr: "auth.uid", projectId: $projectId })
 }
 
 # # Upsert (update or insert) a user's username based on their auth.uid
@@ -44,10 +41,6 @@ mutation CreateUser(
 #     }
 #   )
 # }
-
-mutation AddNewsletterSignUp($email: String!) @auth(level: PUBLIC) {
-  newsletter_insert(data: { email: $email })
-}
 
 # # Logged in user can delete their review for a movie
 # mutation DeleteReview($movieId: UUID!) @auth(level: USER) {

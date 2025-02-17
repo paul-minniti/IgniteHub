@@ -16,6 +16,23 @@ export interface AddNewsletterSignUpVariables {
   email: string;
 }
 
+export interface AddUserToOrgData {
+  user_upsert: User_Key;
+}
+
+export interface AddUserToOrgVariables {
+  projectId: UUIDString;
+}
+
+export interface CreateOrgData {
+  orginization_insert: Orginization_Key;
+}
+
+export interface CreateOrgVariables {
+  orgName: string;
+  orgStatus: string;
+}
+
 export interface CreateUserData {
   user_insert: User_Key;
 }
@@ -25,6 +42,16 @@ export interface CreateUserVariables {
   firstName: string;
   lastName: string;
   email: string;
+}
+
+export interface GetNewsletterByEmailData {
+  newsletter?: {
+    email: string;
+  } & Newsletter_Key;
+}
+
+export interface GetNewsletterByEmailVariables {
+  email?: string | null;
 }
 
 export interface GetUserByIdData {
@@ -44,7 +71,6 @@ export interface GetUserByIdVariables {
 
 export interface ListNewsletterSignIpsData {
   newsletters: ({
-    id: UUIDString;
     email: string;
   } & Newsletter_Key)[];
 }
@@ -61,18 +87,13 @@ export interface ListUsersData {
 }
 
 export interface Newsletter_Key {
-  id: UUIDString;
+  email: string;
   __typename?: 'Newsletter_Key';
 }
 
 export interface Orginization_Key {
   id: UUIDString;
   __typename?: 'Orginization_Key';
-}
-
-export interface ProjectMembership_Key {
-  id: UUIDString;
-  __typename?: 'ProjectMembership_Key';
 }
 
 export interface User_Key {
@@ -100,12 +121,39 @@ export function addNewsletterSignUp(dc: DataConnect, vars: AddNewsletterSignUpVa
 
 
 /* Allow users to create refs without passing in DataConnect */
+export function createOrgRef(vars: CreateOrgVariables): (MutationRef<CreateOrgData, CreateOrgVariables> & { __angular?: false });
+/* Allow users to pass in custom DataConnect instances */
+export function createOrgRef(dc: DataConnect, vars: CreateOrgVariables): (MutationRef<CreateOrgData, CreateOrgVariables> & { __angular?: false });
+
+export function createOrg(vars: CreateOrgVariables): MutationPromise<CreateOrgData, CreateOrgVariables>;
+export function createOrg(dc: DataConnect, vars: CreateOrgVariables): MutationPromise<CreateOrgData, CreateOrgVariables>;
+
+
+/* Allow users to create refs without passing in DataConnect */
+export function addUserToOrgRef(vars: AddUserToOrgVariables): (MutationRef<AddUserToOrgData, AddUserToOrgVariables> & { __angular?: false });
+/* Allow users to pass in custom DataConnect instances */
+export function addUserToOrgRef(dc: DataConnect, vars: AddUserToOrgVariables): (MutationRef<AddUserToOrgData, AddUserToOrgVariables> & { __angular?: false });
+
+export function addUserToOrg(vars: AddUserToOrgVariables): MutationPromise<AddUserToOrgData, AddUserToOrgVariables>;
+export function addUserToOrg(dc: DataConnect, vars: AddUserToOrgVariables): MutationPromise<AddUserToOrgData, AddUserToOrgVariables>;
+
+
+/* Allow users to create refs without passing in DataConnect */
 export function listNewsletterSignIpsRef(): (QueryRef<ListNewsletterSignIpsData, undefined> & { __angular?: false });
 /* Allow users to pass in custom DataConnect instances */
 export function listNewsletterSignIpsRef(dc: DataConnect): (QueryRef<ListNewsletterSignIpsData, undefined> & { __angular?: false });
 
 export function listNewsletterSignIps(): QueryPromise<ListNewsletterSignIpsData, undefined>;
 export function listNewsletterSignIps(dc: DataConnect): QueryPromise<ListNewsletterSignIpsData, undefined>;
+
+
+/* Allow users to create refs without passing in DataConnect */
+export function getNewsletterByEmailRef(vars?: GetNewsletterByEmailVariables): (QueryRef<GetNewsletterByEmailData, GetNewsletterByEmailVariables> & { __angular?: false });
+/* Allow users to pass in custom DataConnect instances */
+export function getNewsletterByEmailRef(dc: DataConnect, vars?: GetNewsletterByEmailVariables): (QueryRef<GetNewsletterByEmailData, GetNewsletterByEmailVariables> & { __angular?: false });
+
+export function getNewsletterByEmail(vars?: GetNewsletterByEmailVariables): QueryPromise<GetNewsletterByEmailData, GetNewsletterByEmailVariables>;
+export function getNewsletterByEmail(dc: DataConnect, vars?: GetNewsletterByEmailVariables): QueryPromise<GetNewsletterByEmailData, GetNewsletterByEmailVariables>;
 
 
 /* Allow users to create refs without passing in DataConnect */
