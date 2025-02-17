@@ -126,7 +126,7 @@ export default function SignUp() {
 			return;
 		}
 
-		handleEmailSignUp(email, password);
+		handleEmailSignUp(firstName, lastName, email, password);
 	};
 
 	return (

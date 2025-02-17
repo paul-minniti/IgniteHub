@@ -1,6 +1,6 @@
 "use client"; // Needed if you're on Next.js 13 with the App Router
 
-import React from "react";
+import React, { useState } from "react";
 import {
 	Stack,
 	Box,
@@ -17,12 +17,9 @@ export default function CreateProjectPage() {
 	const theme = useTheme();
 	const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
 
-	const [projectName, setProjectName] = React.useState("");
+	const [projectName, setProjectName] = useState("");
 
-	const handleContinue = () => {
-		// handle what happens on continue
-		alert(`Project name is: ${projectName}`);
-	};
+	const handleContinue = () => {};
 
 	return (
 		<Stack
