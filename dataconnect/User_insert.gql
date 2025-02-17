@@ -3,10 +3,11 @@
 mutation {
   user_insert(
     data: {
-      id: "8sGV1dZA1kIKuVzEaLa7qGbWAWqX"
-      email: "test2@test.com"
-      firstName: "test2"
-      lastName: "testing"
+      id: "11111111222234334444555565555555"
+      email: "test@test.com"
+      firstName: "paul"
+      lastName: "minniti"
+      roles: ["admin", "tester"]
     }
   )
 }

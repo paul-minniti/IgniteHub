@@ -2,20 +2,38 @@
 
 import React, { useState } from "react";
 import { Stack, TextField, Button } from "@mui/material";
+import {
+	getNewsletterByEmail,
+	addNewsletterSignUp
+} from "@IgniteHub/dataconnect";
+import { useSnackbar } from "@/context/snackbarContext";
 
 const SignupForm: React.FC = () => {
 	const [email, setEmail] = useState("");
+	const { showMessage } = useSnackbar();
 
-	/** Update the local state whenever the email input changes */
 	const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setEmail(event.target.value);
 	};
 
-	/** Handle form submission (e.g. sign-up logic) */
-	const handleSignUp = (event: React.FormEvent<HTMLFormElement>) => {
+	const handleSignUp = async (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
-		// Replace with your own sign-up logic (send data to backend, etc.)
-		console.log(`Signing up with email: ${email}`);
+		try {
+			const isSignedup = await getNewsletterByEmail({ email });
+			if (!isSignedup.data.newsletter) {
+				await addNewsletterSignUp({ email });
+				showMessage(
+					"Thanks for signing up! We will keep you up to date with IgniteHubs latest releases."
+				);
+			} else {
+				showMessage(
+					"You're already signed up! We will keep you up to date with IgniteHubs latest releases."
+				);
+			}
+		} catch (error) {
+			console.error(error);
+			showMessage("Something went wrong. Try again later", "error");
+		}
 	};
 
 	return (

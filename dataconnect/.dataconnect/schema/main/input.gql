@@ -11,12 +11,6 @@ It has the same format as `Orginization_Key`, but is only used as mutation retur
 """
 scalar Orginization_KeyOutput
 """
-✨ `ProjectMembership_KeyOutput` returns the primary key fields of table type `ProjectMembership`.
-
-It has the same format as `ProjectMembership_Key`, but is only used as mutation return value.
-"""
-scalar ProjectMembership_KeyOutput
-"""
 ✨ `User_KeyOutput` returns the primary key fields of table type `User`.
 
 It has the same format as `User_Key`, but is only used as mutation return value.
@@ -26,14 +20,6 @@ scalar User_KeyOutput
 ✨ Generated data input type for table 'Newsletter'. It includes all necessary fields for creating or upserting rows into table.
 """
 input Newsletter_Data {
-  """
-  ✨ Generated from Field `Newsletter`.`id` of type `UUID!`
-  """
-  id: UUID
-  """
-  ✨ `_expr` server value variant of `id` (✨ Generated from Field `Newsletter`.`id` of type `UUID!`)
-  """
-  id_expr: UUID_Expr
   """
   ✨ Generated from Field `Newsletter`.`email` of type `String!`
   """
@@ -60,10 +46,6 @@ input Newsletter_Filter {
   """
   _or: [Newsletter_Filter!]
   """
-  ✨ Generated from Field `Newsletter`.`id` of type `UUID!`
-  """
-  id: UUID_Filter
-  """
   ✨ Generated from Field `Newsletter`.`email` of type `String!`
   """
   email: String_Filter
@@ -86,13 +68,13 @@ input Newsletter_FirstRow {
 """
 input Newsletter_Key {
   """
-  ✨ Generated from Field `Newsletter`.`id` of type `UUID!`
+  ✨ Generated from Field `Newsletter`.`email` of type `String!`
   """
-  id: UUID
+  email: String
   """
-  ✨ `_expr` server value variant of `id` (✨ Generated from Field `Newsletter`.`id` of type `UUID!`)
+  ✨ `_expr` server value variant of `email` (✨ Generated from Field `Newsletter`.`email` of type `String!`)
   """
-  id_expr: UUID_Expr
+  email_expr: String_Expr
 }
 """
 ✨ Generated list filter input type for table 'Newsletter'. This input applies filtering logic based on the count or existence of related objects that matches certain criteria.
@@ -111,10 +93,6 @@ input Newsletter_ListFilter {
 ✨ Generated order input type for table 'Newsletter'. This input defines the sorting order of rows in query results based on one or more fields.
 """
 input Newsletter_Order {
-  """
-  ✨ Generated from Field `Newsletter`.`id` of type `UUID!`
-  """
-  id: OrderDirection
   """
   ✨ Generated from Field `Newsletter`.`email` of type `String!`
   """
@@ -145,11 +123,11 @@ input Orginization_Data {
   """
   createdAt_expr: Date_Expr
   """
-  ✨ Generated from Field `Orginization`.`name` of type `String`
+  ✨ Generated from Field `Orginization`.`name` of type `String!`
   """
   name: String
   """
-  ✨ `_expr` server value variant of `name` (✨ Generated from Field `Orginization`.`name` of type `String`)
+  ✨ `_expr` server value variant of `name` (✨ Generated from Field `Orginization`.`name` of type `String!`)
   """
   name_expr: String_Expr
   """
@@ -198,7 +176,7 @@ input Orginization_Filter {
   """
   createdAt: Date_Filter
   """
-  ✨ Generated from Field `Orginization`.`name` of type `String`
+  ✨ Generated from Field `Orginization`.`name` of type `String!`
   """
   name: String_Filter
   """
@@ -266,7 +244,7 @@ input Orginization_Order {
   """
   createdAt: OrderDirection
   """
-  ✨ Generated from Field `Orginization`.`name` of type `String`
+  ✨ Generated from Field `Orginization`.`name` of type `String!`
   """
   name: OrderDirection
   """
@@ -277,104 +255,6 @@ input Orginization_Order {
   ✨ Generated from Field `Orginization`.`updatedAt` of type `Date`
   """
   updatedAt: OrderDirection
-}
-"""
-✨ Generated data input type for table 'ProjectMembership'. It includes all necessary fields for creating or upserting rows into table.
-"""
-input ProjectMembership_Data {
-  """
-  ✨ Generated from Field `ProjectMembership`.`id` of type `UUID!`
-  """
-  id: UUID
-  """
-  ✨ `_expr` server value variant of `id` (✨ Generated from Field `ProjectMembership`.`id` of type `UUID!`)
-  """
-  id_expr: UUID_Expr
-  """
-  ✨ Generated from Field `ProjectMembership`.`role` of type `String!`
-  """
-  role: String
-  """
-  ✨ `_expr` server value variant of `role` (✨ Generated from Field `ProjectMembership`.`role` of type `String!`)
-  """
-  role_expr: String_Expr
-}
-"""
-✨ Generated filter input type for table 'ProjectMembership'. This input allows filtering objects using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
-"""
-input ProjectMembership_Filter {
-  """
-  Apply multiple filter conditions using `AND` logic.
-  """
-  _and: [ProjectMembership_Filter!]
-  """
-  Negate the result of the provided filter condition.
-  """
-  _not: ProjectMembership_Filter
-  """
-  Apply multiple filter conditions using `OR` logic.
-  """
-  _or: [ProjectMembership_Filter!]
-  """
-  ✨ Generated from Field `ProjectMembership`.`id` of type `UUID!`
-  """
-  id: UUID_Filter
-  """
-  ✨ Generated from Field `ProjectMembership`.`role` of type `String!`
-  """
-  role: String_Filter
-}
-"""
-✨ Generated first-row input type for table 'ProjectMembership'. This input selects the first row matching the filter criteria, ordered according to the specified conditions.
-"""
-input ProjectMembership_FirstRow {
-  """
-  Order the result by the specified fields.
-  """
-  orderBy: [ProjectMembership_Order!]
-  """
-  Filters rows based on the specified conditions.
-  """
-  where: ProjectMembership_Filter
-}
-"""
-✨ Generated key input type for table 'ProjectMembership'. It represents the primary key fields used to uniquely identify a row in the table.
-"""
-input ProjectMembership_Key {
-  """
-  ✨ Generated from Field `ProjectMembership`.`id` of type `UUID!`
-  """
-  id: UUID
-  """
-  ✨ `_expr` server value variant of `id` (✨ Generated from Field `ProjectMembership`.`id` of type `UUID!`)
-  """
-  id_expr: UUID_Expr
-}
-"""
-✨ Generated list filter input type for table 'ProjectMembership'. This input applies filtering logic based on the count or existence of related objects that matches certain criteria.
-"""
-input ProjectMembership_ListFilter {
-  """
-  The desired number of objects that match the condition (defaults to at least one).
-  """
-  count: Int_Filter = {gt:0}
-  """
-  Condition of the related objects to filter for.
-  """
-  exist: ProjectMembership_Filter
-}
-"""
-✨ Generated order input type for table 'ProjectMembership'. This input defines the sorting order of rows in query results based on one or more fields.
-"""
-input ProjectMembership_Order {
-  """
-  ✨ Generated from Field `ProjectMembership`.`id` of type `UUID!`
-  """
-  id: OrderDirection
-  """
-  ✨ Generated from Field `ProjectMembership`.`role` of type `String!`
-  """
-  role: OrderDirection
 }
 """
 ✨ Generated data input type for table 'User'. It includes all necessary fields for creating or upserting rows into table.

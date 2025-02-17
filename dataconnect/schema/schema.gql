@@ -64,16 +64,12 @@ type User @table {
 }
 
 type Orginization @table {
-  name: String @col(dataType: "varchar(255)")
+  name: String! @col(dataType: "varchar(255)")
   status: String @col(dataType: "varchar(50)")
   createdAt: Date! @default(expr: "request.time")
   updatedAt: Date
 }
 
-type ProjectMembership @table {
-  role: String!
-}
-
-type Newsletter @table {
-  email: String!
+type Newsletter @table(key: "email") {
+  email: String! @unique
 }

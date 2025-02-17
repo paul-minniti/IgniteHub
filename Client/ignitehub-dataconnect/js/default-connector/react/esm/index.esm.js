@@ -1,4 +1,4 @@
-import { createUserRef, addNewsletterSignUpRef, listNewsletterSignIpsRef, listUsersRef, getUserByIdRef, connectorConfig } from '../../';
+import { createUserRef, addNewsletterSignUpRef, createOrgRef, addUserToOrgRef, listNewsletterSignIpsRef, getNewsletterByEmailRef, listUsersRef, getUserByIdRef, connectorConfig } from '../../';
 import { CallerSdkTypeEnum, validateArgs } from '@firebase/data-connect';
 import { useDataConnectQuery, useDataConnectMutation } from '@tanstack-query-firebase/react/data-connect';
 
@@ -18,10 +18,32 @@ export function useAddNewsletterSignUp(dcOrOptions, options) {
   return useDataConnectMutation(refFactory, inputOpts, CallerSdkTypeEnum.GeneratedReact);
 }
 
+export function useCreateOrg(dcOrOptions, options) {
+  const { dc: dcInstance, vars: inputOpts } = validateArgs(connectorConfig, dcOrOptions, options, false);
+  function refFactory(vars) {
+    return createOrgRef(dcInstance, vars);
+  }
+  return useDataConnectMutation(refFactory, inputOpts, CallerSdkTypeEnum.GeneratedReact);
+}
+
+export function useAddUserToOrg(dcOrOptions, options) {
+  const { dc: dcInstance, vars: inputOpts } = validateArgs(connectorConfig, dcOrOptions, options, false);
+  function refFactory(vars) {
+    return addUserToOrgRef(dcInstance, vars);
+  }
+  return useDataConnectMutation(refFactory, inputOpts, CallerSdkTypeEnum.GeneratedReact);
+}
+
 
 export function useListNewsletterSignIps(dc, options) {
   const { dc: dcInstance } = validateArgs(connectorConfig, dc, undefined, false);
   const ref = listNewsletterSignIpsRef(dcInstance);
+  return useDataConnectQuery(ref, options, CallerSdkTypeEnum.GeneratedReact);
+}
+
+export function useGetNewsletterByEmail(dcOrVars, vars, options) {
+  const { dc: dcInstance, vars: inputVars } = validateArgs(connectorConfig, dcOrVars, vars, false);
+  const ref = getNewsletterByEmailRef(dcInstance, inputVars);
   return useDataConnectQuery(ref, options, CallerSdkTypeEnum.GeneratedReact);
 }
 
