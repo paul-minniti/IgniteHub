@@ -4,7 +4,7 @@ import {
 	getDataConnect,
 	connectDataConnectEmulator
 } from "firebase/data-connect";
-import { connectorConfig } from "@ignitehub/dataconnect";
+import { connectorConfig } from "@IgniteHub/dataconnect";
 import { getFunctions, connectFunctionsEmulator } from "firebase/functions";
 // import { getStorage } from "firebase/storage";
 
