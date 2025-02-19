@@ -13,8 +13,8 @@ import { useAuth } from "@/context/authContext";
 // 	createUserWithEmailAndPassword,
 // 	updateProfile
 // } from "firebase/auth";
-import { listUsers, getUserById, createUser } from "@IgniteHub/dataconnect";
-import { auth, dataConnect } from "@/utils/firebase";
+import { getUserById } from "@IgniteHub/dataconnect";
+import { dataConnect } from "@/utils/firebase";
 // import { useRouter } from "next/navigation";
 
 export interface UserProfile {

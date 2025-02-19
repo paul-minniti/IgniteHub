@@ -17,8 +17,12 @@ import { useAuth } from "@/context/authContext";
 // import { auth, dataConnect } from "@/utils/firebase";
 // import { useRouter } from "next/navigation";
 
+export interface Org {
+	name: string;
+}
+
 interface OrgContextProps {
-	// user: User | null;
+	org: Org | null;
 	// loading: boolean;
 	// isModalOpen: boolean;
 	// setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -35,7 +39,7 @@ interface OrgContextProps {
 }
 
 const OrgContext = createContext<OrgContextProps>({
-	// user: null,
+	org: null
 	// loading: true,
 	// isModalOpen: false,
 	// setIsModalOpen: () => {},
@@ -47,12 +51,13 @@ const OrgContext = createContext<OrgContextProps>({
 });
 
 export const OrgProvider = ({ children }: { children: React.ReactNode }) => {
-	// const [user, setUser] = useState<User | null>(null);
+	const [org, setOrg] = useState<Org | null>(null);
 	// const [loading, setLoading] = useState(true);
 	// const router = useRouter();
 	const { user } = useAuth();
 
 	useEffect(() => {
+		setOrg({ name: "test" });
 		// if (user) {
 		// 	console.log("User from Org Context: ", user);
 		// 	const userProfile = fetch(
@@ -68,19 +73,17 @@ export const OrgProvider = ({ children }: { children: React.ReactNode }) => {
 
 	return (
 		<OrgContext.Provider
-			value={
-				{
-					// user,
-					// loading,
-					// isModalOpen,
-					// setIsModalOpen,
-					// setModalView,
-					// handleGoogleSignIn,
-					// handleFacebookSignIn,
-					// handleEmailSignIn,
-					// handleEmailSignUp
-				}
-			}>
+			value={{
+				org
+				// loading,
+				// isModalOpen,
+				// setIsModalOpen,
+				// setModalView,
+				// handleGoogleSignIn,
+				// handleFacebookSignIn,
+				// handleEmailSignIn,
+				// handleEmailSignUp
+			}}>
 			{children}
 		</OrgContext.Provider>
 	);
