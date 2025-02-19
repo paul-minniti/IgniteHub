@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getUserById, createUser } from "@IgniteHub/dataconnect";
-import { auth, dataConnect } from "@/utils/firebase";
+import { dataConnect } from "@/utils/firebase";
 import { z } from "zod";
 
 const querySchema = z.object({

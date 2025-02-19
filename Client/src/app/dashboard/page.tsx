@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/authContext";
 import { Box, Stack } from "@mui/material";
-import Header from "./components/Header";
 import MainGrid from "./components/MainGrid";
 
 export default function Dashboard() {
