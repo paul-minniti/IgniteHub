@@ -1,8 +1,8 @@
 extend type Orginization {
   """
-  ✨ List `User` objects in a one-to-many relationship (where `User`.`project` is this object).
+  ✨ List `User` objects in a one-to-many relationship (where `User`.`orginization` is this object).
   """
-  users_on_project(
+  users_on_orginization(
     """
     Filter condition to narrow down the query results.
     """
@@ -22,5 +22,29 @@ extend type Orginization {
     Maximum number of rows to return (defaults to 100 rows).
     """
     limit: Int = 100
-  ): [User!]! @fdc_generated(from: "User.project", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  ): [User!]! @fdc_generated(from: "User.orginization", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  ✨ List `Website` objects in a one-to-many relationship (where `Website`.`organization` is this object).
+  """
+  websites_on_organization(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Website_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Website_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+  ): [Website!]! @fdc_generated(from: "Website.organization", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
 }

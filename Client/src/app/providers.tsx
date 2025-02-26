@@ -1,11 +1,11 @@
 "use client";
 
 import React from "react";
-import { AuthProvider } from "@/context/authContext";
+import { AuthProvider } from "@/utils/context/authContext";
 import ThemeRegistry from "@/utils/Theme/ThemeRegistry";
-import { OrgProvider } from "@/context/orgContext";
-import { UserProvider } from "@/context/userContext";
-import { SnackbarProvider } from "@/context/snackbarContext";
+import { DashboardProvider } from "@/utils/context/dashboardContext";
+import { UserProvider } from "@/utils/context/userContext";
+import { SnackbarProvider } from "@/utils/context/snackbarContext";
 
 export default function Providers({ children }: { children: React.ReactNode }) {
 	return (
@@ -13,7 +13,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
 			<SnackbarProvider>
 				<AuthProvider>
 					<UserProvider>
-						<OrgProvider>{children}</OrgProvider>
+						<DashboardProvider>{children}</DashboardProvider>
 					</UserProvider>
 				</AuthProvider>
 			</SnackbarProvider>

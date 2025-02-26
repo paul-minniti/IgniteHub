@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { useAuth } from "@/context/authContext";
+import { useAuth } from "@/utils/context/authContext";
 
 // import {
 // 	User,
@@ -70,7 +70,6 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
 			const fetchUserProfile = async () => {
 				try {
 					const userProfile = await getUserById(dataConnect, { id: user.uid });
-					console.log("User Profile: ", userProfile);
 					setUserProfile(userProfile.data.user as UserProfile);
 				} catch (error) {
 					console.error("Error fetching user profile:", error);

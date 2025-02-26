@@ -16,7 +16,7 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 // import AccountCircle from "@mui/icons-material/AccountCircle";
 import IgniteHub from "@/components/Typography/IgniteHub";
-import { useAuth } from "@/context/authContext";
+import { useAuth } from "@/utils/context/authContext";
 
 interface PageData {
 	name: string;

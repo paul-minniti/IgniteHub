@@ -29,8 +29,19 @@ query ListUsers @auth(level: PUBLIC) {
     email
     firstName
     lastName
-    projectId
+    orginizationId
     roles
+  }
+}
+
+query ListOrgs @auth(level: PUBLIC) {
+  orginizations {
+    id
+    name
+    status
+    users_on_orginization {
+      id
+    }
   }
 }
 
@@ -40,7 +51,7 @@ query GetUserById($id: String!) @auth(level: PUBLIC) {
     email
     firstName
     lastName
-    projectId
+    orginizationId
     roles
   }
 }

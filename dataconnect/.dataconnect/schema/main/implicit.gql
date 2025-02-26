@@ -6,7 +6,17 @@ extend type Orginization {
 }
 extend type User {
   """
-  ✨ Implicit foreign key field based on `User`.`project`. It must match the value of `Orginization`.`id`. See `@ref` for how to customize it.
+  ✨ Implicit foreign key field based on `User`.`orginization`. It must match the value of `Orginization`.`id`. See `@ref` for how to customize it.
   """
-  projectId: UUID @fdc_generated(from: "User.project", purpose: IMPLICIT_REF_FIELD)
+  orginizationId: UUID @fdc_generated(from: "User.orginization", purpose: IMPLICIT_REF_FIELD)
+}
+extend type Website {
+  """
+  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
+  """
+  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "Website", purpose: IMPLICIT_KEY_FIELD)
+  """
+  ✨ Implicit foreign key field based on `Website`.`organization`. It must match the value of `Orginization`.`id`. See `@ref` for how to customize it.
+  """
+  organizationId: UUID @fdc_generated(from: "Website.organization", purpose: IMPLICIT_REF_FIELD)
 }

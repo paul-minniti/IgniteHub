@@ -17,6 +17,12 @@ It has the same format as `User_Key`, but is only used as mutation return value.
 """
 scalar User_KeyOutput
 """
+✨ `Website_KeyOutput` returns the primary key fields of table type `Website`.
+
+It has the same format as `Website_Key`, but is only used as mutation return value.
+"""
+scalar Website_KeyOutput
+"""
 ✨ Generated data input type for table 'Newsletter'. It includes all necessary fields for creating or upserting rows into table.
 """
 input Newsletter_Data {
@@ -188,9 +194,13 @@ input Orginization_Filter {
   """
   updatedAt: Date_Filter
   """
-  ✨ Generated from Field `Orginization`.`users_on_project` of type `[User!]!`
+  ✨ Generated from Field `Orginization`.`users_on_orginization` of type `[User!]!`
   """
-  users_on_project: User_ListFilter
+  users_on_orginization: User_ListFilter
+  """
+  ✨ Generated from Field `Orginization`.`websites_on_organization` of type `[Website!]!`
+  """
+  websites_on_organization: Website_ListFilter
 }
 """
 ✨ Generated first-row input type for table 'Orginization'. This input selects the first row matching the filter criteria, ordered according to the specified conditions.
@@ -269,17 +279,17 @@ input User_Data {
   """
   id_expr: String_Expr
   """
-  ✨ Generated from Field `User`.`projectId` of type `UUID`
+  ✨ Generated from Field `User`.`orginizationId` of type `UUID`
   """
-  projectId: UUID
+  orginizationId: UUID
   """
-  ✨ `_expr` server value variant of `projectId` (✨ Generated from Field `User`.`projectId` of type `UUID`)
+  ✨ `_expr` server value variant of `orginizationId` (✨ Generated from Field `User`.`orginizationId` of type `UUID`)
   """
-  projectId_expr: UUID_Expr
+  orginizationId_expr: UUID_Expr
   """
-  ✨ Generated from Field `User`.`project` of type `Orginization`
+  ✨ Generated from Field `User`.`orginization` of type `Orginization`
   """
-  project: Orginization_Key
+  orginization: Orginization_Key
   """
   ✨ Generated from Field `User`.`createdAt` of type `Date!`
   """
@@ -374,13 +384,13 @@ input User_Filter {
   """
   id: String_Filter
   """
-  ✨ Generated from Field `User`.`projectId` of type `UUID`
+  ✨ Generated from Field `User`.`orginizationId` of type `UUID`
   """
-  projectId: UUID_Filter
+  orginizationId: UUID_Filter
   """
-  ✨ Generated from Field `User`.`project` of type `Orginization`
+  ✨ Generated from Field `User`.`orginization` of type `Orginization`
   """
-  project: Orginization_Filter
+  orginization: Orginization_Filter
   """
   ✨ Generated from Field `User`.`createdAt` of type `Date!`
   """
@@ -462,13 +472,13 @@ input User_Order {
   """
   id: OrderDirection
   """
-  ✨ Generated from Field `User`.`projectId` of type `UUID`
+  ✨ Generated from Field `User`.`orginizationId` of type `UUID`
   """
-  projectId: OrderDirection
+  orginizationId: OrderDirection
   """
-  ✨ Generated from Field `User`.`project` of type `Orginization`
+  ✨ Generated from Field `User`.`orginization` of type `Orginization`
   """
-  project: Orginization_Order
+  orginization: Orginization_Order
   """
   ✨ Generated from Field `User`.`createdAt` of type `Date!`
   """
@@ -495,6 +505,220 @@ input User_Order {
   profilePictureUrl: OrderDirection
   """
   ✨ Generated from Field `User`.`updatedAt` of type `Date`
+  """
+  updatedAt: OrderDirection
+}
+"""
+✨ Generated data input type for table 'Website'. It includes all necessary fields for creating or upserting rows into table.
+"""
+input Website_Data {
+  """
+  ✨ Generated from Field `Website`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `Website`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr
+  """
+  ✨ Generated from Field `Website`.`organizationId` of type `UUID`
+  """
+  organizationId: UUID
+  """
+  ✨ `_expr` server value variant of `organizationId` (✨ Generated from Field `Website`.`organizationId` of type `UUID`)
+  """
+  organizationId_expr: UUID_Expr
+  """
+  ✨ Generated from Field `Website`.`organization` of type `Orginization`
+  """
+  organization: Orginization_Key
+  """
+  ✨ Generated from Field `Website`.`createdAt` of type `Date!`
+  """
+  createdAt: Date
+  """
+  ✨ `_date` server value variant of `createdAt` (✨ Generated from Field `Website`.`createdAt` of type `Date!`)
+  """
+  createdAt_date: Date_Relative
+  """
+  ✨ `_expr` server value variant of `createdAt` (✨ Generated from Field `Website`.`createdAt` of type `Date!`)
+  """
+  createdAt_expr: Date_Expr
+  """
+  ✨ Generated from Field `Website`.`domain` of type `String!`
+  """
+  domain: String
+  """
+  ✨ `_expr` server value variant of `domain` (✨ Generated from Field `Website`.`domain` of type `String!`)
+  """
+  domain_expr: String_Expr
+  """
+  ✨ Generated from Field `Website`.`name` of type `String!`
+  """
+  name: String
+  """
+  ✨ `_expr` server value variant of `name` (✨ Generated from Field `Website`.`name` of type `String!`)
+  """
+  name_expr: String_Expr
+  """
+  ✨ Generated from Field `Website`.`status` of type `String`
+  """
+  status: String
+  """
+  ✨ `_expr` server value variant of `status` (✨ Generated from Field `Website`.`status` of type `String`)
+  """
+  status_expr: String_Expr
+  """
+  ✨ Generated from Field `Website`.`structureId` of type `String!`
+  """
+  structureId: String
+  """
+  ✨ `_expr` server value variant of `structureId` (✨ Generated from Field `Website`.`structureId` of type `String!`)
+  """
+  structureId_expr: String_Expr
+  """
+  ✨ Generated from Field `Website`.`updatedAt` of type `Date`
+  """
+  updatedAt: Date
+  """
+  ✨ `_date` server value variant of `updatedAt` (✨ Generated from Field `Website`.`updatedAt` of type `Date`)
+  """
+  updatedAt_date: Date_Relative
+  """
+  ✨ `_expr` server value variant of `updatedAt` (✨ Generated from Field `Website`.`updatedAt` of type `Date`)
+  """
+  updatedAt_expr: Date_Expr
+}
+"""
+✨ Generated filter input type for table 'Website'. This input allows filtering objects using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input Website_Filter {
+  """
+  Apply multiple filter conditions using `AND` logic.
+  """
+  _and: [Website_Filter!]
+  """
+  Negate the result of the provided filter condition.
+  """
+  _not: Website_Filter
+  """
+  Apply multiple filter conditions using `OR` logic.
+  """
+  _or: [Website_Filter!]
+  """
+  ✨ Generated from Field `Website`.`id` of type `UUID!`
+  """
+  id: UUID_Filter
+  """
+  ✨ Generated from Field `Website`.`organizationId` of type `UUID`
+  """
+  organizationId: UUID_Filter
+  """
+  ✨ Generated from Field `Website`.`organization` of type `Orginization`
+  """
+  organization: Orginization_Filter
+  """
+  ✨ Generated from Field `Website`.`createdAt` of type `Date!`
+  """
+  createdAt: Date_Filter
+  """
+  ✨ Generated from Field `Website`.`domain` of type `String!`
+  """
+  domain: String_Filter
+  """
+  ✨ Generated from Field `Website`.`name` of type `String!`
+  """
+  name: String_Filter
+  """
+  ✨ Generated from Field `Website`.`status` of type `String`
+  """
+  status: String_Filter
+  """
+  ✨ Generated from Field `Website`.`structureId` of type `String!`
+  """
+  structureId: String_Filter
+  """
+  ✨ Generated from Field `Website`.`updatedAt` of type `Date`
+  """
+  updatedAt: Date_Filter
+}
+"""
+✨ Generated first-row input type for table 'Website'. This input selects the first row matching the filter criteria, ordered according to the specified conditions.
+"""
+input Website_FirstRow {
+  """
+  Order the result by the specified fields.
+  """
+  orderBy: [Website_Order!]
+  """
+  Filters rows based on the specified conditions.
+  """
+  where: Website_Filter
+}
+"""
+✨ Generated key input type for table 'Website'. It represents the primary key fields used to uniquely identify a row in the table.
+"""
+input Website_Key {
+  """
+  ✨ Generated from Field `Website`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `Website`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr
+}
+"""
+✨ Generated list filter input type for table 'Website'. This input applies filtering logic based on the count or existence of related objects that matches certain criteria.
+"""
+input Website_ListFilter {
+  """
+  The desired number of objects that match the condition (defaults to at least one).
+  """
+  count: Int_Filter = {gt:0}
+  """
+  Condition of the related objects to filter for.
+  """
+  exist: Website_Filter
+}
+"""
+✨ Generated order input type for table 'Website'. This input defines the sorting order of rows in query results based on one or more fields.
+"""
+input Website_Order {
+  """
+  ✨ Generated from Field `Website`.`id` of type `UUID!`
+  """
+  id: OrderDirection
+  """
+  ✨ Generated from Field `Website`.`organizationId` of type `UUID`
+  """
+  organizationId: OrderDirection
+  """
+  ✨ Generated from Field `Website`.`organization` of type `Orginization`
+  """
+  organization: Orginization_Order
+  """
+  ✨ Generated from Field `Website`.`createdAt` of type `Date!`
+  """
+  createdAt: OrderDirection
+  """
+  ✨ Generated from Field `Website`.`domain` of type `String!`
+  """
+  domain: OrderDirection
+  """
+  ✨ Generated from Field `Website`.`name` of type `String!`
+  """
+  name: OrderDirection
+  """
+  ✨ Generated from Field `Website`.`status` of type `String`
+  """
+  status: OrderDirection
+  """
+  ✨ Generated from Field `Website`.`structureId` of type `String!`
+  """
+  structureId: OrderDirection
+  """
+  ✨ Generated from Field `Website`.`updatedAt` of type `Date`
   """
   updatedAt: OrderDirection
 }

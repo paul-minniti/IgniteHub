@@ -27,6 +27,15 @@ extend type Mutation {
     data: User_Data!
   ): User_KeyOutput! @fdc_generated(from: "User", purpose: INSERT_SINGLE)
   """
+  ✨ Insert a single `Website` into the table. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  website_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: Website_Data!
+  ): Website_KeyOutput! @fdc_generated(from: "Website", purpose: INSERT_SINGLE)
+  """
   ✨ Insert `Newsletter` objects into the table. Columns not specified in `data` will receive defaults (e.g. `null`).
   """
   newsletter_insertMany(
@@ -53,6 +62,15 @@ extend type Mutation {
     """
     data: [User_Data!]!
   ): [User_KeyOutput!]! @fdc_generated(from: "User", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `Website` objects into the table. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  website_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [Website_Data!]!
+  ): [Website_KeyOutput!]! @fdc_generated(from: "Website", purpose: INSERT_MULTIPLE)
   """
   ✨ Insert or update a single `Newsletter` into the table, based on the primary key. Returns the key of the newly inserted `Newsletter`.
   """
@@ -81,6 +99,15 @@ extend type Mutation {
     data: User_Data!
   ): User_KeyOutput! @fdc_generated(from: "User", purpose: UPSERT_SINGLE)
   """
+  ✨ Insert or update a single `Website` into the table, based on the primary key. Returns the key of the newly inserted `Website`.
+  """
+  website_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: Website_Data!
+  ): Website_KeyOutput! @fdc_generated(from: "Website", purpose: UPSERT_SINGLE)
+  """
   ✨ Insert or update `Newsletter` objects into the table, based on the primary key. Returns the key of the newly inserted `Newsletter`.
   """
   newsletter_upsertMany(
@@ -107,6 +134,15 @@ extend type Mutation {
     """
     data: [User_Data!]!
   ): [User_KeyOutput!]! @fdc_generated(from: "User", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `Website` objects into the table, based on the primary key. Returns the key of the newly inserted `Website`.
+  """
+  website_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [Website_Data!]!
+  ): [Website_KeyOutput!]! @fdc_generated(from: "Website", purpose: UPSERT_MULTIPLE)
   """
   ✨ Update a single `Newsletter` based on `id`, `key` or `first`, setting columns specified in `data`. Returns `null` if not found.
   """
@@ -180,6 +216,30 @@ extend type Mutation {
     data: User_Data!
   ): User_KeyOutput @fdc_generated(from: "User", purpose: UPDATE_SINGLE)
   """
+  ✨ Update a single `Website` based on `id`, `key` or `first`, setting columns specified in `data`. Returns `null` if not found.
+  """
+  website_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Website_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Website_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: Website_Data!
+  ): Website_KeyOutput @fdc_generated(from: "Website", purpose: UPDATE_SINGLE)
+  """
   ✨ Update `Newsletter` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
   """
   newsletter_updateMany(
@@ -236,6 +296,25 @@ extend type Mutation {
     """
     data: User_Data!
   ): Int! @fdc_generated(from: "User", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `Website` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  website_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: Website_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: Website_Data!
+  ): Int! @fdc_generated(from: "Website", purpose: UPDATE_MULTIPLE)
   """
   ✨ Delete a single `Newsletter` based on `id`, `key` or `first` and return its key (or `null` if not found).
   """
@@ -294,6 +373,25 @@ extend type Mutation {
     first: User_FirstRow
   ): User_KeyOutput @fdc_generated(from: "User", purpose: DELETE_SINGLE)
   """
+  ✨ Delete a single `Website` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  website_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Website_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Website_FirstRow
+  ): Website_KeyOutput @fdc_generated(from: "Website", purpose: DELETE_SINGLE)
+  """
   ✨ Delete `Newsletter` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
   """
   newsletter_deleteMany(
@@ -335,4 +433,18 @@ extend type Mutation {
     """
     all: Boolean = false
   ): Int! @fdc_generated(from: "User", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `Website` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  website_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: Website_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "Website", purpose: DELETE_MULTIPLE)
 }
