@@ -252,7 +252,7 @@ export interface ListUsersData {
     email: string;
     firstName: string;
     lastName: string;
-    projectId?: UUIDString | null;
+    orginizationId?: UUIDString | null;
     roles?: string[] | null;
   } & User_Key)[];
 }
@@ -306,6 +306,87 @@ executeQuery(ref).then((response) => {
 });
 ```
 
+## ListOrgs
+You can execute the `ListOrgs` query using the following action shortcut function, or by calling `executeQuery()` after calling the following `QueryRef` function, both of which are defined in [default-connector/index.d.ts](./index.d.ts):
+```javascript
+listOrgs(): QueryPromise<ListOrgsData, undefined>;
+
+listOrgsRef(): (QueryRef<ListOrgsData, undefined> & { __angular?: false });
+```
+You can also pass in a `DataConnect` instance to the action shortcut function or `QueryRef` function.
+```javascript
+listOrgs(dc: DataConnect): QueryPromise<ListOrgsData, undefined>;
+
+listOrgsRef(dc: DataConnect): (QueryRef<ListOrgsData, undefined> & { __angular?: false });
+```
+
+### Variables
+The `ListOrgs` query has no variables.
+### Return Type
+Recall that executing the `ListOrgs` query returns a `QueryPromise` that resolves to an object with a `data` property. 
+
+The `data` property is an object of type `ListOrgsData`, which is defined in [default-connector/index.d.ts](./index.d.ts). It has the following fields:
+```javascript
+export interface ListOrgsData {
+  orginizations: ({
+    id: UUIDString;
+    name: string;
+    status?: string | null;
+    users_on_orginization: ({
+      id: string;
+    } & User_Key)[];
+  } & Orginization_Key)[];
+}
+```
+### Using `ListOrgs`'s action shortcut function
+
+```javascript
+import { getDataConnect, DataConnect } from 'firebase/data-connect';
+import { connectorConfig, listOrgs } from '@IgniteHub/dataconnect';
+
+// Call the `listOrgs()` function to execute the query.
+// You can use the `await` keyword to wait for the promise to resolve.
+const { data } = await listOrgs();
+
+// You can also pass in a `DataConnect` instance to the action shortcut function.
+const connector: DataConnect = getDataConnect(connectorConfig);
+const { data } = await listOrgs(connector);
+
+console.log(data.orginizations);
+
+// Or, you can use the `Promise` API.
+listOrgs().then((response) => {
+  const data = response.data;
+  console.log(data.orginizations);
+});
+```
+
+### Using `ListOrgs`'s `QueryRef` function
+
+```javascript
+import { getDataConnect, DataConnect, executeQuery } from 'firebase/data-connect';
+import { connectorConfig, listOrgsRef } from '@IgniteHub/dataconnect';
+
+// Call the `listOrgsRef()` function to get a reference to the query.
+const ref = listOrgsRef();
+
+// You can also pass in a `DataConnect` instance to the `QueryRef` function.
+const connector: DataConnect = getDataConnect(connectorConfig);
+const ref = listOrgsRef(connector);
+
+// Call `executeQuery()` on the reference to execute the query.
+// You can use the `await` keyword to wait for the promise to resolve.
+const { data } = await executeQuery(ref);
+
+console.log(data.orginizations);
+
+// Or, you can use the `Promise` API.
+executeQuery(ref).then((response) => {
+  const data = response.data;
+  console.log(data.orginizations);
+});
+```
+
 ## GetUserById
 You can execute the `GetUserById` query using the following action shortcut function, or by calling `executeQuery()` after calling the following `QueryRef` function, both of which are defined in [default-connector/index.d.ts](./index.d.ts):
 ```javascript
@@ -339,7 +420,7 @@ export interface GetUserByIdData {
     email: string;
     firstName: string;
     lastName: string;
-    projectId?: UUIDString | null;
+    orginizationId?: UUIDString | null;
     roles?: string[] | null;
   } & User_Key;
 }
@@ -726,7 +807,7 @@ The `AddUserToOrg` mutation requires an argument of type `AddUserToOrgVariables`
 
 ```javascript
 export interface AddUserToOrgVariables {
-  projectId: UUIDString;
+  orginizationId: UUIDString;
 }
 ```
 ### Return Type
@@ -735,7 +816,7 @@ Recall that executing the `AddUserToOrg` mutation returns a `MutationPromise` th
 The `data` property is an object of type `AddUserToOrgData`, which is defined in [default-connector/index.d.ts](./index.d.ts). It has the following fields:
 ```javascript
 export interface AddUserToOrgData {
-  user_upsert: User_Key;
+  user_update?: User_Key | null;
 }
 ```
 ### Using `AddUserToOrg`'s action shortcut function
@@ -745,25 +826,25 @@ import { getDataConnect, DataConnect } from 'firebase/data-connect';
 import { connectorConfig, addUserToOrg, AddUserToOrgVariables } from '@IgniteHub/dataconnect';
 // The `AddUserToOrg` mutation requires an argument of type `AddUserToOrgVariables`:
 const addUserToOrgVars: AddUserToOrgVariables = {
-  projectId: ..., 
+  orginizationId: ..., 
 }
 
 // Call the `addUserToOrg()` function to execute the mutation.
 // You can use the `await` keyword to wait for the promise to resolve.
 const { data } = await addUserToOrg(addUserToOrgVars);
 // Variables can be defined inline as well.
-const { data } = await addUserToOrg({ projectId: ..., });
+const { data } = await addUserToOrg({ orginizationId: ..., });
 
 // You can also pass in a `DataConnect` instance to the action shortcut function.
 const connector: DataConnect = getDataConnect(connectorConfig);
 const { data } = await addUserToOrg(connector, addUserToOrgVars);
 
-console.log(data.user_upsert);
+console.log(data.user_update);
 
 // Or, you can use the `Promise` API.
 addUserToOrg(addUserToOrgVars).then((response) => {
   const data = response.data;
-  console.log(data.user_upsert);
+  console.log(data.user_update);
 });
 ```
 
@@ -774,13 +855,13 @@ import { getDataConnect, DataConnect, executeMutation } from 'firebase/data-conn
 import { connectorConfig, addUserToOrgRef, AddUserToOrgVariables } from '@IgniteHub/dataconnect';
 // The `AddUserToOrg` mutation requires an argument of type `AddUserToOrgVariables`:
 const addUserToOrgVars: AddUserToOrgVariables = {
-  projectId: ..., 
+  orginizationId: ..., 
 }
 
 // Call the `addUserToOrgRef()` function to get a reference to the mutation.
 const ref = addUserToOrgRef(addUserToOrgVars);
 // Variables can be defined inline as well.
-const ref = addUserToOrgRef({ projectId: ..., });
+const ref = addUserToOrgRef({ orginizationId: ..., });
 
 // You can also pass in a `DataConnect` instance to the `MutationRef` function.
 const connector: DataConnect = getDataConnect(connectorConfig);
@@ -790,12 +871,12 @@ const ref = addUserToOrgRef(connector, addUserToOrgVars);
 // You can use the `await` keyword to wait for the promise to resolve.
 const { data } = await executeMutation(ref);
 
-console.log(data.user_upsert);
+console.log(data.user_update);
 
 // Or, you can use the `Promise` API.
 executeMutation(ref).then((response) => {
   const data = response.data;
-  console.log(data.user_upsert);
+  console.log(data.user_update);
 });
 ```
 

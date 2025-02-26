@@ -77,6 +77,16 @@ export function listUsers(dc) {
   return executeQuery(listUsersRef(dc));
 }
 
+export function listOrgsRef(dc) {
+  const { dc: dcInstance} = validateArgs(connectorConfig, dc, undefined);
+  dcInstance._useGeneratedSdk();
+  return queryRef(dcInstance, 'ListOrgs');
+}
+
+export function listOrgs(dc) {
+  return executeQuery(listOrgsRef(dc));
+}
+
 export function getUserByIdRef(dcOrVars, vars) {
   const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars, true);
   dcInstance._useGeneratedSdk();

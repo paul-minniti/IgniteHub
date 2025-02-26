@@ -1,3 +1,37 @@
+type User @table {
+  id: String! @default(expr: "auth.uid")
+  firstName: String! @col(dataType: "varchar(100)")
+  lastName: String! @col(dataType: "varchar(100)")
+  email: String! @col(dataType: "varchar(255)")
+  profilePictureUrl: String @col(dataType: "varchar(255)")
+  orginization: Orginization
+  roles: [String]
+  lastLoggedIn: Date
+  createdAt: Date! @default(expr: "request.time")
+  updatedAt: Date
+}
+
+type Orginization @table {
+  name: String! @col(dataType: "varchar(255)")
+  status: String @col(dataType: "varchar(50)")
+  createdAt: Date! @default(expr: "request.time")
+  updatedAt: Date
+}
+
+type Newsletter @table(key: "email") {
+  email: String! @unique
+}
+
+type Website @table {
+  name: String! @col(dataType: "varchar(255)")
+  domain: String! @col(dataType: "varchar(255)") @unique
+  structureId: String! @col(dataType: "varchar(255)")
+  organization: Orginization
+  status: String @col(dataType: "varchar(50)")
+  createdAt: Date! @default(expr: "request.time")
+  updatedAt: Date
+}
+
 # # Example schema for simple movie review app
 # # User table is keyed by Firebase Auth UID.
 # type User @table {
@@ -49,27 +83,3 @@
 #   reviewText: String
 #   reviewDate: Date! @default(expr: "request.time")
 # }
-
-type User @table {
-  id: String! @default(expr: "auth.uid")
-  firstName: String! @col(dataType: "varchar(100)")
-  lastName: String! @col(dataType: "varchar(100)")
-  email: String! @col(dataType: "varchar(255)")
-  profilePictureUrl: String @col(dataType: "varchar(255)")
-  project: Orginization
-  roles: [String]
-  lastLoggedIn: Date
-  createdAt: Date! @default(expr: "request.time")
-  updatedAt: Date
-}
-
-type Orginization @table {
-  name: String! @col(dataType: "varchar(255)")
-  status: String @col(dataType: "varchar(50)")
-  createdAt: Date! @default(expr: "request.time")
-  updatedAt: Date
-}
-
-type Newsletter @table(key: "email") {
-  email: String! @unique
-}

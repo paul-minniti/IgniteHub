@@ -397,6 +397,13 @@ enum GeneratedPurpose {
   QUERY_MULTIPLE_ONE_TO_MANY
   QUERY_MULTIPLE_MANY_TO_MANY
 
+  # Generated fields for aggregates
+  QUERY_COUNT
+  QUERY_SUM
+  QUERY_AVG
+  QUERY_MIN
+  QUERY_MAX
+
   # Top-level Query fields.
   QUERY_SINGLE
   QUERY_MULTIPLE

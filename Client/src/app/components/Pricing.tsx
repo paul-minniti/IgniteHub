@@ -1,7 +1,7 @@
 "use client";
 
 import { LandingSubheader } from "@/components/Typography/Subheaders";
-import { useAuth } from "@/context/authContext";
+import { useAuth } from "@/utils/context/authContext";
 import {
 	Box,
 	Stack,

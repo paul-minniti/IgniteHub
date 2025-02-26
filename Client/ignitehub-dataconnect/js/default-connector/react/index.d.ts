@@ -1,7 +1,8 @@
-import { CreateUserData, CreateUserVariables, AddNewsletterSignUpData, AddNewsletterSignUpVariables, CreateOrgData, CreateOrgVariables, AddUserToOrgData, AddUserToOrgVariables, ListNewsletterSignIpsData, GetNewsletterByEmailData, GetNewsletterByEmailVariables, ListUsersData, GetUserByIdData, GetUserByIdVariables} from '../';
+import { CreateUserData, CreateUserVariables, AddNewsletterSignUpData, AddNewsletterSignUpVariables, CreateOrgData, CreateOrgVariables, AddUserToOrgData, AddUserToOrgVariables, ListNewsletterSignIpsData, GetNewsletterByEmailData, GetNewsletterByEmailVariables, ListUsersData, ListOrgsData, GetUserByIdData, GetUserByIdVariables} from '../';
 import { useDataConnectQueryOptions, FlattenedQueryResult, useDataConnectMutationOptions, FlattenedMutationResult} from '@tanstack-query-firebase/react/data-connect';
 import { UseQueryResult, UseMutationResult} from '@tanstack/react-query';
 import { DataConnect } from 'firebase/data-connect';
+import { FirebaseError } from 'firebase/app';
 
 
 export function useCreateUser(options?: useDataConnectMutationOptions<CreateUserData, CreateUserVariables>): UseMutationResult<FlattenedMutationResult<CreateUserData, CreateUserVariables>, FirebaseError, CreateUserVariables>;
@@ -24,6 +25,9 @@ export function useGetNewsletterByEmail(dc: DataConnect, vars: GetNewsletterByEm
 
 export function useListUsers(options?: useDataConnectQueryOptions<ListUsersData>): UseQueryResult<FlattenedQueryResult<ListUsersData, undefined>, FirebaseError>;
 export function useListUsers(dc: DataConnect, options?: useDataConnectQueryOptions<ListUsersData>): UseQueryResult<FlattenedQueryResult<ListUsersData, undefined>, FirebaseError>;
+
+export function useListOrgs(options?: useDataConnectQueryOptions<ListOrgsData>): UseQueryResult<FlattenedQueryResult<ListOrgsData, undefined>, FirebaseError>;
+export function useListOrgs(dc: DataConnect, options?: useDataConnectQueryOptions<ListOrgsData>): UseQueryResult<FlattenedQueryResult<ListOrgsData, undefined>, FirebaseError>;
 
 export function useGetUserById(vars: GetUserByIdVariables, options?: useDataConnectQueryOptions<GetUserByIdData>): UseQueryResult<FlattenedQueryResult<GetUserByIdData, GetUserByIdVariables>, FirebaseError>;
 export function useGetUserById(dc: DataConnect, vars: GetUserByIdVariables, options?: useDataConnectQueryOptions<GetUserByIdData>): UseQueryResult<FlattenedQueryResult<GetUserByIdData, GetUserByIdVariables>, FirebaseError>;

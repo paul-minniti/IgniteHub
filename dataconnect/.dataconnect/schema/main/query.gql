@@ -57,6 +57,25 @@ extend type Query {
     first: User_FirstRow
   ): User @fdc_generated(from: "User", purpose: QUERY_SINGLE)
   """
+  ✨ Look up a single `Website` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  website(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Website_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Website_FirstRow
+  ): Website @fdc_generated(from: "Website", purpose: QUERY_SINGLE)
+  """
   ✨ List `Newsletter` objects in the table, optionally filtered by `where` conditions.
   """
   newsletters(
@@ -128,4 +147,28 @@ extend type Query {
     """
     limit: Int = 100
   ): [User!]! @fdc_generated(from: "User", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `Website` objects in the table, optionally filtered by `where` conditions.
+  """
+  websites(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Website_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Website_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+  ): [Website!]! @fdc_generated(from: "Website", purpose: QUERY_MULTIPLE)
 }

@@ -44,6 +44,7 @@ interface AuthContextProps {
 		email: string,
 		password: string
 	) => Promise<void>;
+	handleLogout: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextProps>({
@@ -54,7 +55,8 @@ const AuthContext = createContext<AuthContextProps>({
 	setModalView: () => {},
 	handleGoogleSignIn: async () => {},
 	handleEmailSignIn: async () => {},
-	handleEmailSignUp: async () => {}
+	handleEmailSignUp: async () => {},
+	handleLogout: async () => {}
 });
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
@@ -70,6 +72,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+			if (!firebaseUser) {
+				router.push("/");
+			}
 			setUser(firebaseUser);
 			setLoading(false);
 		});
@@ -84,10 +89,26 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 			const userProfile = await getUserById(dataConnect, {
 				id: userCredential.user.uid
 			});
+			// const token = await userCredential.user.getIdToken();
 			handleCloseModal();
 			if (!userProfile.data.user) {
 				const displayName = userCredential.user.displayName || "";
 				const [firstName, lastName = ""] = displayName.split(" ");
+				// const userProfile = fetch(
+				// 	"/api/user?" +
+				// 		new URLSearchParams({
+				// 			userId: userCredential.user.uid,
+				// 			displayName: userCredential.user.displayName as string,
+				// 			email: userCredential.user.email as string
+				// 		}).toString(),
+				// 	{
+				// 		headers: {
+				// 			Authorization: `Bearer ${token}`
+				// 		}
+				// 	}
+				// );
+				// console.log("userProfile: ", userProfile);
+
 				await createUser({
 					id: userCredential.user.uid,
 					firstName: firstName,
@@ -118,6 +139,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 			setLoading(false);
 		}
 	}
+
+	const handleLogout = async () => {
+		auth.signOut();
+	};
 
 	// Email/Password sign-up function
 	async function handleEmailSignUp(
@@ -160,7 +185,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 				setModalView,
 				handleGoogleSignIn,
 				handleEmailSignIn,
-				handleEmailSignUp
+				handleEmailSignUp,
+				handleLogout
 			}}>
 			{children}
 			<Modal open={isModalOpen} onClose={handleCloseModal}>

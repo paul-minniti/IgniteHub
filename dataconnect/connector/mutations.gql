@@ -18,8 +18,11 @@ mutation CreateOrg($orgName: String!, $orgStatus: String!)
   orginization_insert(data: { name: $orgName, status: $orgStatus })
 }
 
-mutation AddUserToOrg($projectId: UUID!) @auth(level: USER) {
-  user_upsert(data: { id_expr: "auth.uid", projectId: $projectId })
+mutation AddUserToOrg($orginizationId: UUID!) @auth(level: USER) {
+  user_update(
+    first: { where: { id: { eq_expr: "auth.uid" } } }
+    data: { id_expr: "auth.uid", orginizationId: $orginizationId }
+  )
 }
 
 # # Upsert (update or insert) a user's username based on their auth.uid

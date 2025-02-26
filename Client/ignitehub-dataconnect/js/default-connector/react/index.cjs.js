@@ -1,5 +1,5 @@
-const { createUserRef, addNewsletterSignUpRef, createOrgRef, addUserToOrgRef, listNewsletterSignIpsRef, getNewsletterByEmailRef, listUsersRef, getUserByIdRef, connectorConfig } = require('../');
-const { CallerSdkTypeEnum, validateArgs } = require('@firebase/data-connect');
+const { createUserRef, addNewsletterSignUpRef, createOrgRef, addUserToOrgRef, listNewsletterSignIpsRef, getNewsletterByEmailRef, listUsersRef, listOrgsRef, getUserByIdRef, connectorConfig } = require('../');
+const { CallerSdkTypeEnum, validateArgs } = require('firebase/data-connect');
 const { useDataConnectQuery, useDataConnectMutation } = require('@tanstack-query-firebase/react/data-connect');
 
 
@@ -51,6 +51,12 @@ exports.useGetNewsletterByEmail = function useGetNewsletterByEmail(dcOrVars, var
 exports.useListUsers = function useListUsers(dc, options) {
   const { dc: dcInstance } = validateArgs(connectorConfig, dc, undefined, false);
   const ref = listUsersRef(dcInstance);
+  return useDataConnectQuery(ref, options, CallerSdkTypeEnum.GeneratedReact);
+}
+
+exports.useListOrgs = function useListOrgs(dc, options) {
+  const { dc: dcInstance } = validateArgs(connectorConfig, dc, undefined, false);
+  const ref = listOrgsRef(dcInstance);
   return useDataConnectQuery(ref, options, CallerSdkTypeEnum.GeneratedReact);
 }
 

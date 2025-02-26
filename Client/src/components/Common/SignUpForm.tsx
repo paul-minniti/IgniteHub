@@ -6,7 +6,7 @@ import {
 	getNewsletterByEmail,
 	addNewsletterSignUp
 } from "@IgniteHub/dataconnect";
-import { useSnackbar } from "@/context/snackbarContext";
+import { useSnackbar } from "@/utils/context/snackbarContext";
 
 const SignupForm: React.FC = () => {
 	const [email, setEmail] = useState("");

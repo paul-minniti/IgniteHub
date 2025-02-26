@@ -1,7 +1,15 @@
 import { NextResponse } from "next/server";
 import { getUserById, createUser } from "@IgniteHub/dataconnect";
-import { dataConnect } from "@/utils/firebase";
+// import { dataConnectServer } from "../firebaseServer";
+import { app, dataConnect, firebaseConfig, auth } from "@/utils/firebase";
+import { initializeServerApp } from "firebase/app";
 import { z } from "zod";
+import { connectorConfig } from "@IgniteHub/dataconnect";
+import {
+	getDataConnect,
+	connectDataConnectEmulator
+} from "firebase/data-connect";
+import { getAuth, connectAuthEmulator } from "firebase/auth";
 
 const querySchema = z.object({
 	userId: z.string(),
@@ -10,11 +18,17 @@ const querySchema = z.object({
 });
 
 export async function GET(request: Request) {
-	// Parse query parameters from the request URL
+	// const authIdToken = request.headers.get("authorization")?.split(" ")[1];
+	// const serverApp = initializeServerApp(app, { authIdToken });
+	// const serverAuth = await getAuth(serverApp);
+	// connectAuthEmulator(serverAuth, "http://localhost:9099");
+	console.log("auth.currentUser: ", auth.currentUser);
+	// await serverAuth.authStateReady();
+	// const dataConnectServer = getDataConnect(app, connectorConfig);
+	// connectDataConnectEmulator(dataConnect, "localhost", 9399);
 	const { searchParams } = new URL(request.url);
 	const query = Object.fromEntries(searchParams.entries());
 
-	// Validate and parse the query params using Zod
 	const parsed = querySchema.safeParse(query);
 	if (!parsed.success) {
 		return NextResponse.json(
@@ -28,9 +42,8 @@ export async function GET(request: Request) {
 	try {
 		const userProfile = await getUserById(dataConnect, { id: userId });
 		if (!userProfile.data.user) {
-			// Safely handle the case where displayName might be undefined
 			const [firstName, lastName = ""] = (displayName ?? "").split(" ");
-			const userData = await createUser({
+			const userData = await createUser(dataConnect, {
 				id: userId,
 				firstName,
 				lastName,

@@ -17,11 +17,11 @@ export interface AddNewsletterSignUpVariables {
 }
 
 export interface AddUserToOrgData {
-  user_upsert: User_Key;
+  user_update?: User_Key | null;
 }
 
 export interface AddUserToOrgVariables {
-  projectId: UUIDString;
+  orginizationId: UUIDString;
 }
 
 export interface CreateOrgData {
@@ -60,7 +60,7 @@ export interface GetUserByIdData {
     email: string;
     firstName: string;
     lastName: string;
-    projectId?: UUIDString | null;
+    orginizationId?: UUIDString | null;
     roles?: string[] | null;
   } & User_Key;
 }
@@ -75,13 +75,24 @@ export interface ListNewsletterSignIpsData {
   } & Newsletter_Key)[];
 }
 
+export interface ListOrgsData {
+  orginizations: ({
+    id: UUIDString;
+    name: string;
+    status?: string | null;
+    users_on_orginization: ({
+      id: string;
+    } & User_Key)[];
+  } & Orginization_Key)[];
+}
+
 export interface ListUsersData {
   users: ({
     id: string;
     email: string;
     firstName: string;
     lastName: string;
-    projectId?: UUIDString | null;
+    orginizationId?: UUIDString | null;
     roles?: string[] | null;
   } & User_Key)[];
 }
@@ -99,6 +110,11 @@ export interface Orginization_Key {
 export interface User_Key {
   id: string;
   __typename?: 'User_Key';
+}
+
+export interface Website_Key {
+  id: UUIDString;
+  __typename?: 'Website_Key';
 }
 
 
@@ -163,6 +179,15 @@ export function listUsersRef(dc: DataConnect): (QueryRef<ListUsersData, undefine
 
 export function listUsers(): QueryPromise<ListUsersData, undefined>;
 export function listUsers(dc: DataConnect): QueryPromise<ListUsersData, undefined>;
+
+
+/* Allow users to create refs without passing in DataConnect */
+export function listOrgsRef(): (QueryRef<ListOrgsData, undefined> & { __angular?: false });
+/* Allow users to pass in custom DataConnect instances */
+export function listOrgsRef(dc: DataConnect): (QueryRef<ListOrgsData, undefined> & { __angular?: false });
+
+export function listOrgs(): QueryPromise<ListOrgsData, undefined>;
+export function listOrgs(dc: DataConnect): QueryPromise<ListOrgsData, undefined>;
 
 
 /* Allow users to create refs without passing in DataConnect */

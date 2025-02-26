@@ -1,4 +1,4 @@
-"use client"; // Needed if you're on Next.js 13 with the App Router
+"use client";
 
 import React, { useState } from "react";
 import {
@@ -12,14 +12,27 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 import IgniteHub from "@/components/Typography/IgniteHub";
+import { createOrg, addUserToOrg } from "@IgniteHub/dataconnect";
+import { auth, dataConnect } from "@/utils/firebase";
+import { useRouter } from "next/navigation";
 
 export default function CreateProjectPage() {
 	const theme = useTheme();
 	const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
+	const router = useRouter();
 
 	const [projectName, setProjectName] = useState("");
 
-	const handleContinue = () => {};
+	const handleContinue = async () => {
+		const createOrgResp = await createOrg({
+			orgName: projectName,
+			orgStatus: "free"
+		});
+		await addUserToOrg(dataConnect, {
+			projectId: createOrgResp.data.orginization_insert.id
+		});
+		router.push("/dashboard");
+	};
 
 	return (
 		<Stack
