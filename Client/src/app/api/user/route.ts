@@ -1,15 +1,16 @@
 import { NextResponse } from "next/server";
 import { getUserById, createUser } from "@IgniteHub/dataconnect";
 // import { dataConnectServer } from "../firebaseServer";
-import { app, dataConnect, firebaseConfig, auth } from "@/utils/firebase";
-import { initializeServerApp } from "firebase/app";
+import { dataConnect, auth } from "@/utils/firebase";
+// import { app, dataConnect, firebaseConfig, auth } from "@/utils/firebase";
+// import { initializeServerApp } from "firebase/app";
 import { z } from "zod";
-import { connectorConfig } from "@IgniteHub/dataconnect";
-import {
-	getDataConnect,
-	connectDataConnectEmulator
-} from "firebase/data-connect";
-import { getAuth, connectAuthEmulator } from "firebase/auth";
+// import { connectorConfig } from "@IgniteHub/dataconnect";
+// import {
+// 	getDataConnect,
+// 	connectDataConnectEmulator
+// } from "firebase/data-connect";
+// import { getAuth, connectAuthEmulator } from "firebase/auth";
 
 const querySchema = z.object({
 	userId: z.string(),

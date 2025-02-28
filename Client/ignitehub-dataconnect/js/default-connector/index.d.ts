@@ -119,81 +119,81 @@ export interface Website_Key {
 
 
 /* Allow users to create refs without passing in DataConnect */
-export function createUserRef(vars: CreateUserVariables): (MutationRef<CreateUserData, CreateUserVariables> & { __angular?: false });
+export function createUserRef(vars: CreateUserVariables): MutationRef<CreateUserData, CreateUserVariables>;
 /* Allow users to pass in custom DataConnect instances */
-export function createUserRef(dc: DataConnect, vars: CreateUserVariables): (MutationRef<CreateUserData, CreateUserVariables> & { __angular?: false });
+export function createUserRef(dc: DataConnect, vars: CreateUserVariables): MutationRef<CreateUserData, CreateUserVariables>;
 
 export function createUser(vars: CreateUserVariables): MutationPromise<CreateUserData, CreateUserVariables>;
 export function createUser(dc: DataConnect, vars: CreateUserVariables): MutationPromise<CreateUserData, CreateUserVariables>;
 
 
 /* Allow users to create refs without passing in DataConnect */
-export function addNewsletterSignUpRef(vars: AddNewsletterSignUpVariables): (MutationRef<AddNewsletterSignUpData, AddNewsletterSignUpVariables> & { __angular?: false });
+export function addNewsletterSignUpRef(vars: AddNewsletterSignUpVariables): MutationRef<AddNewsletterSignUpData, AddNewsletterSignUpVariables>;
 /* Allow users to pass in custom DataConnect instances */
-export function addNewsletterSignUpRef(dc: DataConnect, vars: AddNewsletterSignUpVariables): (MutationRef<AddNewsletterSignUpData, AddNewsletterSignUpVariables> & { __angular?: false });
+export function addNewsletterSignUpRef(dc: DataConnect, vars: AddNewsletterSignUpVariables): MutationRef<AddNewsletterSignUpData, AddNewsletterSignUpVariables>;
 
 export function addNewsletterSignUp(vars: AddNewsletterSignUpVariables): MutationPromise<AddNewsletterSignUpData, AddNewsletterSignUpVariables>;
 export function addNewsletterSignUp(dc: DataConnect, vars: AddNewsletterSignUpVariables): MutationPromise<AddNewsletterSignUpData, AddNewsletterSignUpVariables>;
 
 
 /* Allow users to create refs without passing in DataConnect */
-export function createOrgRef(vars: CreateOrgVariables): (MutationRef<CreateOrgData, CreateOrgVariables> & { __angular?: false });
+export function createOrgRef(vars: CreateOrgVariables): MutationRef<CreateOrgData, CreateOrgVariables>;
 /* Allow users to pass in custom DataConnect instances */
-export function createOrgRef(dc: DataConnect, vars: CreateOrgVariables): (MutationRef<CreateOrgData, CreateOrgVariables> & { __angular?: false });
+export function createOrgRef(dc: DataConnect, vars: CreateOrgVariables): MutationRef<CreateOrgData, CreateOrgVariables>;
 
 export function createOrg(vars: CreateOrgVariables): MutationPromise<CreateOrgData, CreateOrgVariables>;
 export function createOrg(dc: DataConnect, vars: CreateOrgVariables): MutationPromise<CreateOrgData, CreateOrgVariables>;
 
 
 /* Allow users to create refs without passing in DataConnect */
-export function addUserToOrgRef(vars: AddUserToOrgVariables): (MutationRef<AddUserToOrgData, AddUserToOrgVariables> & { __angular?: false });
+export function addUserToOrgRef(vars: AddUserToOrgVariables): MutationRef<AddUserToOrgData, AddUserToOrgVariables>;
 /* Allow users to pass in custom DataConnect instances */
-export function addUserToOrgRef(dc: DataConnect, vars: AddUserToOrgVariables): (MutationRef<AddUserToOrgData, AddUserToOrgVariables> & { __angular?: false });
+export function addUserToOrgRef(dc: DataConnect, vars: AddUserToOrgVariables): MutationRef<AddUserToOrgData, AddUserToOrgVariables>;
 
 export function addUserToOrg(vars: AddUserToOrgVariables): MutationPromise<AddUserToOrgData, AddUserToOrgVariables>;
 export function addUserToOrg(dc: DataConnect, vars: AddUserToOrgVariables): MutationPromise<AddUserToOrgData, AddUserToOrgVariables>;
 
 
 /* Allow users to create refs without passing in DataConnect */
-export function listNewsletterSignIpsRef(): (QueryRef<ListNewsletterSignIpsData, undefined> & { __angular?: false });
+export function listNewsletterSignIpsRef(): QueryRef<ListNewsletterSignIpsData, undefined>;
 /* Allow users to pass in custom DataConnect instances */
-export function listNewsletterSignIpsRef(dc: DataConnect): (QueryRef<ListNewsletterSignIpsData, undefined> & { __angular?: false });
+export function listNewsletterSignIpsRef(dc: DataConnect): QueryRef<ListNewsletterSignIpsData, undefined>;
 
 export function listNewsletterSignIps(): QueryPromise<ListNewsletterSignIpsData, undefined>;
 export function listNewsletterSignIps(dc: DataConnect): QueryPromise<ListNewsletterSignIpsData, undefined>;
 
 
 /* Allow users to create refs without passing in DataConnect */
-export function getNewsletterByEmailRef(vars?: GetNewsletterByEmailVariables): (QueryRef<GetNewsletterByEmailData, GetNewsletterByEmailVariables> & { __angular?: false });
+export function getNewsletterByEmailRef(vars?: GetNewsletterByEmailVariables): QueryRef<GetNewsletterByEmailData, GetNewsletterByEmailVariables>;
 /* Allow users to pass in custom DataConnect instances */
-export function getNewsletterByEmailRef(dc: DataConnect, vars?: GetNewsletterByEmailVariables): (QueryRef<GetNewsletterByEmailData, GetNewsletterByEmailVariables> & { __angular?: false });
+export function getNewsletterByEmailRef(dc: DataConnect, vars?: GetNewsletterByEmailVariables): QueryRef<GetNewsletterByEmailData, GetNewsletterByEmailVariables>;
 
 export function getNewsletterByEmail(vars?: GetNewsletterByEmailVariables): QueryPromise<GetNewsletterByEmailData, GetNewsletterByEmailVariables>;
 export function getNewsletterByEmail(dc: DataConnect, vars?: GetNewsletterByEmailVariables): QueryPromise<GetNewsletterByEmailData, GetNewsletterByEmailVariables>;
 
 
 /* Allow users to create refs without passing in DataConnect */
-export function listUsersRef(): (QueryRef<ListUsersData, undefined> & { __angular?: false });
+export function listUsersRef(): QueryRef<ListUsersData, undefined>;
 /* Allow users to pass in custom DataConnect instances */
-export function listUsersRef(dc: DataConnect): (QueryRef<ListUsersData, undefined> & { __angular?: false });
+export function listUsersRef(dc: DataConnect): QueryRef<ListUsersData, undefined>;
 
 export function listUsers(): QueryPromise<ListUsersData, undefined>;
 export function listUsers(dc: DataConnect): QueryPromise<ListUsersData, undefined>;
 
 
 /* Allow users to create refs without passing in DataConnect */
-export function listOrgsRef(): (QueryRef<ListOrgsData, undefined> & { __angular?: false });
+export function listOrgsRef(): QueryRef<ListOrgsData, undefined>;
 /* Allow users to pass in custom DataConnect instances */
-export function listOrgsRef(dc: DataConnect): (QueryRef<ListOrgsData, undefined> & { __angular?: false });
+export function listOrgsRef(dc: DataConnect): QueryRef<ListOrgsData, undefined>;
 
 export function listOrgs(): QueryPromise<ListOrgsData, undefined>;
 export function listOrgs(dc: DataConnect): QueryPromise<ListOrgsData, undefined>;
 
 
 /* Allow users to create refs without passing in DataConnect */
-export function getUserByIdRef(vars: GetUserByIdVariables): (QueryRef<GetUserByIdData, GetUserByIdVariables> & { __angular?: false });
+export function getUserByIdRef(vars: GetUserByIdVariables): QueryRef<GetUserByIdData, GetUserByIdVariables>;
 /* Allow users to pass in custom DataConnect instances */
-export function getUserByIdRef(dc: DataConnect, vars: GetUserByIdVariables): (QueryRef<GetUserByIdData, GetUserByIdVariables> & { __angular?: false });
+export function getUserByIdRef(dc: DataConnect, vars: GetUserByIdVariables): QueryRef<GetUserByIdData, GetUserByIdVariables>;
 
 export function getUserById(vars: GetUserByIdVariables): QueryPromise<GetUserByIdData, GetUserByIdVariables>;
 export function getUserById(dc: DataConnect, vars: GetUserByIdVariables): QueryPromise<GetUserByIdData, GetUserByIdVariables>;

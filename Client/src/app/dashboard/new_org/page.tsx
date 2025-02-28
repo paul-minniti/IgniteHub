@@ -13,7 +13,7 @@ import {
 import Image from "next/image";
 import IgniteHub from "@/components/Typography/IgniteHub";
 import { createOrg, addUserToOrg } from "@IgniteHub/dataconnect";
-import { auth, dataConnect } from "@/utils/firebase";
+import { dataConnect } from "@/utils/firebase";
 import { useRouter } from "next/navigation";
 
 export default function CreateProjectPage() {
@@ -29,7 +29,7 @@ export default function CreateProjectPage() {
 			orgStatus: "free"
 		});
 		await addUserToOrg(dataConnect, {
-			projectId: createOrgResp.data.orginization_insert.id
+			orginizationId: createOrgResp.data.orginization_insert.id
 		});
 		router.push("/dashboard");
 	};

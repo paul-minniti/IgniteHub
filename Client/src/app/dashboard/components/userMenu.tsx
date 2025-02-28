@@ -1,18 +1,12 @@
 "use client";
 
 import * as React from "react";
-import { styled } from "@mui/material/styles";
 import Avatar from "@mui/material/Avatar";
-import MuiDrawer, { drawerClasses } from "@mui/material/Drawer";
 import Box from "@mui/material/Box";
-import Divider from "@mui/material/Divider";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import SelectContent from "./SelectHubs";
-import MenuContent from "./MenuContent";
 // import CardAlert from "./CardAlert";
 import OptionsMenu from "./OptionsMenu";
-import OrgContent from "./OrgMenu";
 import { useAuth } from "@/utils/context/authContext";
 
 export default function UserMenu() {

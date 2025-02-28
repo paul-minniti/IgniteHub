@@ -8,7 +8,7 @@ query {
     email
     profilePictureUrl
     roles
-    project {
+    orginization {
       name
       status
       createdAt

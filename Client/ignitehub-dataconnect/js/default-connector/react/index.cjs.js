@@ -1,7 +1,6 @@
 const { createUserRef, addNewsletterSignUpRef, createOrgRef, addUserToOrgRef, listNewsletterSignIpsRef, getNewsletterByEmailRef, listUsersRef, listOrgsRef, getUserByIdRef, connectorConfig } = require('../');
-const { CallerSdkTypeEnum, validateArgs } = require('firebase/data-connect');
+const { validateArgs, CallerSdkTypeEnum } = require('firebase/data-connect');
 const { useDataConnectQuery, useDataConnectMutation } = require('@tanstack-query-firebase/react/data-connect');
-
 
 exports.useCreateUser = function useCreateUser(dcOrOptions, options) {
   const { dc: dcInstance, vars: inputOpts } = validateArgs(connectorConfig, dcOrOptions, options, false);

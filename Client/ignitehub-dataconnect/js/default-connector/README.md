@@ -56,13 +56,13 @@ You can execute the `ListNewsletterSignIps` query using the following action sho
 ```javascript
 listNewsletterSignIps(): QueryPromise<ListNewsletterSignIpsData, undefined>;
 
-listNewsletterSignIpsRef(): (QueryRef<ListNewsletterSignIpsData, undefined> & { __angular?: false });
+listNewsletterSignIpsRef(): QueryRef<ListNewsletterSignIpsData, undefined>;
 ```
 You can also pass in a `DataConnect` instance to the action shortcut function or `QueryRef` function.
 ```javascript
 listNewsletterSignIps(dc: DataConnect): QueryPromise<ListNewsletterSignIpsData, undefined>;
 
-listNewsletterSignIpsRef(dc: DataConnect): (QueryRef<ListNewsletterSignIpsData, undefined> & { __angular?: false });
+listNewsletterSignIpsRef(dc: DataConnect): QueryRef<ListNewsletterSignIpsData, undefined>;
 ```
 
 ### Variables
@@ -132,13 +132,13 @@ You can execute the `GetNewsletterByEmail` query using the following action shor
 ```javascript
 getNewsletterByEmail(vars?: GetNewsletterByEmailVariables): QueryPromise<GetNewsletterByEmailData, GetNewsletterByEmailVariables>;
 
-getNewsletterByEmailRef(vars?: GetNewsletterByEmailVariables): (QueryRef<GetNewsletterByEmailData, GetNewsletterByEmailVariables> & { __angular?: false });
+getNewsletterByEmailRef(vars?: GetNewsletterByEmailVariables): QueryRef<GetNewsletterByEmailData, GetNewsletterByEmailVariables>;
 ```
 You can also pass in a `DataConnect` instance to the action shortcut function or `QueryRef` function.
 ```javascript
 getNewsletterByEmail(dc: DataConnect, vars?: GetNewsletterByEmailVariables): QueryPromise<GetNewsletterByEmailData, GetNewsletterByEmailVariables>;
 
-getNewsletterByEmailRef(dc: DataConnect, vars?: GetNewsletterByEmailVariables): (QueryRef<GetNewsletterByEmailData, GetNewsletterByEmailVariables> & { __angular?: false });
+getNewsletterByEmailRef(dc: DataConnect, vars?: GetNewsletterByEmailVariables): QueryRef<GetNewsletterByEmailData, GetNewsletterByEmailVariables>;
 ```
 
 ### Variables
@@ -230,13 +230,13 @@ You can execute the `ListUsers` query using the following action shortcut functi
 ```javascript
 listUsers(): QueryPromise<ListUsersData, undefined>;
 
-listUsersRef(): (QueryRef<ListUsersData, undefined> & { __angular?: false });
+listUsersRef(): QueryRef<ListUsersData, undefined>;
 ```
 You can also pass in a `DataConnect` instance to the action shortcut function or `QueryRef` function.
 ```javascript
 listUsers(dc: DataConnect): QueryPromise<ListUsersData, undefined>;
 
-listUsersRef(dc: DataConnect): (QueryRef<ListUsersData, undefined> & { __angular?: false });
+listUsersRef(dc: DataConnect): QueryRef<ListUsersData, undefined>;
 ```
 
 ### Variables
@@ -311,13 +311,13 @@ You can execute the `ListOrgs` query using the following action shortcut functio
 ```javascript
 listOrgs(): QueryPromise<ListOrgsData, undefined>;
 
-listOrgsRef(): (QueryRef<ListOrgsData, undefined> & { __angular?: false });
+listOrgsRef(): QueryRef<ListOrgsData, undefined>;
 ```
 You can also pass in a `DataConnect` instance to the action shortcut function or `QueryRef` function.
 ```javascript
 listOrgs(dc: DataConnect): QueryPromise<ListOrgsData, undefined>;
 
-listOrgsRef(dc: DataConnect): (QueryRef<ListOrgsData, undefined> & { __angular?: false });
+listOrgsRef(dc: DataConnect): QueryRef<ListOrgsData, undefined>;
 ```
 
 ### Variables
@@ -392,13 +392,13 @@ You can execute the `GetUserById` query using the following action shortcut func
 ```javascript
 getUserById(vars: GetUserByIdVariables): QueryPromise<GetUserByIdData, GetUserByIdVariables>;
 
-getUserByIdRef(vars: GetUserByIdVariables): (QueryRef<GetUserByIdData, GetUserByIdVariables> & { __angular?: false });
+getUserByIdRef(vars: GetUserByIdVariables): QueryRef<GetUserByIdData, GetUserByIdVariables>;
 ```
 You can also pass in a `DataConnect` instance to the action shortcut function or `QueryRef` function.
 ```javascript
 getUserById(dc: DataConnect, vars: GetUserByIdVariables): QueryPromise<GetUserByIdData, GetUserByIdVariables>;
 
-getUserByIdRef(dc: DataConnect, vars: GetUserByIdVariables): (QueryRef<GetUserByIdData, GetUserByIdVariables> & { __angular?: false });
+getUserByIdRef(dc: DataConnect, vars: GetUserByIdVariables): QueryRef<GetUserByIdData, GetUserByIdVariables>;
 ```
 
 ### Variables
@@ -505,13 +505,13 @@ You can execute the `CreateUser` mutation using the following action shortcut fu
 ```javascript
 createUser(vars: CreateUserVariables): MutationPromise<CreateUserData, CreateUserVariables>;
 
-createUserRef(vars: CreateUserVariables): (MutationRef<CreateUserData, CreateUserVariables> & { __angular?: false });
+createUserRef(vars: CreateUserVariables): MutationRef<CreateUserData, CreateUserVariables>;
 ```
 You can also pass in a `DataConnect` instance to the action shortcut function or `MutationRef` function.
 ```javascript
 createUser(dc: DataConnect, vars: CreateUserVariables): MutationPromise<CreateUserData, CreateUserVariables>;
 
-createUserRef(dc: DataConnect, vars: CreateUserVariables): (MutationRef<CreateUserData, CreateUserVariables> & { __angular?: false });
+createUserRef(dc: DataConnect, vars: CreateUserVariables): MutationRef<CreateUserData, CreateUserVariables>;
 ```
 
 ### Variables
@@ -606,13 +606,13 @@ You can execute the `AddNewsletterSignUp` mutation using the following action sh
 ```javascript
 addNewsletterSignUp(vars: AddNewsletterSignUpVariables): MutationPromise<AddNewsletterSignUpData, AddNewsletterSignUpVariables>;
 
-addNewsletterSignUpRef(vars: AddNewsletterSignUpVariables): (MutationRef<AddNewsletterSignUpData, AddNewsletterSignUpVariables> & { __angular?: false });
+addNewsletterSignUpRef(vars: AddNewsletterSignUpVariables): MutationRef<AddNewsletterSignUpData, AddNewsletterSignUpVariables>;
 ```
 You can also pass in a `DataConnect` instance to the action shortcut function or `MutationRef` function.
 ```javascript
 addNewsletterSignUp(dc: DataConnect, vars: AddNewsletterSignUpVariables): MutationPromise<AddNewsletterSignUpData, AddNewsletterSignUpVariables>;
 
-addNewsletterSignUpRef(dc: DataConnect, vars: AddNewsletterSignUpVariables): (MutationRef<AddNewsletterSignUpData, AddNewsletterSignUpVariables> & { __angular?: false });
+addNewsletterSignUpRef(dc: DataConnect, vars: AddNewsletterSignUpVariables): MutationRef<AddNewsletterSignUpData, AddNewsletterSignUpVariables>;
 ```
 
 ### Variables
@@ -698,13 +698,13 @@ You can execute the `CreateOrg` mutation using the following action shortcut fun
 ```javascript
 createOrg(vars: CreateOrgVariables): MutationPromise<CreateOrgData, CreateOrgVariables>;
 
-createOrgRef(vars: CreateOrgVariables): (MutationRef<CreateOrgData, CreateOrgVariables> & { __angular?: false });
+createOrgRef(vars: CreateOrgVariables): MutationRef<CreateOrgData, CreateOrgVariables>;
 ```
 You can also pass in a `DataConnect` instance to the action shortcut function or `MutationRef` function.
 ```javascript
 createOrg(dc: DataConnect, vars: CreateOrgVariables): MutationPromise<CreateOrgData, CreateOrgVariables>;
 
-createOrgRef(dc: DataConnect, vars: CreateOrgVariables): (MutationRef<CreateOrgData, CreateOrgVariables> & { __angular?: false });
+createOrgRef(dc: DataConnect, vars: CreateOrgVariables): MutationRef<CreateOrgData, CreateOrgVariables>;
 ```
 
 ### Variables
@@ -793,13 +793,13 @@ You can execute the `AddUserToOrg` mutation using the following action shortcut 
 ```javascript
 addUserToOrg(vars: AddUserToOrgVariables): MutationPromise<AddUserToOrgData, AddUserToOrgVariables>;
 
-addUserToOrgRef(vars: AddUserToOrgVariables): (MutationRef<AddUserToOrgData, AddUserToOrgVariables> & { __angular?: false });
+addUserToOrgRef(vars: AddUserToOrgVariables): MutationRef<AddUserToOrgData, AddUserToOrgVariables>;
 ```
 You can also pass in a `DataConnect` instance to the action shortcut function or `MutationRef` function.
 ```javascript
 addUserToOrg(dc: DataConnect, vars: AddUserToOrgVariables): MutationPromise<AddUserToOrgData, AddUserToOrgVariables>;
 
-addUserToOrgRef(dc: DataConnect, vars: AddUserToOrgVariables): (MutationRef<AddUserToOrgData, AddUserToOrgVariables> & { __angular?: false });
+addUserToOrgRef(dc: DataConnect, vars: AddUserToOrgVariables): MutationRef<AddUserToOrgData, AddUserToOrgVariables>;
 ```
 
 ### Variables
