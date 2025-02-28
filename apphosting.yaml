@@ -22,6 +22,8 @@ env:
     secret: webapp-app-id
   - variable: NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
     secret: webapp-measurement-id
+  - variable: NEXT_PUBLIC_ENV
+    secret: production
   # Environment variables and secrets.
   # env:
   # Configure environment variables.
