@@ -5,9 +5,7 @@ import {
 	connectDataConnectEmulator
 } from "firebase/data-connect";
 import { connectorConfig } from "@IgniteHub/dataconnect";
-import { getFunctions, connectFunctionsEmulator } from "firebase/functions";
-// import { headers } from "next/headers";
-
+// import { getFunctions, connectFunctionsEmulator } from "firebase/functions";
 // import { getStorage } from "firebase/storage";
 
 export const firebaseConfig =
@@ -33,12 +31,6 @@ export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 // export const functions = getFunctions(app);
 export const dataConnect = getDataConnect(app, connectorConfig);
-
-// const headersList = await headers();
-// const authIdToken = headersList.get("authorization")?.split(" ")[1];
-// export const serverApp = initializeServerApp(firebaseConfig, { authIdToken });
-// export const dataConnectServer = getDataConnect(serverApp, connectorConfig);
-
 // export const storage = getStorage();
 
 if (process.env.NEXT_PUBLIC_ENV === "development") {

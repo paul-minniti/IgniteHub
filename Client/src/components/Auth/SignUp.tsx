@@ -75,7 +75,7 @@ export default function SignUp() {
 		}, 500);
 
 		return () => clearTimeout(timer);
-	}, [confirmPassword]);
+	}, [password, confirmPassword]);
 
 	const validateInputs = () => {
 		let isValid = true;
@@ -121,7 +121,8 @@ export default function SignUp() {
 		return isValid;
 	};
 
-	const handleSubmit = () => {
+	const handleSubmit = (event: React.FormEvent) => {
+		event.preventDefault();
 		if (!validateInputs()) {
 			return;
 		}

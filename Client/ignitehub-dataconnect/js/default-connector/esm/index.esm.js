@@ -1,6 +1,5 @@
 import { queryRef, executeQuery, mutationRef, executeMutation, validateArgs } from 'firebase/data-connect';
 
-
 export const connectorConfig = {
   connector: 'default',
   service: 'ignitehub-data-connect',
@@ -96,3 +95,4 @@ export function getUserByIdRef(dcOrVars, vars) {
 export function getUserById(dcOrVars, vars) {
   return executeQuery(getUserByIdRef(dcOrVars, vars));
 }
+
