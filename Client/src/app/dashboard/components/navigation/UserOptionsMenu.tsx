@@ -18,7 +18,7 @@ const MenuItem = styled(MuiMenuItem)({
 	margin: "2px 0"
 });
 
-export default function OptionsMenu() {
+export default function UserOptionsMenu() {
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 	const open = Boolean(anchorEl);
 	const { handleLogout } = useAuth();

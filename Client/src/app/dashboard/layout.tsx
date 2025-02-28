@@ -2,8 +2,8 @@
 
 import React, { useEffect } from "react";
 import { Box } from "@mui/material";
-import AppNavbar from "./components/AppNavbar";
-import SideMenu from "./components/SideMenu";
+import AppNavbar from "./components/navigation/AppNavbar";
+import SideMenu from "./components/navigation/SideMenu";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/utils/context/authContext";
 
