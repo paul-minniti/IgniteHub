@@ -5,6 +5,7 @@ import {
 	connectDataConnectEmulator
 } from "firebase/data-connect";
 import { connectorConfig } from "@IgniteHub/dataconnect";
+import { getFirestore, connectFirestoreEmulator } from "firebase/firestore";
 // import { getFunctions, connectFunctionsEmulator } from "firebase/functions";
 // import { getStorage } from "firebase/storage";
 
@@ -13,7 +14,7 @@ export const firebaseConfig =
 		? {
 				apiKey: "dev-api-key",
 				authDomain: "localhost",
-				projectId: "dev-project-id",
+				projectId: "ignitehub-f2251",
 				storageBucket: "dev.appspot.com",
 				messagingSenderId: "dev-sender-id",
 				appId: "dev-app-id"
@@ -29,16 +30,19 @@ export const firebaseConfig =
 
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
-// export const functions = getFunctions(app);
 export const dataConnect = getDataConnect(app, connectorConfig);
+export const firestore = getFirestore();
+// export const functions = getFunctions(app);
 // export const storage = getStorage();
 
 if (process.env.NEXT_PUBLIC_ENV === "development") {
 	console.log("-- Dev mode detected connecting to emulators ---");
 	connectAuthEmulator(auth, "http://localhost:9099");
 	console.log("-- Connected to Firebase Auth emulator --");
-	// connectFunctionsEmulator(functions, "localhost", 5001);
 	// console.log("-- Connected to Firebase Functions emulator --");
+	// connectFunctionsEmulator(functions, "localhost", 5001);
 	connectDataConnectEmulator(dataConnect, "localhost", 9399);
 	console.log("-- Connected to Firebase DataConnect emulator --");
+	connectFirestoreEmulator(firestore, "localhost", 8080);
+	console.log("-- Connected to Firebase Firestore emulator --");
 }
