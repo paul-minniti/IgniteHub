@@ -70,16 +70,51 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 		setIsModalOpen(false);
 	};
 
+	// useEffect(() => {
+	// 	const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+	// 		if (!firebaseUser) {
+	// 			router.push("/");
+	// 		}
+	// 		setUser(firebaseUser);
+	// 		setLoading(false);
+	// 	});
+	// 	return () => unsubscribe();
+	// }, []);
+
 	useEffect(() => {
+		let signOutTimer: ReturnType<typeof setTimeout>;
+
 		const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
-			if (!firebaseUser) {
+			if (firebaseUser) {
+				const lastSignInTime = firebaseUser.metadata.lastSignInTime;
+				if (lastSignInTime) {
+					const signInDate = new Date(lastSignInTime);
+					const twelveHours = 12 * 60 * 60 * 1000;
+					const expirationTime = signInDate.getTime() + twelveHours;
+					const now = Date.now();
+
+					if (now >= expirationTime) {
+						auth.signOut();
+						return;
+					}
+
+					signOutTimer = setTimeout(() => {
+						auth.signOut();
+					}, expirationTime - now);
+				}
+				setUser(firebaseUser);
+			} else {
 				router.push("/");
+				setUser(null);
 			}
-			setUser(firebaseUser);
 			setLoading(false);
 		});
-		return () => unsubscribe();
-	}, []);
+
+		return () => {
+			clearTimeout(signOutTimer);
+			unsubscribe();
+		};
+	}, [router]);
 
 	async function handleGoogleSignIn() {
 		try {
@@ -115,7 +150,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 					lastName: lastName,
 					email: userCredential.user.email as string
 				});
-				router.push("/dashboard/new_org");
+				router.push("/dashboard/newOrg");
 				return;
 			} else {
 				router.push("/dashboard");
@@ -167,7 +202,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 				email: email
 			});
 			handleCloseModal();
-			router.push("/dashboard/new_org");
+			router.push("/dashboard/newOrg");
 		} catch (error) {
 			console.error("Email sign-up error:", error);
 		} finally {

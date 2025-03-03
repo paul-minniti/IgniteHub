@@ -34,6 +34,7 @@ const Navbar: React.FC = () => {
 	];
 
 	const handleOpenLoginModal = () => {
+		setModalView("login");
 		setIsModalOpen(true);
 	};
 

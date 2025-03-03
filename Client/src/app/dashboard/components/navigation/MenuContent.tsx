@@ -1,15 +1,16 @@
-// MenuContent.tsx
-import * as React from "react";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import Stack from "@mui/material/Stack";
+import React, { useEffect } from "react";
+import {
+	List,
+	ListItem,
+	ListItemButton,
+	ListItemIcon,
+	ListItemText,
+	Stack
+} from "@mui/material";
+
 import { useDashboard } from "@/utils/context/dashboardContext";
 import { useRouter } from "next/navigation";
 
-// Common icons
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 import AnalyticsRoundedIcon from "@mui/icons-material/AnalyticsRounded";
 import PeopleRoundedIcon from "@mui/icons-material/PeopleRounded";
@@ -19,7 +20,6 @@ import InfoRoundedIcon from "@mui/icons-material/InfoRounded";
 import HelpRoundedIcon from "@mui/icons-material/HelpRounded";
 import DevicesRoundedIcon from "@mui/icons-material/DevicesRounded";
 
-// Define icon mapping for different menu items
 const iconMap = {
 	Dashboard: <HomeRoundedIcon />,
 	Sites: <DevicesRoundedIcon />,
@@ -35,17 +35,14 @@ const iconMap = {
 
 // Secondary items that remain constant across hubs
 const secondaryListItems = [
-	{ text: "Settings", icon: <SettingsRoundedIcon />, path: "/settings" },
 	{ text: "About", icon: <InfoRoundedIcon />, path: "/about" },
 	{ text: "Feedback", icon: <HelpRoundedIcon />, path: "/feedback" }
 ];
 
 export default function MenuContent() {
-	const { activeHub, hubType } = useDashboard();
+	const { activeHub, selectedIndex, setSelectedIndex } = useDashboard();
 	const router = useRouter();
-	const [selectedIndex, setSelectedIndex] = React.useState(0);
 
-	// Map the menu items from activeHub
 	const mainListItems = (activeHub?.menuItems || []).map((item) => ({
 		text: item.label,
 		icon: iconMap[item.label as keyof typeof iconMap] || (
@@ -60,21 +57,11 @@ export default function MenuContent() {
 		router.push(path);
 	};
 
-	// Update selected index when hub changes
-	React.useEffect(() => {
-		setSelectedIndex(0); // Reset to first item when hub changes
-	}, [hubType]);
-
 	return (
 		<Stack sx={{ flexGrow: 1, p: 1, justifyContent: "space-between" }}>
 			<List dense>
 				{mainListItems.map((item, index) => (
-					<ListItem
-						key={index}
-						disablePadding
-						sx={{ display: "block" }}
-						// disabled={item.disabled}
-					>
+					<ListItem key={index} disablePadding sx={{ display: "block" }}>
 						<ListItemButton
 							selected={index === selectedIndex}
 							onClick={() => handleListItemClick(item.path, index)}>

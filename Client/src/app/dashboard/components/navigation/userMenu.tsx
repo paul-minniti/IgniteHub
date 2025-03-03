@@ -6,7 +6,7 @@ import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 // import CardAlert from "./CardAlert";
-import OptionsMenu from "./OptionsMenu";
+import UserOptionsMenu from "./UserOptionsMenu";
 import { useAuth } from "@/utils/context/authContext";
 
 export default function UserMenu() {
@@ -36,7 +36,7 @@ export default function UserMenu() {
 						{user?.displayName}
 					</Typography>
 				</Box>
-				<OptionsMenu />
+				<UserOptionsMenu />
 			</Stack>
 		</>
 	);

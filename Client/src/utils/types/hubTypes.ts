@@ -15,6 +15,7 @@ export interface Hub {
 }
 
 export type HubType =
+	| "overview"
 	| "web"
 	| "marketing"
 	| "social"
@@ -24,6 +25,27 @@ export type HubType =
 	| "finance";
 
 export const hubConfigs: Record<HubType, Hub> = {
+	overview: {
+		id: "overview",
+		title: "Overview",
+		disabled: false,
+		menuItems: [
+			{
+				id: "1",
+				label: "Analytics",
+				path: "/dashboard/analytics",
+				disabled: false
+			},
+			{
+				id: "2",
+				label: "Settings",
+				path: "/dashboard/settings",
+				disabled: false
+			},
+			{ id: "3", label: "Users", path: "/dashboard/users", disabled: false },
+			{ id: "4", label: "Billing", path: "/dashboard/billing", disabled: false }
+		]
+	},
 	web: {
 		id: "web",
 		title: "Web Hub",

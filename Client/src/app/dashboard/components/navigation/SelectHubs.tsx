@@ -36,7 +36,7 @@ export default function SelectHubs() {
 
 	return (
 		<Select
-			value={activeHub?.title || "Web Hub"}
+			value={activeHub?.title || "overview"}
 			onChange={handleChange}
 			displayEmpty
 			fullWidth

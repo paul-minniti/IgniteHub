@@ -2,6 +2,7 @@
 
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { Hub, HubType, hubConfigs } from "@/utils/types/hubTypes";
+import { usePathname } from "next/navigation";
 
 export interface Org {
 	name: string;
@@ -12,13 +13,17 @@ interface DashboardContextProps {
 	activeHub: Hub | null;
 	hubType: HubType;
 	setActiveHub: (hub: Hub) => void;
+	selectedIndex: number;
+	setSelectedIndex: (index: number) => void;
 }
 
 const DashboardContext = createContext<DashboardContextProps>({
 	org: null,
 	activeHub: null,
 	hubType: "web",
-	setActiveHub: () => {}
+	setActiveHub: () => {},
+	selectedIndex: 0,
+	setSelectedIndex: () => {}
 });
 
 export const DashboardProvider = ({
@@ -27,8 +32,11 @@ export const DashboardProvider = ({
 	children: React.ReactNode;
 }) => {
 	const [org, setOrg] = useState<Org | null>(null);
-	const [activeHub, setActiveHub] = useState<Hub>(hubConfigs.web);
-	const [hubType, setHubType] = useState<HubType>("web");
+	const [activeHub, setActiveHub] = useState<Hub>(hubConfigs.overview);
+	const [hubType, setHubType] = useState<HubType>("overview");
+	const [selectedIndex, setSelectedIndex] = useState(0);
+
+	const pathname = usePathname();
 
 	useEffect(() => {
 		setOrg({ name: "test" });
@@ -41,13 +49,23 @@ export const DashboardProvider = ({
 		}
 	};
 
+	// If the current route is /dashboard, set the index to -1.
+	useEffect(() => {
+		setSelectedIndex(0);
+		if (pathname === "/dashboard") {
+			setSelectedIndex(-1);
+		}
+	}, [pathname, hubType]);
+
 	return (
 		<DashboardContext.Provider
 			value={{
 				org,
 				activeHub,
 				hubType,
-				setActiveHub: handleSetActiveHub
+				setActiveHub: handleSetActiveHub,
+				selectedIndex,
+				setSelectedIndex
 			}}>
 			{children}
 		</DashboardContext.Provider>

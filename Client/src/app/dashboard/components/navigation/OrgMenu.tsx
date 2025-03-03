@@ -1,17 +1,23 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import IconButton from "@mui/material/IconButton";
-import HomeIcon from "@mui/icons-material/Home";
-import SettingsIcon from "@mui/icons-material/Settings";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import Typography from "@mui/material/Typography";
-import Stack from "@mui/material/Stack";
-import Box from "@mui/material/Box";
+import {
+	IconButton,
+	Menu,
+	MenuItem,
+	Typography,
+	Stack,
+	Box
+} from "@mui/material";
+import {
+	Home as HomeIcon,
+	Settings as SettingsIcon
+} from "@mui/icons-material";
+import { useDashboard } from "@/utils/context/dashboardContext";
 
-export default function OrgContent() {
+export default function OrgMenu() {
+	const { selectedIndex } = useDashboard();
 	const [menuAnchorEl, setMenuAnchorEl] = useState<null | HTMLElement>(null);
 	const openMenu = Boolean(menuAnchorEl);
 
@@ -24,6 +30,10 @@ export default function OrgContent() {
 		setMenuAnchorEl(null);
 	};
 
+	useEffect(() => {
+		console.log("selectedIndex", selectedIndex);
+	}, [selectedIndex]);
+
 	return (
 		<>
 			<Stack
@@ -35,6 +45,7 @@ export default function OrgContent() {
 					sx={{
 						padding: "8px",
 						borderRadius: "100px",
+						bgcolor: selectedIndex === -1 ? "grey.300" : "transparent",
 						"&:hover": { bgcolor: "grey.300" }
 					}}>
 					<Link
@@ -45,17 +56,14 @@ export default function OrgContent() {
 							color: "inherit"
 						}}>
 						<HomeIcon sx={{ mr: "8px" }} />
-
-						<Typography variant="subtitle1">Org Home</Typography>
+						<Typography variant="subtitle1">Org Overview</Typography>
 					</Link>
 				</Box>
-				{/* Right: Gear icon that opens a popout menu */}
 				<IconButton onClick={handleClickOpen}>
 					<SettingsIcon />
 				</IconButton>
 			</Stack>
 
-			{/* Popout menu for gear icon */}
 			<Menu
 				anchorEl={menuAnchorEl}
 				open={openMenu}
