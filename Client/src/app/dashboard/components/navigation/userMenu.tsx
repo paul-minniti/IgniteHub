@@ -7,7 +7,7 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 // import CardAlert from "./CardAlert";
 import UserOptionsMenu from "./UserOptionsMenu";
-import { useAuth } from "@/utils/context/authContext";
+import { useAuth } from "@/lib/context/authContext";
 
 export default function UserMenu() {
 	const { user } = useAuth();

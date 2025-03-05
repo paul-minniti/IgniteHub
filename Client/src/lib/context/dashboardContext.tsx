@@ -1,20 +1,21 @@
 "use client";
 
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { Hub, HubType, hubConfigs } from "@/utils/types/hubTypes";
+import { Hub, HubType, hubConfigs } from "@/lib/types/hubTypes";
 import { usePathname } from "next/navigation";
-
-export interface Org {
-	name: string;
-}
+import { Orginization } from "@/lib/types";
+import { createOrg, addUserToOrg } from "@IgniteHub/dataconnect";
+import useWebApi from "@/lib/hooks/webHook";
+import { useUser } from "@/lib/context/userContext";
 
 interface DashboardContextProps {
-	org: Org | null;
+	org: Orginization | null;
 	activeHub: Hub | null;
 	hubType: HubType;
 	setActiveHub: (hub: Hub) => void;
 	selectedIndex: number;
 	setSelectedIndex: (index: number) => void;
+	handleAddOrg: (projectName: string) => void;
 }
 
 const DashboardContext = createContext<DashboardContextProps>({
@@ -23,7 +24,8 @@ const DashboardContext = createContext<DashboardContextProps>({
 	hubType: "web",
 	setActiveHub: () => {},
 	selectedIndex: 0,
-	setSelectedIndex: () => {}
+	setSelectedIndex: () => {},
+	handleAddOrg: () => {}
 });
 
 export const DashboardProvider = ({
@@ -31,16 +33,37 @@ export const DashboardProvider = ({
 }: {
 	children: React.ReactNode;
 }) => {
-	const [org, setOrg] = useState<Org | null>(null);
+	const [org, setOrg] = useState<Orginization | null>(null);
 	const [activeHub, setActiveHub] = useState<Hub>(hubConfigs.overview);
 	const [hubType, setHubType] = useState<HubType>("overview");
 	const [selectedIndex, setSelectedIndex] = useState(0);
-
 	const pathname = usePathname();
+	const { initCollection } = useWebApi();
 
 	useEffect(() => {
-		setOrg({ name: "test" });
-	}, []);
+		if (org) {
+			initCollection(org.name);
+		}
+	}, [initCollection, org]);
+
+	// const handleSetOrg = (org: Orginization) => {
+	// 	setOrg(org);
+	// };
+
+	const handleAddOrg = async (projectName: string) => {
+		const createOrgResp = await createOrg({
+			orgName: projectName,
+			orgStatus: "free"
+		});
+		setOrg({
+			id: createOrgResp.data.orginization_insert.id,
+			name: projectName,
+			status: createOrgResp.ref.variables.orgStatus
+		});
+		await addUserToOrg({
+			orginizationId: createOrgResp.data.orginization_insert.id
+		});
+	};
 
 	const handleSetActiveHub = (hub: Hub) => {
 		if (!hub.disabled) {
@@ -49,7 +72,6 @@ export const DashboardProvider = ({
 		}
 	};
 
-	// If the current route is /dashboard, set the index to -1.
 	useEffect(() => {
 		setSelectedIndex(0);
 		if (pathname === "/dashboard") {
@@ -65,7 +87,8 @@ export const DashboardProvider = ({
 				hubType,
 				setActiveHub: handleSetActiveHub,
 				selectedIndex,
-				setSelectedIndex
+				setSelectedIndex,
+				handleAddOrg
 			}}>
 			{children}
 		</DashboardContext.Provider>

@@ -6,8 +6,9 @@ import ListItemText from "@mui/material/ListItemText";
 import Select, { SelectChangeEvent, selectClasses } from "@mui/material/Select";
 import { styled } from "@mui/material/styles";
 import DevicesRoundedIcon from "@mui/icons-material/DevicesRounded";
-import { useDashboard } from "@/utils/context/dashboardContext";
-import { hubConfigs } from "@/utils/types/hubTypes";
+import { useDashboard } from "@/lib/context/dashboardContext";
+import { hubConfigs } from "@/lib/types/hubTypes";
+import { useRouter } from "next/navigation";
 
 const Avatar = styled(MuiAvatar)(({ theme }) => ({
 	width: 28,
@@ -24,6 +25,7 @@ const ListItemAvatar = styled(MuiListItemAvatar)({
 
 export default function SelectHubs() {
 	const { activeHub, setActiveHub } = useDashboard();
+	const router = useRouter();
 
 	const handleChange = (event: SelectChangeEvent) => {
 		const selectedHub = Object.values(hubConfigs).find(
@@ -31,6 +33,7 @@ export default function SelectHubs() {
 		);
 		if (selectedHub) {
 			setActiveHub(selectedHub);
+			router.push(selectedHub.path);
 		}
 	};
 

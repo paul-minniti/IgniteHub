@@ -1,19 +1,40 @@
-// src/hooks/useOrgApi.ts
-import { useCallback } from "react";
+import { useState, useCallback } from "react";
+import { getWebsitesInOrg } from "@IgniteHub/dataconnect";
 
 export interface Item {
 	id?: string;
 	[key: string]: any;
 }
 
-export default function useOrgApi(orgName: string) {
-	// Construct the collection name: e.g., "ignitehub_web"
-	const collection = `${orgName}_web`;
+export default function useWebApi() {
+	const [collection, setCollection] = useState<string | undefined>(undefined);
+
+	/**
+	 * Fetch all websites in the organization.
+	 * @param orgId The organization id.
+	 */
+	const getWebsites = useCallback(async (orginizationId: string) => {
+		const websites = await getWebsitesInOrg({ orginizationId: orginizationId });
+		return websites;
+	}, []);
+
+	/**
+	 * Initialize the collection name using the provided organization name.
+	 * @param orgName The organization name.
+	 */
+	const initCollection = useCallback((orgName: string) => {
+		setCollection(`${orgName}_web`);
+	}, []);
 
 	/**
 	 * Fetch all documents from the collection.
 	 */
 	const getItems = useCallback(async (): Promise<Item[]> => {
+		if (!collection) {
+			throw new Error(
+				"Collection not initialized. Please call initCollection(orgName) first."
+			);
+		}
 		const response = await fetch(`/api/items?collection=${collection}`, {
 			method: "GET"
 		});
@@ -30,6 +51,11 @@ export default function useOrgApi(orgName: string) {
 	 */
 	const createItem = useCallback(
 		async (data: Item): Promise<{ id: string }> => {
+			if (!collection) {
+				throw new Error(
+					"Collection not initialized. Please call initCollection(orgName) first."
+				);
+			}
 			const response = await fetch(`/api/items?collection=${collection}`, {
 				method: "POST",
 				headers: {
@@ -52,6 +78,11 @@ export default function useOrgApi(orgName: string) {
 	 */
 	const updateItem = useCallback(
 		async (id: string, data: Item): Promise<{ message: string }> => {
+			if (!collection) {
+				throw new Error(
+					"Collection not initialized. Please call initCollection(orgName) first."
+				);
+			}
 			const response = await fetch(`/api/items?collection=${collection}`, {
 				method: "PUT",
 				headers: {
@@ -73,6 +104,11 @@ export default function useOrgApi(orgName: string) {
 	 */
 	const deleteItem = useCallback(
 		async (id: string): Promise<{ message: string }> => {
+			if (!collection) {
+				throw new Error(
+					"Collection not initialized. Please call initCollection(orgName) first."
+				);
+			}
 			const response = await fetch(
 				`/api/items?collection=${collection}&id=${id}`,
 				{
@@ -87,5 +123,13 @@ export default function useOrgApi(orgName: string) {
 		[collection]
 	);
 
-	return { getItems, createItem, updateItem, deleteItem };
+	return {
+		initCollection,
+		getItems,
+		createItem,
+		updateItem,
+		deleteItem,
+		collection,
+		getWebsites
+	};
 }

@@ -56,6 +56,30 @@ query GetUserById($id: String!) @auth(level: PUBLIC) {
   }
 }
 
+query GetUserOrg($id: String!) @auth(level: PUBLIC) {
+  user(id: $id) {
+    orginizationId
+    orginization {
+      id
+      name
+      status
+    }
+  }
+}
+
+query GetWebsitesInOrg($orginizationId: UUID!) @auth(level: PUBLIC) {
+  orginization(id: $orginizationId) {
+    websites_on_organization {
+      name
+      domain
+      structureId
+      status
+      createdAt
+      updatedAt
+    }
+  }
+}
+
 # # Logged in users can list all their reviews and movie titles associated with the review
 # # Since the query uses the uid of the current authenticated user, we set auth level to USER
 # query ListUserReviews @auth(level: USER) {

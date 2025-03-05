@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import MuiCard from "@mui/material/Card";
 import { styled } from "@mui/material/styles";
-import { useAuth } from "@/utils/context/authContext";
+import { useAuth } from "@/lib/context/authContext";
 
 import IgniteHub from "@/components/Typography/IgniteHub";
 

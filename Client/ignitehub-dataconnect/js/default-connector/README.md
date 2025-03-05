@@ -486,6 +486,206 @@ executeQuery(ref).then((response) => {
 });
 ```
 
+## GetUserOrg
+You can execute the `GetUserOrg` query using the following action shortcut function, or by calling `executeQuery()` after calling the following `QueryRef` function, both of which are defined in [default-connector/index.d.ts](./index.d.ts):
+```javascript
+getUserOrg(vars: GetUserOrgVariables): QueryPromise<GetUserOrgData, GetUserOrgVariables>;
+
+getUserOrgRef(vars: GetUserOrgVariables): QueryRef<GetUserOrgData, GetUserOrgVariables>;
+```
+You can also pass in a `DataConnect` instance to the action shortcut function or `QueryRef` function.
+```javascript
+getUserOrg(dc: DataConnect, vars: GetUserOrgVariables): QueryPromise<GetUserOrgData, GetUserOrgVariables>;
+
+getUserOrgRef(dc: DataConnect, vars: GetUserOrgVariables): QueryRef<GetUserOrgData, GetUserOrgVariables>;
+```
+
+### Variables
+The `GetUserOrg` query requires an argument of type `GetUserOrgVariables`, which is defined in [default-connector/index.d.ts](./index.d.ts). It has the following fields:
+
+```javascript
+export interface GetUserOrgVariables {
+  id: string;
+}
+```
+### Return Type
+Recall that executing the `GetUserOrg` query returns a `QueryPromise` that resolves to an object with a `data` property. 
+
+The `data` property is an object of type `GetUserOrgData`, which is defined in [default-connector/index.d.ts](./index.d.ts). It has the following fields:
+```javascript
+export interface GetUserOrgData {
+  user?: {
+    orginizationId?: UUIDString | null;
+    orginization?: {
+      id: UUIDString;
+      name: string;
+      status?: string | null;
+    } & Orginization_Key;
+  };
+}
+```
+### Using `GetUserOrg`'s action shortcut function
+
+```javascript
+import { getDataConnect, DataConnect } from 'firebase/data-connect';
+import { connectorConfig, getUserOrg, GetUserOrgVariables } from '@IgniteHub/dataconnect';
+// The `GetUserOrg` query requires an argument of type `GetUserOrgVariables`:
+const getUserOrgVars: GetUserOrgVariables = {
+  id: ..., 
+}
+
+// Call the `getUserOrg()` function to execute the query.
+// You can use the `await` keyword to wait for the promise to resolve.
+const { data } = await getUserOrg(getUserOrgVars);
+// Variables can be defined inline as well.
+const { data } = await getUserOrg({ id: ..., });
+
+// You can also pass in a `DataConnect` instance to the action shortcut function.
+const connector: DataConnect = getDataConnect(connectorConfig);
+const { data } = await getUserOrg(connector, getUserOrgVars);
+
+console.log(data.user);
+
+// Or, you can use the `Promise` API.
+getUserOrg(getUserOrgVars).then((response) => {
+  const data = response.data;
+  console.log(data.user);
+});
+```
+
+### Using `GetUserOrg`'s `QueryRef` function
+
+```javascript
+import { getDataConnect, DataConnect, executeQuery } from 'firebase/data-connect';
+import { connectorConfig, getUserOrgRef, GetUserOrgVariables } from '@IgniteHub/dataconnect';
+// The `GetUserOrg` query requires an argument of type `GetUserOrgVariables`:
+const getUserOrgVars: GetUserOrgVariables = {
+  id: ..., 
+}
+
+// Call the `getUserOrgRef()` function to get a reference to the query.
+const ref = getUserOrgRef(getUserOrgVars);
+// Variables can be defined inline as well.
+const ref = getUserOrgRef({ id: ..., });
+
+// You can also pass in a `DataConnect` instance to the `QueryRef` function.
+const connector: DataConnect = getDataConnect(connectorConfig);
+const ref = getUserOrgRef(connector, getUserOrgVars);
+
+// Call `executeQuery()` on the reference to execute the query.
+// You can use the `await` keyword to wait for the promise to resolve.
+const { data } = await executeQuery(ref);
+
+console.log(data.user);
+
+// Or, you can use the `Promise` API.
+executeQuery(ref).then((response) => {
+  const data = response.data;
+  console.log(data.user);
+});
+```
+
+## GetWebsitesInOrg
+You can execute the `GetWebsitesInOrg` query using the following action shortcut function, or by calling `executeQuery()` after calling the following `QueryRef` function, both of which are defined in [default-connector/index.d.ts](./index.d.ts):
+```javascript
+getWebsitesInOrg(vars: GetWebsitesInOrgVariables): QueryPromise<GetWebsitesInOrgData, GetWebsitesInOrgVariables>;
+
+getWebsitesInOrgRef(vars: GetWebsitesInOrgVariables): QueryRef<GetWebsitesInOrgData, GetWebsitesInOrgVariables>;
+```
+You can also pass in a `DataConnect` instance to the action shortcut function or `QueryRef` function.
+```javascript
+getWebsitesInOrg(dc: DataConnect, vars: GetWebsitesInOrgVariables): QueryPromise<GetWebsitesInOrgData, GetWebsitesInOrgVariables>;
+
+getWebsitesInOrgRef(dc: DataConnect, vars: GetWebsitesInOrgVariables): QueryRef<GetWebsitesInOrgData, GetWebsitesInOrgVariables>;
+```
+
+### Variables
+The `GetWebsitesInOrg` query requires an argument of type `GetWebsitesInOrgVariables`, which is defined in [default-connector/index.d.ts](./index.d.ts). It has the following fields:
+
+```javascript
+export interface GetWebsitesInOrgVariables {
+  orginizationId: UUIDString;
+}
+```
+### Return Type
+Recall that executing the `GetWebsitesInOrg` query returns a `QueryPromise` that resolves to an object with a `data` property. 
+
+The `data` property is an object of type `GetWebsitesInOrgData`, which is defined in [default-connector/index.d.ts](./index.d.ts). It has the following fields:
+```javascript
+export interface GetWebsitesInOrgData {
+  orginization?: {
+    websites_on_organization: ({
+      name: string;
+      domain: string;
+      structureId: string;
+      status?: string | null;
+      createdAt: DateString;
+      updatedAt?: DateString | null;
+    })[];
+  };
+}
+```
+### Using `GetWebsitesInOrg`'s action shortcut function
+
+```javascript
+import { getDataConnect, DataConnect } from 'firebase/data-connect';
+import { connectorConfig, getWebsitesInOrg, GetWebsitesInOrgVariables } from '@IgniteHub/dataconnect';
+// The `GetWebsitesInOrg` query requires an argument of type `GetWebsitesInOrgVariables`:
+const getWebsitesInOrgVars: GetWebsitesInOrgVariables = {
+  orginizationId: ..., 
+}
+
+// Call the `getWebsitesInOrg()` function to execute the query.
+// You can use the `await` keyword to wait for the promise to resolve.
+const { data } = await getWebsitesInOrg(getWebsitesInOrgVars);
+// Variables can be defined inline as well.
+const { data } = await getWebsitesInOrg({ orginizationId: ..., });
+
+// You can also pass in a `DataConnect` instance to the action shortcut function.
+const connector: DataConnect = getDataConnect(connectorConfig);
+const { data } = await getWebsitesInOrg(connector, getWebsitesInOrgVars);
+
+console.log(data.orginization);
+
+// Or, you can use the `Promise` API.
+getWebsitesInOrg(getWebsitesInOrgVars).then((response) => {
+  const data = response.data;
+  console.log(data.orginization);
+});
+```
+
+### Using `GetWebsitesInOrg`'s `QueryRef` function
+
+```javascript
+import { getDataConnect, DataConnect, executeQuery } from 'firebase/data-connect';
+import { connectorConfig, getWebsitesInOrgRef, GetWebsitesInOrgVariables } from '@IgniteHub/dataconnect';
+// The `GetWebsitesInOrg` query requires an argument of type `GetWebsitesInOrgVariables`:
+const getWebsitesInOrgVars: GetWebsitesInOrgVariables = {
+  orginizationId: ..., 
+}
+
+// Call the `getWebsitesInOrgRef()` function to get a reference to the query.
+const ref = getWebsitesInOrgRef(getWebsitesInOrgVars);
+// Variables can be defined inline as well.
+const ref = getWebsitesInOrgRef({ orginizationId: ..., });
+
+// You can also pass in a `DataConnect` instance to the `QueryRef` function.
+const connector: DataConnect = getDataConnect(connectorConfig);
+const ref = getWebsitesInOrgRef(connector, getWebsitesInOrgVars);
+
+// Call `executeQuery()` on the reference to execute the query.
+// You can use the `await` keyword to wait for the promise to resolve.
+const { data } = await executeQuery(ref);
+
+console.log(data.orginization);
+
+// Or, you can use the `Promise` API.
+executeQuery(ref).then((response) => {
+  const data = response.data;
+  console.log(data.orginization);
+});
+```
+
 # Mutations
 There are two ways to execute a Data Connect Mutation using the generated Web SDK:
 - Using a Mutation Reference function, which returns a `MutationRef`

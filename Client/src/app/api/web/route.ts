@@ -1,22 +1,18 @@
 import admin from "firebase-admin";
 
-// Initialize Firebase Admin if it hasn't been initialized already
 if (!admin.apps.length) {
 	admin.initializeApp({
 		credential: admin.credential.cert({
 			projectId: process.env.FIREBASE_PROJECT_ID,
-			// Ensure newlines in the private key are correctly formatted
-			privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
-			clientEmail: process.env.FIREBASE_CLIENT_EMAIL
-		}),
-		databaseURL: process.env.FIREBASE_DATABASE_URL // Optional: include if needed
+			privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, "\n")
+		})
 	});
 }
 
 const db = admin.firestore();
 const collectionName = "web";
 
-export async function GET(request: Request) {
+export async function GET() {
 	try {
 		const snapshot = await db.collection(collectionName).get();
 		const items = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));

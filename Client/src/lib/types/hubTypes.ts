@@ -1,4 +1,3 @@
-// types/dashboard.ts
 export interface MenuItem {
 	id: string;
 	label: string;
@@ -10,6 +9,7 @@ export interface MenuItem {
 export interface Hub {
 	id: string;
 	title: string;
+	path: string;
 	disabled: boolean;
 	menuItems: MenuItem[];
 }
@@ -29,6 +29,7 @@ export const hubConfigs: Record<HubType, Hub> = {
 		id: "overview",
 		title: "Overview",
 		disabled: false,
+		path: "/dashboard",
 		menuItems: [
 			{
 				id: "1",
@@ -50,8 +51,9 @@ export const hubConfigs: Record<HubType, Hub> = {
 		id: "web",
 		title: "Web Hub",
 		disabled: false,
+		path: "/dashboard/web",
 		menuItems: [
-			{ id: "1", label: "Dashboard", path: "/web", disabled: false },
+			{ id: "1", label: "Dashboard", path: "/dashboard/web", disabled: false },
 			{ id: "2", label: "Sites", path: "/web/sites", disabled: false },
 			{ id: "3", label: "Analytics", path: "/web/analytics", disabled: false },
 			{ id: "4", label: "Content", path: "/web/content", disabled: false },
@@ -62,6 +64,7 @@ export const hubConfigs: Record<HubType, Hub> = {
 		id: "marketing",
 		title: "Marketing Hub",
 		disabled: true,
+		path: "/dashboard/marketing",
 		menuItems: [
 			{
 				id: "1",
@@ -84,6 +87,7 @@ export const hubConfigs: Record<HubType, Hub> = {
 		id: "social",
 		title: "Social Hub",
 		disabled: false,
+		path: "/dashboard/social",
 		menuItems: [
 			{ id: "1", label: "Posts", path: "/social/posts", disabled: false },
 			{ id: "2", label: "Schedule", path: "/social/schedule", disabled: false },
@@ -106,6 +110,7 @@ export const hubConfigs: Record<HubType, Hub> = {
 		id: "sales",
 		title: "Sales Hub",
 		disabled: true,
+		path: "/dashboard/sales",
 		menuItems: [
 			{ id: "1", label: "Deals", path: "/sales/deals", disabled: false },
 			{ id: "2", label: "Contacts", path: "/sales/contacts", disabled: false },
@@ -118,6 +123,7 @@ export const hubConfigs: Record<HubType, Hub> = {
 		id: "hr",
 		title: "HR Hub",
 		disabled: true,
+		path: "/dashboard/hr",
 		menuItems: [
 			{ id: "1", label: "Employees", path: "/hr/employees", disabled: false },
 			{
@@ -135,6 +141,7 @@ export const hubConfigs: Record<HubType, Hub> = {
 		id: "inventory",
 		title: "Inventory Hub",
 		disabled: true,
+		path: "/dashboard/inventory",
 		menuItems: [
 			{
 				id: "1",
@@ -157,6 +164,7 @@ export const hubConfigs: Record<HubType, Hub> = {
 		id: "finance",
 		title: "Finance Hub",
 		disabled: true,
+		path: "/dashboard/finance",
 		menuItems: [
 			{
 				id: "1",

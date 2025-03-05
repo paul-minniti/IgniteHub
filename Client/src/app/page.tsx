@@ -1,12 +1,12 @@
 import React from "react";
 import { Box } from "@mui/material";
-import Navbar from "./components/Navbar";
-import BenefitsSection from "./components/Benefits";
-import HeroSection from "./components/Hero";
-import MembershipSection from "./components/Membership";
-import ProductSection from "./components/Products";
-import PricingSection from "./components/Pricing";
-import FAQSection from "./components/Faqs";
+import Navbar from "../components/Landing/Navbar";
+import BenefitsSection from "../components/Landing/Benefits";
+import HeroSection from "../components/Landing/Hero";
+import MembershipSection from "../components/Landing/Membership";
+import ProductSection from "../components/Landing/Products";
+import PricingSection from "../components/Landing/Pricing";
+import FAQSection from "../components/Landing/Faqs";
 import { Wave1, Wave2 } from "@/components/Icons/CustomIcons";
 import Footer from "@/components/Common/Footer";
 

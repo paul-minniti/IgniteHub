@@ -69,6 +69,38 @@ export interface GetUserByIdVariables {
   id: string;
 }
 
+export interface GetUserOrgData {
+  user?: {
+    orginizationId?: UUIDString | null;
+    orginization?: {
+      id: UUIDString;
+      name: string;
+      status?: string | null;
+    } & Orginization_Key;
+  };
+}
+
+export interface GetUserOrgVariables {
+  id: string;
+}
+
+export interface GetWebsitesInOrgData {
+  orginization?: {
+    websites_on_organization: ({
+      name: string;
+      domain: string;
+      structureId: string;
+      status?: string | null;
+      createdAt: DateString;
+      updatedAt?: DateString | null;
+    })[];
+  };
+}
+
+export interface GetWebsitesInOrgVariables {
+  orginizationId: UUIDString;
+}
+
 export interface ListNewsletterSignIpsData {
   newsletters: ({
     email: string;
@@ -119,42 +151,6 @@ export interface Website_Key {
 
 
 /* Allow users to create refs without passing in DataConnect */
-export function createUserRef(vars: CreateUserVariables): MutationRef<CreateUserData, CreateUserVariables>;
-/* Allow users to pass in custom DataConnect instances */
-export function createUserRef(dc: DataConnect, vars: CreateUserVariables): MutationRef<CreateUserData, CreateUserVariables>;
-
-export function createUser(vars: CreateUserVariables): MutationPromise<CreateUserData, CreateUserVariables>;
-export function createUser(dc: DataConnect, vars: CreateUserVariables): MutationPromise<CreateUserData, CreateUserVariables>;
-
-
-/* Allow users to create refs without passing in DataConnect */
-export function addNewsletterSignUpRef(vars: AddNewsletterSignUpVariables): MutationRef<AddNewsletterSignUpData, AddNewsletterSignUpVariables>;
-/* Allow users to pass in custom DataConnect instances */
-export function addNewsletterSignUpRef(dc: DataConnect, vars: AddNewsletterSignUpVariables): MutationRef<AddNewsletterSignUpData, AddNewsletterSignUpVariables>;
-
-export function addNewsletterSignUp(vars: AddNewsletterSignUpVariables): MutationPromise<AddNewsletterSignUpData, AddNewsletterSignUpVariables>;
-export function addNewsletterSignUp(dc: DataConnect, vars: AddNewsletterSignUpVariables): MutationPromise<AddNewsletterSignUpData, AddNewsletterSignUpVariables>;
-
-
-/* Allow users to create refs without passing in DataConnect */
-export function createOrgRef(vars: CreateOrgVariables): MutationRef<CreateOrgData, CreateOrgVariables>;
-/* Allow users to pass in custom DataConnect instances */
-export function createOrgRef(dc: DataConnect, vars: CreateOrgVariables): MutationRef<CreateOrgData, CreateOrgVariables>;
-
-export function createOrg(vars: CreateOrgVariables): MutationPromise<CreateOrgData, CreateOrgVariables>;
-export function createOrg(dc: DataConnect, vars: CreateOrgVariables): MutationPromise<CreateOrgData, CreateOrgVariables>;
-
-
-/* Allow users to create refs without passing in DataConnect */
-export function addUserToOrgRef(vars: AddUserToOrgVariables): MutationRef<AddUserToOrgData, AddUserToOrgVariables>;
-/* Allow users to pass in custom DataConnect instances */
-export function addUserToOrgRef(dc: DataConnect, vars: AddUserToOrgVariables): MutationRef<AddUserToOrgData, AddUserToOrgVariables>;
-
-export function addUserToOrg(vars: AddUserToOrgVariables): MutationPromise<AddUserToOrgData, AddUserToOrgVariables>;
-export function addUserToOrg(dc: DataConnect, vars: AddUserToOrgVariables): MutationPromise<AddUserToOrgData, AddUserToOrgVariables>;
-
-
-/* Allow users to create refs without passing in DataConnect */
 export function listNewsletterSignIpsRef(): QueryRef<ListNewsletterSignIpsData, undefined>;
 /* Allow users to pass in custom DataConnect instances */
 export function listNewsletterSignIpsRef(dc: DataConnect): QueryRef<ListNewsletterSignIpsData, undefined>;
@@ -197,4 +193,58 @@ export function getUserByIdRef(dc: DataConnect, vars: GetUserByIdVariables): Que
 
 export function getUserById(vars: GetUserByIdVariables): QueryPromise<GetUserByIdData, GetUserByIdVariables>;
 export function getUserById(dc: DataConnect, vars: GetUserByIdVariables): QueryPromise<GetUserByIdData, GetUserByIdVariables>;
+
+
+/* Allow users to create refs without passing in DataConnect */
+export function getUserOrgRef(vars: GetUserOrgVariables): QueryRef<GetUserOrgData, GetUserOrgVariables>;
+/* Allow users to pass in custom DataConnect instances */
+export function getUserOrgRef(dc: DataConnect, vars: GetUserOrgVariables): QueryRef<GetUserOrgData, GetUserOrgVariables>;
+
+export function getUserOrg(vars: GetUserOrgVariables): QueryPromise<GetUserOrgData, GetUserOrgVariables>;
+export function getUserOrg(dc: DataConnect, vars: GetUserOrgVariables): QueryPromise<GetUserOrgData, GetUserOrgVariables>;
+
+
+/* Allow users to create refs without passing in DataConnect */
+export function getWebsitesInOrgRef(vars: GetWebsitesInOrgVariables): QueryRef<GetWebsitesInOrgData, GetWebsitesInOrgVariables>;
+/* Allow users to pass in custom DataConnect instances */
+export function getWebsitesInOrgRef(dc: DataConnect, vars: GetWebsitesInOrgVariables): QueryRef<GetWebsitesInOrgData, GetWebsitesInOrgVariables>;
+
+export function getWebsitesInOrg(vars: GetWebsitesInOrgVariables): QueryPromise<GetWebsitesInOrgData, GetWebsitesInOrgVariables>;
+export function getWebsitesInOrg(dc: DataConnect, vars: GetWebsitesInOrgVariables): QueryPromise<GetWebsitesInOrgData, GetWebsitesInOrgVariables>;
+
+
+/* Allow users to create refs without passing in DataConnect */
+export function createUserRef(vars: CreateUserVariables): MutationRef<CreateUserData, CreateUserVariables>;
+/* Allow users to pass in custom DataConnect instances */
+export function createUserRef(dc: DataConnect, vars: CreateUserVariables): MutationRef<CreateUserData, CreateUserVariables>;
+
+export function createUser(vars: CreateUserVariables): MutationPromise<CreateUserData, CreateUserVariables>;
+export function createUser(dc: DataConnect, vars: CreateUserVariables): MutationPromise<CreateUserData, CreateUserVariables>;
+
+
+/* Allow users to create refs without passing in DataConnect */
+export function addNewsletterSignUpRef(vars: AddNewsletterSignUpVariables): MutationRef<AddNewsletterSignUpData, AddNewsletterSignUpVariables>;
+/* Allow users to pass in custom DataConnect instances */
+export function addNewsletterSignUpRef(dc: DataConnect, vars: AddNewsletterSignUpVariables): MutationRef<AddNewsletterSignUpData, AddNewsletterSignUpVariables>;
+
+export function addNewsletterSignUp(vars: AddNewsletterSignUpVariables): MutationPromise<AddNewsletterSignUpData, AddNewsletterSignUpVariables>;
+export function addNewsletterSignUp(dc: DataConnect, vars: AddNewsletterSignUpVariables): MutationPromise<AddNewsletterSignUpData, AddNewsletterSignUpVariables>;
+
+
+/* Allow users to create refs without passing in DataConnect */
+export function createOrgRef(vars: CreateOrgVariables): MutationRef<CreateOrgData, CreateOrgVariables>;
+/* Allow users to pass in custom DataConnect instances */
+export function createOrgRef(dc: DataConnect, vars: CreateOrgVariables): MutationRef<CreateOrgData, CreateOrgVariables>;
+
+export function createOrg(vars: CreateOrgVariables): MutationPromise<CreateOrgData, CreateOrgVariables>;
+export function createOrg(dc: DataConnect, vars: CreateOrgVariables): MutationPromise<CreateOrgData, CreateOrgVariables>;
+
+
+/* Allow users to create refs without passing in DataConnect */
+export function addUserToOrgRef(vars: AddUserToOrgVariables): MutationRef<AddUserToOrgData, AddUserToOrgVariables>;
+/* Allow users to pass in custom DataConnect instances */
+export function addUserToOrgRef(dc: DataConnect, vars: AddUserToOrgVariables): MutationRef<AddUserToOrgData, AddUserToOrgVariables>;
+
+export function addUserToOrg(vars: AddUserToOrgVariables): MutationPromise<AddUserToOrgData, AddUserToOrgVariables>;
+export function addUserToOrg(dc: DataConnect, vars: AddUserToOrgVariables): MutationPromise<AddUserToOrgData, AddUserToOrgVariables>;
 

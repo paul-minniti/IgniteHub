@@ -1,9 +1,9 @@
 "use client";
 
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { useAuth } from "@/utils/context/authContext";
+import { useAuth } from "@/lib/context/authContext";
 import { getUserById } from "@IgniteHub/dataconnect";
-import { dataConnect } from "@/utils/firebase";
+import { dataConnect } from "@/lib/firebase";
 import { useRouter } from "next/navigation";
 
 export interface UserProfile {

@@ -1,12 +1,12 @@
 import React from "react";
 import { Box, Button, Container, Typography } from "@mui/material";
-import Navbar from "@/app/components/Navbar";
-import BenefitsSection from "@/app/components/Benefits";
-import HeroSection from "@/app/components/Hero";
-import MembershipSection from "@/app/components/Membership";
-import TasksSection from "@/app/components/Products";
-import PricingSection from "@/app/components/Pricing";
-import FAQSection from "@/app/components/Faqs";
+import Navbar from "@/components/Landing/Navbar";
+import BenefitsSection from "@/components/Landing/Benefits";
+import HeroSection from "@/components/Landing/Hero";
+import MembershipSection from "@/components/Landing/Membership";
+import TasksSection from "@/components/Landing/Products";
+import PricingSection from "@/components/Landing/Pricing";
+import FAQSection from "@/components/Landing/Faqs";
 
 export default function LandingPage() {
 	return (

@@ -14,7 +14,7 @@ import {
 	Home as HomeIcon,
 	Settings as SettingsIcon
 } from "@mui/icons-material";
-import { useDashboard } from "@/utils/context/dashboardContext";
+import { useDashboard } from "@/lib/context/dashboardContext";
 
 export default function OrgMenu() {
 	const { selectedIndex } = useDashboard();

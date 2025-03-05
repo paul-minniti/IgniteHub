@@ -1,0 +1,16 @@
+# This is a file for you to write an un-named query.
+# Only one un-named query is allowed per file.
+query {
+  orginizations {
+    id
+    name
+    status
+    users_on_orginization {
+      id
+      firstName
+    }
+    websites_on_organization {
+      id
+    }
+  }
+}
