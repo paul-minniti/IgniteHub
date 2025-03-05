@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { Box, Stack } from "@mui/material";
 import MainGrid from "./components/MainGrid";
 import { collection, doc, setDoc, getDoc } from "firebase/firestore";
-import { firestore } from "@/utils/firebase";
+import { firestore } from "@/lib/firebase";
 
 export default function Dashboard() {
 	// useEffect(() => {

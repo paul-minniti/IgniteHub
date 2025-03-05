@@ -1,4 +1,4 @@
-import { createUserRef, addNewsletterSignUpRef, createOrgRef, addUserToOrgRef, listNewsletterSignIpsRef, getNewsletterByEmailRef, listUsersRef, listOrgsRef, getUserByIdRef, connectorConfig } from '../../';
+import { createUserRef, addNewsletterSignUpRef, createOrgRef, addUserToOrgRef, listNewsletterSignIpsRef, getNewsletterByEmailRef, listUsersRef, listOrgsRef, getUserByIdRef, getWebsitesInOrgRef, connectorConfig } from '../../';
 import { validateArgs, CallerSdkTypeEnum } from 'firebase/data-connect';
 import { useDataConnectQuery, useDataConnectMutation } from '@tanstack-query-firebase/react/data-connect';
 
@@ -62,5 +62,11 @@ export function useListOrgs(dc, options) {
 export function useGetUserById(dcOrVars, vars, options) {
   const { dc: dcInstance, vars: inputVars } = validateArgs(connectorConfig, dcOrVars, vars, false);
   const ref = getUserByIdRef(dcInstance, inputVars);
+  return useDataConnectQuery(ref, options, CallerSdkTypeEnum.GeneratedReact);
+}
+
+export function useGetWebsitesInOrg(dcOrVars, vars, options) {
+  const { dc: dcInstance, vars: inputVars } = validateArgs(connectorConfig, dcOrVars, vars, false);
+  const ref = getWebsitesInOrgRef(dcInstance, inputVars);
   return useDataConnectQuery(ref, options, CallerSdkTypeEnum.GeneratedReact);
 }

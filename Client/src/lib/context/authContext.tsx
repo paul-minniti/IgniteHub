@@ -11,7 +11,7 @@ import {
 	updateProfile
 } from "firebase/auth";
 import { getUserById, createUser } from "@IgniteHub/dataconnect";
-import { auth, dataConnect } from "@/utils/firebase";
+import { auth, dataConnect } from "@/lib/firebase";
 import { useRouter } from "next/navigation";
 import { Modal } from "@mui/material";
 import SignIn from "@/components/Auth/SignIn";

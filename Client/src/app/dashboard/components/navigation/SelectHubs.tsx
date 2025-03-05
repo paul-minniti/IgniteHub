@@ -6,8 +6,8 @@ import ListItemText from "@mui/material/ListItemText";
 import Select, { SelectChangeEvent, selectClasses } from "@mui/material/Select";
 import { styled } from "@mui/material/styles";
 import DevicesRoundedIcon from "@mui/icons-material/DevicesRounded";
-import { useDashboard } from "@/utils/context/dashboardContext";
-import { hubConfigs } from "@/utils/types/hubTypes";
+import { useDashboard } from "@/lib/context/dashboardContext";
+import { hubConfigs } from "@/lib/types/hubTypes";
 
 const Avatar = styled(MuiAvatar)(({ theme }) => ({
 	width: 28,

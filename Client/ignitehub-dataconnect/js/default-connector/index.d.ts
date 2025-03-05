@@ -69,6 +69,23 @@ export interface GetUserByIdVariables {
   id: string;
 }
 
+export interface GetWebsitesInOrgData {
+  orginization?: {
+    websites_on_organization: ({
+      name: string;
+      domain: string;
+      structureId: string;
+      status?: string | null;
+      createdAt: DateString;
+      updatedAt?: DateString | null;
+    })[];
+  };
+}
+
+export interface GetWebsitesInOrgVariables {
+  orginizationId: UUIDString;
+}
+
 export interface ListNewsletterSignIpsData {
   newsletters: ({
     email: string;
@@ -197,4 +214,13 @@ export function getUserByIdRef(dc: DataConnect, vars: GetUserByIdVariables): Que
 
 export function getUserById(vars: GetUserByIdVariables): QueryPromise<GetUserByIdData, GetUserByIdVariables>;
 export function getUserById(dc: DataConnect, vars: GetUserByIdVariables): QueryPromise<GetUserByIdData, GetUserByIdVariables>;
+
+
+/* Allow users to create refs without passing in DataConnect */
+export function getWebsitesInOrgRef(vars: GetWebsitesInOrgVariables): QueryRef<GetWebsitesInOrgData, GetWebsitesInOrgVariables>;
+/* Allow users to pass in custom DataConnect instances */
+export function getWebsitesInOrgRef(dc: DataConnect, vars: GetWebsitesInOrgVariables): QueryRef<GetWebsitesInOrgData, GetWebsitesInOrgVariables>;
+
+export function getWebsitesInOrg(vars: GetWebsitesInOrgVariables): QueryPromise<GetWebsitesInOrgData, GetWebsitesInOrgVariables>;
+export function getWebsitesInOrg(dc: DataConnect, vars: GetWebsitesInOrgVariables): QueryPromise<GetWebsitesInOrgData, GetWebsitesInOrgVariables>;
 

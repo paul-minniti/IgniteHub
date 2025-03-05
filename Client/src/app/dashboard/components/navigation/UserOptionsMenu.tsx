@@ -12,7 +12,7 @@ import ListItemIcon, { listItemIconClasses } from "@mui/material/ListItemIcon";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 import MoreVertRoundedIcon from "@mui/icons-material/MoreVertRounded";
 import MenuButton from "./MenuButton";
-import { useAuth } from "@/utils/context/authContext";
+import { useAuth } from "@/lib/context/authContext";
 
 const MenuItem = styled(MuiMenuItem)({
 	margin: "2px 0"

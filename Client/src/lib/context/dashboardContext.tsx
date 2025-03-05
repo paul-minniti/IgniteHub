@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { Hub, HubType, hubConfigs } from "@/utils/types/hubTypes";
+import { Hub, HubType, hubConfigs } from "@/lib/types/hubTypes";
 import { usePathname } from "next/navigation";
 
 export interface Org {

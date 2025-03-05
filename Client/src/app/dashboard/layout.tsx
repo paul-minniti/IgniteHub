@@ -5,7 +5,7 @@ import { Box } from "@mui/material";
 import AppNavbar from "./components/navigation/AppNavbar";
 import SideMenu from "./components/navigation/SideMenu";
 import { useRouter } from "next/navigation";
-import { useAuth } from "@/utils/context/authContext";
+import { useAuth } from "@/lib/context/authContext";
 
 export default function Dashboard({
 	children

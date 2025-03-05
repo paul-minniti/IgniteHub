@@ -1,4 +1,4 @@
-import { CreateUserData, CreateUserVariables, AddNewsletterSignUpData, AddNewsletterSignUpVariables, CreateOrgData, CreateOrgVariables, AddUserToOrgData, AddUserToOrgVariables, ListNewsletterSignIpsData, GetNewsletterByEmailData, GetNewsletterByEmailVariables, ListUsersData, ListOrgsData, GetUserByIdData, GetUserByIdVariables } from '../';
+import { CreateUserData, CreateUserVariables, AddNewsletterSignUpData, AddNewsletterSignUpVariables, CreateOrgData, CreateOrgVariables, AddUserToOrgData, AddUserToOrgVariables, ListNewsletterSignIpsData, GetNewsletterByEmailData, GetNewsletterByEmailVariables, ListUsersData, ListOrgsData, GetUserByIdData, GetUserByIdVariables, GetWebsitesInOrgData, GetWebsitesInOrgVariables } from '../';
 import { useDataConnectQueryOptions, FlattenedQueryResult, useDataConnectMutationOptions, FlattenedMutationResult} from '@tanstack-query-firebase/react/data-connect';
 import { UseQueryResult, UseMutationResult} from '@tanstack/react-query';
 import { DataConnect } from 'firebase/data-connect';
@@ -30,3 +30,6 @@ export function useListOrgs(dc: DataConnect, options?: useDataConnectQueryOption
 
 export function useGetUserById(vars: GetUserByIdVariables, options?: useDataConnectQueryOptions<GetUserByIdData>): UseQueryResult<FlattenedQueryResult<GetUserByIdData, GetUserByIdVariables>, FirebaseError>;
 export function useGetUserById(dc: DataConnect, vars: GetUserByIdVariables, options?: useDataConnectQueryOptions<GetUserByIdData>): UseQueryResult<FlattenedQueryResult<GetUserByIdData, GetUserByIdVariables>, FirebaseError>;
+
+export function useGetWebsitesInOrg(vars: GetWebsitesInOrgVariables, options?: useDataConnectQueryOptions<GetWebsitesInOrgData>): UseQueryResult<FlattenedQueryResult<GetWebsitesInOrgData, GetWebsitesInOrgVariables>, FirebaseError>;
+export function useGetWebsitesInOrg(dc: DataConnect, vars: GetWebsitesInOrgVariables, options?: useDataConnectQueryOptions<GetWebsitesInOrgData>): UseQueryResult<FlattenedQueryResult<GetWebsitesInOrgData, GetWebsitesInOrgVariables>, FirebaseError>;

@@ -16,7 +16,7 @@ import MuiCard from "@mui/material/Card";
 import ForgotPassword from "./ForgotPassword";
 import { GoogleIcon } from "@/components/Icons/CustomIcons";
 import IgniteHub from "@/components/Typography/IgniteHub";
-import { useAuth } from "@/utils/context/authContext";
+import { useAuth } from "@/lib/context/authContext";
 
 const Card = styled(MuiCard)(({ theme }) => ({
 	display: "flex",

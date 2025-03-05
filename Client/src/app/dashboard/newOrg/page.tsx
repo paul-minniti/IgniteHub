@@ -13,7 +13,7 @@ import {
 import Image from "next/image";
 import IgniteHub from "@/components/Typography/IgniteHub";
 import { createOrg, addUserToOrg } from "@IgniteHub/dataconnect";
-import { dataConnect } from "@/utils/firebase";
+import { dataConnect } from "@/lib/firebase";
 import { useRouter } from "next/navigation";
 
 export default function CreateProjectPage() {

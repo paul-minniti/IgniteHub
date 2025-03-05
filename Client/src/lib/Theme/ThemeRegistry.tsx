@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import createCache from "@emotion/cache";
 import { useServerInsertedHTML } from "next/navigation";
 import { CacheProvider, ThemeProvider } from "@emotion/react";
-import theme from "@/utils/Theme/theme";
+import theme from "@/lib/Theme/theme";
 
 interface ThemeRegistryProps {
 	children: React.ReactNode;

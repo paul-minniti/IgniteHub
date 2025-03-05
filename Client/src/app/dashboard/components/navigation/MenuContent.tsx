@@ -8,7 +8,7 @@ import {
 	Stack
 } from "@mui/material";
 
-import { useDashboard } from "@/utils/context/dashboardContext";
+import { useDashboard } from "@/lib/context/dashboardContext";
 import { useRouter } from "next/navigation";
 
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";

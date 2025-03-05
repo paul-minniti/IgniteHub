@@ -96,3 +96,13 @@ export function getUserById(dcOrVars, vars) {
   return executeQuery(getUserByIdRef(dcOrVars, vars));
 }
 
+export function getWebsitesInOrgRef(dcOrVars, vars) {
+  const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars, true);
+  dcInstance._useGeneratedSdk();
+  return queryRef(dcInstance, 'GetWebsitesInOrg', inputVars);
+}
+
+export function getWebsitesInOrg(dcOrVars, vars) {
+  return executeQuery(getWebsitesInOrgRef(dcOrVars, vars));
+}
+
