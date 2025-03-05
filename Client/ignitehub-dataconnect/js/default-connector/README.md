@@ -486,6 +486,105 @@ executeQuery(ref).then((response) => {
 });
 ```
 
+## GetUserOrg
+You can execute the `GetUserOrg` query using the following action shortcut function, or by calling `executeQuery()` after calling the following `QueryRef` function, both of which are defined in [default-connector/index.d.ts](./index.d.ts):
+```javascript
+getUserOrg(vars: GetUserOrgVariables): QueryPromise<GetUserOrgData, GetUserOrgVariables>;
+
+getUserOrgRef(vars: GetUserOrgVariables): QueryRef<GetUserOrgData, GetUserOrgVariables>;
+```
+You can also pass in a `DataConnect` instance to the action shortcut function or `QueryRef` function.
+```javascript
+getUserOrg(dc: DataConnect, vars: GetUserOrgVariables): QueryPromise<GetUserOrgData, GetUserOrgVariables>;
+
+getUserOrgRef(dc: DataConnect, vars: GetUserOrgVariables): QueryRef<GetUserOrgData, GetUserOrgVariables>;
+```
+
+### Variables
+The `GetUserOrg` query requires an argument of type `GetUserOrgVariables`, which is defined in [default-connector/index.d.ts](./index.d.ts). It has the following fields:
+
+```javascript
+export interface GetUserOrgVariables {
+  id: string;
+}
+```
+### Return Type
+Recall that executing the `GetUserOrg` query returns a `QueryPromise` that resolves to an object with a `data` property. 
+
+The `data` property is an object of type `GetUserOrgData`, which is defined in [default-connector/index.d.ts](./index.d.ts). It has the following fields:
+```javascript
+export interface GetUserOrgData {
+  user?: {
+    orginizationId?: UUIDString | null;
+    orginization?: {
+      id: UUIDString;
+      name: string;
+      status?: string | null;
+    } & Orginization_Key;
+  };
+}
+```
+### Using `GetUserOrg`'s action shortcut function
+
+```javascript
+import { getDataConnect, DataConnect } from 'firebase/data-connect';
+import { connectorConfig, getUserOrg, GetUserOrgVariables } from '@IgniteHub/dataconnect';
+// The `GetUserOrg` query requires an argument of type `GetUserOrgVariables`:
+const getUserOrgVars: GetUserOrgVariables = {
+  id: ..., 
+}
+
+// Call the `getUserOrg()` function to execute the query.
+// You can use the `await` keyword to wait for the promise to resolve.
+const { data } = await getUserOrg(getUserOrgVars);
+// Variables can be defined inline as well.
+const { data } = await getUserOrg({ id: ..., });
+
+// You can also pass in a `DataConnect` instance to the action shortcut function.
+const connector: DataConnect = getDataConnect(connectorConfig);
+const { data } = await getUserOrg(connector, getUserOrgVars);
+
+console.log(data.user);
+
+// Or, you can use the `Promise` API.
+getUserOrg(getUserOrgVars).then((response) => {
+  const data = response.data;
+  console.log(data.user);
+});
+```
+
+### Using `GetUserOrg`'s `QueryRef` function
+
+```javascript
+import { getDataConnect, DataConnect, executeQuery } from 'firebase/data-connect';
+import { connectorConfig, getUserOrgRef, GetUserOrgVariables } from '@IgniteHub/dataconnect';
+// The `GetUserOrg` query requires an argument of type `GetUserOrgVariables`:
+const getUserOrgVars: GetUserOrgVariables = {
+  id: ..., 
+}
+
+// Call the `getUserOrgRef()` function to get a reference to the query.
+const ref = getUserOrgRef(getUserOrgVars);
+// Variables can be defined inline as well.
+const ref = getUserOrgRef({ id: ..., });
+
+// You can also pass in a `DataConnect` instance to the `QueryRef` function.
+const connector: DataConnect = getDataConnect(connectorConfig);
+const ref = getUserOrgRef(connector, getUserOrgVars);
+
+// Call `executeQuery()` on the reference to execute the query.
+// You can use the `await` keyword to wait for the promise to resolve.
+const { data } = await executeQuery(ref);
+
+console.log(data.user);
+
+// Or, you can use the `Promise` API.
+executeQuery(ref).then((response) => {
+  const data = response.data;
+  console.log(data.user);
+});
+```
+
 ## GetWebsitesInOrg
 You can execute the `GetWebsitesInOrg` query using the following action shortcut function, or by calling `executeQuery()` after calling the following `QueryRef` function, both of which are defined in [default-connector/index.d.ts](./index.d.ts):
 ```javascript

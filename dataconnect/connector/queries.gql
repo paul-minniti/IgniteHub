@@ -56,6 +56,17 @@ query GetUserById($id: String!) @auth(level: PUBLIC) {
   }
 }
 
+query GetUserOrg($id: String!) @auth(level: PUBLIC) {
+  user(id: $id) {
+    orginizationId
+    orginization {
+      id
+      name
+      status
+    }
+  }
+}
+
 query GetWebsitesInOrg($orginizationId: UUID!) @auth(level: PUBLIC) {
   orginization(id: $orginizationId) {
     websites_on_organization {

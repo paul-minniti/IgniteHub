@@ -12,25 +12,21 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 import IgniteHub from "@/components/Typography/IgniteHub";
-import { createOrg, addUserToOrg } from "@IgniteHub/dataconnect";
-import { dataConnect } from "@/lib/firebase";
+// import { createOrg, addUserToOrg } from "@IgniteHub/dataconnect";
+// import { dataConnect } from "@/lib/firebase";
 import { useRouter } from "next/navigation";
+import { useDashboard } from "@/lib/context/dashboardContext";
 
 export default function CreateProjectPage() {
 	const theme = useTheme();
 	const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
 	const router = useRouter();
+	const { handleAddOrg } = useDashboard();
 
-	const [projectName, setProjectName] = useState("");
+	const [projectName, setProjectName] = useState<string>("");
 
 	const handleContinue = async () => {
-		const createOrgResp = await createOrg({
-			orgName: projectName,
-			orgStatus: "free"
-		});
-		await addUserToOrg(dataConnect, {
-			orginizationId: createOrgResp.data.orginization_insert.id
-		});
+		handleAddOrg(projectName);
 		router.push("/dashboard");
 	};
 

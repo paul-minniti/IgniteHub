@@ -1,4 +1,5 @@
 import { useState, useCallback } from "react";
+import { getWebsitesInOrg } from "@IgniteHub/dataconnect";
 
 export interface Item {
 	id?: string;
@@ -6,8 +7,16 @@ export interface Item {
 }
 
 export default function useWebApi() {
-	// State to hold the collection name.
 	const [collection, setCollection] = useState<string | undefined>(undefined);
+
+	/**
+	 * Fetch all websites in the organization.
+	 * @param orgId The organization id.
+	 */
+	const getWebsites = useCallback(async (orginizationId: string) => {
+		const websites = await getWebsitesInOrg({ orginizationId: orginizationId });
+		return websites;
+	}, []);
 
 	/**
 	 * Initialize the collection name using the provided organization name.
@@ -120,6 +129,7 @@ export default function useWebApi() {
 		createItem,
 		updateItem,
 		deleteItem,
-		collection
+		collection,
+		getWebsites
 	};
 }
