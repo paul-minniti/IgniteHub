@@ -1,23 +1,40 @@
-#  Generated TypeScript README
+# Table of Contents
+- [**Overview**](#generated-typescript-readme)
+- [**Accessing the connector**](#accessing-the-connector)
+  - [*Connecting to the local Emulator*](#connecting-to-the-local-emulator)
+- [**Queries**](#queries)
+  - [*ListNewsletterSignIps*](#listnewslettersignips)
+  - [*GetNewsletterByEmail*](#getnewsletterbyemail)
+  - [*ListUsers*](#listusers)
+  - [*ListOrgs*](#listorgs)
+  - [*GetUserById*](#getuserbyid)
+  - [*GetUserOrg*](#getuserorg)
+  - [*GetWebsitesInOrg*](#getwebsitesinorg)
+- [**Mutations**](#mutations)
+  - [*CreateUser*](#createuser)
+  - [*AddNewsletterSignUp*](#addnewslettersignup)
+  - [*CreateOrg*](#createorg)
+  - [*AddUserToOrg*](#addusertoorg)
+
+# Generated TypeScript README
 This README will guide you through the process of using the generated TypeScript SDK package for the connector `default`. It will also provide examples on how to use your generated SDK to call your Data Connect queries and mutations.
 
 ***NOTE:** This README is generated alongside the generated SDK. If you make changes to this file, they will be overwritten when the SDK is regenerated.*
 
 You can use this generated SDK by importing from the package `@IgniteHub/dataconnect` as shown below. Both CommonJS and ESM imports are supported.
+
 You can also follow the instructions from the [Data Connect documentation](https://firebase.google.com/docs/data-connect/web-sdk#set-client).
 
 # Accessing the connector
-A connector is a collection of queries and mutations. One SDK is generated for each connector - this SDK is generated for the connector `default`.
+A connector is a collection of Queries and Mutations. One SDK is generated for each connector - this SDK is generated for the connector `default`.
 
 You can find more information about connectors in the [Data Connect documentation](https://firebase.google.com/docs/data-connect#how-does).
 
-In order to call Data Connect queries and mutations, you need to create an instance of the connector in your application code.
-
 ```javascript
-import { getDataConnect, DataConnect } from 'firebase/data-connect';
+import { getDataConnect } from 'firebase/data-connect';
 import { connectorConfig } from '@IgniteHub/dataconnect';
 
-const connector: DataConnect = getDataConnect(connectorConfig);
+const dataConnect = getDataConnect(connectorConfig);
 ```
 
 ## Connecting to the local Emulator
@@ -27,17 +44,17 @@ To connect to the emulator, you can use the following code.
 You can also follow the emulator instructions from the [Data Connect documentation](https://firebase.google.com/docs/data-connect/web-sdk#instrument-clients).
 
 ```javascript
-// add connectDataConnectEmulator to your imports 
-import { connectDataConnectEmulator, getDataConnect, DataConnect } from 'firebase/data-connect';
+import { connectDataConnectEmulator, getDataConnect } from 'firebase/data-connect';
 import { connectorConfig } from '@IgniteHub/dataconnect';
 
-const connector: DataConnect = getDataConnect(connectorConfig);
-connectDataConnectEmulator(connector, 'localhost', 9399);
+const dataConnect = getDataConnect(connectorConfig);
+connectDataConnectEmulator(dataConnect, 'localhost', 9399);
 ```
 
-After it's initialized, you can call your Data Connect [queries](#queries) and [mutations](#mutations) from your generated SDK. 
+After it's initialized, you can call your Data Connect [queries](#queries) and [mutations](#mutations) from your generated SDK.
 
 # Queries
+
 There are two ways to execute a Data Connect Query using the generated Web SDK:
 - Using a Query Reference function, which returns a `QueryRef`
   - The `QueryRef` can be used as an argument to `executeQuery()`, which will execute the Query and return a `QueryPromise`
@@ -47,7 +64,7 @@ There are two ways to execute a Data Connect Query using the generated Web SDK:
 The following is true for both the action shortcut function and the `QueryRef` function:
 - The `QueryPromise` returned will resolve to the result of the Query once it has finished executing
 - If the Query accepts arguments, both the action shortcut function and the `QueryRef` function accept a single argument: an object that contains all the required variables (and the optional variables) for the Query
-- Both functions can be called with or without passing in a `DataConnect` instance as an argument
+- Both functions can be called with or without passing in a `DataConnect` instance as an argument. If no `DataConnect` argument is passed in, then the generated SDK will call `getDataConnect(connectorConfig)` behind the scenes for you.
 
 Below are examples of how to use the `default` connector's generated functions to execute each query. You can also follow the examples from the [Data Connect documentation](https://firebase.google.com/docs/data-connect/web-sdk#using-queries).
 
@@ -68,7 +85,7 @@ listNewsletterSignIpsRef(dc: DataConnect): QueryRef<ListNewsletterSignIpsData, u
 ### Variables
 The `ListNewsletterSignIps` query has no variables.
 ### Return Type
-Recall that executing the `ListNewsletterSignIps` query returns a `QueryPromise` that resolves to an object with a `data` property. 
+Recall that executing the `ListNewsletterSignIps` query returns a `QueryPromise` that resolves to an object with a `data` property.
 
 The `data` property is an object of type `ListNewsletterSignIpsData`, which is defined in [default-connector/index.d.ts](./index.d.ts). It has the following fields:
 ```javascript
@@ -81,16 +98,17 @@ export interface ListNewsletterSignIpsData {
 ### Using `ListNewsletterSignIps`'s action shortcut function
 
 ```javascript
-import { getDataConnect, DataConnect } from 'firebase/data-connect';
+import { getDataConnect } from 'firebase/data-connect';
 import { connectorConfig, listNewsletterSignIps } from '@IgniteHub/dataconnect';
+
 
 // Call the `listNewsletterSignIps()` function to execute the query.
 // You can use the `await` keyword to wait for the promise to resolve.
 const { data } = await listNewsletterSignIps();
 
 // You can also pass in a `DataConnect` instance to the action shortcut function.
-const connector: DataConnect = getDataConnect(connectorConfig);
-const { data } = await listNewsletterSignIps(connector);
+const dataConnect = getDataConnect(connectorConfig);
+const { data } = await listNewsletterSignIps(dataConnect);
 
 console.log(data.newsletters);
 
@@ -104,15 +122,16 @@ listNewsletterSignIps().then((response) => {
 ### Using `ListNewsletterSignIps`'s `QueryRef` function
 
 ```javascript
-import { getDataConnect, DataConnect, executeQuery } from 'firebase/data-connect';
+import { getDataConnect, executeQuery } from 'firebase/data-connect';
 import { connectorConfig, listNewsletterSignIpsRef } from '@IgniteHub/dataconnect';
+
 
 // Call the `listNewsletterSignIpsRef()` function to get a reference to the query.
 const ref = listNewsletterSignIpsRef();
 
 // You can also pass in a `DataConnect` instance to the `QueryRef` function.
-const connector: DataConnect = getDataConnect(connectorConfig);
-const ref = listNewsletterSignIpsRef(connector);
+const dataConnect = getDataConnect(connectorConfig);
+const ref = listNewsletterSignIpsRef(dataConnect);
 
 // Call `executeQuery()` on the reference to execute the query.
 // You can use the `await` keyword to wait for the promise to resolve.
@@ -150,7 +169,7 @@ export interface GetNewsletterByEmailVariables {
 }
 ```
 ### Return Type
-Recall that executing the `GetNewsletterByEmail` query returns a `QueryPromise` that resolves to an object with a `data` property. 
+Recall that executing the `GetNewsletterByEmail` query returns a `QueryPromise` that resolves to an object with a `data` property.
 
 The `data` property is an object of type `GetNewsletterByEmailData`, which is defined in [default-connector/index.d.ts](./index.d.ts). It has the following fields:
 ```javascript
@@ -163,12 +182,13 @@ export interface GetNewsletterByEmailData {
 ### Using `GetNewsletterByEmail`'s action shortcut function
 
 ```javascript
-import { getDataConnect, DataConnect } from 'firebase/data-connect';
+import { getDataConnect } from 'firebase/data-connect';
 import { connectorConfig, getNewsletterByEmail, GetNewsletterByEmailVariables } from '@IgniteHub/dataconnect';
+
 // The `GetNewsletterByEmail` query has an optional argument of type `GetNewsletterByEmailVariables`:
 const getNewsletterByEmailVars: GetNewsletterByEmailVariables = {
   email: ..., // optional
-}
+};
 
 // Call the `getNewsletterByEmail()` function to execute the query.
 // You can use the `await` keyword to wait for the promise to resolve.
@@ -179,8 +199,8 @@ const { data } = await getNewsletterByEmail({ email: ..., });
 const { data } = await getNewsletterByEmail();
 
 // You can also pass in a `DataConnect` instance to the action shortcut function.
-const connector: DataConnect = getDataConnect(connectorConfig);
-const { data } = await getNewsletterByEmail(connector, getNewsletterByEmailVars);
+const dataConnect = getDataConnect(connectorConfig);
+const { data } = await getNewsletterByEmail(dataConnect, getNewsletterByEmailVars);
 
 console.log(data.newsletter);
 
@@ -194,12 +214,13 @@ getNewsletterByEmail(getNewsletterByEmailVars).then((response) => {
 ### Using `GetNewsletterByEmail`'s `QueryRef` function
 
 ```javascript
-import { getDataConnect, DataConnect, executeQuery } from 'firebase/data-connect';
+import { getDataConnect, executeQuery } from 'firebase/data-connect';
 import { connectorConfig, getNewsletterByEmailRef, GetNewsletterByEmailVariables } from '@IgniteHub/dataconnect';
+
 // The `GetNewsletterByEmail` query has an optional argument of type `GetNewsletterByEmailVariables`:
 const getNewsletterByEmailVars: GetNewsletterByEmailVariables = {
   email: ..., // optional
-}
+};
 
 // Call the `getNewsletterByEmailRef()` function to get a reference to the query.
 const ref = getNewsletterByEmailRef(getNewsletterByEmailVars);
@@ -209,8 +230,8 @@ const ref = getNewsletterByEmailRef({ email: ..., });
 const ref = getNewsletterByEmailRef();
 
 // You can also pass in a `DataConnect` instance to the `QueryRef` function.
-const connector: DataConnect = getDataConnect(connectorConfig);
-const ref = getNewsletterByEmailRef(connector, getNewsletterByEmailVars);
+const dataConnect = getDataConnect(connectorConfig);
+const ref = getNewsletterByEmailRef(dataConnect, getNewsletterByEmailVars);
 
 // Call `executeQuery()` on the reference to execute the query.
 // You can use the `await` keyword to wait for the promise to resolve.
@@ -242,7 +263,7 @@ listUsersRef(dc: DataConnect): QueryRef<ListUsersData, undefined>;
 ### Variables
 The `ListUsers` query has no variables.
 ### Return Type
-Recall that executing the `ListUsers` query returns a `QueryPromise` that resolves to an object with a `data` property. 
+Recall that executing the `ListUsers` query returns a `QueryPromise` that resolves to an object with a `data` property.
 
 The `data` property is an object of type `ListUsersData`, which is defined in [default-connector/index.d.ts](./index.d.ts). It has the following fields:
 ```javascript
@@ -260,16 +281,17 @@ export interface ListUsersData {
 ### Using `ListUsers`'s action shortcut function
 
 ```javascript
-import { getDataConnect, DataConnect } from 'firebase/data-connect';
+import { getDataConnect } from 'firebase/data-connect';
 import { connectorConfig, listUsers } from '@IgniteHub/dataconnect';
+
 
 // Call the `listUsers()` function to execute the query.
 // You can use the `await` keyword to wait for the promise to resolve.
 const { data } = await listUsers();
 
 // You can also pass in a `DataConnect` instance to the action shortcut function.
-const connector: DataConnect = getDataConnect(connectorConfig);
-const { data } = await listUsers(connector);
+const dataConnect = getDataConnect(connectorConfig);
+const { data } = await listUsers(dataConnect);
 
 console.log(data.users);
 
@@ -283,15 +305,16 @@ listUsers().then((response) => {
 ### Using `ListUsers`'s `QueryRef` function
 
 ```javascript
-import { getDataConnect, DataConnect, executeQuery } from 'firebase/data-connect';
+import { getDataConnect, executeQuery } from 'firebase/data-connect';
 import { connectorConfig, listUsersRef } from '@IgniteHub/dataconnect';
+
 
 // Call the `listUsersRef()` function to get a reference to the query.
 const ref = listUsersRef();
 
 // You can also pass in a `DataConnect` instance to the `QueryRef` function.
-const connector: DataConnect = getDataConnect(connectorConfig);
-const ref = listUsersRef(connector);
+const dataConnect = getDataConnect(connectorConfig);
+const ref = listUsersRef(dataConnect);
 
 // Call `executeQuery()` on the reference to execute the query.
 // You can use the `await` keyword to wait for the promise to resolve.
@@ -323,7 +346,7 @@ listOrgsRef(dc: DataConnect): QueryRef<ListOrgsData, undefined>;
 ### Variables
 The `ListOrgs` query has no variables.
 ### Return Type
-Recall that executing the `ListOrgs` query returns a `QueryPromise` that resolves to an object with a `data` property. 
+Recall that executing the `ListOrgs` query returns a `QueryPromise` that resolves to an object with a `data` property.
 
 The `data` property is an object of type `ListOrgsData`, which is defined in [default-connector/index.d.ts](./index.d.ts). It has the following fields:
 ```javascript
@@ -341,16 +364,17 @@ export interface ListOrgsData {
 ### Using `ListOrgs`'s action shortcut function
 
 ```javascript
-import { getDataConnect, DataConnect } from 'firebase/data-connect';
+import { getDataConnect } from 'firebase/data-connect';
 import { connectorConfig, listOrgs } from '@IgniteHub/dataconnect';
+
 
 // Call the `listOrgs()` function to execute the query.
 // You can use the `await` keyword to wait for the promise to resolve.
 const { data } = await listOrgs();
 
 // You can also pass in a `DataConnect` instance to the action shortcut function.
-const connector: DataConnect = getDataConnect(connectorConfig);
-const { data } = await listOrgs(connector);
+const dataConnect = getDataConnect(connectorConfig);
+const { data } = await listOrgs(dataConnect);
 
 console.log(data.orginizations);
 
@@ -364,15 +388,16 @@ listOrgs().then((response) => {
 ### Using `ListOrgs`'s `QueryRef` function
 
 ```javascript
-import { getDataConnect, DataConnect, executeQuery } from 'firebase/data-connect';
+import { getDataConnect, executeQuery } from 'firebase/data-connect';
 import { connectorConfig, listOrgsRef } from '@IgniteHub/dataconnect';
+
 
 // Call the `listOrgsRef()` function to get a reference to the query.
 const ref = listOrgsRef();
 
 // You can also pass in a `DataConnect` instance to the `QueryRef` function.
-const connector: DataConnect = getDataConnect(connectorConfig);
-const ref = listOrgsRef(connector);
+const dataConnect = getDataConnect(connectorConfig);
+const ref = listOrgsRef(dataConnect);
 
 // Call `executeQuery()` on the reference to execute the query.
 // You can use the `await` keyword to wait for the promise to resolve.
@@ -410,7 +435,7 @@ export interface GetUserByIdVariables {
 }
 ```
 ### Return Type
-Recall that executing the `GetUserById` query returns a `QueryPromise` that resolves to an object with a `data` property. 
+Recall that executing the `GetUserById` query returns a `QueryPromise` that resolves to an object with a `data` property.
 
 The `data` property is an object of type `GetUserByIdData`, which is defined in [default-connector/index.d.ts](./index.d.ts). It has the following fields:
 ```javascript
@@ -428,12 +453,13 @@ export interface GetUserByIdData {
 ### Using `GetUserById`'s action shortcut function
 
 ```javascript
-import { getDataConnect, DataConnect } from 'firebase/data-connect';
+import { getDataConnect } from 'firebase/data-connect';
 import { connectorConfig, getUserById, GetUserByIdVariables } from '@IgniteHub/dataconnect';
+
 // The `GetUserById` query requires an argument of type `GetUserByIdVariables`:
 const getUserByIdVars: GetUserByIdVariables = {
   id: ..., 
-}
+};
 
 // Call the `getUserById()` function to execute the query.
 // You can use the `await` keyword to wait for the promise to resolve.
@@ -442,8 +468,8 @@ const { data } = await getUserById(getUserByIdVars);
 const { data } = await getUserById({ id: ..., });
 
 // You can also pass in a `DataConnect` instance to the action shortcut function.
-const connector: DataConnect = getDataConnect(connectorConfig);
-const { data } = await getUserById(connector, getUserByIdVars);
+const dataConnect = getDataConnect(connectorConfig);
+const { data } = await getUserById(dataConnect, getUserByIdVars);
 
 console.log(data.user);
 
@@ -457,12 +483,13 @@ getUserById(getUserByIdVars).then((response) => {
 ### Using `GetUserById`'s `QueryRef` function
 
 ```javascript
-import { getDataConnect, DataConnect, executeQuery } from 'firebase/data-connect';
+import { getDataConnect, executeQuery } from 'firebase/data-connect';
 import { connectorConfig, getUserByIdRef, GetUserByIdVariables } from '@IgniteHub/dataconnect';
+
 // The `GetUserById` query requires an argument of type `GetUserByIdVariables`:
 const getUserByIdVars: GetUserByIdVariables = {
   id: ..., 
-}
+};
 
 // Call the `getUserByIdRef()` function to get a reference to the query.
 const ref = getUserByIdRef(getUserByIdVars);
@@ -470,8 +497,8 @@ const ref = getUserByIdRef(getUserByIdVars);
 const ref = getUserByIdRef({ id: ..., });
 
 // You can also pass in a `DataConnect` instance to the `QueryRef` function.
-const connector: DataConnect = getDataConnect(connectorConfig);
-const ref = getUserByIdRef(connector, getUserByIdVars);
+const dataConnect = getDataConnect(connectorConfig);
+const ref = getUserByIdRef(dataConnect, getUserByIdVars);
 
 // Call `executeQuery()` on the reference to execute the query.
 // You can use the `await` keyword to wait for the promise to resolve.
@@ -509,7 +536,7 @@ export interface GetUserOrgVariables {
 }
 ```
 ### Return Type
-Recall that executing the `GetUserOrg` query returns a `QueryPromise` that resolves to an object with a `data` property. 
+Recall that executing the `GetUserOrg` query returns a `QueryPromise` that resolves to an object with a `data` property.
 
 The `data` property is an object of type `GetUserOrgData`, which is defined in [default-connector/index.d.ts](./index.d.ts). It has the following fields:
 ```javascript
@@ -527,12 +554,13 @@ export interface GetUserOrgData {
 ### Using `GetUserOrg`'s action shortcut function
 
 ```javascript
-import { getDataConnect, DataConnect } from 'firebase/data-connect';
+import { getDataConnect } from 'firebase/data-connect';
 import { connectorConfig, getUserOrg, GetUserOrgVariables } from '@IgniteHub/dataconnect';
+
 // The `GetUserOrg` query requires an argument of type `GetUserOrgVariables`:
 const getUserOrgVars: GetUserOrgVariables = {
   id: ..., 
-}
+};
 
 // Call the `getUserOrg()` function to execute the query.
 // You can use the `await` keyword to wait for the promise to resolve.
@@ -541,8 +569,8 @@ const { data } = await getUserOrg(getUserOrgVars);
 const { data } = await getUserOrg({ id: ..., });
 
 // You can also pass in a `DataConnect` instance to the action shortcut function.
-const connector: DataConnect = getDataConnect(connectorConfig);
-const { data } = await getUserOrg(connector, getUserOrgVars);
+const dataConnect = getDataConnect(connectorConfig);
+const { data } = await getUserOrg(dataConnect, getUserOrgVars);
 
 console.log(data.user);
 
@@ -556,12 +584,13 @@ getUserOrg(getUserOrgVars).then((response) => {
 ### Using `GetUserOrg`'s `QueryRef` function
 
 ```javascript
-import { getDataConnect, DataConnect, executeQuery } from 'firebase/data-connect';
+import { getDataConnect, executeQuery } from 'firebase/data-connect';
 import { connectorConfig, getUserOrgRef, GetUserOrgVariables } from '@IgniteHub/dataconnect';
+
 // The `GetUserOrg` query requires an argument of type `GetUserOrgVariables`:
 const getUserOrgVars: GetUserOrgVariables = {
   id: ..., 
-}
+};
 
 // Call the `getUserOrgRef()` function to get a reference to the query.
 const ref = getUserOrgRef(getUserOrgVars);
@@ -569,8 +598,8 @@ const ref = getUserOrgRef(getUserOrgVars);
 const ref = getUserOrgRef({ id: ..., });
 
 // You can also pass in a `DataConnect` instance to the `QueryRef` function.
-const connector: DataConnect = getDataConnect(connectorConfig);
-const ref = getUserOrgRef(connector, getUserOrgVars);
+const dataConnect = getDataConnect(connectorConfig);
+const ref = getUserOrgRef(dataConnect, getUserOrgVars);
 
 // Call `executeQuery()` on the reference to execute the query.
 // You can use the `await` keyword to wait for the promise to resolve.
@@ -608,7 +637,7 @@ export interface GetWebsitesInOrgVariables {
 }
 ```
 ### Return Type
-Recall that executing the `GetWebsitesInOrg` query returns a `QueryPromise` that resolves to an object with a `data` property. 
+Recall that executing the `GetWebsitesInOrg` query returns a `QueryPromise` that resolves to an object with a `data` property.
 
 The `data` property is an object of type `GetWebsitesInOrgData`, which is defined in [default-connector/index.d.ts](./index.d.ts). It has the following fields:
 ```javascript
@@ -628,12 +657,13 @@ export interface GetWebsitesInOrgData {
 ### Using `GetWebsitesInOrg`'s action shortcut function
 
 ```javascript
-import { getDataConnect, DataConnect } from 'firebase/data-connect';
+import { getDataConnect } from 'firebase/data-connect';
 import { connectorConfig, getWebsitesInOrg, GetWebsitesInOrgVariables } from '@IgniteHub/dataconnect';
+
 // The `GetWebsitesInOrg` query requires an argument of type `GetWebsitesInOrgVariables`:
 const getWebsitesInOrgVars: GetWebsitesInOrgVariables = {
   orginizationId: ..., 
-}
+};
 
 // Call the `getWebsitesInOrg()` function to execute the query.
 // You can use the `await` keyword to wait for the promise to resolve.
@@ -642,8 +672,8 @@ const { data } = await getWebsitesInOrg(getWebsitesInOrgVars);
 const { data } = await getWebsitesInOrg({ orginizationId: ..., });
 
 // You can also pass in a `DataConnect` instance to the action shortcut function.
-const connector: DataConnect = getDataConnect(connectorConfig);
-const { data } = await getWebsitesInOrg(connector, getWebsitesInOrgVars);
+const dataConnect = getDataConnect(connectorConfig);
+const { data } = await getWebsitesInOrg(dataConnect, getWebsitesInOrgVars);
 
 console.log(data.orginization);
 
@@ -657,12 +687,13 @@ getWebsitesInOrg(getWebsitesInOrgVars).then((response) => {
 ### Using `GetWebsitesInOrg`'s `QueryRef` function
 
 ```javascript
-import { getDataConnect, DataConnect, executeQuery } from 'firebase/data-connect';
+import { getDataConnect, executeQuery } from 'firebase/data-connect';
 import { connectorConfig, getWebsitesInOrgRef, GetWebsitesInOrgVariables } from '@IgniteHub/dataconnect';
+
 // The `GetWebsitesInOrg` query requires an argument of type `GetWebsitesInOrgVariables`:
 const getWebsitesInOrgVars: GetWebsitesInOrgVariables = {
   orginizationId: ..., 
-}
+};
 
 // Call the `getWebsitesInOrgRef()` function to get a reference to the query.
 const ref = getWebsitesInOrgRef(getWebsitesInOrgVars);
@@ -670,8 +701,8 @@ const ref = getWebsitesInOrgRef(getWebsitesInOrgVars);
 const ref = getWebsitesInOrgRef({ orginizationId: ..., });
 
 // You can also pass in a `DataConnect` instance to the `QueryRef` function.
-const connector: DataConnect = getDataConnect(connectorConfig);
-const ref = getWebsitesInOrgRef(connector, getWebsitesInOrgVars);
+const dataConnect = getDataConnect(connectorConfig);
+const ref = getWebsitesInOrgRef(dataConnect, getWebsitesInOrgVars);
 
 // Call `executeQuery()` on the reference to execute the query.
 // You can use the `await` keyword to wait for the promise to resolve.
@@ -687,6 +718,7 @@ executeQuery(ref).then((response) => {
 ```
 
 # Mutations
+
 There are two ways to execute a Data Connect Mutation using the generated Web SDK:
 - Using a Mutation Reference function, which returns a `MutationRef`
   - The `MutationRef` can be used as an argument to `executeMutation()`, which will execute the Mutation and return a `MutationPromise`
@@ -696,7 +728,7 @@ There are two ways to execute a Data Connect Mutation using the generated Web SD
 The following is true for both the action shortcut function and the `MutationRef` function:
 - The `MutationPromise` returned will resolve to the result of the Mutation once it has finished executing
 - If the Mutation accepts arguments, both the action shortcut function and the `MutationRef` function accept a single argument: an object that contains all the required variables (and the optional variables) for the Mutation
-- Both functions can be called with or without passing in a `DataConnect` instance as an argument
+- Both functions can be called with or without passing in a `DataConnect` instance as an argument. If no `DataConnect` argument is passed in, then the generated SDK will call `getDataConnect(connectorConfig)` behind the scenes for you.
 
 Below are examples of how to use the `default` connector's generated functions to execute each mutation. You can also follow the examples from the [Data Connect documentation](https://firebase.google.com/docs/data-connect/web-sdk#using-mutations).
 
@@ -726,7 +758,7 @@ export interface CreateUserVariables {
 }
 ```
 ### Return Type
-Recall that executing the `CreateUser` mutation returns a `MutationPromise` that resolves to an object with a `data` property. 
+Recall that executing the `CreateUser` mutation returns a `MutationPromise` that resolves to an object with a `data` property.
 
 The `data` property is an object of type `CreateUserData`, which is defined in [default-connector/index.d.ts](./index.d.ts). It has the following fields:
 ```javascript
@@ -737,15 +769,16 @@ export interface CreateUserData {
 ### Using `CreateUser`'s action shortcut function
 
 ```javascript
-import { getDataConnect, DataConnect } from 'firebase/data-connect';
+import { getDataConnect } from 'firebase/data-connect';
 import { connectorConfig, createUser, CreateUserVariables } from '@IgniteHub/dataconnect';
+
 // The `CreateUser` mutation requires an argument of type `CreateUserVariables`:
 const createUserVars: CreateUserVariables = {
   id: ..., 
   firstName: ..., 
   lastName: ..., 
   email: ..., 
-}
+};
 
 // Call the `createUser()` function to execute the mutation.
 // You can use the `await` keyword to wait for the promise to resolve.
@@ -754,8 +787,8 @@ const { data } = await createUser(createUserVars);
 const { data } = await createUser({ id: ..., firstName: ..., lastName: ..., email: ..., });
 
 // You can also pass in a `DataConnect` instance to the action shortcut function.
-const connector: DataConnect = getDataConnect(connectorConfig);
-const { data } = await createUser(connector, createUserVars);
+const dataConnect = getDataConnect(connectorConfig);
+const { data } = await createUser(dataConnect, createUserVars);
 
 console.log(data.user_insert);
 
@@ -769,15 +802,16 @@ createUser(createUserVars).then((response) => {
 ### Using `CreateUser`'s `MutationRef` function
 
 ```javascript
-import { getDataConnect, DataConnect, executeMutation } from 'firebase/data-connect';
+import { getDataConnect, executeMutation } from 'firebase/data-connect';
 import { connectorConfig, createUserRef, CreateUserVariables } from '@IgniteHub/dataconnect';
+
 // The `CreateUser` mutation requires an argument of type `CreateUserVariables`:
 const createUserVars: CreateUserVariables = {
   id: ..., 
   firstName: ..., 
   lastName: ..., 
   email: ..., 
-}
+};
 
 // Call the `createUserRef()` function to get a reference to the mutation.
 const ref = createUserRef(createUserVars);
@@ -785,8 +819,8 @@ const ref = createUserRef(createUserVars);
 const ref = createUserRef({ id: ..., firstName: ..., lastName: ..., email: ..., });
 
 // You can also pass in a `DataConnect` instance to the `MutationRef` function.
-const connector: DataConnect = getDataConnect(connectorConfig);
-const ref = createUserRef(connector, createUserVars);
+const dataConnect = getDataConnect(connectorConfig);
+const ref = createUserRef(dataConnect, createUserVars);
 
 // Call `executeMutation()` on the reference to execute the mutation.
 // You can use the `await` keyword to wait for the promise to resolve.
@@ -824,7 +858,7 @@ export interface AddNewsletterSignUpVariables {
 }
 ```
 ### Return Type
-Recall that executing the `AddNewsletterSignUp` mutation returns a `MutationPromise` that resolves to an object with a `data` property. 
+Recall that executing the `AddNewsletterSignUp` mutation returns a `MutationPromise` that resolves to an object with a `data` property.
 
 The `data` property is an object of type `AddNewsletterSignUpData`, which is defined in [default-connector/index.d.ts](./index.d.ts). It has the following fields:
 ```javascript
@@ -835,12 +869,13 @@ export interface AddNewsletterSignUpData {
 ### Using `AddNewsletterSignUp`'s action shortcut function
 
 ```javascript
-import { getDataConnect, DataConnect } from 'firebase/data-connect';
+import { getDataConnect } from 'firebase/data-connect';
 import { connectorConfig, addNewsletterSignUp, AddNewsletterSignUpVariables } from '@IgniteHub/dataconnect';
+
 // The `AddNewsletterSignUp` mutation requires an argument of type `AddNewsletterSignUpVariables`:
 const addNewsletterSignUpVars: AddNewsletterSignUpVariables = {
   email: ..., 
-}
+};
 
 // Call the `addNewsletterSignUp()` function to execute the mutation.
 // You can use the `await` keyword to wait for the promise to resolve.
@@ -849,8 +884,8 @@ const { data } = await addNewsletterSignUp(addNewsletterSignUpVars);
 const { data } = await addNewsletterSignUp({ email: ..., });
 
 // You can also pass in a `DataConnect` instance to the action shortcut function.
-const connector: DataConnect = getDataConnect(connectorConfig);
-const { data } = await addNewsletterSignUp(connector, addNewsletterSignUpVars);
+const dataConnect = getDataConnect(connectorConfig);
+const { data } = await addNewsletterSignUp(dataConnect, addNewsletterSignUpVars);
 
 console.log(data.newsletter_insert);
 
@@ -864,12 +899,13 @@ addNewsletterSignUp(addNewsletterSignUpVars).then((response) => {
 ### Using `AddNewsletterSignUp`'s `MutationRef` function
 
 ```javascript
-import { getDataConnect, DataConnect, executeMutation } from 'firebase/data-connect';
+import { getDataConnect, executeMutation } from 'firebase/data-connect';
 import { connectorConfig, addNewsletterSignUpRef, AddNewsletterSignUpVariables } from '@IgniteHub/dataconnect';
+
 // The `AddNewsletterSignUp` mutation requires an argument of type `AddNewsletterSignUpVariables`:
 const addNewsletterSignUpVars: AddNewsletterSignUpVariables = {
   email: ..., 
-}
+};
 
 // Call the `addNewsletterSignUpRef()` function to get a reference to the mutation.
 const ref = addNewsletterSignUpRef(addNewsletterSignUpVars);
@@ -877,8 +913,8 @@ const ref = addNewsletterSignUpRef(addNewsletterSignUpVars);
 const ref = addNewsletterSignUpRef({ email: ..., });
 
 // You can also pass in a `DataConnect` instance to the `MutationRef` function.
-const connector: DataConnect = getDataConnect(connectorConfig);
-const ref = addNewsletterSignUpRef(connector, addNewsletterSignUpVars);
+const dataConnect = getDataConnect(connectorConfig);
+const ref = addNewsletterSignUpRef(dataConnect, addNewsletterSignUpVars);
 
 // Call `executeMutation()` on the reference to execute the mutation.
 // You can use the `await` keyword to wait for the promise to resolve.
@@ -917,7 +953,7 @@ export interface CreateOrgVariables {
 }
 ```
 ### Return Type
-Recall that executing the `CreateOrg` mutation returns a `MutationPromise` that resolves to an object with a `data` property. 
+Recall that executing the `CreateOrg` mutation returns a `MutationPromise` that resolves to an object with a `data` property.
 
 The `data` property is an object of type `CreateOrgData`, which is defined in [default-connector/index.d.ts](./index.d.ts). It has the following fields:
 ```javascript
@@ -928,13 +964,14 @@ export interface CreateOrgData {
 ### Using `CreateOrg`'s action shortcut function
 
 ```javascript
-import { getDataConnect, DataConnect } from 'firebase/data-connect';
+import { getDataConnect } from 'firebase/data-connect';
 import { connectorConfig, createOrg, CreateOrgVariables } from '@IgniteHub/dataconnect';
+
 // The `CreateOrg` mutation requires an argument of type `CreateOrgVariables`:
 const createOrgVars: CreateOrgVariables = {
   orgName: ..., 
   orgStatus: ..., 
-}
+};
 
 // Call the `createOrg()` function to execute the mutation.
 // You can use the `await` keyword to wait for the promise to resolve.
@@ -943,8 +980,8 @@ const { data } = await createOrg(createOrgVars);
 const { data } = await createOrg({ orgName: ..., orgStatus: ..., });
 
 // You can also pass in a `DataConnect` instance to the action shortcut function.
-const connector: DataConnect = getDataConnect(connectorConfig);
-const { data } = await createOrg(connector, createOrgVars);
+const dataConnect = getDataConnect(connectorConfig);
+const { data } = await createOrg(dataConnect, createOrgVars);
 
 console.log(data.orginization_insert);
 
@@ -958,13 +995,14 @@ createOrg(createOrgVars).then((response) => {
 ### Using `CreateOrg`'s `MutationRef` function
 
 ```javascript
-import { getDataConnect, DataConnect, executeMutation } from 'firebase/data-connect';
+import { getDataConnect, executeMutation } from 'firebase/data-connect';
 import { connectorConfig, createOrgRef, CreateOrgVariables } from '@IgniteHub/dataconnect';
+
 // The `CreateOrg` mutation requires an argument of type `CreateOrgVariables`:
 const createOrgVars: CreateOrgVariables = {
   orgName: ..., 
   orgStatus: ..., 
-}
+};
 
 // Call the `createOrgRef()` function to get a reference to the mutation.
 const ref = createOrgRef(createOrgVars);
@@ -972,8 +1010,8 @@ const ref = createOrgRef(createOrgVars);
 const ref = createOrgRef({ orgName: ..., orgStatus: ..., });
 
 // You can also pass in a `DataConnect` instance to the `MutationRef` function.
-const connector: DataConnect = getDataConnect(connectorConfig);
-const ref = createOrgRef(connector, createOrgVars);
+const dataConnect = getDataConnect(connectorConfig);
+const ref = createOrgRef(dataConnect, createOrgVars);
 
 // Call `executeMutation()` on the reference to execute the mutation.
 // You can use the `await` keyword to wait for the promise to resolve.
@@ -1011,7 +1049,7 @@ export interface AddUserToOrgVariables {
 }
 ```
 ### Return Type
-Recall that executing the `AddUserToOrg` mutation returns a `MutationPromise` that resolves to an object with a `data` property. 
+Recall that executing the `AddUserToOrg` mutation returns a `MutationPromise` that resolves to an object with a `data` property.
 
 The `data` property is an object of type `AddUserToOrgData`, which is defined in [default-connector/index.d.ts](./index.d.ts). It has the following fields:
 ```javascript
@@ -1022,12 +1060,13 @@ export interface AddUserToOrgData {
 ### Using `AddUserToOrg`'s action shortcut function
 
 ```javascript
-import { getDataConnect, DataConnect } from 'firebase/data-connect';
+import { getDataConnect } from 'firebase/data-connect';
 import { connectorConfig, addUserToOrg, AddUserToOrgVariables } from '@IgniteHub/dataconnect';
+
 // The `AddUserToOrg` mutation requires an argument of type `AddUserToOrgVariables`:
 const addUserToOrgVars: AddUserToOrgVariables = {
   orginizationId: ..., 
-}
+};
 
 // Call the `addUserToOrg()` function to execute the mutation.
 // You can use the `await` keyword to wait for the promise to resolve.
@@ -1036,8 +1075,8 @@ const { data } = await addUserToOrg(addUserToOrgVars);
 const { data } = await addUserToOrg({ orginizationId: ..., });
 
 // You can also pass in a `DataConnect` instance to the action shortcut function.
-const connector: DataConnect = getDataConnect(connectorConfig);
-const { data } = await addUserToOrg(connector, addUserToOrgVars);
+const dataConnect = getDataConnect(connectorConfig);
+const { data } = await addUserToOrg(dataConnect, addUserToOrgVars);
 
 console.log(data.user_update);
 
@@ -1051,12 +1090,13 @@ addUserToOrg(addUserToOrgVars).then((response) => {
 ### Using `AddUserToOrg`'s `MutationRef` function
 
 ```javascript
-import { getDataConnect, DataConnect, executeMutation } from 'firebase/data-connect';
+import { getDataConnect, executeMutation } from 'firebase/data-connect';
 import { connectorConfig, addUserToOrgRef, AddUserToOrgVariables } from '@IgniteHub/dataconnect';
+
 // The `AddUserToOrg` mutation requires an argument of type `AddUserToOrgVariables`:
 const addUserToOrgVars: AddUserToOrgVariables = {
   orginizationId: ..., 
-}
+};
 
 // Call the `addUserToOrgRef()` function to get a reference to the mutation.
 const ref = addUserToOrgRef(addUserToOrgVars);
@@ -1064,8 +1104,8 @@ const ref = addUserToOrgRef(addUserToOrgVars);
 const ref = addUserToOrgRef({ orginizationId: ..., });
 
 // You can also pass in a `DataConnect` instance to the `MutationRef` function.
-const connector: DataConnect = getDataConnect(connectorConfig);
-const ref = addUserToOrgRef(connector, addUserToOrgVars);
+const dataConnect = getDataConnect(connectorConfig);
+const ref = addUserToOrgRef(dataConnect, addUserToOrgVars);
 
 // Call `executeMutation()` on the reference to execute the mutation.
 // You can use the `await` keyword to wait for the promise to resolve.

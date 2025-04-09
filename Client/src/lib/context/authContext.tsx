@@ -124,25 +124,25 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 			const userProfile = await getUserById(dataConnect, {
 				id: userCredential.user.uid
 			});
-			// const token = await userCredential.user.getIdToken();
+			const token = await userCredential.user.getIdToken();
 			handleCloseModal();
 			if (!userProfile.data.user) {
 				const displayName = userCredential.user.displayName || "";
 				const [firstName, lastName = ""] = displayName.split(" ");
-				// const userProfile = fetch(
-				// 	"/api/user?" +
-				// 		new URLSearchParams({
-				// 			userId: userCredential.user.uid,
-				// 			displayName: userCredential.user.displayName as string,
-				// 			email: userCredential.user.email as string
-				// 		}).toString(),
-				// 	{
-				// 		headers: {
-				// 			Authorization: `Bearer ${token}`
-				// 		}
-				// 	}
-				// );
-				// console.log("userProfile: ", userProfile);
+				const userProfile = fetch(
+					"/api/user?" +
+						new URLSearchParams({
+							userId: userCredential.user.uid,
+							displayName: userCredential.user.displayName as string,
+							email: userCredential.user.email as string
+						}).toString(),
+					{
+						headers: {
+							Authorization: `Bearer ${token}`
+						}
+					}
+				);
+				console.log("userProfile: ", userProfile);
 
 				await createUser({
 					id: userCredential.user.uid,

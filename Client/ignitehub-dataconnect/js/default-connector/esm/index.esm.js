@@ -6,6 +6,46 @@ export const connectorConfig = {
   location: 'us-east1'
 };
 
+export function createUserRef(dcOrVars, vars) {
+  const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars, true);
+  dcInstance._useGeneratedSdk();
+  return mutationRef(dcInstance, 'CreateUser', inputVars);
+}
+
+export function createUser(dcOrVars, vars) {
+  return executeMutation(createUserRef(dcOrVars, vars));
+}
+
+export function addNewsletterSignUpRef(dcOrVars, vars) {
+  const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars, true);
+  dcInstance._useGeneratedSdk();
+  return mutationRef(dcInstance, 'AddNewsletterSignUp', inputVars);
+}
+
+export function addNewsletterSignUp(dcOrVars, vars) {
+  return executeMutation(addNewsletterSignUpRef(dcOrVars, vars));
+}
+
+export function createOrgRef(dcOrVars, vars) {
+  const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars, true);
+  dcInstance._useGeneratedSdk();
+  return mutationRef(dcInstance, 'CreateOrg', inputVars);
+}
+
+export function createOrg(dcOrVars, vars) {
+  return executeMutation(createOrgRef(dcOrVars, vars));
+}
+
+export function addUserToOrgRef(dcOrVars, vars) {
+  const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars, true);
+  dcInstance._useGeneratedSdk();
+  return mutationRef(dcInstance, 'AddUserToOrg', inputVars);
+}
+
+export function addUserToOrg(dcOrVars, vars) {
+  return executeMutation(addUserToOrgRef(dcOrVars, vars));
+}
+
 export function listNewsletterSignIpsRef(dc) {
   const { dc: dcInstance} = validateArgs(connectorConfig, dc, undefined);
   dcInstance._useGeneratedSdk();
@@ -74,45 +114,5 @@ export function getWebsitesInOrgRef(dcOrVars, vars) {
 
 export function getWebsitesInOrg(dcOrVars, vars) {
   return executeQuery(getWebsitesInOrgRef(dcOrVars, vars));
-}
-
-export function createUserRef(dcOrVars, vars) {
-  const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars, true);
-  dcInstance._useGeneratedSdk();
-  return mutationRef(dcInstance, 'CreateUser', inputVars);
-}
-
-export function createUser(dcOrVars, vars) {
-  return executeMutation(createUserRef(dcOrVars, vars));
-}
-
-export function addNewsletterSignUpRef(dcOrVars, vars) {
-  const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars, true);
-  dcInstance._useGeneratedSdk();
-  return mutationRef(dcInstance, 'AddNewsletterSignUp', inputVars);
-}
-
-export function addNewsletterSignUp(dcOrVars, vars) {
-  return executeMutation(addNewsletterSignUpRef(dcOrVars, vars));
-}
-
-export function createOrgRef(dcOrVars, vars) {
-  const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars, true);
-  dcInstance._useGeneratedSdk();
-  return mutationRef(dcInstance, 'CreateOrg', inputVars);
-}
-
-export function createOrg(dcOrVars, vars) {
-  return executeMutation(createOrgRef(dcOrVars, vars));
-}
-
-export function addUserToOrgRef(dcOrVars, vars) {
-  const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars, true);
-  dcInstance._useGeneratedSdk();
-  return mutationRef(dcInstance, 'AddUserToOrg', inputVars);
-}
-
-export function addUserToOrg(dcOrVars, vars) {
-  return executeMutation(addUserToOrgRef(dcOrVars, vars));
 }
 
