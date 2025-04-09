@@ -16,6 +16,7 @@ import IgniteHub from "@/components/Typography/IgniteHub";
 // import { dataConnect } from "@/lib/firebase";
 import { useRouter } from "next/navigation";
 import { useDashboard } from "@/lib/context/dashboardContext";
+import { auth } from "@/lib/firebase";
 
 export default function CreateProjectPage() {
 	const theme = useTheme();
@@ -28,6 +29,29 @@ export default function CreateProjectPage() {
 	const handleContinue = async () => {
 		handleAddOrg(projectName);
 		router.push("/dashboard");
+	};
+
+	const handleTest = async () => {
+		if (!auth.currentUser) {
+			console.error("No user is currently signed in.");
+			return;
+		}
+		const token = await auth.currentUser.getIdToken();
+
+		const userProfile = fetch(
+			"/api/user?" +
+				new URLSearchParams({
+					userId: auth.currentUser.uid,
+					displayName: auth.currentUser.displayName as string,
+					email: auth.currentUser.email as string
+				}).toString(),
+			{
+				headers: {
+					Authorization: `Bearer ${token}`
+				}
+			}
+		);
+		console.log("userProfile: ", userProfile);
 	};
 
 	return (
@@ -70,6 +94,11 @@ export default function CreateProjectPage() {
 							onClick={handleContinue}
 							disabled={!projectName}>
 							Continue
+						</Button>
+					</Box>
+					<Box>
+						<Button variant="contained" color="primary" onClick={handleTest}>
+							Test
 						</Button>
 					</Box>
 				</Stack>

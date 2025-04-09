@@ -12,8 +12,8 @@ import { getFirestore, connectFirestoreEmulator } from "firebase/firestore";
 export const firebaseConfig =
 	process.env.NEXT_PUBLIC_ENV === "development"
 		? {
-				apiKey: "dev-api-key",
-				authDomain: "localhost",
+				apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+				authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
 				projectId: "ignitehub-f2251",
 				storageBucket: "dev.appspot.com",
 				messagingSenderId: "dev-sender-id",

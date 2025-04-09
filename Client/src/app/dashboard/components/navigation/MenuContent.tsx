@@ -33,6 +33,13 @@ const iconMap = {
 	Feedback: <HelpRoundedIcon />
 };
 
+const mainListItems = [
+	{ text: "Dashboard", icon: <InfoRoundedIcon />, path: "/dashboard" },
+	{ text: "Documents", icon: <HelpRoundedIcon />, path: "/documents" },
+	{ text: "Models", icon: <HelpRoundedIcon />, path: "/models" },
+	{ text: "RAG", icon: <HelpRoundedIcon />, path: "/rag" }
+];
+
 // Secondary items that remain constant across hubs
 const secondaryListItems = [
 	{ text: "About", icon: <InfoRoundedIcon />, path: "/about" },
@@ -40,17 +47,17 @@ const secondaryListItems = [
 ];
 
 export default function MenuContent() {
-	const { activeHub, selectedIndex, setSelectedIndex } = useDashboard();
+	const { selectedIndex, setSelectedIndex } = useDashboard();
 	const router = useRouter();
 
-	const mainListItems = (activeHub?.menuItems || []).map((item) => ({
-		text: item.label,
-		icon: iconMap[item.label as keyof typeof iconMap] || (
-			<AssignmentRoundedIcon />
-		),
-		path: item.path,
-		disabled: item.disabled
-	}));
+	// const mainListItems = (activeHub?.menuItems || []).map((item) => ({
+	// 	text: item.label,
+	// 	icon: iconMap[item.label as keyof typeof iconMap] || (
+	// 		<AssignmentRoundedIcon />
+	// 	),
+	// 	path: item.path,
+	// 	disabled: item.disabled
+	// }));
 
 	const handleListItemClick = (path: string, index: number) => {
 		setSelectedIndex(index);

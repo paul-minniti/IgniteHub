@@ -39,6 +39,11 @@ export const DashboardProvider = ({
 	const [selectedIndex, setSelectedIndex] = useState(0);
 	const pathname = usePathname();
 	const { initCollection } = useWebApi();
+	const { user } = useUser();
+
+	useEffect(() => {
+		
+	}, [user]);	
 
 	useEffect(() => {
 		if (org) {
