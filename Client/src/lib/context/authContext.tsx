@@ -16,6 +16,18 @@ import { useRouter } from "next/navigation";
 import { Modal } from "@mui/material";
 import SignIn from "@/components/Auth/SignIn";
 import SignUp from "@/components/Auth/SignUp";
+import AttemptingLogin from "@/components/Auth/AttemptingLogin";
+
+enum PublicRoutes {
+	HOME = "/",
+	PRIVACY = "/privacy",
+	TERMS = "/terms",
+	DELETEUSERDATA = "/deleteuserdata"
+}
+
+function isPublicRoute(path: string): boolean {
+	return Object.values(PublicRoutes).includes(path as PublicRoutes);
+}
 
 export interface UserProfile {
 	id: string;
@@ -70,17 +82,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 		setIsModalOpen(false);
 	};
 
-	// useEffect(() => {
-	// 	const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
-	// 		if (!firebaseUser) {
-	// 			router.push("/");
-	// 		}
-	// 		setUser(firebaseUser);
-	// 		setLoading(false);
-	// 	});
-	// 	return () => unsubscribe();
-	// }, []);
-
 	useEffect(() => {
 		let signOutTimer: ReturnType<typeof setTimeout>;
 
@@ -104,7 +105,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 				}
 				setUser(firebaseUser);
 			} else {
-				router.push("/");
+				if (!isPublicRoute(window.location.pathname)) {
+					router.push("/");
+				}
 				setUser(null);
 			}
 			setLoading(false);
@@ -118,9 +121,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
 	async function handleGoogleSignIn() {
 		try {
-			setLoading(true);
 			const provider = new GoogleAuthProvider();
 			const userCredential = await signInWithPopup(auth, provider);
+			setLoading(true);
 			const userProfile = await getUserById(dataConnect, {
 				id: userCredential.user.uid
 			});
@@ -150,7 +153,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 					lastName: lastName,
 					email: userCredential.user.email as string
 				});
-				router.push("/dashboard/newOrg");
+				router.push("/dashboard");
 				return;
 			} else {
 				router.push("/dashboard");
@@ -202,7 +205,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 				email: email
 			});
 			handleCloseModal();
-			router.push("/dashboard/newOrg");
+			router.push("/dashboard");
 		} catch (error) {
 			console.error("Email sign-up error:", error);
 		} finally {
@@ -227,6 +230,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 			<Modal open={isModalOpen} onClose={handleCloseModal}>
 				{modalView === "login" ? <SignIn /> : <SignUp />}
 			</Modal>
+			{loading && <AttemptingLogin />}
 		</AuthContext.Provider>
 	);
 };

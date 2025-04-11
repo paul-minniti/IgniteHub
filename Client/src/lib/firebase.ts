@@ -7,7 +7,7 @@ import {
 import { connectorConfig } from "@IgniteHub/dataconnect";
 import { getFirestore, connectFirestoreEmulator } from "firebase/firestore";
 // import { getFunctions, connectFunctionsEmulator } from "firebase/functions";
-// import { getStorage } from "firebase/storage";
+import { getStorage, connectStorageEmulator } from "firebase/storage";
 
 export const firebaseConfig =
 	process.env.NEXT_PUBLIC_ENV === "development"
@@ -33,7 +33,7 @@ export const auth = getAuth(app);
 export const dataConnect = getDataConnect(app, connectorConfig);
 export const firestore = getFirestore();
 // export const functions = getFunctions(app);
-// export const storage = getStorage();
+export const storage = getStorage(app);
 
 if (process.env.NEXT_PUBLIC_ENV === "development") {
 	console.log("-- Dev mode detected connecting to emulators ---");
@@ -45,4 +45,6 @@ if (process.env.NEXT_PUBLIC_ENV === "development") {
 	console.log("-- Connected to Firebase DataConnect emulator --");
 	connectFirestoreEmulator(firestore, "localhost", 8080);
 	console.log("-- Connected to Firebase Firestore emulator --");
+	connectStorageEmulator(storage, "localhost", 9199);
+	console.log("-- Connected to Firebase Storage emulator --");
 }

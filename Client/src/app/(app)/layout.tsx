@@ -7,7 +7,7 @@ import SideMenu from "./components/navigation/SideMenu";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/context/authContext";
 
-export default function Dashboard({
+export default function Layout({
 	children
 }: Readonly<{
 	children: React.ReactNode;
