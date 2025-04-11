@@ -51,7 +51,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
 
 	useEffect(() => {
 		if (userProfile && !userProfile.orginizationId) {
-			router.replace("/dashboard/newOrg");
+			router.replace("/dashboard");
 		}
 	}, [userProfile, router]);
 

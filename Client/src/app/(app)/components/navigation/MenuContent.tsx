@@ -35,9 +35,12 @@ const iconMap = {
 
 const mainListItems = [
 	{ text: "Dashboard", icon: <InfoRoundedIcon />, path: "/dashboard" },
-	{ text: "Documents", icon: <HelpRoundedIcon />, path: "/documents" },
-	{ text: "Models", icon: <HelpRoundedIcon />, path: "/models" },
-	{ text: "RAG", icon: <HelpRoundedIcon />, path: "/rag" }
+	{
+		text: "Documents",
+		icon: <HelpRoundedIcon />,
+		path: "/documents"
+	},
+	{ text: "Models", icon: <HelpRoundedIcon />, path: "/models" }
 ];
 
 // Secondary items that remain constant across hubs
