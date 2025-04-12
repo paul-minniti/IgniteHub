@@ -9,7 +9,6 @@ import {
 	ListItem,
 	ListItemIcon,
 	ListItemText,
-	ListItemSecondaryAction,
 	IconButton,
 	Menu,
 	MenuItem,
@@ -58,64 +57,62 @@ const DocumentList: React.FC = () => {
 	);
 	const { user } = useAuth();
 
-	const loadDocuments = async () => {
+	useEffect(() => {
 		if (!user) return;
 
-		setLoading(true);
-		setError(null);
+		const loadDocuments = async () => {
+			setLoading(true);
+			setError(null);
 
-		try {
-			const storageRef = ref(storage, `users/${user.uid}/documents`);
-			console.log("storageRef", storageRef);
-			const res = await listAll(storageRef);
+			try {
+				const storageRef = ref(storage, `users/${user.uid}/documents`);
+				console.log("storageRef", storageRef);
+				const res = await listAll(storageRef);
 
-			const docsWithMetadata = await Promise.all(
-				res.items.map(async (itemRef) => {
-					try {
-						const metadata = await getMetadata(itemRef);
-						const url = await getDownloadURL(itemRef);
-						const nameParts = itemRef.name.split("_");
-						// Remove timestamp prefix if it exists
-						const displayName =
-							nameParts.length > 1
-								? nameParts.slice(1).join("_")
-								: itemRef.name;
-						const fileExtension =
-							displayName.split(".").pop()?.toLowerCase() || "";
+				const docsWithMetadata = await Promise.all(
+					res.items.map(async (itemRef) => {
+						try {
+							const metadata = await getMetadata(itemRef);
+							const url = await getDownloadURL(itemRef);
+							const nameParts = itemRef.name.split("_");
+							// Remove timestamp prefix if it exists
+							const displayName =
+								nameParts.length > 1
+									? nameParts.slice(1).join("_")
+									: itemRef.name;
+							const fileExtension =
+								displayName.split(".").pop()?.toLowerCase() || "";
 
-						return {
-							name: displayName,
-							fullPath: itemRef.fullPath,
-							url,
-							contentType: metadata.contentType || "application/octet-stream",
-							size: metadata.size || 0,
-							timeCreated: metadata.timeCreated || "",
-							fileExtension
-						};
-					} catch (error) {
-						console.error(
-							`Error fetching metadata for ${itemRef.name}:`,
-							error
-						);
-						return null;
-					}
-				})
-			);
+							return {
+								name: displayName,
+								fullPath: itemRef.fullPath,
+								url,
+								contentType: metadata.contentType || "application/octet-stream",
+								size: metadata.size || 0,
+								timeCreated: metadata.timeCreated || "",
+								fileExtension
+							};
+						} catch (error) {
+							console.error(
+								`Error fetching metadata for ${itemRef.name}:`,
+								error
+							);
+							return null;
+						}
+					})
+				);
 
-			// Filter out any nulls from failed metadata fetches
-			setDocuments(docsWithMetadata.filter(Boolean) as DocumentItem[]);
-		} catch (error) {
-			setError(`Error loading documents: ${error}`);
-			console.error("Error loading documents:", error);
-		} finally {
-			setLoading(false);
-		}
-	};
+				// Filter out any nulls from failed metadata fetches
+				setDocuments(docsWithMetadata.filter(Boolean) as DocumentItem[]);
+			} catch (error) {
+				setError(`Error loading documents: ${error}`);
+				console.error("Error loading documents:", error);
+			} finally {
+				setLoading(false);
+			}
+		};
 
-	useEffect(() => {
-		if (user) {
-			loadDocuments();
-		}
+		loadDocuments();
 	}, [user]);
 
 	const formatFileSize = (bytes: number): string => {

@@ -5,8 +5,8 @@ import { Hub, HubType, hubConfigs } from "@/lib/types/hubTypes";
 import { usePathname } from "next/navigation";
 import { Orginization } from "@/lib/types";
 import { createOrg, addUserToOrg } from "@IgniteHub/dataconnect";
-import useWebApi from "@/lib/hooks/webHook";
-import { useUser } from "@/lib/context/userContext";
+// import useWebApi from "@/lib/hooks/webHook";
+// import { useUser } from "@/lib/context/userContext";
 
 interface DashboardContextProps {
 	org: Orginization | null;
@@ -38,18 +38,18 @@ export const DashboardProvider = ({
 	const [hubType, setHubType] = useState<HubType>("overview");
 	const [selectedIndex, setSelectedIndex] = useState(0);
 	const pathname = usePathname();
-	const { initCollection } = useWebApi();
-	const { user } = useUser();
+	// const { initCollection } = useWebApi();
+	// const { user } = useUser();
 
-	useEffect(() => {
-		
-	}, [user]);	
+	// useEffect(() => {
 
-	useEffect(() => {
-		if (org) {
-			initCollection(org.name);
-		}
-	}, [initCollection, org]);
+	// }, [user]);
+
+	// useEffect(() => {
+	// 	if (org) {
+	// 		initCollection(org.name);
+	// 	}
+	// }, [initCollection, org]);
 
 	// const handleSetOrg = (org: Orginization) => {
 	// 	setOrg(org);

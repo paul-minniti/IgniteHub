@@ -22,9 +22,11 @@ export default function Documents() {
 	} | null>(null);
 	const { user } = useAuth();
 
-	const handleUploadSuccess = (fileUrl: string, fileName: string) => {
+	const handleUploadSuccess = (
+		uploads: { url: string; fileName: string }[]
+	) => {
 		setNotification({
-			message: `${fileName} uploaded successfully!`,
+			message: `${uploads[0].fileName} uploaded successfully!`,
 			type: "success"
 		});
 	};

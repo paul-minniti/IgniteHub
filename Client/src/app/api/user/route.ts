@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
-import { getUserById, createUser } from "@IgniteHub/dataconnect";
+// import { getUserById, createUser } from "@IgniteHub/dataconnect";
 // import { dataConnectServer } from "../firebaseServer";
 // import { dataConnect, auth } from "@/lib/firebase";
-import { app, dataConnect, firebaseConfig, auth } from "@/lib/firebase";
+import { firebaseConfig } from "@/lib/firebase";
 import { initializeServerApp } from "firebase/app";
 import { z } from "zod";
 // import { connectorConfig } from "@IgniteHub/dataconnect";
