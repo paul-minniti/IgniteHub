@@ -104,9 +104,9 @@ const DocumentList: React.FC = () => {
 
 			// Filter out any nulls from failed metadata fetches
 			setDocuments(docsWithMetadata.filter(Boolean) as DocumentItem[]);
-		} catch (err: any) {
-			setError(`Error loading documents: ${err.message}`);
-			console.error("Error loading documents:", err);
+		} catch (error) {
+			setError(`Error loading documents: ${error}`);
+			console.error("Error loading documents:", error);
 		} finally {
 			setLoading(false);
 		}
@@ -191,8 +191,8 @@ const DocumentList: React.FC = () => {
 			);
 
 			handleCloseMenu();
-		} catch (error: any) {
-			setError(`Error deleting document: ${error.message}`);
+		} catch (error) {
+			setError(`Error deleting document: ${error}`);
 			console.error("Error deleting document:", error);
 			handleCloseMenu();
 		}
@@ -231,17 +231,22 @@ const DocumentList: React.FC = () => {
 				<List sx={{ width: "100%", bgcolor: "background.paper" }}>
 					{documents.map((doc) => (
 						<ListItem
-							button
 							divider
 							key={doc.fullPath}
-							onClick={() => window.open(doc.url, "_blank")}
-							sx={{
-								"&:hover": {
-									bgcolor: "action.hover"
-								}
-							}}>
+							secondaryAction={
+								<Tooltip title="Options">
+									<IconButton
+										edge="end"
+										onClick={(e) => {
+											handleOpenMenu(e, doc);
+										}}>
+										<MoreVert />
+									</IconButton>
+								</Tooltip>
+							}>
 							<ListItemIcon>{getFileIcon(doc.fileExtension)}</ListItemIcon>
 							<ListItemText
+								sx={{ color: "text.primary" }}
 								primary={doc.name}
 								secondary={
 									<React.Fragment>
@@ -261,15 +266,6 @@ const DocumentList: React.FC = () => {
 									</React.Fragment>
 								}
 							/>
-							<ListItemSecondaryAction>
-								<Tooltip title="Options">
-									<IconButton
-										edge="end"
-										onClick={(e) => handleOpenMenu(e, doc)}>
-										<MoreVert />
-									</IconButton>
-								</Tooltip>
-							</ListItemSecondaryAction>
 						</ListItem>
 					))}
 				</List>

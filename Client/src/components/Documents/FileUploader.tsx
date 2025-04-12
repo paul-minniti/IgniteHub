@@ -8,18 +8,30 @@ import {
 	LinearProgress,
 	Paper,
 	Alert,
-	IconButton
+	IconButton,
+	List,
+	ListItem,
+	ListItemText,
+	ListItemSecondaryAction
 } from "@mui/material";
-import { CloudUpload, Close } from "@mui/icons-material";
+import { CloudUpload, Close, Delete } from "@mui/icons-material";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { storage } from "@/lib/firebase";
 import { useAuth } from "@/lib/context/authContext";
 
 interface FileUploaderProps {
-	onUploadSuccess?: (fileUrl: string, fileName: string) => void;
+	onUploadSuccess?: (uploads: { url: string; fileName: string }[]) => void;
 	allowedFileTypes?: string[];
 	maxFileSizeMB?: number;
 	folder?: string;
+}
+
+interface FileWithProgress {
+	file: File;
+	progress: number;
+	uploading: boolean;
+	error?: string | null;
+	url?: string;
 }
 
 const FileUploader: React.FC<FileUploaderProps> = ({
@@ -28,8 +40,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({
 	maxFileSizeMB = 5,
 	folder = "documents"
 }) => {
-	const [file, setFile] = useState<File | null>(null);
-	const [progress, setProgress] = useState<number>(0);
+	const [files, setFiles] = useState<FileWithProgress[]>([]);
 	const [error, setError] = useState<string | null>(null);
 	const [uploading, setUploading] = useState<boolean>(false);
 	const fileInputRef = useRef<HTMLInputElement>(null);
@@ -42,67 +53,133 @@ const FileUploader: React.FC<FileUploaderProps> = ({
 			return;
 		}
 
-		const selectedFile = event.target.files[0];
+		const selectedFiles = Array.from(event.target.files);
+		const validFiles: FileWithProgress[] = [];
+		const errors: string[] = [];
 
-		// Check file size
-		if (selectedFile.size > maxFileSizeMB * 1024 * 1024) {
-			setError(`File size must be less than ${maxFileSizeMB}MB`);
-			return;
+		selectedFiles.forEach((selectedFile) => {
+			// Check file size
+			if (selectedFile.size > maxFileSizeMB * 1024 * 1024) {
+				errors.push(
+					`${selectedFile.name}: File size must be less than ${maxFileSizeMB}MB`
+				);
+				return;
+			}
+
+			// Check file type
+			const fileExtension = `.${selectedFile.name.split(".").pop()?.toLowerCase()}`;
+			if (!allowedFileTypes.includes(fileExtension)) {
+				errors.push(
+					`${selectedFile.name}: File type not supported. Allowed types: ${allowedFileTypes.join(", ")}`
+				);
+				return;
+			}
+
+			validFiles.push({ file: selectedFile, progress: 0, uploading: false });
+		});
+
+		if (errors.length > 0) {
+			setError(errors.join("\n"));
 		}
 
-		// Check file type
-		const fileExtension = `.${selectedFile.name.split(".").pop()?.toLowerCase()}`;
-		if (!allowedFileTypes.includes(fileExtension)) {
-			setError(
-				`File type not supported. Allowed types: ${allowedFileTypes.join(", ")}`
-			);
-			return;
+		if (validFiles.length > 0) {
+			setFiles((prev) => [...prev, ...validFiles]);
 		}
-
-		setFile(selectedFile);
 	};
 
-	const handleUpload = async () => {
-		if (!file || !user) return;
-
-		setUploading(true);
-		setError(null);
+	const uploadFile = async (
+		fileWithProgress: FileWithProgress,
+		index: number
+	) => {
+		if (!user) return;
 
 		const timestamp = new Date().getTime();
-		const fileName = `${timestamp}_${file.name}`;
+		const fileName = `${timestamp}_${fileWithProgress.file.name}`;
 		const storageRef = ref(storage, `users/${user.uid}/${folder}/${fileName}`);
 
-		const uploadTask = uploadBytesResumable(storageRef, file);
+		setFiles((prev) => {
+			const updated = [...prev];
+			updated[index] = { ...updated[index], uploading: true, error: null };
+			return updated;
+		});
+
+		const uploadTask = uploadBytesResumable(storageRef, fileWithProgress.file);
 
 		uploadTask.on(
 			"state_changed",
 			(snapshot) => {
 				const progress =
 					(snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-				setProgress(progress);
+
+				setFiles((prev) => {
+					const updated = [...prev];
+					updated[index] = { ...updated[index], progress };
+					return updated;
+				});
 			},
 			(error) => {
-				setError("Upload failed: " + error.message);
-				setUploading(false);
+				setFiles((prev) => {
+					const updated = [...prev];
+					updated[index] = {
+						...updated[index],
+						uploading: false,
+						error: "Upload failed: " + error.message
+					};
+					return updated;
+				});
 			},
 			async () => {
 				const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-				onUploadSuccess?.(downloadURL, file.name);
-				setUploading(false);
-				setFile(null);
-				setProgress(0);
 
-				// Reset file input
-				if (fileInputRef.current) {
-					fileInputRef.current.value = "";
-				}
+				setFiles((prev) => {
+					const updated = [...prev];
+					updated[index] = {
+						...updated[index],
+						uploading: false,
+						url: downloadURL
+					};
+					return updated;
+				});
+
+				// Check if all files are uploaded
+				checkAllUploaded();
 			}
 		);
 	};
 
-	const handleCancel = () => {
-		setFile(null);
-		setProgress(0);
+	const checkAllUploaded = () => {
+		const allUploaded = files.every((file) => !file.uploading && file.url);
+
+		if (allUploaded && files.length > 0) {
+			const uploads = files.map((file) => ({
+				url: file.url!,
+				fileName: file.file.name
+			}));
+
+			onUploadSuccess?.(uploads);
+			resetUpload();
+		} else {
+			setUploading(files.some((file) => file.uploading));
+		}
+	};
+
+	const handleUpload = async () => {
+		if (!files.length || !user) return;
+
+		setUploading(true);
+		setError(null);
+
+		// Start uploading all files
+		files.forEach((file, index) => {
+			if (!file.url && !file.uploading) {
+				uploadFile(file, index);
+			}
+		});
+	};
+
+	const resetUpload = () => {
+		setFiles([]);
+		setUploading(false);
 		setError(null);
 
 		// Reset file input
@@ -111,16 +188,24 @@ const FileUploader: React.FC<FileUploaderProps> = ({
 		}
 	};
 
+	const handleCancel = () => {
+		resetUpload();
+	};
+
+	const removeFile = (index: number) => {
+		setFiles((prev) => prev.filter((_, i) => i !== index));
+	};
+
 	return (
 		<Paper elevation={0} variant="outlined" sx={{ p: 3, mb: 3 }}>
 			<Typography variant="h6" gutterBottom>
-				Upload Document
+				Upload Documents
 			</Typography>
 
 			{error && (
 				<Alert
 					severity="error"
-					sx={{ mb: 2 }}
+					sx={{ mb: 2, whiteSpace: "pre-line" }}
 					action={
 						<IconButton
 							aria-label="close"
@@ -139,7 +224,8 @@ const FileUploader: React.FC<FileUploaderProps> = ({
 					display: "flex",
 					flexDirection: { xs: "column", sm: "row" },
 					alignItems: { xs: "stretch", sm: "center" },
-					gap: 2
+					gap: 2,
+					mb: 2
 				}}>
 				<Button
 					variant="outlined"
@@ -147,50 +233,19 @@ const FileUploader: React.FC<FileUploaderProps> = ({
 					disabled={uploading}
 					startIcon={<CloudUpload />}
 					sx={{ flexGrow: { xs: 1, sm: 0 } }}>
-					Select File
+					Select Files
 					<input
 						ref={fileInputRef}
 						type="file"
 						hidden
 						onChange={handleFileSelect}
 						accept={allowedFileTypes.join(",")}
+						multiple
 					/>
 				</Button>
 
-				{file && (
-					<Box sx={{ flexGrow: 1, ml: { xs: 0, sm: 2 } }}>
-						<Box
-							sx={{
-								display: "flex",
-								justifyContent: "space-between",
-								mb: 0.5
-							}}>
-							<Typography
-								variant="body2"
-								sx={{
-									maxWidth: "240px",
-									overflow: "hidden",
-									textOverflow: "ellipsis",
-									whiteSpace: "nowrap"
-								}}>
-								{file.name}
-							</Typography>
-							<Typography variant="body2" color="text.secondary">
-								{(file.size / 1024 / 1024).toFixed(2)} MB
-							</Typography>
-						</Box>
-						{uploading && (
-							<LinearProgress
-								variant="determinate"
-								value={progress}
-								sx={{ height: 6, borderRadius: 3 }}
-							/>
-						)}
-					</Box>
-				)}
-
 				<Box sx={{ display: "flex", gap: 1, ml: { xs: 0, sm: "auto" } }}>
-					{file && !uploading && (
+					{files.length > 0 && !uploading && (
 						<>
 							<Button
 								variant="text"
@@ -203,17 +258,86 @@ const FileUploader: React.FC<FileUploaderProps> = ({
 								variant="contained"
 								onClick={handleUpload}
 								disabled={uploading}>
-								Upload
+								Upload All
 							</Button>
 						</>
 					)}
 					{uploading && (
 						<Button variant="outlined" color="secondary" disabled>
-							Uploading... {Math.round(progress)}%
+							Uploading...
 						</Button>
 					)}
 				</Box>
 			</Box>
+
+			{files.length > 0 && (
+				<List sx={{ width: "100%", bgcolor: "background.paper" }}>
+					{files.map((fileItem, index) => (
+						<ListItem
+							key={`${fileItem.file.name}-${index}`}
+							sx={{
+								border: "1px solid",
+								borderColor: "divider",
+								borderRadius: 1,
+								mb: 1,
+								px: 2,
+								py: 1
+							}}>
+							<ListItemText
+								primary={
+									<Typography
+										variant="body2"
+										sx={{
+											maxWidth: "240px",
+											overflow: "hidden",
+											textOverflow: "ellipsis",
+											whiteSpace: "nowrap"
+										}}>
+										{fileItem.file.name}
+									</Typography>
+								}
+								secondary={
+									<>
+										<Typography
+											variant="caption"
+											display="block"
+											color="text.secondary">
+											{(fileItem.file.size / 1024 / 1024).toFixed(2)} MB
+										</Typography>
+										{fileItem.uploading && (
+											<LinearProgress
+												variant="determinate"
+												value={fileItem.progress}
+												sx={{ height: 6, borderRadius: 3, mt: 0.5 }}
+											/>
+										)}
+										{fileItem.error && (
+											<Typography variant="caption" color="error">
+												{fileItem.error}
+											</Typography>
+										)}
+										{fileItem.url && (
+											<Typography variant="caption" color="success.main">
+												Upload complete
+											</Typography>
+										)}
+									</>
+								}
+							/>
+							{!fileItem.uploading && !fileItem.url && (
+								<ListItemSecondaryAction>
+									<IconButton
+										edge="end"
+										aria-label="delete"
+										onClick={() => removeFile(index)}>
+										<Delete />
+									</IconButton>
+								</ListItemSecondaryAction>
+							)}
+						</ListItem>
+					))}
+				</List>
+			)}
 		</Paper>
 	);
 };
