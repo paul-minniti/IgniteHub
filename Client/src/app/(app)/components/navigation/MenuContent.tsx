@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
 	List,
 	ListItem,
@@ -11,27 +11,27 @@ import {
 import { useDashboard } from "@/lib/context/dashboardContext";
 import { useRouter } from "next/navigation";
 
-import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
-import AnalyticsRoundedIcon from "@mui/icons-material/AnalyticsRounded";
-import PeopleRoundedIcon from "@mui/icons-material/PeopleRounded";
-import AssignmentRoundedIcon from "@mui/icons-material/AssignmentRounded";
-import SettingsRoundedIcon from "@mui/icons-material/SettingsRounded";
+// import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
+// import AnalyticsRoundedIcon from "@mui/icons-material/AnalyticsRounded";
+// import PeopleRoundedIcon from "@mui/icons-material/PeopleRounded";
+// import AssignmentRoundedIcon from "@mui/icons-material/AssignmentRounded";
+// import SettingsRoundedIcon from "@mui/icons-material/SettingsRounded";
 import InfoRoundedIcon from "@mui/icons-material/InfoRounded";
 import HelpRoundedIcon from "@mui/icons-material/HelpRounded";
-import DevicesRoundedIcon from "@mui/icons-material/DevicesRounded";
+// import DevicesRoundedIcon from "@mui/icons-material/DevicesRounded";
 
-const iconMap = {
-	Dashboard: <HomeRoundedIcon />,
-	Sites: <DevicesRoundedIcon />,
-	Analytics: <AnalyticsRoundedIcon />,
-	Clients: <PeopleRoundedIcon />,
-	Tasks: <AssignmentRoundedIcon />,
-	Campaigns: <AssignmentRoundedIcon />,
-	Leads: <PeopleRoundedIcon />,
-	Settings: <SettingsRoundedIcon />,
-	About: <InfoRoundedIcon />,
-	Feedback: <HelpRoundedIcon />
-};
+// const iconMap = {
+// 	Dashboard: <HomeRoundedIcon />,
+// 	Sites: <DevicesRoundedIcon />,
+// 	Analytics: <AnalyticsRoundedIcon />,
+// 	Clients: <PeopleRoundedIcon />,
+// 	Tasks: <AssignmentRoundedIcon />,
+// 	Campaigns: <AssignmentRoundedIcon />,
+// 	Leads: <PeopleRoundedIcon />,
+// 	Settings: <SettingsRoundedIcon />,
+// 	About: <InfoRoundedIcon />,
+// 	Feedback: <HelpRoundedIcon />
+// };
 
 const mainListItems = [
 	{ text: "Dashboard", icon: <InfoRoundedIcon />, path: "/dashboard" },

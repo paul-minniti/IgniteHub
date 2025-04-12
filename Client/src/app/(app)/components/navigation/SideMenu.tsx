@@ -8,7 +8,7 @@ import Divider from "@mui/material/Divider";
 import MenuContent from "./MenuContent";
 import OrgMenu from "./OrgMenu";
 import UserMenu from "./userMenu";
-import SelectHubs from "./SelectHubs";
+// import SelectHubs from "./SelectHubs";
 
 const drawerWidth = 240;
 
