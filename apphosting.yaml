@@ -15,7 +15,7 @@ env:
   - variable: NEXT_PUBLIC_FIREBASE_PROJECT_ID
     value: ignitehub-f2251
   - variable: NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
-    value: ignitehub-f2251.firebasestorage.app"
+    value: ignitehub-f2251.firebasestorage.app
   - variable: NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
     secret: webapp-messaging-sender-id
   - variable: NEXT_PUBLIC_FIREBASE_APP_ID
