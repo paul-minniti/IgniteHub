@@ -120,10 +120,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 	}, [router]);
 
 	async function handleGoogleSignIn() {
+		setLoading(true);
 		try {
 			const provider = new GoogleAuthProvider();
 			const userCredential = await signInWithPopup(auth, provider);
-			setLoading(true);
 			const userProfile = await getUserById(dataConnect, {
 				id: userCredential.user.uid
 			});

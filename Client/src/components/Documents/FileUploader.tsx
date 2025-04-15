@@ -11,8 +11,7 @@ import {
 	IconButton,
 	List,
 	ListItem,
-	ListItemText,
-	ListItemSecondaryAction
+	ListItemText
 } from "@mui/material";
 import { CloudUpload, Close, Delete } from "@mui/icons-material";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
@@ -282,16 +281,25 @@ const FileUploader: React.FC<FileUploaderProps> = ({
 								mb: 1,
 								px: 2,
 								py: 1
-							}}>
+							}}
+							secondaryAction={
+								!fileItem.uploading && !fileItem.url ? (
+									<IconButton
+										edge="end"
+										aria-label="delete"
+										onClick={() => removeFile(index)}>
+										<Delete />
+									</IconButton>
+								) : null
+							}>
 							<ListItemText
+								sx={{ pr: 4 }}
 								primary={
 									<Typography
 										variant="body2"
 										sx={{
-											maxWidth: "240px",
 											overflow: "hidden",
-											textOverflow: "ellipsis",
-											whiteSpace: "nowrap"
+											textOverflow: "ellipsis"
 										}}>
 										{fileItem.file.name}
 									</Typography>
@@ -301,7 +309,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({
 										<Typography
 											variant="caption"
 											display="block"
-											color="text.secondary">
+											color="text.primary">
 											{(fileItem.file.size / 1024 / 1024).toFixed(2)} MB
 										</Typography>
 										{fileItem.uploading && (
@@ -324,16 +332,6 @@ const FileUploader: React.FC<FileUploaderProps> = ({
 									</>
 								}
 							/>
-							{!fileItem.uploading && !fileItem.url && (
-								<ListItemSecondaryAction>
-									<IconButton
-										edge="end"
-										aria-label="delete"
-										onClick={() => removeFile(index)}>
-										<Delete />
-									</IconButton>
-								</ListItemSecondaryAction>
-							)}
 						</ListItem>
 					))}
 				</List>

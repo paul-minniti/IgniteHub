@@ -47,9 +47,15 @@ interface DocumentItem {
 	fileExtension: string;
 }
 
-const DocumentList: React.FC = () => {
-	const [documents, setDocuments] = useState<DocumentItem[]>([]);
-	const [loading, setLoading] = useState(true);
+interface DocumentListProps {
+	initialDocuments?: DocumentItem[];
+}
+
+const DocumentList: React.FC<DocumentListProps> = ({
+	initialDocuments = []
+}) => {
+	const [documents, setDocuments] = useState<DocumentItem[]>(initialDocuments);
+	const [loading, setLoading] = useState(initialDocuments.length === 0);
 	const [error, setError] = useState<string | null>(null);
 	const [menuAnchorEl, setMenuAnchorEl] = useState<null | HTMLElement>(null);
 	const [selectedDocument, setSelectedDocument] = useState<DocumentItem | null>(
@@ -58,6 +64,14 @@ const DocumentList: React.FC = () => {
 	const { user } = useAuth();
 
 	useEffect(() => {
+		// If we have initial documents from the server, no need to load them again
+		if (initialDocuments.length > 0) {
+			setDocuments(initialDocuments);
+			setLoading(false);
+			return;
+		}
+
+		// Otherwise, fall back to client-side loading
 		if (!user) return;
 
 		const loadDocuments = async () => {
@@ -113,7 +127,7 @@ const DocumentList: React.FC = () => {
 		};
 
 		loadDocuments();
-	}, [user]);
+	}, [user, initialDocuments]);
 
 	const formatFileSize = (bytes: number): string => {
 		if (bytes < 1024) return bytes + " B";
@@ -218,7 +232,7 @@ const DocumentList: React.FC = () => {
 
 			{!loading && documents.length === 0 && (
 				<Box sx={{ p: 4, textAlign: "center" }}>
-					<Typography color="text.secondary">
+					<Typography color="text.primary">
 						No documents found. Upload your first document above.
 					</Typography>
 				</Box>
@@ -243,21 +257,20 @@ const DocumentList: React.FC = () => {
 							}>
 							<ListItemIcon>{getFileIcon(doc.fileExtension)}</ListItemIcon>
 							<ListItemText
-								sx={{ color: "text.primary" }}
 								primary={doc.name}
 								secondary={
 									<React.Fragment>
 										<Typography
 											component="span"
 											variant="body2"
-											color="text.secondary">
+											color="text.primary">
 											{formatFileSize(doc.size)}
 										</Typography>
 										{" • "}
 										<Typography
 											component="span"
 											variant="body2"
-											color="text.secondary">
+											color="text.primary">
 											{formatDate(doc.timeCreated)}
 										</Typography>
 									</React.Fragment>

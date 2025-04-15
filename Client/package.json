@@ -14,6 +14,8 @@
 		"@fortawesome/fontawesome-svg-core": "^6.7.2",
 		"@fortawesome/free-solid-svg-icons": "^6.7.2",
 		"@fortawesome/react-fontawesome": "^0.2.2",
+		"@google-cloud/aiplatform": "^4.1.0",
+		"@google-cloud/storage": "^7.16.0",
 		"@IgniteHub/dataconnect": "file:ignitehub-dataconnect/js/default-connector",
 		"@mui/icons-material": "^6.4.2",
 		"@mui/material": "^6.4.2",
